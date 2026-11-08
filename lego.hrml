@@ -879,10 +879,10 @@
                 <a href="pokemon.html">Pokémon</a>
                 <a href="onepiece.html">One Piece</a>
 
-                <!-- Replace sgtoyhouse with your Telegram username. -->
+                <!-- Replace sgtoyhse with your Telegram username. -->
                 <a
                     class="nav-telegram"
-                    href="https://t.me/sgtoyhouse"
+                    href="https://t.me/sgtoyhse"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -1010,10 +1010,10 @@
                         </p>
                     </div>
 
-                    <!-- Replace sgtoyhouse with your Telegram username. -->
+                    <!-- Replace sgtoyhse with your Telegram username. -->
                     <a
                         class="contact-button"
-                        href="https://t.me/sgtoyhouse"
+                        href="https://t.me/sgtoyhse"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -1041,10 +1041,10 @@
         </div>
     </footer>
 
-    <!-- Replace sgtoyhouse with your Telegram username. -->
+    <!-- Replace sgtoyhse with your Telegram username. -->
     <a
         class="telegram-float"
-        href="https://t.me/sgtoyhouse"
+        href="https://t.me/sgtoyhse"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Message SG Toy House on Telegram"
@@ -1060,7 +1060,7 @@
         =========================
         */
 
-        const telegramUsername = "sgtoyhouse";
+        const telegramUsername = "sgtoyhse";
         const categoryName = "LEGO";
 
         /*
