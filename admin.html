@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SG Toy House Admin</title>
+
+<style>
+
+body{
+    background:#0b0b0b;
+    color:white;
+    font-family:Arial,sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:40px;
+}
+
+h1{
+    color:#d4af37;
+}
+
+form{
+    display:grid;
+    gap:15px;
+    margin-bottom:40px;
+}
+
+input, select{
+    padding:12px;
+    border-radius:8px;
+    border:none;
+}
+
+button{
+    padding:12px;
+    background:#d4af37;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.product{
+    background:#1a1a1a;
+    margin-bottom:15px;
+    padding:15px;
+    border-radius:10px;
+}
+
+textarea{
+    width:100%;
+    min-height:300px;
+    margin-top:20px;
+    background:#111;
+    color:#fff;
+    padding:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>SG Toy House Inventory Admin</h1>
+
+<form id="productForm">
+
+<input
+type="text"
+id="name"
+placeholder="Product Name"
+required>
+
+<input
+type="number"
+id="price"
+placeholder="Price"
+required>
+
+<select id="category">
+
+<option>LEGO</option>
+<option>Pokemon</option>
+<option>One Piece</option>
+<option>Figures</option>
+<option>Graded Cards</option>
+
+</select>
+
+<input
+type="text"
+id="image"
+placeholder="assets/products/image.jpg">
+
+<input
+type="text"
+id="link"
+placeholder="Carousell Link">
+
+<select id="stock">
+
+<option>In Stock</option>
+<option>Last Few Left</option>
+<option>Sold Out</option>
+
+</select>
+
+<button type="submit">
+Add Product
+</button>
+
+</form>
+
+<h2>Products</h2>
+
+<div id="inventoryList"></div>
+
+<button onclick="exportJSON()">
+Export products.json
+</button>
+
+<textarea id="output"></textarea>
+
+<script>
+
+let products = [];
+
+const inventoryList =
+document.getElementById("inventoryList");
+
+function renderProducts(){
+
+    inventoryList.innerHTML = "";
+
+    products.forEach((product,index)=>{
+
+        inventoryList.innerHTML += `
+
+        <div class="product">
+
+            <strong>
+                ${product.name}
+            </strong>
+
+            <br>
+
+            SGD ${product.price}
+
+            <br>
+
+            ${product.category}
+
+            <br>
+
+            ${product.stock}
+
+            <br><br>
+
+            <button onclick="deleteProduct(${index})">
+                Delete
+            </button>
+
+        </div>
+
+        `;
+    });
+}
+
+document
+.getElementById("productForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+products.push({
+
+    name:
+    document.getElementById("name").value,
+
+    price:
+    document.getElementById("price").value,
+
+    category:
+    document.getElementById("category").value,
+
+    stock:
+    document.getElementById("stock").value,
+
+    image:
+    document.getElementById("image").value,
+
+    link:
+    document.getElementById("link").value
+
+});
+
+this.reset();
+
+renderProducts();
+
+});
+
+function deleteProduct(index){
+
+    products.splice(index,1);
+
+    renderProducts();
+
+}
+
+function exportJSON(){
+
+    document.getElementById("output").value =
+    JSON.stringify(products,null,2);
+
+}
+
+</script>
+
+</body>
+</html>
