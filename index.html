@@ -288,65 +288,116 @@ Trusted Collectibles • Premium Service
 
 </footer>
 
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="Search inventory..."
+onkeyup="searchProducts()">
+
+</div>
+    
 <script>
 
-const inventory = [
+let inventory = [];
 
-{
-name:"LEGO Marvel 76210 Hulkbuster",
-price:"499",
-category:"LEGO",
-stock:"In Stock",
-image:"assets/products/hulkbuster.jpg",
-link:"https://www.carousell.sg/"
-},
+async function loadInventory(){
 
-{
-name:"LEGO Ship In A Bottle",
-price:"159",
-category:"LEGO",
-stock:"In Stock",
-image:"assets/products/ship.jpg",
-link:"https://www.carousell.sg/"
-},
+    try{
 
-{
-name:"Prismatic Evolutions ETB",
-price:"149",
-category:"Pokemon",
-stock:"Last Few Left",
-image:"assets/products/prismatic.jpg",
-link:"https://www.carousell.sg/"
-},
+        const response =
+        await fetch('products.json');
 
-{
-name:"Pokemon Premium Collection",
-price:"89",
-category:"Pokemon",
-stock:"In Stock",
-image:"assets/products/pokemon.jpg",
-link:"https://www.carousell.sg/"
-},
+        inventory =
+        await response.json();
 
-{
-name:"One Piece Booster Box",
-price:"95",
-category:"One Piece",
-stock:"In Stock",
-image:"assets/products/opbox.jpg",
-link:"https://www.carousell.sg/"
-},
+        displayProducts(inventory);
 
-{
-name:"Premium Bandai Figure",
-price:"120",
-category:"Figures",
-stock:"Available",
-image:"assets/products/figure.jpg",
-link:"https://www.carousell.sg/"
+    }catch(error){
+
+        console.error(error);
+
+    }
+
 }
 
-];
+function displayProducts(products){
+
+    const container =
+    document.getElementById("inventory");
+
+    container.innerHTML = "";
+
+    products.forEach(product => {
+
+        container.innerHTML += `
+
+        <div class="card">
+
+            <img
+            src="${product.image}"
+            alt="${product.name}">
+
+            <div class="card-body">
+
+                <div class="category">
+                    ${product.category}
+                </div>
+
+                <div class="title">
+                    ${product.name}
+                </div>
+
+                <div class="price">
+                    SGD ${product.price}
+                </div>
+
+                <div class="stock">
+                    ${product.stock}
+                </div>
+
+                <a
+                 class="buy-btn"
+                 href="${product.link}"
+                 target="_blank">
+
+                 View Listing
+
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function filterProducts(category){
+
+    if(category === "all"){
+
+        displayProducts(inventory);
+
+        return;
+
+    }
+
+    const filtered =
+    inventory.filter(
+        product => product.category === category
+    );
+
+    displayProducts(filtered);
+
+}
+
+loadInventory();
+
+</script>
 
 function displayProducts(products){
 
