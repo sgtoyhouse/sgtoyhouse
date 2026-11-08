@@ -1,5 +1,42 @@
 [
   {
+    "id": 1,
+    "name": "LEGO Marvel 76210 Hulkbuster",
+    "price": 499,
+    "category": "LEGO",
+    "stock": "In Stock",
+    "image": "assets/products/hulkbuster.jpg",
+    "link": "https://www.carousell.sg/"
+  },
+  {
+    "id": 2,
+    "name": "LEGO Ideas Ship In A Bottle",
+    "price": 159,
+    "category": "LEGO",
+    "stock": "In Stock",
+    "image": "assets/products/ship.jpg",
+    "link": "https://www.carousell.sg/"
+  },
+  {
+    "id": 3,
+    "name": "Pokemon Prismatic Evolutions ETB",
+    "price": 149,
+    "category": "Pokemon",
+    "stock": "Last Few Left",
+    "image": "assets/products/prismatic.jpg",
+    "link": "https://www.carousell.sg/"
+  },
+  {
+    "id": 4,
+    "name": "One Piece Booster Box",
+    "price": 95,
+    "category": "One Piece",
+    "stock": "In Stock",
+    "image": "assets/products/opbox.jpg",
+    "link": "https://www.carousell.sg/"
+  },
+  {
+    "id": 5,
     "name": "LEGO Marvel 76210 Hulkbuster (2022)",
     "price": "500",
     "category": "LEGO",
