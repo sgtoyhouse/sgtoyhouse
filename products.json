@@ -1,16 +1,16 @@
 [
     {
     "id": 1794175784558,
-    "name": "LEGO Marvel 76210 Hulkbuster (2022)",
+    "name": "Marvel 76210 Hulkbuster (2022)",
     "price": 500,
     "category": "LEGO",
     "stock": "In Stock",
     "image": "assets/products/76210.jpg",
-    "dateAdded": "2026-11-08"
+    "dateAdded": "2026-11-07"
   },
   {
     "id": 1794175820398,
-    "name": "LEGO Minifigures 71039 Marvel Series 2 (Set of 12) (2023)",
+    "name": "Minifigures 71039 Marvel Series 2 (Set of 12) (2023)",
     "price": 90,
     "category": "LEGO",
     "stock": "In Stock",
@@ -33,6 +33,6 @@
     "category": "Pokemon",
     "stock": "Last Few Left",
     "image": "assets/products/30thboosterbundle.jpg",
-    "dateAdded": "2026-11-08"
+    "dateAdded": "2026-11-07"
   }
 ]
