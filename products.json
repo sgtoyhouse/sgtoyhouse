@@ -23,7 +23,7 @@
     "price": 145,
     "category": "Pokemon",
     "stock": "In Stock",
-    "image": "assets/products/30thETB.jpg",
+    "image": "assets/products/PKM30thETB.jpg",
     "dateAdded": "2026-11-08"
   },
   {
@@ -32,7 +32,7 @@
     "price": 85,
     "category": "Pokemon",
     "stock": "Last Few Left",
-    "image": "assets/products/30thboosterbundle.jpg",
+    "image": "assets/products/PKM30thbb.jpg",
     "dateAdded": "2026-11-07"
   }
 ]
