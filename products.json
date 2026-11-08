@@ -1,5 +1,23 @@
 [
   {
+    "id": 1794174926193,
+    "name": "30th Celebration ETB",
+    "price": 145,
+    "category": "Pokemon",
+    "stock": "In Stock",
+    "image": "assets/products/30thETB.jpg",
+    "dateAdded": "2026-11-08"
+  },
+  {
+    "id": 1794175066481,
+    "name": "30th Booster Bundle",
+    "price": 85,
+    "category": "Pokemon",
+    "stock": "Last Few Left",
+    "image": "assets/products/30thboosterbundle.jpg",
+    "dateAdded": "2026-11-08"
+  }
+  {
     "id": 1,
     "name": "LEGO Marvel 76210 Hulkbuster",
     "price": 499,
