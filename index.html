@@ -6,7 +6,7 @@
 
 <title>SG Toy House | Trusted Collectibles</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -29,24 +29,22 @@ body{
     font-family:'Inter',sans-serif;
 }
 
-/* NAVBAR */
-
 nav{
     position:sticky;
     top:0;
-    background:rgba(0,0,0,.95);
-    backdrop-filter:blur(10px);
     z-index:999;
+    background:rgba(0,0,0,.95);
+    backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(212,175,55,.15);
 }
 
 .nav-container{
     max-width:1400px;
     margin:auto;
+    padding:18px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px;
 }
 
 .logo{
@@ -67,29 +65,22 @@ nav{
     color:var(--gold);
 }
 
-/* HERO */
-
 .hero{
     min-height:80vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:50px;
+    padding:40px;
     background:
-        radial-gradient(circle at center,
-        rgba(212,175,55,.18),
-        transparent 70%);
-}
-
-.hero-content{
-    max-width:900px;
+    radial-gradient(circle,
+    rgba(212,175,55,.15),
+    transparent 60%);
 }
 
 .hero h1{
     font-family:'Montserrat',sans-serif;
-    font-size:4.5rem;
-    line-height:1.1;
+    font-size:clamp(3rem,8vw,5.5rem);
 }
 
 .hero span{
@@ -97,36 +88,70 @@ nav{
 }
 
 .hero p{
-    color:#bbb;
     margin-top:20px;
-    font-size:1.2rem;
+    color:#bbb;
+    font-size:1.15rem;
 }
 
 .btn{
     display:inline-block;
-    margin-top:35px;
+    margin-top:30px;
+    padding:15px 35px;
     background:var(--gold);
     color:black;
-    padding:16px 30px;
-    border-radius:10px;
     text-decoration:none;
-    font-weight:bold;
+    border-radius:10px;
+    font-weight:700;
 }
 
-/* FILTERS */
+.section-title{
+    text-align:center;
+    margin-top:60px;
+}
+
+.section-title h2{
+    font-size:2.5rem;
+}
+
+.section-title p{
+    color:#999;
+}
+
+.search-controls{
+    max-width:1200px;
+    margin:30px auto;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding:0 20px;
+}
+
+.search-controls input,
+.search-controls select{
+    background:#1a1a1a;
+    border:none;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+}
+
+.search-controls input{
+    width:400px;
+}
 
 .filters{
     text-align:center;
-    padding:20px;
+    margin:25px;
 }
 
 .filters button{
+    margin:6px;
+    padding:10px 18px;
     background:none;
-    color:var(--gold);
     border:1px solid var(--gold);
-    margin:5px;
-    padding:10px 20px;
-    border-radius:30px;
+    color:var(--gold);
+    border-radius:25px;
     cursor:pointer;
 }
 
@@ -135,15 +160,13 @@ nav{
     color:black;
 }
 
-/* PRODUCTS */
-
 .products{
     max-width:1400px;
     margin:auto;
-    padding:50px 20px;
+    padding:20px;
     display:grid;
     grid-template-columns:
-    repeat(auto-fill,minmax(280px,1fr));
+    repeat(auto-fill,minmax(270px,1fr));
     gap:25px;
 }
 
@@ -152,74 +175,100 @@ nav{
     border-radius:18px;
     overflow:hidden;
     transition:.3s;
+    border:1px solid rgba(255,255,255,.05);
 }
 
 .card:hover{
     transform:translateY(-8px);
+    border-color:var(--gold);
 }
 
 .card img{
     width:100%;
-    height:250px;
+    height:280px;
     object-fit:cover;
 }
 
-.card-body{
+.card-content{
     padding:20px;
 }
 
 .category{
     color:var(--gold);
-    font-size:.8rem;
+    font-size:.85rem;
     margin-bottom:10px;
 }
 
 .title{
     font-size:1.1rem;
-    margin-bottom:10px;
+    font-weight:600;
 }
 
 .price{
+    margin-top:10px;
+    font-size:1.4rem;
     color:var(--gold);
-    font-size:1.3rem;
-    font-weight:bold;
+    font-weight:700;
 }
 
 .stock{
     margin-top:8px;
-    color:#7ee37e;
+    color:#7de67d;
 }
 
-.buy-btn{
+.view-btn{
     display:block;
     margin-top:15px;
-    width:100%;
-    text-align:center;
-    padding:12px;
     background:var(--gold);
     color:black;
+    text-align:center;
+    padding:12px;
     text-decoration:none;
     border-radius:8px;
-    font-weight:bold;
+    font-weight:700;
 }
 
-/* FOOTER */
+.about{
+    max-width:1000px;
+    margin:100px auto;
+    text-align:center;
+    padding:20px;
+}
+
+.benefits{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.benefit{
+    background:#151515;
+    padding:25px;
+    border-radius:15px;
+}
+
+.benefit h3{
+    color:var(--gold);
+}
 
 footer{
-    padding:60px 20px;
+    margin-top:100px;
+    padding:40px;
     text-align:center;
-    border-top:1px solid rgba(255,255,255,.1);
     color:#888;
+    border-top:1px solid rgba(255,255,255,.05);
 }
 
 @media(max-width:768px){
 
-.hero h1{
-    font-size:2.8rem;
-}
-
 .menu{
     display:none;
+}
+
+.logo{
+    height:55px;
 }
 
 }
@@ -237,8 +286,7 @@ footer{
 <div class="menu">
 <a href="#">Home</a>
 <a href="#inventory">Inventory</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
+<a href="#about">About</a>
 </div>
 
 </div>
@@ -247,15 +295,15 @@ footer{
 
 <section class="hero">
 
-<div class="hero-content">
+<div>
 
 <h1>
-Singapore's Home For
-<span>Premium Collectibles</span>
+SG <span>Toy House</span>
 </h1>
 
 <p>
-LEGO • Pokémon • One Piece • Figures • Graded Cards
+Singapore's destination for LEGO, Pokémon,
+One Piece, Figures & Premium Collectibles
 </p>
 
 <a href="#inventory" class="btn">
@@ -265,6 +313,43 @@ Browse Inventory
 </div>
 
 </section>
+
+<div class="section-title">
+<h2>Inventory</h2>
+<p>Latest available products</p>
+</div>
+
+<div class="search-controls">
+
+<input
+type="text"
+id="search"
+placeholder="Search products..."
+onkeyup="searchProducts()">
+
+<select
+id="sortSelect"
+onchange="sortProducts()">
+
+<option value="newest">
+Newest First
+</option>
+
+<option value="price-low">
+Price Low → High
+</option>
+
+<option value="price-high">
+Price High → Low
+</option>
+
+<option value="name">
+Name A → Z
+</option>
+
+</select>
+
+</div>
 
 <div class="filters">
 
@@ -278,6 +363,36 @@ Browse Inventory
 
 <section id="inventory" class="products"></section>
 
+<section id="about" class="about">
+
+<h2>Why Buy From SG Toy House?</h2>
+
+<div class="benefits">
+
+<div class="benefit">
+<h3>Authentic Products</h3>
+<p>Trusted collectibles sourced from reputable suppliers.</p>
+</div>
+
+<div class="benefit">
+<h3>Fast Shipping</h3>
+<p>Quick delivery across Singapore.</p>
+</div>
+
+<div class="benefit">
+<h3>Trusted Seller</h3>
+<p>Growing reputation in collectibles and TCG communities.</p>
+</div>
+
+<div class="benefit">
+<h3>Premium Service</h3>
+<p>Responsive support before and after every purchase.</p>
+</div>
+
+</div>
+
+</section>
+
 <footer>
 
 © 2026 SG Toy House
@@ -288,29 +403,29 @@ Trusted Collectibles • Premium Service
 
 </footer>
 
- 
 <script>
 
 let inventory = [];
+let currentProducts = [];
 
 async function loadInventory(){
 
-    try{
+    const response =
+        await fetch("products.json");
 
-        const response =
-        await fetch('products.json');
-
-        inventory =
+    inventory =
         await response.json();
 
-        displayProducts(inventory);
+    inventory.sort(
+        (a,b)=>
+        new Date(b.dateAdded) -
+        new Date(a.dateAdded)
+    );
 
-    }catch(error){
+    currentProducts =
+        [...inventory];
 
-        console.error(error);
-
-    }
-
+    displayProducts(currentProducts);
 }
 
 function displayProducts(products){
@@ -320,7 +435,15 @@ function displayProducts(products){
 
     container.innerHTML = "";
 
-    products.forEach(product => {
+    if(products.length === 0){
+
+        container.innerHTML =
+        "<p>No products found.</p>";
+
+        return;
+    }
+
+    products.forEach(product=>{
 
         container.innerHTML += `
 
@@ -328,9 +451,10 @@ function displayProducts(products){
 
             <img
             src="${product.image}"
-            alt="${product.name}">
+            alt="${product.name}"
+            onerror="this.src='assets/logo.png'">
 
-            <div class="card-body">
+            <div class="card-content">
 
                 <div class="category">
                     ${product.category}
@@ -349,11 +473,11 @@ function displayProducts(products){
                 </div>
 
                 <a
-                 class="buy-btn"
-                 href="${product.link}"
-                 target="_blank">
+                href="${product.link}"
+                target="_blank"
+                class="view-btn">
 
-                 View Listing
+                    View Listing
 
                 </a>
 
@@ -367,96 +491,95 @@ function displayProducts(products){
 
 }
 
+function searchProducts(){
+
+    const keyword =
+    document.getElementById("search")
+    .value.toLowerCase();
+
+    currentProducts =
+    inventory.filter(product =>
+
+        product.name
+        .toLowerCase()
+        .includes(keyword)
+
+    );
+
+    sortProducts();
+
+}
+
 function filterProducts(category){
 
-    if(category === "all"){
+    if(category==="all"){
 
-        displayProducts(inventory);
+        currentProducts =
+        [...inventory];
 
-        return;
+    }else{
+
+        currentProducts =
+        inventory.filter(product =>
+            product.category === category
+        );
 
     }
 
-    const filtered =
-    inventory.filter(
-        product => product.category === category
-    );
+    sortProducts();
+}
 
-    displayProducts(filtered);
+function sortProducts(){
 
+    const sortValue =
+    document.getElementById(
+        "sortSelect"
+    ).value;
+
+    let sorted =
+    [...currentProducts];
+
+    switch(sortValue){
+
+        case "price-low":
+
+            sorted.sort(
+                (a,b)=>a.price-b.price
+            );
+
+            break;
+
+        case "price-high":
+
+            sorted.sort(
+                (a,b)=>b.price-a.price
+            );
+
+            break;
+
+        case "name":
+
+            sorted.sort(
+                (a,b)=>
+                a.name.localeCompare(b.name)
+            );
+
+            break;
+
+        default:
+
+            sorted.sort(
+                (a,b)=>
+                new Date(b.dateAdded) -
+                new Date(a.dateAdded)
+            );
+
+    }
+
+    displayProducts(sorted);
 }
 
 loadInventory();
-
-</script>
-
-function displayProducts(products){
-
-const container =
-document.getElementById("inventory");
-
-container.innerHTML="";
-
-products.forEach(product=>{
-
-container.innerHTML += `
-
-<div class="card">
-
-<img src="${product.image}"
-onerror="this.src='https://placehold.co/600x400/111111/D4AF37?text=SG+Toy+House'">
-
-<div class="card-body">
-
-<div class="category">
-${product.category}
-</div>
-
-<div class="title">
-${product.name}
-</div>
-
-<div class="price">
-SGD ${product.price}
-</div>
-
-<div class="stock">
-${product.stock}
-</div>
-
-<a
-class="buy-btn"
-href="${product.link}"
-target="_blank">
-View Listing
-</a>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-function filterProducts(category){
-
-if(category==="all"){
-displayProducts(inventory);
-return;
-}
-
-displayProducts(
-inventory.filter(
-item => item.category === category
-)
-);
-
-}
-
-displayProducts(inventory);
 
 </script>
 
