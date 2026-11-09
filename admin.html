@@ -11,15 +11,12 @@
       --background: #070707;
       --surface: #101010;
       --surface-alt: #171717;
-      --surface-hover: #202020;
       --text: #f8f4e8;
       --muted: #b8ad91;
       --border: #3c321c;
       --gold: #d4af37;
       --gold-light: #f0d675;
-      --danger: #ce5c5c;
-      --danger-light: #ff9393;
-      --success: #69b67c;
+      --danger: #ff8c8c;
       --shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
     }
 
@@ -52,10 +49,6 @@
       cursor: pointer;
     }
 
-    img {
-      max-width: 100%;
-    }
-
     a {
       color: inherit;
       text-decoration: none;
@@ -69,6 +62,8 @@
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
     }
+
+    /* Header */
 
     .admin-header {
       background: #0b0b0b;
@@ -97,9 +92,6 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 700;
-      transition:
-        background 0.2s ease,
-        color 0.2s ease;
     }
 
     .view-site-link:hover,
@@ -108,8 +100,10 @@
       color: #070707;
     }
 
+    /* Introduction */
+
     .page-intro {
-      padding: 54px 0 34px;
+      padding: 52px 0 32px;
       text-align: center;
     }
 
@@ -123,8 +117,9 @@
 
     .page-intro p {
       color: var(--muted);
-      font-size: 16px;
     }
+
+    /* Tabs */
 
     .admin-tabs {
       margin-bottom: 26px;
@@ -144,9 +139,6 @@
       border: 0;
       border-radius: 9px;
       font-weight: 800;
-      transition:
-        background 0.2s ease,
-        color 0.2s ease;
     }
 
     .tab-button:hover {
@@ -169,6 +161,8 @@
     .admin-panel.active {
       display: block;
     }
+
+    /* Sections */
 
     .admin-section {
       margin-bottom: 24px;
@@ -209,6 +203,8 @@
       white-space: nowrap;
     }
 
+    /* Forms */
+
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -248,9 +244,6 @@
       border: 1px solid var(--border);
       border-radius: 9px;
       outline: none;
-      transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
     }
 
     .form-group textarea {
@@ -276,6 +269,8 @@
       font-size: 11px;
     }
 
+    /* Image preview */
+
     .image-preview {
       width: min(260px, 100%);
       margin-top: 12px;
@@ -299,9 +294,12 @@
       object-fit: cover;
     }
 
+    /* Buttons */
+
     .form-actions,
     .file-actions,
-    .card-actions {
+    .card-actions,
+    .json-viewer-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -322,16 +320,11 @@
       border: 1px solid var(--gold);
       border-radius: 9px;
       font-weight: 800;
-      transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
     }
 
     .admin-button:hover,
     .admin-button:focus-visible {
       background: var(--gold-light);
-      transform: translateY(-1px);
     }
 
     .button-secondary {
@@ -347,8 +340,8 @@
 
     .button-danger {
       background: transparent;
-      color: var(--danger-light);
-      border-color: var(--danger);
+      color: var(--danger);
+      border-color: #853f3f;
     }
 
     .button-danger:hover,
@@ -362,6 +355,8 @@
       padding: 7px 12px;
       font-size: 12px;
     }
+
+    /* Status messages */
 
     .status-message {
       margin-top: 16px;
@@ -382,9 +377,11 @@
       border: 1px solid rgba(206, 92, 92, 0.4);
     }
 
+    /* Import and export */
+
     .data-tools {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
@@ -411,6 +408,55 @@
       display: none;
     }
 
+    /* JSON viewers */
+
+    .json-viewer {
+      margin-top: 20px;
+      overflow: hidden;
+      background: #090909;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .json-viewer-header {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .json-viewer-header h3 {
+      color: var(--gold-light);
+      font-size: 16px;
+    }
+
+    .json-viewer pre {
+      max-height: 520px;
+      padding: 18px;
+      overflow: auto;
+      color: #d8d8d8;
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        Menlo,
+        monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre;
+      tab-size: 2;
+    }
+
+    .json-viewer pre:focus {
+      outline: 3px solid rgba(212, 175, 55, 0.35);
+      outline-offset: -3px;
+    }
+
+    /* Admin cards */
+
     .admin-list {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -429,7 +475,6 @@
 
     .admin-card-image {
       width: 150px;
-      height: 100%;
       min-height: 190px;
       display: flex;
       align-items: center;
@@ -508,6 +553,8 @@
       text-align: center;
     }
 
+    /* Footer */
+
     .admin-footer {
       padding: 24px 0;
       background: #0b0b0b;
@@ -522,6 +569,8 @@
       outline: 3px solid rgba(212, 175, 55, 0.4);
       outline-offset: 3px;
     }
+
+    /* Responsive */
 
     @media (max-width: 900px) {
       .admin-list {
@@ -573,7 +622,6 @@
 
       .admin-card-image {
         width: 100%;
-        height: auto;
         min-height: 0;
         aspect-ratio: 1 / 1;
         border-right: 0;
@@ -593,6 +641,25 @@
       .form-actions .admin-button,
       .file-actions .admin-button {
         width: 100%;
+      }
+
+      .json-viewer-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .json-viewer-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .json-viewer-actions .admin-button {
+        width: 100%;
+      }
+
+      .json-viewer pre {
+        max-height: 420px;
+        font-size: 12px;
       }
     }
   </style>
@@ -614,9 +681,9 @@
   <main class="container admin-main">
     <section class="page-intro">
       <h1>Website Admin</h1>
+
       <p>
-        Manage your products and customer reviews, then export the updated
-        JSON files.
+        Manage products and reviews, then export the updated JSON files.
       </p>
     </section>
 
@@ -646,7 +713,8 @@
       </button>
     </div>
 
-    <!-- Product management -->
+    <!-- Products -->
+
     <section
       class="admin-panel active"
       id="products-panel"
@@ -657,9 +725,7 @@
         <div class="section-header">
           <div>
             <h2 id="product-form-title">Add Product</h2>
-            <p>
-              Add a product to LEGO, Pokémon, One Piece, or Accessories.
-            </p>
+            <p>Add a product to one of the four website categories.</p>
           </div>
 
           <span class="item-count" id="product-total">
@@ -671,6 +737,7 @@
           <div class="form-grid">
             <div class="form-group">
               <label for="product-name">Product name</label>
+
               <input
                 type="text"
                 id="product-name"
@@ -681,6 +748,7 @@
 
             <div class="form-group">
               <label for="product-category">Category</label>
+
               <select id="product-category" required>
                 <option value="LEGO">LEGO</option>
                 <option value="Pokémon">Pokémon</option>
@@ -691,6 +759,7 @@
 
             <div class="form-group">
               <label for="product-price">Price in SGD</label>
+
               <input
                 type="number"
                 id="product-price"
@@ -703,6 +772,7 @@
 
             <div class="form-group">
               <label for="product-status">Availability</label>
+
               <select id="product-status" required>
                 <option value="In Stock">In Stock</option>
                 <option value="Preorder">Preorder</option>
@@ -716,6 +786,7 @@
                 Set number or product code
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input
                 type="text"
                 id="product-set-number"
@@ -728,6 +799,7 @@
                 SKU
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input
                 type="text"
                 id="product-sku"
@@ -740,9 +812,10 @@
                 Description
                 <span class="optional-label">(optional)</span>
               </label>
+
               <textarea
                 id="product-description"
-                placeholder="Add product details, condition or included items."
+                placeholder="Add product details or condition."
               ></textarea>
             </div>
 
@@ -751,14 +824,15 @@
                 Image path or URL
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input
                 type="text"
                 id="product-image"
-                placeholder="images/products/product-name.jpg"
+                placeholder="images/products/product-name.webp"
               >
 
               <p class="field-help">
-                Use a path to an image in your website folder or an image URL.
+                Place local product photos inside images/products/.
               </p>
 
               <div class="image-preview" id="product-image-preview">
@@ -771,6 +845,7 @@
                 Image description
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input
                 type="text"
                 id="product-image-alt"
@@ -783,6 +858,7 @@
                 Custom Telegram link
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input
                 type="url"
                 id="product-telegram-url"
@@ -821,8 +897,9 @@
         <div class="section-header">
           <div>
             <h2>Product Data</h2>
+
             <p>
-              Import your existing file or export changes for the website.
+              Import, inspect, copy, or export the website product data.
             </p>
           </div>
         </div>
@@ -830,8 +907,9 @@
         <div class="data-tools">
           <div class="tool-card">
             <h3>Import products.json</h3>
+
             <p>
-              Importing replaces the products currently saved in this browser.
+              Importing replaces the products saved in this browser.
             </p>
 
             <input
@@ -852,13 +930,21 @@
           </div>
 
           <div class="tool-card">
-            <h3>Export products.json</h3>
+            <h3>Export or view products.json</h3>
+
             <p>
-              Download the latest product data and upload it beside your HTML
-              files.
+              Preview the current product data or download it for the website.
             </p>
 
             <div class="file-actions">
+              <button
+                class="admin-button button-secondary"
+                type="button"
+                id="show-products-json"
+              >
+                Show products.json
+              </button>
+
               <button
                 class="admin-button"
                 type="button"
@@ -869,13 +955,43 @@
             </div>
           </div>
         </div>
+
+        <div
+          class="json-viewer"
+          id="products-json-viewer"
+          hidden
+        >
+          <div class="json-viewer-header">
+            <h3>products.json</h3>
+
+            <div class="json-viewer-actions">
+              <button
+                class="admin-button button-secondary button-small"
+                type="button"
+                id="copy-products-json"
+              >
+                Copy JSON
+              </button>
+
+              <button
+                class="admin-button button-secondary button-small"
+                type="button"
+                id="close-products-json"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+
+          <pre id="products-json-code" tabindex="0"></pre>
+        </div>
       </section>
 
       <section class="admin-section">
         <div class="section-header">
           <div>
             <h2>Current Products</h2>
-            <p>Edit or delete products saved in this browser.</p>
+            <p>Edit or delete products stored in this browser.</p>
           </div>
         </div>
 
@@ -887,7 +1003,8 @@
       </section>
     </section>
 
-    <!-- Review management -->
+    <!-- Reviews -->
+
     <section
       class="admin-panel"
       id="reviews-panel"
@@ -898,9 +1015,7 @@
         <div class="section-header">
           <div>
             <h2 id="review-form-title">Add Review</h2>
-            <p>
-              Add a customer review with an optional photo.
-            </p>
+            <p>Add a customer review with an optional square photo.</p>
           </div>
 
           <span class="item-count" id="review-total">
@@ -912,6 +1027,7 @@
           <div class="form-grid">
             <div class="form-group">
               <label for="review-author">Customer name</label>
+
               <input
                 type="text"
                 id="review-author"
@@ -922,6 +1038,7 @@
 
             <div class="form-group">
               <label for="review-source">Review source</label>
+
               <select id="review-source" required>
                 <option value="Carousell">Carousell</option>
                 <option value="Facebook">Facebook</option>
@@ -934,6 +1051,7 @@
 
             <div class="form-group">
               <label for="review-rating">Rating</label>
+
               <select id="review-rating" required>
                 <option value="5">5 stars</option>
                 <option value="4">4 stars</option>
@@ -948,11 +1066,13 @@
                 Review date
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input type="date" id="review-date">
             </div>
 
             <div class="form-group form-group-full">
               <label for="review-text">Review</label>
+
               <textarea
                 id="review-text"
                 placeholder="Enter the genuine customer review."
@@ -965,11 +1085,17 @@
                 Photo path or URL
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input
                 type="text"
                 id="review-photo"
-                placeholder="images/reviews/customer-review.jpg"
+                placeholder="images/reviews/review-01.webp"
               >
+
+              <p class="field-help">
+                Place local review photos inside images/reviews/. Square
+                photos work best.
+              </p>
 
               <div class="image-preview" id="review-image-preview">
                 Review photo preview
@@ -981,6 +1107,7 @@
                 Photo description
                 <span class="optional-label">(optional)</span>
               </label>
+
               <input
                 type="text"
                 id="review-photo-alt"
@@ -1015,8 +1142,9 @@
         <div class="section-header">
           <div>
             <h2>Review Data</h2>
+
             <p>
-              Import your existing file or export changes for the homepage.
+              Import, inspect, copy, or export the homepage review data.
             </p>
           </div>
         </div>
@@ -1024,8 +1152,9 @@
         <div class="data-tools">
           <div class="tool-card">
             <h3>Import reviews.json</h3>
+
             <p>
-              Importing replaces the reviews currently saved in this browser.
+              Importing replaces the reviews saved in this browser.
             </p>
 
             <input
@@ -1046,12 +1175,21 @@
           </div>
 
           <div class="tool-card">
-            <h3>Export reviews.json</h3>
+            <h3>Export or view reviews.json</h3>
+
             <p>
-              Download the latest review data and upload it beside index.html.
+              Preview the current review data or download it for the website.
             </p>
 
             <div class="file-actions">
+              <button
+                class="admin-button button-secondary"
+                type="button"
+                id="show-reviews-json"
+              >
+                Show reviews.json
+              </button>
+
               <button
                 class="admin-button"
                 type="button"
@@ -1062,13 +1200,43 @@
             </div>
           </div>
         </div>
+
+        <div
+          class="json-viewer"
+          id="reviews-json-viewer"
+          hidden
+        >
+          <div class="json-viewer-header">
+            <h3>reviews.json</h3>
+
+            <div class="json-viewer-actions">
+              <button
+                class="admin-button button-secondary button-small"
+                type="button"
+                id="copy-reviews-json"
+              >
+                Copy JSON
+              </button>
+
+              <button
+                class="admin-button button-secondary button-small"
+                type="button"
+                id="close-reviews-json"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+
+          <pre id="reviews-json-code" tabindex="0"></pre>
+        </div>
       </section>
 
       <section class="admin-section">
         <div class="section-header">
           <div>
             <h2>Current Reviews</h2>
-            <p>Edit or delete reviews saved in this browser.</p>
+            <p>Edit or delete reviews stored in this browser.</p>
           </div>
         </div>
 
@@ -1101,102 +1269,108 @@
     const adminPanels = document.querySelectorAll(".admin-panel");
 
     const productForm = document.getElementById("product-form");
-    const productFormTitle = document.getElementById(
-      "product-form-title"
-    );
-    const productNameInput = document.getElementById("product-name");
-    const productCategoryInput = document.getElementById(
-      "product-category"
-    );
-    const productPriceInput = document.getElementById(
-      "product-price"
-    );
-    const productStatusInput = document.getElementById(
-      "product-status"
-    );
-    const productSetNumberInput = document.getElementById(
-      "product-set-number"
-    );
-    const productSkuInput = document.getElementById("product-sku");
-    const productDescriptionInput = document.getElementById(
-      "product-description"
-    );
-    const productImageInput = document.getElementById(
-      "product-image"
-    );
-    const productImageAltInput = document.getElementById(
-      "product-image-alt"
-    );
-    const productTelegramInput = document.getElementById(
-      "product-telegram-url"
-    );
-    const productImagePreview = document.getElementById(
-      "product-image-preview"
-    );
-    const productList = document.getElementById("product-list");
-    const productEmpty = document.getElementById("product-empty");
-    const productTotal = document.getElementById("product-total");
-    const productStatusMessage = document.getElementById(
-      "product-status-message"
-    );
-    const clearProductButton = document.getElementById(
-      "clear-product"
-    );
-    const productImportInput = document.getElementById(
-      "product-import"
-    );
-    const exportProductsButton = document.getElementById(
-      "export-products"
-    );
+    const productFormTitle =
+      document.getElementById("product-form-title");
+    const productNameInput =
+      document.getElementById("product-name");
+    const productCategoryInput =
+      document.getElementById("product-category");
+    const productPriceInput =
+      document.getElementById("product-price");
+    const productStatusInput =
+      document.getElementById("product-status");
+    const productSetNumberInput =
+      document.getElementById("product-set-number");
+    const productSkuInput =
+      document.getElementById("product-sku");
+    const productDescriptionInput =
+      document.getElementById("product-description");
+    const productImageInput =
+      document.getElementById("product-image");
+    const productImageAltInput =
+      document.getElementById("product-image-alt");
+    const productTelegramInput =
+      document.getElementById("product-telegram-url");
+    const productImagePreview =
+      document.getElementById("product-image-preview");
+    const productList =
+      document.getElementById("product-list");
+    const productEmpty =
+      document.getElementById("product-empty");
+    const productTotal =
+      document.getElementById("product-total");
+    const productStatusMessage =
+      document.getElementById("product-status-message");
+    const clearProductButton =
+      document.getElementById("clear-product");
+    const productImportInput =
+      document.getElementById("product-import");
+    const exportProductsButton =
+      document.getElementById("export-products");
 
-    const reviewForm = document.getElementById("review-form");
-    const reviewFormTitle = document.getElementById(
-      "review-form-title"
-    );
-    const reviewAuthorInput = document.getElementById(
-      "review-author"
-    );
-    const reviewSourceInput = document.getElementById(
-      "review-source"
-    );
-    const reviewRatingInput = document.getElementById(
-      "review-rating"
-    );
-    const reviewDateInput = document.getElementById("review-date");
-    const reviewTextInput = document.getElementById("review-text");
-    const reviewPhotoInput = document.getElementById(
-      "review-photo"
-    );
-    const reviewPhotoAltInput = document.getElementById(
-      "review-photo-alt"
-    );
-    const reviewImagePreview = document.getElementById(
-      "review-image-preview"
-    );
-    const reviewList = document.getElementById("review-list");
-    const reviewEmpty = document.getElementById("review-empty");
-    const reviewTotal = document.getElementById("review-total");
-    const reviewStatusMessage = document.getElementById(
-      "review-status-message"
-    );
-    const clearReviewButton = document.getElementById(
-      "clear-review"
-    );
-    const reviewImportInput = document.getElementById(
-      "review-import"
-    );
-    const exportReviewsButton = document.getElementById(
-      "export-reviews"
-    );
+    const showProductsJsonButton =
+      document.getElementById("show-products-json");
+    const copyProductsJsonButton =
+      document.getElementById("copy-products-json");
+    const closeProductsJsonButton =
+      document.getElementById("close-products-json");
+    const productsJsonViewer =
+      document.getElementById("products-json-viewer");
+    const productsJsonCode =
+      document.getElementById("products-json-code");
+
+    const reviewForm =
+      document.getElementById("review-form");
+    const reviewFormTitle =
+      document.getElementById("review-form-title");
+    const reviewAuthorInput =
+      document.getElementById("review-author");
+    const reviewSourceInput =
+      document.getElementById("review-source");
+    const reviewRatingInput =
+      document.getElementById("review-rating");
+    const reviewDateInput =
+      document.getElementById("review-date");
+    const reviewTextInput =
+      document.getElementById("review-text");
+    const reviewPhotoInput =
+      document.getElementById("review-photo");
+    const reviewPhotoAltInput =
+      document.getElementById("review-photo-alt");
+    const reviewImagePreview =
+      document.getElementById("review-image-preview");
+    const reviewList =
+      document.getElementById("review-list");
+    const reviewEmpty =
+      document.getElementById("review-empty");
+    const reviewTotal =
+      document.getElementById("review-total");
+    const reviewStatusMessage =
+      document.getElementById("review-status-message");
+    const clearReviewButton =
+      document.getElementById("clear-review");
+    const reviewImportInput =
+      document.getElementById("review-import");
+    const exportReviewsButton =
+      document.getElementById("export-reviews");
+
+    const showReviewsJsonButton =
+      document.getElementById("show-reviews-json");
+    const copyReviewsJsonButton =
+      document.getElementById("copy-reviews-json");
+    const closeReviewsJsonButton =
+      document.getElementById("close-reviews-json");
+    const reviewsJsonViewer =
+      document.getElementById("reviews-json-viewer");
+    const reviewsJsonCode =
+      document.getElementById("reviews-json-code");
 
     function loadStoredArray(storageKey) {
       try {
-        const storedValue = localStorage.getItem(storageKey);
-        const parsedValue = storedValue
-          ? JSON.parse(storedValue)
-          : [];
+        const value = localStorage.getItem(storageKey);
+        const parsed = value ? JSON.parse(value) : [];
 
-        return Array.isArray(parsedValue) ? parsedValue : [];
+        return Array.isArray(parsed) ? parsed : [];
       } catch (error) {
         console.error(`Unable to load ${storageKey}:`, error);
         return [];
@@ -1262,43 +1436,45 @@
         Math.min(5, Number(rating) || 5)
       );
 
-      return "★".repeat(safeRating) + "☆".repeat(5 - safeRating);
+      return "★".repeat(safeRating) +
+        "☆".repeat(5 - safeRating);
     }
 
-    function setImagePreview(previewElement, imagePath, altText) {
-      previewElement.replaceChildren();
+    function setImagePreview(preview, source, altText) {
+      preview.replaceChildren();
 
-      if (!imagePath) {
-        previewElement.textContent = "No image selected";
+      if (!source) {
+        preview.textContent = "No image selected";
         return;
       }
 
       const image = document.createElement("img");
-      image.src = imagePath;
+      image.src = source;
       image.alt = altText || "Image preview";
 
       image.addEventListener("error", () => {
-        previewElement.replaceChildren();
-        previewElement.textContent = "Image could not be previewed";
+        preview.replaceChildren();
+        preview.textContent = "Image could not be previewed";
       });
 
-      previewElement.appendChild(image);
+      preview.appendChild(image);
     }
 
     function downloadJson(data, filename) {
-      const jsonContent = JSON.stringify(data, null, 2);
-      const blob = new Blob([jsonContent], {
-        type: "application/json"
-      });
+      const blob = new Blob(
+        [JSON.stringify(data, null, 2)],
+        { type: "application/json" }
+      );
 
       const objectUrl = URL.createObjectURL(blob);
-      const downloadLink = document.createElement("a");
+      const link = document.createElement("a");
 
-      downloadLink.href = objectUrl;
-      downloadLink.download = filename;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      downloadLink.remove();
+      link.href = objectUrl;
+      link.download = filename;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
 
       URL.revokeObjectURL(objectUrl);
     }
@@ -1311,26 +1487,64 @@
           try {
             resolve(JSON.parse(reader.result));
           } catch (error) {
-            reject(new Error("The selected file is not valid JSON."));
+            reject(
+              new Error("The selected file is not valid JSON.")
+            );
           }
         });
 
         reader.addEventListener("error", () => {
-          reject(new Error("The selected file could not be read."));
+          reject(
+            new Error("The selected file could not be read.")
+          );
         });
 
         reader.readAsText(file);
       });
     }
 
+    async function copyJson(data, statusElement, filename) {
+      const jsonText = JSON.stringify(data, null, 2);
+
+      try {
+        await navigator.clipboard.writeText(jsonText);
+
+        showStatus(
+          statusElement,
+          `${filename} copied to the clipboard.`
+        );
+      } catch (error) {
+        const textArea = document.createElement("textarea");
+
+        textArea.value = jsonText;
+        textArea.setAttribute("readonly", "");
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+
+        document.body.appendChild(textArea);
+        textArea.select();
+
+        const copied = document.execCommand("copy");
+        textArea.remove();
+
+        showStatus(
+          statusElement,
+          copied
+            ? `${filename} copied to the clipboard.`
+            : "The JSON could not be copied.",
+          copied ? "success" : "error"
+        );
+      }
+    }
+
     function switchPanel(panelId) {
       tabButtons.forEach((button) => {
-        const isActive = button.dataset.panel === panelId;
+        const active = button.dataset.panel === panelId;
 
-        button.classList.toggle("active", isActive);
+        button.classList.toggle("active", active);
         button.setAttribute(
           "aria-selected",
-          String(isActive)
+          String(active)
         );
       });
 
@@ -1342,11 +1556,49 @@
       });
     }
 
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        switchPanel(button.dataset.panel);
+    function updateProductsJsonViewer() {
+      productsJsonCode.textContent = JSON.stringify(
+        products,
+        null,
+        2
+      );
+    }
+
+    function showProductsJson() {
+      updateProductsJsonViewer();
+      productsJsonViewer.hidden = false;
+
+      productsJsonViewer.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
       });
-    });
+    }
+
+    function closeProductsJson() {
+      productsJsonViewer.hidden = true;
+    }
+
+    function updateReviewsJsonViewer() {
+      reviewsJsonCode.textContent = JSON.stringify(
+        reviews,
+        null,
+        2
+      );
+    }
+
+    function showReviewsJson() {
+      updateReviewsJsonViewer();
+      reviewsJsonViewer.hidden = false;
+
+      reviewsJsonViewer.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+    function closeReviewsJson() {
+      reviewsJsonViewer.hidden = true;
+    }
 
     function resetProductForm() {
       editingProductId = null;
@@ -1355,11 +1607,7 @@
       productStatusInput.value = "In Stock";
       productFormTitle.textContent = "Add Product";
 
-      setImagePreview(
-        productImagePreview,
-        "",
-        ""
-      );
+      setImagePreview(productImagePreview, "", "");
     }
 
     function resetReviewForm() {
@@ -1369,21 +1617,39 @@
       reviewRatingInput.value = "5";
       reviewFormTitle.textContent = "Add Review";
 
-      setImagePreview(
-        reviewImagePreview,
-        "",
-        ""
-      );
+      setImagePreview(reviewImagePreview, "", "");
+    }
+
+    function createAdminImage(source, altText) {
+      const area = document.createElement("div");
+      area.className = "admin-card-image";
+
+      if (!source) {
+        area.textContent = "No image";
+        return area;
+      }
+
+      const image = document.createElement("img");
+      image.src = source;
+      image.alt = altText || "Item image";
+
+      image.addEventListener("error", () => {
+        area.replaceChildren();
+        area.textContent = "Image unavailable";
+      });
+
+      area.appendChild(image);
+
+      return area;
     }
 
     function renderProducts() {
       productList.replaceChildren();
 
-      const productLabel =
-        products.length === 1 ? "product" : "products";
-
       productTotal.textContent =
-        `${products.length} ${productLabel}`;
+        `${products.length} ${
+          products.length === 1 ? "product" : "products"
+        }`;
 
       productEmpty.hidden = products.length !== 0;
 
@@ -1391,23 +1657,10 @@
         const card = document.createElement("article");
         card.className = "admin-card";
 
-        const imageArea = document.createElement("div");
-        imageArea.className = "admin-card-image";
-
-        if (product.image) {
-          const image = document.createElement("img");
-          image.src = product.image;
-          image.alt = product.imageAlt || product.name;
-
-          image.addEventListener("error", () => {
-            imageArea.replaceChildren();
-            imageArea.textContent = "Image unavailable";
-          });
-
-          imageArea.appendChild(image);
-        } else {
-          imageArea.textContent = "No image";
-        }
+        const imageArea = createAdminImage(
+          product.image,
+          product.imageAlt || product.name
+        );
 
         const content = document.createElement("div");
         content.className = "admin-card-content";
@@ -1427,7 +1680,9 @@
         const meta = document.createElement("p");
         meta.className = "admin-card-meta";
         meta.textContent =
-          `${formatPrice(product.price)} • ${product.status}`;
+          `${formatPrice(product.price)} • ${
+            product.status || "In Stock"
+          }`;
 
         const actions = document.createElement("div");
         actions.className = "card-actions";
@@ -1437,6 +1692,7 @@
           "admin-button button-secondary button-small";
         editButton.type = "button";
         editButton.textContent = "Edit";
+
         editButton.addEventListener("click", () => {
           editProduct(product.id);
         });
@@ -1446,11 +1702,13 @@
           "admin-button button-danger button-small";
         deleteButton.type = "button";
         deleteButton.textContent = "Delete";
+
         deleteButton.addEventListener("click", () => {
           deleteProduct(product.id);
         });
 
         actions.append(editButton, deleteButton);
+
         content.append(
           category,
           name,
@@ -1462,16 +1720,19 @@
         card.append(imageArea, content);
         productList.appendChild(card);
       });
+
+      if (!productsJsonViewer.hidden) {
+        updateProductsJsonViewer();
+      }
     }
 
     function renderReviews() {
       reviewList.replaceChildren();
 
-      const reviewLabel =
-        reviews.length === 1 ? "review" : "reviews";
-
       reviewTotal.textContent =
-        `${reviews.length} ${reviewLabel}`;
+        `${reviews.length} ${
+          reviews.length === 1 ? "review" : "reviews"
+        }`;
 
       reviewEmpty.hidden = reviews.length !== 0;
 
@@ -1479,24 +1740,10 @@
         const card = document.createElement("article");
         card.className = "admin-card";
 
-        const imageArea = document.createElement("div");
-        imageArea.className = "admin-card-image";
-
-        if (review.photo) {
-          const image = document.createElement("img");
-          image.src = review.photo;
-          image.alt =
-            review.photoAlt || "Customer review photo";
-
-          image.addEventListener("error", () => {
-            imageArea.replaceChildren();
-            imageArea.textContent = "Image unavailable";
-          });
-
-          imageArea.appendChild(image);
-        } else {
-          imageArea.textContent = "No photo";
-        }
+        const imageArea = createAdminImage(
+          review.photo,
+          review.photoAlt || "Customer review photo"
+        );
 
         const content = document.createElement("div");
         content.className = "admin-card-content";
@@ -1524,6 +1771,7 @@
           "admin-button button-secondary button-small";
         editButton.type = "button";
         editButton.textContent = "Edit";
+
         editButton.addEventListener("click", () => {
           editReview(review.id);
         });
@@ -1533,6 +1781,7 @@
           "admin-button button-danger button-small";
         deleteButton.type = "button";
         deleteButton.textContent = "Delete";
+
         deleteButton.addEventListener("click", () => {
           deleteReview(review.id);
         });
@@ -1540,8 +1789,13 @@
         actions.append(editButton, deleteButton);
         content.append(source, author, rating, text, actions);
         card.append(imageArea, content);
+
         reviewList.appendChild(card);
       });
+
+      if (!reviewsJsonViewer.hidden) {
+        updateReviewsJsonViewer();
+      }
     }
 
     function editProduct(productId) {
@@ -1554,17 +1808,21 @@
       }
 
       editingProductId = product.id;
+
       productNameInput.value = product.name || "";
-      productCategoryInput.value = product.category || "LEGO";
+      productCategoryInput.value =
+        product.category || "LEGO";
       productPriceInput.value = product.price ?? "";
-      productStatusInput.value = product.status || "In Stock";
+      productStatusInput.value =
+        product.status || "In Stock";
       productSetNumberInput.value =
         product.setNumber || "";
       productSkuInput.value = product.sku || "";
       productDescriptionInput.value =
         product.description || "";
       productImageInput.value = product.image || "";
-      productImageAltInput.value = product.imageAlt || "";
+      productImageAltInput.value =
+        product.imageAlt || "";
       productTelegramInput.value =
         product.telegramUrl || "";
 
@@ -1592,13 +1850,18 @@
       }
 
       editingReviewId = review.id;
+
       reviewAuthorInput.value = review.author || "";
-      reviewSourceInput.value = review.source || "Carousell";
-      reviewRatingInput.value = String(review.rating || 5);
-      reviewDateInput.value = review.dateAdded || "";
+      reviewSourceInput.value =
+        review.source || "Carousell";
+      reviewRatingInput.value =
+        String(review.rating || 5);
+      reviewDateInput.value =
+        String(review.dateAdded || "").slice(0, 10);
       reviewTextInput.value = review.text || "";
       reviewPhotoInput.value = review.photo || "";
-      reviewPhotoAltInput.value = review.photoAlt || "";
+      reviewPhotoAltInput.value =
+        review.photoAlt || "";
 
       reviewFormTitle.textContent = "Edit Review";
 
@@ -1619,15 +1882,10 @@
         (item) => item.id === productId
       );
 
-      if (!product) {
-        return;
-      }
-
-      const confirmed = window.confirm(
-        `Delete "${product.name}"?`
-      );
-
-      if (!confirmed) {
+      if (
+        !product ||
+        !window.confirm(`Delete "${product.name}"?`)
+      ) {
         return;
       }
 
@@ -1653,15 +1911,12 @@
         (item) => item.id === reviewId
       );
 
-      if (!review) {
-        return;
-      }
-
-      const confirmed = window.confirm(
-        `Delete the review from "${review.author}"?`
-      );
-
-      if (!confirmed) {
+      if (
+        !review ||
+        !window.confirm(
+          `Delete the review from "${review.author}"?`
+        )
+      ) {
         return;
       }
 
@@ -1682,10 +1937,18 @@
       );
     }
 
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        switchPanel(button.dataset.panel);
+      });
+    });
+
     productForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const existingProduct = products.find(
+      const wasEditing = Boolean(editingProductId);
+
+      const oldProduct = products.find(
         (item) => item.id === editingProductId
       );
 
@@ -1705,14 +1968,16 @@
           productTelegramInput.value.trim() ||
           DEFAULT_TELEGRAM_URL,
         dateAdded:
-          existingProduct?.dateAdded ||
+          oldProduct?.dateAdded ||
           new Date().toISOString(),
         updatedAt: new Date().toISOString()
       };
 
-      if (editingProductId) {
+      if (wasEditing) {
         products = products.map((item) =>
-          item.id === editingProductId ? product : item
+          item.id === editingProductId
+            ? product
+            : item
         );
       } else {
         products.unshift(product);
@@ -1724,7 +1989,7 @@
 
       showStatus(
         productStatusMessage,
-        editingProductId
+        wasEditing
           ? "Product updated."
           : "Product saved."
       );
@@ -1733,11 +1998,11 @@
     reviewForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const existingReview = reviews.find(
+      const wasEditing = Boolean(editingReviewId);
+
+      const oldReview = reviews.find(
         (item) => item.id === editingReviewId
       );
-
-      const selectedDate = reviewDateInput.value;
 
       const review = {
         id: editingReviewId || createId("review"),
@@ -1748,15 +2013,17 @@
         photo: reviewPhotoInput.value.trim(),
         photoAlt: reviewPhotoAltInput.value.trim(),
         dateAdded:
-          selectedDate ||
-          existingReview?.dateAdded ||
+          reviewDateInput.value ||
+          oldReview?.dateAdded ||
           new Date().toISOString().slice(0, 10),
         updatedAt: new Date().toISOString()
       };
 
-      if (editingReviewId) {
+      if (wasEditing) {
         reviews = reviews.map((item) =>
-          item.id === editingReviewId ? review : item
+          item.id === editingReviewId
+            ? review
+            : item
         );
       } else {
         reviews.unshift(review);
@@ -1768,7 +2035,7 @@
 
       showStatus(
         reviewStatusMessage,
-        editingReviewId
+        wasEditing
           ? "Review updated."
           : "Review saved."
       );
@@ -1917,6 +2184,48 @@
         "reviews.json downloaded."
       );
     });
+
+    showProductsJsonButton.addEventListener(
+      "click",
+      showProductsJson
+    );
+
+    copyProductsJsonButton.addEventListener(
+      "click",
+      () => {
+        copyJson(
+          products,
+          productStatusMessage,
+          "products.json"
+        );
+      }
+    );
+
+    closeProductsJsonButton.addEventListener(
+      "click",
+      closeProductsJson
+    );
+
+    showReviewsJsonButton.addEventListener(
+      "click",
+      showReviewsJson
+    );
+
+    copyReviewsJsonButton.addEventListener(
+      "click",
+      () => {
+        copyJson(
+          reviews,
+          reviewStatusMessage,
+          "reviews.json"
+        );
+      }
+    );
+
+    closeReviewsJsonButton.addEventListener(
+      "click",
+      closeReviewsJson
+    );
 
     resetProductForm();
     resetReviewForm();
