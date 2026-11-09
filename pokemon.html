@@ -6,6 +6,13 @@
 
   <title>Pokémon TCG | SG Toy House</title>
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/apple-touch-icon.png"
+  >
+
   <meta
     name="description"
     content="Browse Pokémon TCG cards and sealed products available from SG Toy House."
@@ -203,7 +210,7 @@
       color: var(--gold-light);
     }
 
-    /* Page introduction */
+    /* Page hero */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -353,7 +360,7 @@
       cursor: pointer;
     }
 
-    /* Product grid */
+    /* Product cards */
 
     .product-grid {
       display: grid;
@@ -391,8 +398,8 @@
       justify-content: center;
       position: relative;
       background: #171717;
-      border-bottom: 1px solid var(--border);
       color: var(--muted);
+      border-bottom: 1px solid var(--border);
       font-size: 13px;
       text-align: center;
     }
@@ -526,7 +533,7 @@
       pointer-events: none;
     }
 
-    /* Loading and empty states */
+    /* Messages */
 
     .product-message {
       padding: 50px 20px;
@@ -972,12 +979,13 @@
     let pokemonProducts = [];
 
     function normalizeCategory(value) {
-      const normalizedValue = String(value || "")
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]/g, "");
+      const normalizedValue =
+        String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]/g, "");
 
       if (
         normalizedValue === "pokemon" ||
@@ -1021,7 +1029,8 @@
         product.releaseYear ??
         "";
 
-      const numericYear = Number(value);
+      const numericYear =
+        Number(value);
 
       if (
         !Number.isInteger(numericYear) ||
@@ -1072,7 +1081,7 @@
           maximumFractionDigits: 2
         }).format(numericPrice);
 
-      return `SGD$${formattedAmount}`;
+      return `SGD $${formattedAmount}`;
     }
 
     function getProductStatus(product) {
@@ -1142,8 +1151,12 @@
       ).includes(searchTerm);
     }
 
-    function sortProducts(products, sortValue) {
-      const sortedProducts = [...products];
+    function sortProducts(
+      products,
+      sortValue
+    ) {
+      const sortedProducts =
+        [...products];
 
       if (sortValue === "name-ascending") {
         sortedProducts.sort(
@@ -1165,15 +1178,9 @@
 
       if (sortValue === "year-newest") {
         sortedProducts.sort(
-          (first, second) => {
-            const firstYear =
-              getProductYear(first) || 0;
-
-            const secondYear =
-              getProductYear(second) || 0;
-
-            return secondYear - firstYear;
-          }
+          (first, second) =>
+            (getProductYear(second) || 0) -
+            (getProductYear(first) || 0)
         );
       }
 
@@ -1260,7 +1267,10 @@
       return sortedProducts;
     }
 
-    function createProductDetail(label, value) {
+    function createProductDetail(
+      label,
+      value
+    ) {
       const detail =
         document.createElement("span");
 
@@ -1332,9 +1342,7 @@
             imageArea.textContent =
               "Product image unavailable";
 
-            imageArea.appendChild(
-              status
-            );
+            imageArea.appendChild(status);
           }
         );
 
@@ -1602,9 +1610,7 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(
-                  data.products
-                )
+            : Array.isArray(data.products)
               ? data.products
               : [];
 
@@ -1618,9 +1624,7 @@
                 "";
 
               return (
-                normalizeCategory(
-                  category
-                ) ===
+                normalizeCategory(category) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
