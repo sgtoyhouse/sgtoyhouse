@@ -977,6 +977,14 @@
       ).trim();
     }
 
+    function getProductYear(product) {
+      return String(
+        product.year ||
+        product.releaseYear ||
+        ""
+      ).trim();
+    }
+    
     function getProductPrice(product) {
       const value =
         product.price ??
@@ -1068,6 +1076,8 @@
         product.set,
         product.sku,
         product.productCode,
+        product.year,
+        product.releaseYear,
         product.status,
         product.availability
       ]
@@ -1137,8 +1147,28 @@
       return sortedProducts;
     }
 
-    function createProductCard(product) {
-      const card = document.createElement("article");
+    function createProductCard(product) 
+    const yearValue = getProductYear(product);
+
+if (yearValue) {
+  const year = document.createElement("p");
+  year.className = "product-year";
+
+  const yearLabel = document.createElement("strong");
+  yearLabel.textContent = "Year: ";
+
+  year.append(
+    yearLabel,
+    yearValue
+  );
+
+  productInfo.appendChild(year);
+}
+    
+    
+    {
+      
+    const card = document.createElement("article");
       card.className = "product-card";
 
       const imageArea = document.createElement("div");
