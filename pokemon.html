@@ -1,1482 +1,1105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Browse available Pokémon cards, sealed products and collectibles from SG Toy House."
-    >
-
-    <title>Pokémon Inventory | SG Toy House</title>
-
-    <style>
-        :root {
-            --gold: #d4af37;
-            --gold-light: #f2d675;
-            --black: #080808;
-            --dark: #101010;
-            --card: #181818;
-            --white: #ffffff;
-            --muted: #aaaaaa;
-            --green: #73d68a;
-            --orange: #f0a84b;
-            --red: #e56b6b;
-            --telegram: #229ed9;
-            --border: rgba(212, 175, 55, 0.22);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-            background: var(--black);
-            color: var(--white);
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-        }
-
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        button,
-        input,
-        select {
-            font: inherit;
-        }
-
-        .container {
-            width: min(1320px, 92%);
-            margin: 0 auto;
-        }
-
-        /* Announcement */
-
-        .announcement {
-            padding: 9px 16px;
-            background: var(--gold);
-            color: #080808;
-            text-align: center;
-            font-size: 0.84rem;
-            font-weight: 800;
-            letter-spacing: 0.03em;
-        }
-
-        /* Navigation */
-
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(8, 8, 8, 0.95);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(14px);
-        }
-
-        .navbar {
-            min-height: 82px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .brand-logo {
-            width: auto;
-            height: 58px;
-            object-fit: contain;
-        }
-
-        .brand-fallback {
-            display: none;
-            color: var(--gold);
-            font-size: 1.2rem;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            position: relative;
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.94rem;
-            font-weight: 700;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--gold-light);
-        }
-
-        .nav-links a.active::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            bottom: -8px;
-            left: 0;
-            height: 2px;
-            background: var(--gold);
-        }
-
-        .nav-telegram {
-            padding: 10px 17px;
-            border: 1px solid var(--gold);
-            border-radius: 999px;
-        }
-
-        .nav-telegram:hover {
-            background: var(--gold);
-            color: #080808 !important;
-        }
-
-        .menu-toggle {
-            display: none;
-            width: 44px;
-            height: 44px;
-            padding: 10px;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 9px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            margin: 5px 0;
-            background: var(--gold);
-        }
-
-        /* Page hero */
-
-        .page-hero {
-            position: relative;
-            overflow: hidden;
-            padding: 100px 0 85px;
-            background:
-                radial-gradient(
-                    circle at 18% 40%,
-                    rgba(255, 203, 5, 0.19),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 82% 42%,
-                    rgba(45, 111, 214, 0.17),
-                    transparent 28%
-                ),
-                linear-gradient(145deg, #090909, #121212);
-        }
-
-        .page-hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            opacity: 0.24;
-            background-image:
-                linear-gradient(
-                    rgba(255, 255, 255, 0.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255, 255, 255, 0.025) 1px,
-                    transparent 1px
-                );
-            background-size: 46px 46px;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 850px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 22px;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .breadcrumb a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .category-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            margin-bottom: 20px;
-            padding: 8px 15px;
-            color: var(--gold-light);
-            background: rgba(212, 175, 55, 0.07);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .page-hero h1 {
-            font-size: clamp(2.8rem, 7vw, 5.2rem);
-            line-height: 1;
-            letter-spacing: -0.05em;
-        }
-
-        .page-hero h1 span {
-            color: var(--gold);
-        }
-
-        .page-hero p {
-            max-width: 700px;
-            margin: 22px auto 0;
-            color: #c1c1c1;
-            font-size: 1.08rem;
-        }
-
-        /* Catalog */
-
-        .catalog-section {
-            padding: 70px 0 100px;
-        }
-
-        .catalog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 25px;
-            margin-bottom: 28px;
-        }
-
-        .catalog-title h2 {
-            font-size: clamp(1.8rem, 4vw, 2.7rem);
-            letter-spacing: -0.03em;
-        }
-
-        .catalog-title p {
-            margin-top: 7px;
-            color: var(--muted);
-        }
-
-        .product-count {
-            color: var(--gold);
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        /* Search and sorting */
-
-        .catalog-controls {
-            display: grid;
-            grid-template-columns: minmax(240px, 1fr) auto;
-            gap: 15px;
-            margin-bottom: 34px;
-            padding: 18px;
-            background: var(--dark);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-        }
-
-        .search-box {
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            height: 50px;
-            padding: 0 46px 0 17px;
-            background: var(--card);
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            outline: none;
-        }
-
-        .search-box input:focus {
-            border-color: var(--gold);
-        }
-
-        .search-box::after {
-            content: "⌕";
-            position: absolute;
-            top: 50%;
-            right: 17px;
-            color: var(--gold);
-            font-size: 1.4rem;
-            pointer-events: none;
-            transform: translateY(-50%);
-        }
-
-        .sort-select {
-            min-width: 210px;
-            height: 50px;
-            padding: 0 14px;
-            background: var(--card);
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .sort-select:focus {
-            border-color: var(--gold);
-        }
-
-        /* Product cards */
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 24px;
-        }
-
-        .product-card {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 18px;
-            transition:
-                transform 0.28s ease,
-                border-color 0.28s ease,
-                box-shadow 0.28s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-7px);
-            border-color: var(--gold);
-            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.36);
-        }
-
-        .product-image-wrapper {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 1 / 1;
-            background: #202020;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.04);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-            padding: 7px 10px;
-            background: rgba(8, 8, 8, 0.88);
-            color: var(--gold-light);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-        }
-
-        .product-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 21px;
-        }
-
-        .product-category {
-            margin-bottom: 8px;
-            color: var(--gold);
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 0.09em;
-            text-transform: uppercase;
-        }
-
-        .product-name {
-            font-size: 1.06rem;
-            line-height: 1.4;
-        }
-
-        .product-price {
-            margin-top: 13px;
-            color: var(--gold-light);
-            font-size: 1.35rem;
-            font-weight: 900;
-        }
-
-        .product-description {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 0.88rem;
-        }
-
-        .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin: 15px 0;
-        }
-
-        .stock-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 0.86rem;
-            font-weight: 700;
-        }
-
-        .stock-status::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: currentColor;
-            border-radius: 50%;
-            box-shadow: 0 0 9px currentColor;
-        }
-
-        .stock-in {
-            color: var(--green);
-        }
-
-        .stock-low {
-            color: var(--orange);
-        }
-
-        .stock-out {
-            color: var(--red);
-        }
-
-        .date-added {
-            color: #888888;
-            font-size: 0.77rem;
-        }
-
-        .telegram-product-button {
-            width: 100%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: auto;
-            padding: 13px 16px;
-            background: var(--telegram);
-            color: var(--white);
-            border-radius: 9px;
-            text-decoration: none;
-            font-weight: 800;
-            transition:
-                transform 0.23s ease,
-                filter 0.23s ease;
-        }
-
-        .telegram-product-button:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.08);
-        }
-
-        .telegram-product-button.disabled {
-            background: #3d3d3d;
-            color: #999999;
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-
-        /* Loading and empty states */
-
-        .catalog-message {
-            grid-column: 1 / -1;
-            padding: 70px 25px;
-            text-align: center;
-            background: var(--dark);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 18px;
-        }
-
-        .catalog-message h3 {
-            color: var(--gold-light);
-            font-size: 1.4rem;
-        }
-
-        .catalog-message p {
-            max-width: 560px;
-            margin: 10px auto 0;
-            color: var(--muted);
-        }
-
-        .loading-spinner {
-            width: 42px;
-            height: 42px;
-            margin: 0 auto 18px;
-            border: 4px solid rgba(212, 175, 55, 0.18);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Contact section */
-
-        .contact-section {
-            padding: 0 0 95px;
-        }
-
-        .contact-card {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: 30px;
-            padding: 44px;
-            background:
-                radial-gradient(
-                    circle at 86% 30%,
-                    rgba(34, 158, 217, 0.17),
-                    transparent 34%
-                ),
-                linear-gradient(145deg, #171717, #101010);
-            border: 1px solid var(--border);
-            border-radius: 23px;
-        }
-
-        .contact-card h2 {
-            font-size: clamp(1.8rem, 4vw, 2.7rem);
-        }
-
-        .contact-card p {
-            max-width: 670px;
-            margin-top: 10px;
-            color: var(--muted);
-        }
-
-        .contact-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            padding: 15px 22px;
-            background: var(--telegram);
-            color: var(--white);
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        /* Footer */
-
-        .site-footer {
-            padding: 43px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .footer-content p {
-            color: #888888;
-            font-size: 0.9rem;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-        }
-
-        .footer-links a {
-            color: #bbbbbb;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .telegram-float {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-            z-index: 900;
-            width: 58px;
-            height: 58px;
-            display: grid;
-            place-items: center;
-            background: var(--telegram);
-            color: var(--white);
-            border: 3px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 1.45rem;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.42);
-            transition: transform 0.25s ease;
-        }
-
-        .telegram-float:hover {
-            transform: translateY(-5px) scale(1.04);
-        }
-
-        /* Responsive */
-
-        @media (max-width: 1120px) {
-            .products-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 850px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 115px;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                display: none;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 25px 5%;
-                background: rgba(8, 8, 8, 0.99);
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 16px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-            }
-
-            .nav-links a.active::after {
-                display: none;
-            }
-
-            .nav-telegram {
-                margin-top: 18px;
-                text-align: center;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .contact-card {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .contact-button {
-                justify-self: center;
-            }
-        }
-
-        @media (max-width: 620px) {
-            .announcement {
-                font-size: 0.74rem;
-            }
-
-            .navbar {
-                min-height: 72px;
-            }
-
-            .brand-logo {
-                height: 49px;
-            }
-
-            .page-hero {
-                padding: 75px 0 65px;
-            }
-
-            .catalog-section {
-                padding-top: 55px;
-            }
-
-            .catalog-header {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .catalog-controls {
-                grid-template-columns: 1fr;
-            }
-
-            .sort-select {
-                width: 100%;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .product-card {
-                width: 100%;
-                max-width: 440px;
-                margin: 0 auto;
-            }
-
-            .contact-card {
-                padding: 34px 22px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pokémon | SG Toy House</title>
+
+  <meta
+    name="description"
+    content="Browse Pokémon cards, sealed products and collectibles available from SG Toy House."
+  >
+
+  <style>
+    :root {
+      --background: #070707;
+      --surface: #101010;
+      --surface-hover: #1a1a1a;
+      --text: #f8f4e8;
+      --muted: #b8ad91;
+      --border: #3c321c;
+      --gold: #d4af37;
+      --gold-light: #f0d675;
+      --danger: #ff8c8c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Announcement bar */
+
+    .announcement-bar {
+      display: block;
+      padding: 8px 20px;
+      background: var(--gold);
+      color: #070707;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+      text-align: center;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .announcement-bar:hover,
+    .announcement-bar:focus-visible {
+      background: var(--gold-light);
+      color: #000000;
+    }
+
+    /* Compact category navigation */
+
+    .top-categories {
+      background: #0b0b0b;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .top-category {
+      min-width: 0;
+      min-height: 40px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      border-right: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .top-category:last-child {
+      border-right: 0;
+    }
+
+    .top-category:hover,
+    .top-category:focus-visible {
+      background: var(--surface-hover);
+      color: #ffffff;
+    }
+
+    .top-category[aria-current="page"] {
+      background: var(--gold);
+      color: #070707;
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #070707;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links .telegram-link {
+      color: var(--gold-light);
+    }
+
+    /* Page introduction */
+
+    .page-hero {
+      padding: 70px 0 48px;
+      text-align: center;
+    }
+
+    .page-label {
+      margin-bottom: 12px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .page-hero h1 {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+    }
+
+    .page-description {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    /* Products */
+
+    .products-section {
+      padding: 0 0 80px;
+    }
+
+    .product-toolbar {
+      margin-bottom: 24px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .product-count {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .product-count strong {
+      color: var(--gold-light);
+    }
+
+    .sort-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sort-control label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .sort-control select {
+      padding: 9px 34px 9px 12px;
+      background: #171717;
+      color: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      min-width: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #171717;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.03);
+    }
+
+    .product-status {
+      padding: 5px 9px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--gold);
+      color: #070707;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .product-status.sold-out {
+      background: #3a3a3a;
+      color: #ffffff;
+    }
+
+    .product-info {
+      padding: 18px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .product-category {
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-name {
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .product-description {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .product-bottom {
+      margin-top: auto;
+    }
+
+    .product-price {
+      margin-bottom: 12px;
+      color: var(--gold-light);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .product-button {
+      width: 100%;
+      min-height: 42px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold);
+      color: #070707;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .product-button:hover,
+    .product-button:focus-visible {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .product-button.disabled {
+      background: #242424;
+      color: #888888;
+      border-color: #343434;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Loading and empty states */
+
+    .product-message {
+      padding: 50px 20px;
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .product-message h2 {
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 24px;
+    }
+
+    .product-message.error {
+      color: var(--danger);
+    }
+
+    /* Footer */
+
+    .site-footer {
+      background: #0b0b0b;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-content p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 20px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--gold-light);
+    }
+
+    /* Focus */
+
+    a:focus-visible,
+    select:focus-visible {
+      outline: 3px solid rgba(212, 175, 55, 0.45);
+      outline-offset: 3px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        min-height: 58px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .page-hero {
+        padding: 52px 0 38px;
+      }
+
+      .page-hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .footer-content {
+        padding: 26px 0;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .product-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .sort-control {
+        justify-content: space-between;
+      }
+
+      .sort-control select {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 20px, 1120px);
+      }
+
+      .announcement-bar {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+
+      .top-categories .container {
+        width: 100%;
+      }
+
+      .top-category {
+        min-height: 38px;
+        padding: 5px 2px;
+        font-size: 10px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .page-hero h1 {
+        font-size: 42px;
+      }
+
+      .page-description {
+        font-size: 16px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .products-section {
+        padding-bottom: 56px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .top-category {
+        font-size: 9px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="announcement">
-        Browse available Pokémon inventory from SG Toy House
+  <a
+    class="announcement-bar"
+    href="https://t.me/sgtoyhouse"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact SG Toy House on Telegram"
+  >
+    Contact us on Telegram →
+  </a>
+
+  <nav class="top-categories" aria-label="Product categories">
+    <div class="container top-category-grid">
+      <a class="top-category" href="lego.html">
+        LEGO
+      </a>
+
+      <a
+        class="top-category"
+        href="pokemon.html"
+        aria-current="page"
+      >
+        Pokémon
+      </a>
+
+      <a class="top-category" href="onepiece.html">
+        One Piece
+      </a>
+
+      <a class="top-category" href="accessories.html">
+        Accessories
+      </a>
     </div>
+  </nav>
 
-    <header class="site-header">
-        <nav class="navbar container" aria-label="Main navigation">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="index.html">
+        SG TOY HOUSE
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+
+          <li>
             <a
-                class="brand"
-                href="index.html"
-                aria-label="SG Toy House home"
+              class="telegram-link"
+              href="https://t.me/sgtoyhouse"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-                <img
-                    class="brand-logo"
-                    src="assets/logo.png"
-                    alt="SG Toy House logo"
-                    onerror="
-                        this.style.display='none';
-                        this.nextElementSibling.style.display='block';
-                    "
-                >
-
-                <span class="brand-fallback">
-                    SG TOY HOUSE
-                </span>
+              Telegram
             </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="page-label">SG Toy House Collection</p>
 
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="lego.html">LEGO</a>
-                <a class="active" href="pokemon.html">Pokémon</a>
-                <a href="onepiece.html">One Piece</a>
+        <h1>Pokémon</h1>
 
-                <!-- Replace sgtoyhse with your Telegram username. -->
-                <a
-                    class="nav-telegram"
-                    href="https://t.me/sgtoyhse"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Telegram
-                </a>
-            </div>
-        </nav>
-    </header>
+        <p class="page-description">
+          Browse our available Pokémon cards, sealed products and collectibles.
+        </p>
+      </div>
+    </section>
 
-    <main>
-        <section class="page-hero">
-            <div class="hero-content container">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <span>/</span>
-                    <span>Pokémon inventory</span>
-                </div>
-
-                <div class="category-label">
-                    <span aria-hidden="true">⚡</span>
-                    SG Toy House collection
-                </div>
-
-                <h1>
-                    Pokémon <span>Inventory</span>
-                </h1>
-
-                <p>
-                    Browse Pokémon cards, sealed products and premium
-                    collections with photos, prices and stock status.
-                    Contact SG Toy House on Telegram to enquire.
-                </p>
-            </div>
-        </section>
-
-        <section class="catalog-section">
-            <div class="container">
-                <div class="catalog-header">
-                    <div class="catalog-title">
-                        <h2>Available Pokémon products</h2>
-
-                        <p>
-                            Search or sort the current Pokémon inventory.
-                        </p>
-                    </div>
-
-                    <div
-                        class="product-count"
-                        id="productCount"
-                        aria-live="polite"
-                    >
-                        Loading inventory...
-                    </div>
-                </div>
-
-                <div class="catalog-controls">
-                    <div class="search-box">
-                        <label for="searchInput" hidden>
-                            Search Pokémon products
-                        </label>
-
-                        <input
-                            type="search"
-                            id="searchInput"
-                            placeholder="Search Pokémon inventory..."
-                            autocomplete="off"
-                        >
-                    </div>
-
-                    <div>
-                        <label for="sortSelect" hidden>
-                            Sort products
-                        </label>
-
-                        <select
-                            class="sort-select"
-                            id="sortSelect"
-                        >
-                            <option value="newest">
-                                Newest first
-                            </option>
-
-                            <option value="price-low">
-                                Price: Low to high
-                            </option>
-
-                            <option value="price-high">
-                                Price: High to low
-                            </option>
-
-                            <option value="name">
-                                Name: A to Z
-                            </option>
-                        </select>
-                    </div>
-                </div>
-
-                <div
-                    class="products-grid"
-                    id="productsGrid"
-                    aria-live="polite"
-                >
-                    <div class="catalog-message">
-                        <div class="loading-spinner"></div>
-
-                        <h3>Loading Pokémon inventory</h3>
-
-                        <p>
-                            Please wait while the available products load.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-section">
-            <div class="container">
-                <div class="contact-card">
-                    <div>
-                        <h2>Looking for a specific Pokémon product?</h2>
-
-                        <p>
-                            Message SG Toy House on Telegram to ask about
-                            availability, condition, collection or delivery.
-                        </p>
-                    </div>
-
-                    <!-- Replace sgtoyhse with your Telegram username. -->
-                    <a
-                        class="contact-button"
-                        href="https://t.me/sgtoyhse"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <span aria-hidden="true">✈</span>
-                        Message on Telegram
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-content container">
-            <p>
-                © <span id="currentYear"></span> SG Toy House.
-                All rights reserved.
-            </p>
-
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="lego.html">LEGO</a>
-                <a href="pokemon.html">Pokémon</a>
-                <a href="onepiece.html">One Piece</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Replace sgtoyhse with your Telegram username. -->
-    <a
-        class="telegram-float"
-        href="https://t.me/sgtoyhse"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Message SG Toy House on Telegram"
-        title="Message on Telegram"
+    <section
+      class="products-section"
+      aria-labelledby="pokemon-products-heading"
     >
-        ✈
-    </a>
-
-    <script>
-        const telegramUsername = "sgtoyhse";
-        const categoryName = "Pokemon";
-
-        const productsGrid =
-            document.getElementById("productsGrid");
-
-        const productCount =
-            document.getElementById("productCount");
-
-        const searchInput =
-            document.getElementById("searchInput");
-
-        const sortSelect =
-            document.getElementById("sortSelect");
-
-        const menuToggle =
-            document.getElementById("menuToggle");
-
-        const navLinks =
-            document.getElementById("navLinks");
-
-        let pokemonProducts = [];
-
-        async function loadProducts() {
-            try {
-                const response = await fetch(
-                    "products.json",
-                    {
-                        cache: "no-store"
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error(
-                        "products.json could not be loaded."
-                    );
-                }
-
-                const products = await response.json();
-
-                if (!Array.isArray(products)) {
-                    throw new Error(
-                        "products.json must contain an array."
-                    );
-                }
-
-                pokemonProducts = products.filter(
-                    function (product) {
-                        return normalizeText(product.category) ===
-                            normalizeText(categoryName);
-                    }
-                );
-
-                updateCatalog();
-            } catch (error) {
-                console.error(
-                    "Error loading Pokémon inventory:",
-                    error
-                );
-
-                productCount.textContent =
-                    "Inventory unavailable";
-
-                productsGrid.innerHTML = `
-                    <div class="catalog-message">
-                        <h3>Unable to load the Pokémon inventory</h3>
-
-                        <p>
-                            Check that products.json is in the same folder
-                            as pokemon.html and that the JSON syntax is valid.
-                        </p>
-                    </div>
-                `;
-            }
-        }
-
-        function updateCatalog() {
-            const searchTerm = normalizeText(
-                searchInput.value
-            );
-
-            let visibleProducts = pokemonProducts.filter(
-                function (product) {
-                    const searchableText = normalizeText(
-                        [
-                            product.name,
-                            product.category,
-                            product.stock,
-                            product.description
-                        ].filter(Boolean).join(" ")
-                    );
-
-                    return searchableText.includes(searchTerm);
-                }
-            );
-
-            visibleProducts = sortProducts(
-                visibleProducts,
-                sortSelect.value
-            );
-
-            renderProducts(visibleProducts);
-        }
-
-        function sortProducts(products, sortValue) {
-            const sortedProducts = [...products];
-
-            switch (sortValue) {
-                case "price-low":
-                    sortedProducts.sort(function (a, b) {
-                        return getNumericPrice(a.price) -
-                            getNumericPrice(b.price);
-                    });
-                    break;
-
-                case "price-high":
-                    sortedProducts.sort(function (a, b) {
-                        return getNumericPrice(b.price) -
-                            getNumericPrice(a.price);
-                    });
-                    break;
-
-                case "name":
-                    sortedProducts.sort(function (a, b) {
-                        return String(a.name || "").localeCompare(
-                            String(b.name || "")
-                        );
-                    });
-                    break;
-
-                case "newest":
-                default:
-                    sortedProducts.sort(function (a, b) {
-                        return getDateValue(b.dateAdded) -
-                            getDateValue(a.dateAdded);
-                    });
-                    break;
-            }
-
-            return sortedProducts;
-        }
-
-        function renderProducts(products) {
-            const total = products.length;
-
-            productCount.textContent =
-                total === 1
-                    ? "1 Pokémon product"
-                    : total + " Pokémon products";
-
-            if (total === 0) {
-                productsGrid.innerHTML = `
-                    <div class="catalog-message">
-                        <h3>No Pokémon products found</h3>
-
-                        <p>
-                            Try a different search, or message SG Toy House
-                            on Telegram to ask about incoming stock.
-                        </p>
-                    </div>
-                `;
-
-                return;
-            }
-
-            productsGrid.innerHTML = products.map(
-                function (product) {
-                    const productName = escapeHTML(
-                        product.name || "Pokémon product"
-                    );
-
-                    const imagePath = escapeAttribute(
-                        product.image || "assets/logo.png"
-                    );
-
-                    const stockText = escapeHTML(
-                        product.stock ||
-                        "Contact for availability"
-                    );
-
-                    const stockClass =
-                        getStockClass(product.stock);
-
-                    const priceText =
-                        formatPrice(product.price);
-
-                    const dateText =
-                        formatDate(product.dateAdded);
-
-                    const description = product.description
-                        ? escapeHTML(product.description)
-                        : "";
-
-                    const telegramMessage =
-                        "Hi SG Toy House, I am interested in " +
-                        (product.name || "this Pokémon product") +
-                        ". Is it still available?";
-
-                    const telegramLink =
-                        "https://t.me/" +
-                        telegramUsername +
-                        "?text=" +
-                        encodeURIComponent(telegramMessage);
-
-                    const isSoldOut =
-                        normalizeText(product.stock)
-                        .includes("sold out");
-
-                    const buttonClass = isSoldOut
-                        ? "telegram-product-button disabled"
-                        : "telegram-product-button";
-
-                    const buttonText = isSoldOut
-                        ? "Currently sold out"
-                        : "Enquire on Telegram";
-
-                    return `
-                        <article class="product-card">
-                            <div class="product-image-wrapper">
-                                <img
-                                    class="product-image"
-                                    src="${imagePath}"
-                                    alt="${productName}"
-                                    loading="lazy"
-                                    onerror="
-                                        this.onerror=null;
-                                        this.src='assets/logo.png';
-                                    "
-                                >
-
-                                <div class="product-badge">
-                                    Pokémon
-                                </div>
-                            </div>
-
-                            <div class="product-content">
-                                <div class="product-category">
-                                    Pokémon
-                                </div>
-
-                                <h3 class="product-name">
-                                    ${productName}
-                                </h3>
-
-                                <div class="product-price">
-                                    ${priceText}
-                                </div>
-
-                                ${
-                                    description
-                                        ? `
-                                            <p class="product-description">
-                                                ${description}
-                                            </p>
-                                        `
-                                        : ""
-                                }
-
-                                <div class="product-meta">
-                                    <div
-                                        class="stock-status ${stockClass}"
-                                    >
-                                        ${stockText}
-                                    </div>
-
-                                    ${
-                                        dateText
-                                            ? `
-                                                <div class="date-added">
-                                                    Added ${dateText}
-                                                </div>
-                                            `
-                                            : ""
-                                    }
-                                </div>
-
-                                <a
-                                    class="${buttonClass}"
-                                    href="${telegramLink}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="Enquire about ${productName} on Telegram"
-                                >
-                                    <span aria-hidden="true">✈</span>
-                                    ${buttonText}
-                                </a>
-                            </div>
-                        </article>
-                    `;
-                }
-            ).join("");
-        }
-
-        function normalizeText(value) {
-            return String(value || "")
-                .toLowerCase()
-                .trim();
-        }
-
-        function getNumericPrice(value) {
-            const numericValue = Number(
-                String(value ?? "")
-                    .replace(/[^0-9.]/g, "")
-            );
-
-            return Number.isFinite(numericValue)
-                ? numericValue
-                : 0;
-        }
-
-        function formatPrice(value) {
-            if (
-                value === null ||
-                value === undefined ||
-                value === ""
-            ) {
-                return "Contact for price";
-            }
-
-            const numericPrice = getNumericPrice(value);
-
-            return new Intl.NumberFormat(
-                "en-SG",
-                {
-                    style: "currency",
-                    currency: "SGD",
-                    minimumFractionDigits:
-                        Number.isInteger(numericPrice) ? 0 : 2
-                }
-            ).format(numericPrice);
-        }
-
-        function getDateValue(value) {
-            const parsedDate = new Date(value);
-            const timestamp = parsedDate.getTime();
-
-            return Number.isNaN(timestamp)
-                ? 0
-                : timestamp;
-        }
-
-        function formatDate(value) {
-            if (!value) {
-                return "";
-            }
-
-            const parsedDate = new Date(value);
-
-            if (Number.isNaN(parsedDate.getTime())) {
-                return "";
-            }
-
-            return new Intl.DateTimeFormat(
-                "en-SG",
-                {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric"
-                }
-            ).format(parsedDate);
-        }
-
-        function getStockClass(stock) {
-            const normalizedStock = normalizeText(stock);
-
-            if (
-                normalizedStock.includes("sold out") ||
-                normalizedStock.includes("unavailable")
-            ) {
-                return "stock-out";
-            }
-
-            if (
-                normalizedStock.includes("last") ||
-                normalizedStock.includes("low")
-            ) {
-                return "stock-low";
-            }
-
-            return "stock-in";
-        }
-
-        function escapeHTML(value) {
-            return String(value || "")
-                .replaceAll("&", "&amp;")
-                .replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;")
-                .replaceAll('"', "&quot;")
-                .replaceAll("'", "&#039;");
-        }
-
-        function escapeAttribute(value) {
-            return escapeHTML(value);
-        }
-
-        searchInput.addEventListener(
-            "input",
-            updateCatalog
+      <div class="container">
+        <h2 id="pokemon-products-heading" hidden>
+          Available Pokémon products
+        </h2>
+
+        <div class="product-toolbar">
+          <p class="product-count" id="product-count">
+            Loading Pokémon products...
+          </p>
+
+          <div class="sort-control">
+            <label for="product-sort">Sort</label>
+
+            <select id="product-sort">
+              <option value="newest">Recently added</option>
+              <option value="name-ascending">Name: A to Z</option>
+              <option value="name-descending">Name: Z to A</option>
+              <option value="price-low">Price: Low to high</option>
+              <option value="price-high">Price: High to low</option>
+            </select>
+          </div>
+        </div>
+
+        <div
+          class="product-grid"
+          id="product-grid"
+          aria-live="polite"
+        ></div>
+
+        <div
+          class="product-message"
+          id="product-message"
+          hidden
+        >
+          <h2>No Pokémon products available</h2>
+          <p>Please check again soon for new additions.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© 2026 SG Toy House. All rights reserved.</p>
+
+      <ul class="footer-links">
+        <li>
+          <a
+            href="https://t.me/sgtoyhouse"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Telegram
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.instagram.com/sgtoyhse/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.facebook.com/T0yH0use/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.tiktok.com/@sgtoyhse"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TikTok
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.carousell.sg/u/archwizard/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Carousell
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const CATEGORY_NAME = "Pokémon";
+    const TELEGRAM_URL = "https://t.me/sgtoyhouse";
+
+    const productGrid = document.getElementById("product-grid");
+    const productCount = document.getElementById("product-count");
+    const productMessage = document.getElementById("product-message");
+    const productSort = document.getElementById("product-sort");
+
+    let pokemonProducts = [];
+
+    function normalizeCategory(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]/g, "");
+    }
+
+    function getProductName(product) {
+      return String(
+        product.name ||
+        product.title ||
+        product.productName ||
+        "Pokémon product"
+      );
+    }
+
+    function getProductPrice(product) {
+      const value =
+        product.price ??
+        product.amount ??
+        product.productPrice;
+
+      if (
+        value === null ||
+        value === undefined ||
+        value === ""
+      ) {
+        return null;
+      }
+
+      const numericValue = Number(
+        String(value).replace(/[^0-9.-]/g, "")
+      );
+
+      return Number.isFinite(numericValue)
+        ? numericValue
+        : null;
+    }
+
+    function formatPrice(product) {
+      const price = getProductPrice(product);
+
+      if (price === null) {
+        return product.price || "Contact for price";
+      }
+
+      const currency =
+        product.currency ||
+        product.currencyCode ||
+        "SGD";
+
+      try {
+        return new Intl.NumberFormat("en-SG", {
+          style: "currency",
+          currency,
+          maximumFractionDigits: 2
+        }).format(price);
+      } catch (error) {
+        return `SGD ${price.toFixed(2)}`;
+      }
+    }
+
+    function getProductStatus(product) {
+      return String(
+        product.status ||
+        product.availability ||
+        "In Stock"
+      );
+    }
+
+    function isSoldOut(product) {
+      const status = getProductStatus(product)
+        .toLowerCase()
+        .replace(/[^a-z]/g, "");
+
+      return (
+        status.includes("soldout") ||
+        status.includes("unavailable") ||
+        status.includes("outofstock")
+      );
+    }
+
+    function getProductTimestamp(product) {
+      const value =
+        product.dateAdded ||
+        product.createdAt ||
+        product.updatedAt ||
+        product.date ||
+        "";
+
+      const timestamp = Date.parse(value);
+      return Number.isNaN(timestamp) ? 0 : timestamp;
+    }
+
+    function sortProducts(products, sortValue) {
+      const sortedProducts = [...products];
+
+      if (sortValue === "name-ascending") {
+        sortedProducts.sort((a, b) =>
+          getProductName(a).localeCompare(getProductName(b))
+        );
+      }
+
+      if (sortValue === "name-descending") {
+        sortedProducts.sort((a, b) =>
+          getProductName(b).localeCompare(getProductName(a))
+        );
+      }
+
+      if (sortValue === "price-low") {
+        sortedProducts.sort((a, b) => {
+          const priceA = getProductPrice(a);
+          const priceB = getProductPrice(b);
+
+          return (
+            (priceA === null ? Number.MAX_VALUE : priceA) -
+            (priceB === null ? Number.MAX_VALUE : priceB)
+          );
+        });
+      }
+
+      if (sortValue === "price-high") {
+        sortedProducts.sort((a, b) => {
+          const priceA = getProductPrice(a);
+          const priceB = getProductPrice(b);
+
+          return (
+            (priceB === null ? -1 : priceB) -
+            (priceA === null ? -1 : priceA)
+          );
+        });
+      }
+
+      if (sortValue === "newest") {
+        sortedProducts.sort(
+          (a, b) =>
+            getProductTimestamp(b) -
+            getProductTimestamp(a)
+        );
+      }
+
+      return sortedProducts;
+    }
+
+    function createProductCard(product) {
+      const card = document.createElement("article");
+      card.className = "product-card";
+
+      const imageArea = document.createElement("div");
+      imageArea.className = "product-image";
+
+      const imageSource =
+        product.image ||
+        product.imageUrl ||
+        product.photo ||
+        "";
+
+      if (imageSource) {
+        const image = document.createElement("img");
+        image.src = imageSource;
+        image.alt =
+          product.imageAlt ||
+          getProductName(product);
+        image.loading = "lazy";
+
+        image.addEventListener("error", () => {
+          imageArea.replaceChildren();
+          imageArea.textContent = "Product image unavailable";
+        });
+
+        imageArea.appendChild(image);
+      } else {
+        imageArea.textContent = "Product image";
+      }
+
+      const status = document.createElement("span");
+      status.className = "product-status";
+      status.textContent = getProductStatus(product);
+
+      if (isSoldOut(product)) {
+        status.classList.add("sold-out");
+      }
+
+      imageArea.appendChild(status);
+
+      const productInfo = document.createElement("div");
+      productInfo.className = "product-info";
+
+      const category = document.createElement("p");
+      category.className = "product-category";
+      category.textContent = CATEGORY_NAME;
+
+      const name = document.createElement("h3");
+      name.className = "product-name";
+      name.textContent = getProductName(product);
+
+      productInfo.append(category, name);
+
+      if (product.description) {
+        const description = document.createElement("p");
+        description.className = "product-description";
+        description.textContent = product.description;
+        productInfo.appendChild(description);
+      }
+
+      const bottom = document.createElement("div");
+      bottom.className = "product-bottom";
+
+      const price = document.createElement("p");
+      price.className = "product-price";
+      price.textContent = formatPrice(product);
+
+      const enquiryLink = document.createElement("a");
+      enquiryLink.className = "product-button";
+
+      if (isSoldOut(product)) {
+        enquiryLink.classList.add("disabled");
+        enquiryLink.textContent = "Sold out";
+        enquiryLink.setAttribute("aria-disabled", "true");
+      } else {
+        const productName = getProductName(product);
+        const enquiryMessage =
+          `Hi SG Toy House, I am interested in ${productName}.`;
+
+        enquiryLink.href =
+          product.telegramUrl ||
+          `${TELEGRAM_URL}?text=${encodeURIComponent(enquiryMessage)}`;
+
+        enquiryLink.target = "_blank";
+        enquiryLink.rel = "noopener noreferrer";
+        enquiryLink.textContent =
+          product.buttonText ||
+          "Enquire on Telegram";
+      }
+
+      bottom.append(price, enquiryLink);
+      productInfo.appendChild(bottom);
+      card.append(imageArea, productInfo);
+
+      return card;
+    }
+
+    function renderProducts() {
+      const sortedProducts = sortProducts(
+        pokemonProducts,
+        productSort.value
+      );
+
+      productGrid.replaceChildren();
+
+      if (sortedProducts.length === 0) {
+        productCount.textContent = "0 Pokémon products";
+        productMessage.hidden = false;
+        return;
+      }
+
+      productMessage.hidden = true;
+
+      const countLabel =
+        sortedProducts.length === 1
+          ? "product"
+          : "products";
+
+      productCount.replaceChildren();
+
+      const countStrong = document.createElement("strong");
+      countStrong.textContent = String(sortedProducts.length);
+
+      productCount.append(
+        countStrong,
+        ` Pokémon ${countLabel}`
+      );
+
+      sortedProducts.forEach((product) => {
+        productGrid.appendChild(createProductCard(product));
+      });
+    }
+
+    async function loadProducts() {
+      try {
+        const response = await fetch(
+          `products.json?version=${Date.now()}`
         );
 
-        sortSelect.addEventListener(
-            "change",
-            updateCatalog
-        );
+        if (!response.ok) {
+          throw new Error("Unable to load products.json");
+        }
 
-        menuToggle.addEventListener(
-            "click",
-            function () {
-                const isOpen =
-                    navLinks.classList.toggle("open");
+        const data = await response.json();
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    String(isOpen)
-                );
+        const allProducts = Array.isArray(data)
+          ? data
+          : Array.isArray(data.products)
+            ? data.products
+            : [];
 
-                document.body.classList.toggle(
-                    "menu-open",
-                    isOpen
-                );
-            }
-        );
+        pokemonProducts = allProducts.filter((product) => {
+          const category =
+            product.category ||
+            product.type ||
+            product.collection ||
+            "";
 
-        navLinks.querySelectorAll("a").forEach(
-            function (link) {
-                link.addEventListener(
-                    "click",
-                    function () {
-                        navLinks.classList.remove("open");
+          return (
+            normalizeCategory(category) ===
+            normalizeCategory(CATEGORY_NAME)
+          );
+        });
 
-                        menuToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+        renderProducts();
+      } catch (error) {
+        console.error(error);
 
-                        document.body.classList.remove(
-                            "menu-open"
-                        );
-                    }
-                );
-            }
-        );
+        productGrid.replaceChildren();
+        productCount.textContent =
+          "Pokémon products could not be loaded.";
 
-        window.addEventListener(
-            "resize",
-            function () {
-                if (window.innerWidth > 850) {
-                    navLinks.classList.remove("open");
+        productMessage.hidden = false;
+        productMessage.classList.add("error");
+        productMessage.querySelector("h2").textContent =
+          "Unable to load products";
+        productMessage.querySelector("p").textContent =
+          "Please refresh the page or try again later.";
+      }
+    }
 
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+    productSort.addEventListener("change", renderProducts);
 
-                    document.body.classList.remove(
-                        "menu-open"
-                    );
-                }
-            }
-        );
-
-        document.getElementById(
-            "currentYear"
-        ).textContent = new Date().getFullYear();
-
-        loadProducts();
-    </script>
+    loadProducts();
+  </script>
 </body>
 </html>
