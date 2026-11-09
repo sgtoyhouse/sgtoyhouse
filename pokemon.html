@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Pokémon | SG Toy House</title>
+  <title>Pokémon TCG | SG Toy House</title>
 
   <meta
     name="description"
-    content="Browse Pokémon cards, sealed products and collectibles available from SG Toy House."
+    content="Browse Pokémon TCG cards, sealed products and collectibles available from SG Toy House."
   >
 
   <style>
@@ -647,10 +647,11 @@
       <div class="container">
         <p class="page-label">SG Toy House Collection</p>
 
-        <h1>Pokémon</h1>
+        <h1>Pokémon TCG</h1>
 
         <p class="page-description">
-          Browse our available Pokémon cards, sealed products and collectibles.
+          Browse our available Pokémon TCG cards, sealed products and
+          collectibles.
         </p>
       </div>
     </section>
@@ -661,12 +662,12 @@
     >
       <div class="container">
         <h2 id="pokemon-products-heading" hidden>
-          Available Pokémon products
+          Available Pokémon TCG products
         </h2>
 
         <div class="product-toolbar">
           <p class="product-count" id="product-count">
-            Loading Pokémon products...
+            Loading Pokémon TCG products...
           </p>
 
           <div class="sort-control">
@@ -693,7 +694,7 @@
           id="product-message"
           hidden
         >
-          <h2>No Pokémon products available</h2>
+          <h2>No Pokémon TCG products available</h2>
           <p>Please check again soon for new additions.</p>
         </div>
       </div>
@@ -759,7 +760,12 @@
   </footer>
 
   <script>
+    /*
+      Keep this as "Pokémon" so products assigned to either Pokémon
+      or Pokemon in products.json continue to appear.
+    */
     const CATEGORY_NAME = "Pokémon";
+    const DISPLAY_CATEGORY_NAME = "Pokémon TCG";
     const TELEGRAM_URL = "https://t.me/sgtoyhouse";
 
     const productGrid = document.getElementById("product-grid");
@@ -783,7 +789,7 @@
         product.name ||
         product.title ||
         product.productName ||
-        "Pokémon product"
+        "Pokémon TCG product"
       );
     }
 
@@ -930,6 +936,7 @@
 
       if (imageSource) {
         const image = document.createElement("img");
+
         image.src = imageSource;
         image.alt =
           product.imageAlt ||
@@ -961,7 +968,7 @@
 
       const category = document.createElement("p");
       category.className = "product-category";
-      category.textContent = CATEGORY_NAME;
+      category.textContent = DISPLAY_CATEGORY_NAME;
 
       const name = document.createElement("h3");
       name.className = "product-name";
@@ -1022,7 +1029,7 @@
       productGrid.replaceChildren();
 
       if (sortedProducts.length === 0) {
-        productCount.textContent = "0 Pokémon products";
+        productCount.textContent = "0 Pokémon TCG products";
         productMessage.hidden = false;
         return;
       }
@@ -1041,7 +1048,7 @@
 
       productCount.append(
         countStrong,
-        ` Pokémon ${countLabel}`
+        ` Pokémon TCG ${countLabel}`
       );
 
       sortedProducts.forEach((product) => {
@@ -1086,7 +1093,7 @@
 
         productGrid.replaceChildren();
         productCount.textContent =
-          "Pokémon products could not be loaded.";
+          "Pokémon TCG products could not be loaded.";
 
         productMessage.hidden = false;
         productMessage.classList.add("error");
