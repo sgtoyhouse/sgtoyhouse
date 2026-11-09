@@ -64,8 +64,8 @@
     }
 
     button,
-    select,
-    input {
+    input,
+    select {
       font: inherit;
     }
 
@@ -242,7 +242,7 @@
       font-size: 18px;
     }
 
-    /* Products */
+    /* Product section */
 
     .products-section {
       padding: 0 0 80px;
@@ -526,7 +526,7 @@
       pointer-events: none;
     }
 
-    /* Loading, error and empty states */
+    /* Loading and empty states */
 
     .product-message {
       padding: 50px 20px;
@@ -1066,23 +1066,13 @@
           "Contact for price";
       }
 
-      const currency =
-        product.currency ||
-        product.currencyCode ||
-        "SGD";
+      const formattedAmount =
+        new Intl.NumberFormat("en-SG", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(numericPrice);
 
-      try {
-        return new Intl.NumberFormat(
-          "en-SG",
-          {
-            style: "currency",
-            currency,
-            maximumFractionDigits: 2
-          }
-        ).format(numericPrice);
-      } catch (error) {
-        return `SGD ${numericPrice.toFixed(2)}`;
-      }
+      return `SGD$${formattedAmount}`;
     }
 
     function getProductStatus(product) {
@@ -1274,12 +1264,14 @@
       const detail =
         document.createElement("span");
 
-      detail.className = "product-detail";
+      detail.className =
+        "product-detail";
 
       const strong =
         document.createElement("strong");
 
-      strong.textContent = `${label}: `;
+      strong.textContent =
+        `${label}: `;
 
       detail.append(
         strong,
@@ -1293,22 +1285,28 @@
       const card =
         document.createElement("article");
 
-      card.className = "product-card";
+      card.className =
+        "product-card";
 
       const imageArea =
         document.createElement("div");
 
-      imageArea.className = "product-image";
+      imageArea.className =
+        "product-image";
 
       const status =
         document.createElement("span");
 
-      status.className = "product-status";
+      status.className =
+        "product-status";
+
       status.textContent =
         getProductStatus(product);
 
       if (isSoldOut(product)) {
-        status.classList.add("sold-out");
+        status.classList.add(
+          "sold-out"
+        );
       }
 
       const imageSource =
@@ -1319,18 +1317,26 @@
           document.createElement("img");
 
         image.src = imageSource;
+
         image.alt =
           product.imageAlt ||
           getProductName(product);
+
         image.loading = "lazy";
 
-        image.addEventListener("error", () => {
-          imageArea.replaceChildren();
-          imageArea.textContent =
-            "Product image unavailable";
+        image.addEventListener(
+          "error",
+          () => {
+            imageArea.replaceChildren();
 
-          imageArea.appendChild(status);
-        });
+            imageArea.textContent =
+              "Product image unavailable";
+
+            imageArea.appendChild(
+              status
+            );
+          }
+        );
 
         imageArea.appendChild(image);
       } else {
@@ -1358,7 +1364,9 @@
       const name =
         document.createElement("h3");
 
-      name.className = "product-name";
+      name.className =
+        "product-name";
+
       name.textContent =
         getProductName(product);
 
@@ -1384,7 +1392,9 @@
           )
         );
 
-        productInfo.appendChild(details);
+        productInfo.appendChild(
+          details
+        );
       }
 
       if (product.description) {
@@ -1452,7 +1462,8 @@
             )
           }`;
 
-        enquiryLink.target = "_blank";
+        enquiryLink.target =
+          "_blank";
 
         enquiryLink.rel =
           "noopener noreferrer";
@@ -1467,7 +1478,9 @@
         enquiryLink
       );
 
-      productInfo.appendChild(bottom);
+      productInfo.appendChild(
+        bottom
+      );
 
       card.append(
         imageArea,
@@ -1513,7 +1526,8 @@
             ? `No results for "${enteredSearchTerm}"`
             : "0 Pokémon products";
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage
           .querySelector("h2")
@@ -1545,7 +1559,9 @@
         document.createElement("strong");
 
       strongCount.textContent =
-        String(sortedProducts.length);
+        String(
+          sortedProducts.length
+        );
 
       productCount.append(
         strongCount,
@@ -1586,7 +1602,9 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(data.products)
+            : Array.isArray(
+                  data.products
+                )
               ? data.products
               : [];
 
@@ -1600,7 +1618,9 @@
                 "";
 
               return (
-                normalizeCategory(category) ===
+                normalizeCategory(
+                  category
+                ) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
@@ -1620,7 +1640,8 @@
         productCount.textContent =
           "Pokémon products could not be loaded.";
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage.classList.add(
           "error"
