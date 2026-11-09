@@ -21,6 +21,7 @@
       --border: #3c321c;
       --gold: #d4af37;
       --gold-light: #f0d675;
+      --danger: #ff8c8c;
       --shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
     }
 
@@ -57,6 +58,10 @@
       max-width: 100%;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
     .container {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
@@ -84,7 +89,7 @@
       color: #000000;
     }
 
-    /* Compact category bar */
+    /* Category bar */
 
     .top-categories {
       background: #0b0b0b;
@@ -283,7 +288,7 @@
       justify-content: center;
     }
 
-    /* Shared section headings */
+    /* Section headings */
 
     .section-heading {
       margin-bottom: 28px;
@@ -389,6 +394,17 @@
       line-height: 1.35;
     }
 
+    .product-set-number {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .product-set-number strong {
+      color: var(--gold-light);
+    }
+
     .product-price {
       margin-bottom: 6px;
       color: var(--gold-light);
@@ -412,6 +428,11 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       text-align: center;
+    }
+
+    .products-empty.error,
+    .reviews-empty.error {
+      color: var(--danger);
     }
 
     /* Reviews */
@@ -498,8 +519,6 @@
     .footer-links a:focus-visible {
       color: var(--gold-light);
     }
-
-    /* Focus */
 
     a:focus-visible {
       outline: 3px solid rgba(212, 175, 55, 0.45);
@@ -730,8 +749,13 @@
     >
       <div class="container">
         <div class="section-heading">
-          <h2 id="recently-added-heading">Recently Added</h2>
-          <p>Discover the latest additions to SG Toy House.</p>
+          <h2 id="recently-added-heading">
+            Recently Added
+          </h2>
+
+          <p>
+            Discover the latest additions to SG Toy House.
+          </p>
         </div>
 
         <div
@@ -758,7 +782,10 @@
       <div class="container">
         <div class="section-heading">
           <h2 id="reviews-heading">Reviews</h2>
-          <p>See what customers say about SG Toy House.</p>
+
+          <p>
+            See what customers say about SG Toy House.
+          </p>
         </div>
 
         <div
@@ -863,16 +890,17 @@
       }
     ];
 
-    const recentProductGrid = document.getElementById(
-      "recent-product-grid"
-    );
+    const recentProductGrid =
+      document.getElementById("recent-product-grid");
 
-    const recentProductsEmpty = document.getElementById(
-      "recent-products-empty"
-    );
+    const recentProductsEmpty =
+      document.getElementById("recent-products-empty");
 
-    const reviewGrid = document.getElementById("review-grid");
-    const reviewsEmpty = document.getElementById("reviews-empty");
+    const reviewGrid =
+      document.getElementById("review-grid");
+
+    const reviewsEmpty =
+      document.getElementById("reviews-empty");
 
     function normalizeProductCategory(value) {
       const normalizedValue = String(value || "")
@@ -928,6 +956,15 @@
       );
     }
 
+    function getProductSetNumber(product) {
+      return String(
+        product.setNumber ||
+        product.productCode ||
+        product.sku ||
+        ""
+      ).trim();
+    }
+
     function getProductDate(product) {
       const dateValue =
         product.dateAdded ||
@@ -941,7 +978,7 @@
       return Number.isNaN(timestamp) ? 0 : timestamp;
     }
 
-    function getProductPrice(product) {
+    function formatProductPrice(product) {
       const value =
         product.price ??
         product.amount ??
@@ -988,7 +1025,8 @@
           "";
 
         return (
-          normalizeProductCategory(productCategory) === categoryKey
+          normalizeProductCategory(productCategory) ===
+          categoryKey
         );
       });
 
@@ -1007,6 +1045,7 @@
 
       card.className = "product-card";
       card.href = category.page;
+
       card.setAttribute(
         "aria-label",
         `View ${getProductName(product)} in ${category.label}`
@@ -1028,7 +1067,8 @@
 
         image.addEventListener("error", () => {
           imageArea.replaceChildren();
-          imageArea.textContent = "Product image unavailable";
+          imageArea.textContent =
+            "Product image unavailable";
         });
 
         imageArea.appendChild(image);
@@ -1049,18 +1089,39 @@
 
       productInfo.append(categoryName, productName);
 
-      const formattedPrice = getProductPrice(product);
+      if (category.key === "lego") {
+        const setNumberValue =
+          getProductSetNumber(product);
+
+        if (setNumberValue) {
+          const setNumber = document.createElement("p");
+          setNumber.className = "product-set-number";
+
+          const label = document.createElement("strong");
+          label.textContent = "Set: ";
+
+          setNumber.append(label, setNumberValue);
+          productInfo.appendChild(setNumber);
+        }
+      }
+
+      const formattedPrice =
+        formatProductPrice(product);
 
       if (formattedPrice) {
-        const productPrice = document.createElement("p");
+        const productPrice =
+          document.createElement("p");
+
         productPrice.className = "product-price";
         productPrice.textContent = formattedPrice;
+
         productInfo.appendChild(productPrice);
       }
 
       const productLink = document.createElement("p");
       productLink.className = "product-link";
-      productLink.textContent = `View ${category.label}`;
+      productLink.textContent =
+        `View ${category.label}`;
 
       productInfo.appendChild(productLink);
       card.append(imageArea, productInfo);
@@ -1069,7 +1130,10 @@
     }
 
     async function loadRecentProducts() {
-      recentProductGrid.setAttribute("aria-busy", "true");
+      recentProductGrid.setAttribute(
+        "aria-busy",
+        "true"
+      );
 
       try {
         const response = await fetch(
@@ -1077,7 +1141,9 @@
         );
 
         if (!response.ok) {
-          throw new Error("Unable to load products.json");
+          throw new Error(
+            `Unable to load products.json: ${response.status}`
+          );
         }
 
         const data = await response.json();
@@ -1089,6 +1155,7 @@
             : [];
 
         recentProductGrid.replaceChildren();
+        recentProductsEmpty.classList.remove("error");
 
         CATEGORY_CONFIG.forEach((category) => {
           const latestProduct = findLatestProduct(
@@ -1106,14 +1173,29 @@
           }
         });
 
-        recentProductsEmpty.hidden =
-          recentProductGrid.children.length > 0;
+        if (recentProductGrid.children.length === 0) {
+          recentProductsEmpty.textContent =
+            "Recently added products will appear here soon.";
+
+          recentProductsEmpty.hidden = false;
+        } else {
+          recentProductsEmpty.hidden = true;
+        }
       } catch (error) {
-        console.error(error);
+        console.error("Product loading error:", error);
+
         recentProductGrid.replaceChildren();
+
+        recentProductsEmpty.textContent =
+          "Recently added products could not be loaded.";
+
+        recentProductsEmpty.classList.add("error");
         recentProductsEmpty.hidden = false;
       } finally {
-        recentProductGrid.setAttribute("aria-busy", "false");
+        recentProductGrid.setAttribute(
+          "aria-busy",
+          "false"
+        );
       }
     }
 
@@ -1121,14 +1203,22 @@
       const numericRating = Number(rating);
 
       const safeRating = Number.isFinite(numericRating)
-        ? Math.max(1, Math.min(5, Math.round(numericRating)))
+        ? Math.max(
+            1,
+            Math.min(5, Math.round(numericRating))
+          )
         : 5;
 
-      return "★".repeat(safeRating) + "☆".repeat(5 - safeRating);
+      return (
+        "★".repeat(safeRating) +
+        "☆".repeat(5 - safeRating)
+      );
     }
 
     function createReviewCard(review) {
-      const article = document.createElement("article");
+      const article =
+        document.createElement("article");
+
       article.className = "review-card";
 
       const photo = document.createElement("div");
@@ -1145,7 +1235,8 @@
 
         image.addEventListener("error", () => {
           photo.replaceChildren();
-          photo.textContent = "Review photo unavailable";
+          photo.textContent =
+            "Review photo unavailable";
         });
 
         photo.appendChild(image);
@@ -1153,31 +1244,56 @@
         photo.textContent = "Customer review";
       }
 
-      const content = document.createElement("div");
+      const content =
+        document.createElement("div");
+
       content.className = "review-content";
 
-      const header = document.createElement("div");
+      const header =
+        document.createElement("div");
+
       header.className = "review-card-header";
 
-      const stars = document.createElement("p");
+      const stars =
+        document.createElement("p");
+
       stars.className = "review-stars";
-      stars.textContent = renderStars(review.rating);
+      stars.textContent =
+        renderStars(review.rating);
+
+      const numericRating =
+        Number(review.rating);
+
+      const accessibleRating =
+        Number.isFinite(numericRating)
+          ? Math.max(1, Math.min(5, numericRating))
+          : 5;
+
       stars.setAttribute(
         "aria-label",
-        `${Number(review.rating) || 5} out of 5 stars`
+        `${accessibleRating} out of 5 stars`
       );
 
-      const source = document.createElement("p");
+      const source =
+        document.createElement("p");
+
       source.className = "review-source";
-      source.textContent = review.source || "Customer";
+      source.textContent =
+        review.source || "Customer";
 
-      const text = document.createElement("blockquote");
+      const text =
+        document.createElement("blockquote");
+
       text.className = "review-text";
-      text.textContent = review.text || "";
+      text.textContent =
+        review.text || "";
 
-      const author = document.createElement("p");
+      const author =
+        document.createElement("p");
+
       author.className = "review-author";
-      author.textContent = review.author || "Customer";
+      author.textContent =
+        review.author || "Customer";
 
       header.append(stars, source);
       content.append(header, text, author);
@@ -1187,7 +1303,10 @@
     }
 
     async function loadReviews() {
-      reviewGrid.setAttribute("aria-busy", "true");
+      reviewGrid.setAttribute(
+        "aria-busy",
+        "true"
+      );
 
       try {
         const response = await fetch(
@@ -1195,7 +1314,9 @@
         );
 
         if (!response.ok) {
-          throw new Error("Unable to load reviews.json");
+          throw new Error(
+            `Unable to load reviews.json: ${response.status}`
+          );
         }
 
         const data = await response.json();
@@ -1207,8 +1328,12 @@
             : [];
 
         reviewGrid.replaceChildren();
+        reviewsEmpty.classList.remove("error");
 
         if (reviews.length === 0) {
+          reviewsEmpty.textContent =
+            "Reviews will be added soon.";
+
           reviewsEmpty.hidden = false;
           return;
         }
@@ -1216,14 +1341,25 @@
         reviewsEmpty.hidden = true;
 
         reviews.forEach((review) => {
-          reviewGrid.appendChild(createReviewCard(review));
+          reviewGrid.appendChild(
+            createReviewCard(review)
+          );
         });
       } catch (error) {
-        console.error(error);
+        console.error("Review loading error:", error);
+
         reviewGrid.replaceChildren();
+
+        reviewsEmpty.textContent =
+          "Reviews could not be loaded. Please try again later.";
+
+        reviewsEmpty.classList.add("error");
         reviewsEmpty.hidden = false;
       } finally {
-        reviewGrid.setAttribute("aria-busy", "false");
+        reviewGrid.setAttribute(
+          "aria-busy",
+          "false"
+        );
       }
     }
 
