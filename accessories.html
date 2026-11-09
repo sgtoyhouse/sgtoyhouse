@@ -64,8 +64,8 @@
     }
 
     button,
-    select,
-    input {
+    input,
+    select {
       font: inherit;
     }
 
@@ -203,7 +203,7 @@
       color: var(--gold-light);
     }
 
-    /* Page introduction */
+    /* Page hero */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -526,7 +526,7 @@
       pointer-events: none;
     }
 
-    /* Loading, error and empty states */
+    /* Loading and empty state */
 
     .product-message {
       padding: 50px 20px;
@@ -1021,7 +1021,8 @@
         product.releaseYear ??
         "";
 
-      const numericYear = Number(value);
+      const numericYear =
+        Number(value);
 
       if (
         !Number.isInteger(numericYear) ||
@@ -1066,23 +1067,13 @@
           "Contact for price";
       }
 
-      const currency =
-        product.currency ||
-        product.currencyCode ||
-        "SGD";
+      const formattedAmount =
+        new Intl.NumberFormat("en-SG", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(numericPrice);
 
-      try {
-        return new Intl.NumberFormat(
-          "en-SG",
-          {
-            style: "currency",
-            currency,
-            maximumFractionDigits: 2
-          }
-        ).format(numericPrice);
-      } catch (error) {
-        return `SGD ${numericPrice.toFixed(2)}`;
-      }
+      return `SGD$${formattedAmount}`;
     }
 
     function getProductStatus(product) {
@@ -1153,8 +1144,12 @@
       ).includes(searchTerm);
     }
 
-    function sortProducts(products, sortValue) {
-      const sortedProducts = [...products];
+    function sortProducts(
+      products,
+      sortValue
+    ) {
+      const sortedProducts =
+        [...products];
 
       if (sortValue === "name-ascending") {
         sortedProducts.sort(
@@ -1271,16 +1266,21 @@
       return sortedProducts;
     }
 
-    function createProductDetail(label, value) {
+    function createProductDetail(
+      label,
+      value
+    ) {
       const detail =
         document.createElement("span");
 
-      detail.className = "product-detail";
+      detail.className =
+        "product-detail";
 
       const strong =
         document.createElement("strong");
 
-      strong.textContent = `${label}: `;
+      strong.textContent =
+        `${label}: `;
 
       detail.append(
         strong,
@@ -1294,22 +1294,28 @@
       const card =
         document.createElement("article");
 
-      card.className = "product-card";
+      card.className =
+        "product-card";
 
       const imageArea =
         document.createElement("div");
 
-      imageArea.className = "product-image";
+      imageArea.className =
+        "product-image";
 
       const status =
         document.createElement("span");
 
-      status.className = "product-status";
+      status.className =
+        "product-status";
+
       status.textContent =
         getProductStatus(product);
 
       if (isSoldOut(product)) {
-        status.classList.add("sold-out");
+        status.classList.add(
+          "sold-out"
+        );
       }
 
       const imageSource =
@@ -1320,19 +1326,24 @@
           document.createElement("img");
 
         image.src = imageSource;
+
         image.alt =
           product.imageAlt ||
           getProductName(product);
+
         image.loading = "lazy";
 
         image.addEventListener(
           "error",
           () => {
             imageArea.replaceChildren();
+
             imageArea.textContent =
               "Product image unavailable";
 
-            imageArea.appendChild(status);
+            imageArea.appendChild(
+              status
+            );
           }
         );
 
@@ -1362,7 +1373,9 @@
       const name =
         document.createElement("h3");
 
-      name.className = "product-name";
+      name.className =
+        "product-name";
+
       name.textContent =
         getProductName(product);
 
@@ -1388,7 +1401,9 @@
           )
         );
 
-        productInfo.appendChild(details);
+        productInfo.appendChild(
+          details
+        );
       }
 
       if (product.description) {
@@ -1456,7 +1471,8 @@
             )
           }`;
 
-        enquiryLink.target = "_blank";
+        enquiryLink.target =
+          "_blank";
 
         enquiryLink.rel =
           "noopener noreferrer";
@@ -1471,7 +1487,9 @@
         enquiryLink
       );
 
-      productInfo.appendChild(bottom);
+      productInfo.appendChild(
+        bottom
+      );
 
       card.append(
         imageArea,
@@ -1517,7 +1535,8 @@
             ? `No results for "${enteredSearchTerm}"`
             : "0 accessories";
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage
           .querySelector("h2")
@@ -1549,7 +1568,9 @@
         document.createElement("strong");
 
       strongCount.textContent =
-        String(sortedProducts.length);
+        String(
+          sortedProducts.length
+        );
 
       productCount.append(
         strongCount,
@@ -1590,7 +1611,9 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(data.products)
+            : Array.isArray(
+                  data.products
+                )
               ? data.products
               : [];
 
@@ -1604,7 +1627,9 @@
                 "";
 
               return (
-                normalizeCategory(category) ===
+                normalizeCategory(
+                  category
+                ) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
@@ -1624,7 +1649,8 @@
         productCount.textContent =
           "Accessories could not be loaded.";
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage.classList.add(
           "error"
