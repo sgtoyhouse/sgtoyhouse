@@ -63,6 +63,10 @@
       font: inherit;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
     .container {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
@@ -102,7 +106,7 @@
       color: #000000;
     }
 
-    /* Compact category navigation */
+    /* Category navigation */
 
     .top-categories {
       background: #0b0b0b;
@@ -428,11 +432,23 @@
     }
 
     .product-name {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #ffffff;
       font-size: 17px;
       font-weight: 700;
       line-height: 1.35;
+    }
+
+    .product-set-number {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .product-set-number strong {
+      color: var(--gold-light);
     }
 
     .product-description {
@@ -486,7 +502,7 @@
       pointer-events: none;
     }
 
-    /* Loading and empty states */
+    /* Loading, error, and empty states */
 
     .product-message {
       padding: 50px 20px;
@@ -550,6 +566,7 @@
     /* Focus */
 
     a:focus-visible,
+    input:focus-visible,
     select:focus-visible {
       outline: 3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
@@ -787,25 +804,11 @@
             <label for="product-sort">Sort</label>
 
             <select id="product-sort">
-              <option value="newest">
-                Recently added
-              </option>
-
-              <option value="name-ascending">
-                Name: A to Z
-              </option>
-
-              <option value="name-descending">
-                Name: Z to A
-              </option>
-
-              <option value="price-low">
-                Price: Low to high
-              </option>
-
-              <option value="price-high">
-                Price: High to low
-              </option>
+              <option value="newest">Recently added</option>
+              <option value="name-ascending">Name: A to Z</option>
+              <option value="name-descending">Name: Z to A</option>
+              <option value="price-low">Price: Low to high</option>
+              <option value="price-high">Price: High to low</option>
             </select>
           </div>
         </div>
@@ -894,11 +897,20 @@
     const DISPLAY_CATEGORY_NAME = "LEGO";
     const TELEGRAM_URL = "https://t.me/sgtoyhse";
 
-    const productGrid = document.getElementById("product-grid");
-    const productCount = document.getElementById("product-count");
-    const productMessage = document.getElementById("product-message");
-    const productSearch = document.getElementById("product-search");
-    const productSort = document.getElementById("product-sort");
+    const productGrid =
+      document.getElementById("product-grid");
+
+    const productCount =
+      document.getElementById("product-count");
+
+    const productMessage =
+      document.getElementById("product-message");
+
+    const productSearch =
+      document.getElementById("product-search");
+
+    const productSort =
+      document.getElementById("product-sort");
 
     let legoProducts = [];
 
@@ -913,6 +925,7 @@
 
     function normalizeSearchText(value) {
       return String(value || "")
+        .trim()
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
@@ -925,6 +938,24 @@
         product.productName ||
         "LEGO product"
       );
+    }
+
+    function getProductImage(product) {
+      return String(
+        product.image ||
+        product.imageUrl ||
+        product.photo ||
+        ""
+      );
+    }
+
+    function getProductSetNumber(product) {
+      return String(
+        product.setNumber ||
+        product.productCode ||
+        product.sku ||
+        ""
+      ).trim();
     }
 
     function getProductPrice(product) {
@@ -1033,37 +1064,41 @@
       const sortedProducts = [...products];
 
       if (sortValue === "name-ascending") {
-        sortedProducts.sort((firstProduct, secondProduct) =>
-          getProductName(firstProduct).localeCompare(
-            getProductName(secondProduct)
+        sortedProducts.sort((first, second) =>
+          getProductName(first).localeCompare(
+            getProductName(second)
           )
         );
       }
 
       if (sortValue === "name-descending") {
-        sortedProducts.sort((firstProduct, secondProduct) =>
-          getProductName(secondProduct).localeCompare(
-            getProductName(firstProduct)
+        sortedProducts.sort((first, second) =>
+          getProductName(second).localeCompare(
+            getProductName(first)
           )
         );
       }
 
       if (sortValue === "price-low") {
-        sortedProducts.sort((firstProduct, secondProduct) => {
-          const firstPrice = getProductPrice(firstProduct);
-          const secondPrice = getProductPrice(secondProduct);
+        sortedProducts.sort((first, second) => {
+          const firstPrice = getProductPrice(first);
+          const secondPrice = getProductPrice(second);
 
           return (
-            (firstPrice === null ? Number.MAX_VALUE : firstPrice) -
-            (secondPrice === null ? Number.MAX_VALUE : secondPrice)
+            (firstPrice === null
+              ? Number.MAX_VALUE
+              : firstPrice) -
+            (secondPrice === null
+              ? Number.MAX_VALUE
+              : secondPrice)
           );
         });
       }
 
       if (sortValue === "price-high") {
-        sortedProducts.sort((firstProduct, secondProduct) => {
-          const firstPrice = getProductPrice(firstProduct);
-          const secondPrice = getProductPrice(secondProduct);
+        sortedProducts.sort((first, second) => {
+          const firstPrice = getProductPrice(first);
+          const secondPrice = getProductPrice(second);
 
           return (
             (secondPrice === null ? -1 : secondPrice) -
@@ -1074,9 +1109,9 @@
 
       if (sortValue === "newest") {
         sortedProducts.sort(
-          (firstProduct, secondProduct) =>
-            getProductTimestamp(secondProduct) -
-            getProductTimestamp(firstProduct)
+          (first, second) =>
+            getProductTimestamp(second) -
+            getProductTimestamp(first)
         );
       }
 
@@ -1090,11 +1125,15 @@
       const imageArea = document.createElement("div");
       imageArea.className = "product-image";
 
-      const imageSource =
-        product.image ||
-        product.imageUrl ||
-        product.photo ||
-        "";
+      const status = document.createElement("span");
+      status.className = "product-status";
+      status.textContent = getProductStatus(product);
+
+      if (isSoldOut(product)) {
+        status.classList.add("sold-out");
+      }
+
+      const imageSource = getProductImage(product);
 
       if (imageSource) {
         const image = document.createElement("img");
@@ -1107,20 +1146,14 @@
 
         image.addEventListener("error", () => {
           imageArea.replaceChildren();
-          imageArea.textContent = "Product image unavailable";
+          imageArea.textContent =
+            "Product image unavailable";
+          imageArea.appendChild(status);
         });
 
         imageArea.appendChild(image);
       } else {
         imageArea.textContent = "Product image";
-      }
-
-      const status = document.createElement("span");
-      status.className = "product-status";
-      status.textContent = getProductStatus(product);
-
-      if (isSoldOut(product)) {
-        status.classList.add("sold-out");
       }
 
       imageArea.appendChild(status);
@@ -1138,10 +1171,30 @@
 
       productInfo.append(category, name);
 
+      const setNumberValue = getProductSetNumber(product);
+
+      if (setNumberValue) {
+        const setNumber = document.createElement("p");
+        setNumber.className = "product-set-number";
+
+        const setNumberLabel =
+          document.createElement("strong");
+
+        setNumberLabel.textContent = "Set: ";
+
+        setNumber.append(
+          setNumberLabel,
+          setNumberValue
+        );
+
+        productInfo.appendChild(setNumber);
+      }
+
       if (product.description) {
         const description = document.createElement("p");
         description.className = "product-description";
         description.textContent = product.description;
+
         productInfo.appendChild(description);
       }
 
@@ -1158,8 +1211,10 @@
       if (isSoldOut(product)) {
         enquiryLink.classList.add("disabled");
         enquiryLink.textContent = "Sold out";
-        enquiryLink.setAttribute("aria-disabled", "true");
-        enquiryLink.removeAttribute("href");
+        enquiryLink.setAttribute(
+          "aria-disabled",
+          "true"
+        );
       } else {
         const productName = getProductName(product);
 
@@ -1168,7 +1223,9 @@
 
         enquiryLink.href =
           product.telegramUrl ||
-          `${TELEGRAM_URL}?text=${encodeURIComponent(enquiryMessage)}`;
+          `${TELEGRAM_URL}?text=${
+            encodeURIComponent(enquiryMessage)
+          }`;
 
         enquiryLink.target = "_blank";
         enquiryLink.rel = "noopener noreferrer";
@@ -1186,14 +1243,18 @@
     }
 
     function renderProducts() {
-      const enteredSearchTerm = productSearch.value.trim();
+      const enteredSearchTerm =
+        productSearch.value.trim();
 
-      const normalizedSearchTerm = normalizeSearchText(
-        enteredSearchTerm
-      );
+      const normalizedSearchTerm =
+        normalizeSearchText(enteredSearchTerm);
 
-      const matchingProducts = legoProducts.filter((product) =>
-        productMatchesSearch(product, normalizedSearchTerm)
+      const matchingProducts = legoProducts.filter(
+        (product) =>
+          productMatchesSearch(
+            product,
+            normalizedSearchTerm
+          )
       );
 
       const sortedProducts = sortProducts(
@@ -1233,8 +1294,11 @@
 
       productCount.replaceChildren();
 
-      const strongCount = document.createElement("strong");
-      strongCount.textContent = String(sortedProducts.length);
+      const strongCount =
+        document.createElement("strong");
+
+      strongCount.textContent =
+        String(sortedProducts.length);
 
       productCount.append(
         strongCount,
@@ -1244,7 +1308,9 @@
       );
 
       sortedProducts.forEach((product) => {
-        productGrid.appendChild(createProductCard(product));
+        productGrid.appendChild(
+          createProductCard(product)
+        );
       });
     }
 
@@ -1257,7 +1323,9 @@
         );
 
         if (!response.ok) {
-          throw new Error("Unable to load products.json");
+          throw new Error(
+            `Unable to load products.json: ${response.status}`
+          );
         }
 
         const data = await response.json();
@@ -1299,12 +1367,22 @@
         productMessage.querySelector("p").textContent =
           "Please refresh the page or try again later.";
       } finally {
-        productGrid.setAttribute("aria-busy", "false");
+        productGrid.setAttribute(
+          "aria-busy",
+          "false"
+        );
       }
     }
 
-    productSearch.addEventListener("input", renderProducts);
-    productSort.addEventListener("change", renderProducts);
+    productSearch.addEventListener(
+      "input",
+      renderProducts
+    );
+
+    productSort.addEventListener(
+      "change",
+      renderProducts
+    );
 
     loadProducts();
   </script>
