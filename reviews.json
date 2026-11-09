@@ -1,16 +1,5 @@
 [
   {
-    "id": "review-9cf1634e-a6c0-4713-8883-ed445cef4dec",
-    "author": "Shyam",
-    "source": "Telegram",
-    "rating": 5,
-    "text": "Managed to pull this SP out of the EB05 box that came yesterday!",
-    "photo": "images/reviews/review031126.jpg",
-    "photoAlt": "",
-    "dateAdded": "2026-11-03",
-    "updatedAt": "2026-11-09T19:43:27.552Z"
-  },
-  {
     "id": "review-d522fcb3-5065-4ce7-a8e3-97e72104c61b",
     "author": "Haziman",
     "source": "Telegram",
@@ -20,5 +9,16 @@
     "photoAlt": "RGB Mew pulled by lucky customer!",
     "dateAdded": "2026-11-09",
     "updatedAt": "2026-12-09T18:52:26.216Z"
+  },
+  {
+    "id": "review-9cf1634e-a6c0-4713-8883-ed445cef4dec",
+    "author": "Shyam",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Managed to pull this SP out of the EB05 box that came yesterday!",
+    "photo": "images/reviews/review031126.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-11-03",
+    "updatedAt": "2026-11-09T19:43:27.552Z"
   }
 ]
