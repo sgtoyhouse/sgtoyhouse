@@ -1,5 +1,21 @@
 [
   {
+    "id": "product-d16d64e6-4e0c-4140-9c97-a1f2bea58392",
+    "name": "Promotional Card Set 2026",
+    "category": "One Piece",
+    "price": 12,
+    "currency": "SGD",
+    "status": "In Stock",
+    "setNumber": "",
+    "sku": "",
+    "description": "✨ Contains ALL 15 cards:\n- OP01-039 Killer\n- OP01-055 Become my \"Samurai\"!!\n- OP02-005 Carly Dadan\n- OP02-068 Rain of rubbish\n- OP03-008 Buggy\n- OP03-044 Kaya\n- OP03-048 Nojiko\n- OP03-072 Gum-Gum Jet Gun Barrage\n- OP03-097 Six King Guns\n- OP04-016 Rebellious kick course\n- OP04-077 Ideo\n- OP04-096 Corrida Colosseum\n- ST01-011 Brook\n- ST02-007 Jewelry Bonney\n- ST06-008 Chick\n✨ Obtainable only from Game Exchange Meeting held in April 2026",
+    "image": "images/products/OP_Promotional Card Set 2026.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse/13/3035",
+    "dateAdded": "2026-11-09T20:41:13.602Z",
+    "updatedAt": "2026-11-09T20:41:13.603Z"
+  },
+  {
     "id": "product-8b6b6f6b-48b7-42c7-a77f-865f08ee4bf4",
     "name": "Standard Battle Pack Vol. 13",
     "category": "One Piece",
