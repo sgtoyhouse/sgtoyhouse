@@ -1,5 +1,21 @@
 [
   {
+    "id": "product-6d30642e-9da7-46d1-b291-60598b7392fe",
+    "name": "Minifigures Marvel Series 2 (Set of 12) (2023)",
+    "category": "LEGO",
+    "price": 90,
+    "currency": "SGD",
+    "status": "In Stock",
+    "setNumber": "71039",
+    "sku": "",
+    "description": "✨ Contains 12 pcs (Complete Set / Loose)",
+    "image": "images/products/LEGO_71039.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse/8/5249",
+    "dateAdded": "2026-11-09T19:25:02.501Z",
+    "updatedAt": "2026-11-09T19:25:02.501Z"
+  },
+  {
     "id": "product-86d54aef-912f-4ff5-9411-af49aef0310f",
     "name": "Pokémon Center Pikachu Plush Deck Case",
     "category": "Accessories",
