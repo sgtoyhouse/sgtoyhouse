@@ -6,6 +6,13 @@
 
   <title>LEGO | SG Toy House</title>
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/apple-touch-icon.png"
+  >
+
   <meta
     name="description"
     content="Browse LEGO sets available from SG Toy House."
@@ -64,8 +71,8 @@
     }
 
     button,
-    select,
-    input {
+    input,
+    select {
       font: inherit;
     }
 
@@ -203,7 +210,7 @@
       color: var(--gold-light);
     }
 
-    /* Page introduction */
+    /* Page hero */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -353,7 +360,7 @@
       cursor: pointer;
     }
 
-    /* Product grid */
+    /* Product cards */
 
     .product-grid {
       display: grid;
@@ -391,8 +398,8 @@
       justify-content: center;
       position: relative;
       background: #171717;
-      border-bottom: 1px solid var(--border);
       color: var(--muted);
+      border-bottom: 1px solid var(--border);
       font-size: 13px;
       text-align: center;
     }
@@ -526,7 +533,7 @@
       pointer-events: none;
     }
 
-    /* Loading and empty states */
+    /* Messages */
 
     .product-message {
       padding: 50px 20px;
@@ -1071,7 +1078,7 @@
           maximumFractionDigits: 2
         }).format(numericPrice);
 
-      return `SGD$${formattedAmount}`;
+      return `SGD $${formattedAmount}`;
     }
 
     function getProductStatus(product) {
@@ -1165,15 +1172,9 @@
 
       if (sortValue === "year-newest") {
         sortedProducts.sort(
-          (first, second) => {
-            const firstYear =
-              getProductYear(first) || 0;
-
-            const secondYear =
-              getProductYear(second) || 0;
-
-            return secondYear - firstYear;
-          }
+          (first, second) =>
+            (getProductYear(second) || 0) -
+            (getProductYear(first) || 0)
         );
       }
 
@@ -1324,19 +1325,14 @@
 
         image.loading = "lazy";
 
-        image.addEventListener(
-          "error",
-          () => {
-            imageArea.replaceChildren();
+        image.addEventListener("error", () => {
+          imageArea.replaceChildren();
 
-            imageArea.textContent =
-              "Product image unavailable";
+          imageArea.textContent =
+            "Product image unavailable";
 
-            imageArea.appendChild(
-              status
-            );
-          }
-        );
+          imageArea.appendChild(status);
+        });
 
         imageArea.appendChild(image);
       } else {
@@ -1406,9 +1402,7 @@
           );
         }
 
-        productInfo.appendChild(
-          details
-        );
+        productInfo.appendChild(details);
       }
 
       if (product.description) {
@@ -1421,9 +1415,7 @@
         description.textContent =
           product.description;
 
-        productInfo.appendChild(
-          description
-        );
+        productInfo.appendChild(description);
       }
 
       const bottom =
@@ -1492,9 +1484,7 @@
         enquiryLink
       );
 
-      productInfo.appendChild(
-        bottom
-      );
+      productInfo.appendChild(bottom);
 
       card.append(
         imageArea,
@@ -1540,8 +1530,7 @@
             ? `No results for "${enteredSearchTerm}"`
             : "0 LEGO products";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage
           .querySelector("h2")
@@ -1573,9 +1562,7 @@
         document.createElement("strong");
 
       strongCount.textContent =
-        String(
-          sortedProducts.length
-        );
+        String(sortedProducts.length);
 
       productCount.append(
         strongCount,
@@ -1584,13 +1571,11 @@
           : ` LEGO ${productLabel}`
       );
 
-      sortedProducts.forEach(
-        (product) => {
-          productGrid.appendChild(
-            createProductCard(product)
-          );
-        }
-      );
+      sortedProducts.forEach((product) => {
+        productGrid.appendChild(
+          createProductCard(product)
+        );
+      });
     }
 
     async function loadProducts() {
@@ -1616,31 +1601,23 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(
-                  data.products
-                )
+            : Array.isArray(data.products)
               ? data.products
               : [];
 
         legoProducts =
-          allProducts.filter(
-            (product) => {
-              const category =
-                product.category ||
-                product.type ||
-                product.collection ||
-                "";
+          allProducts.filter((product) => {
+            const category =
+              product.category ||
+              product.type ||
+              product.collection ||
+              "";
 
-              return (
-                normalizeCategory(
-                  category
-                ) ===
-                normalizeCategory(
-                  CATEGORY_NAME
-                )
-              );
-            }
-          );
+            return (
+              normalizeCategory(category) ===
+              normalizeCategory(CATEGORY_NAME)
+            );
+          });
 
         renderProducts();
       } catch (error) {
@@ -1654,8 +1631,7 @@
         productCount.textContent =
           "LEGO products could not be loaded.";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage.classList.add(
           "error"
