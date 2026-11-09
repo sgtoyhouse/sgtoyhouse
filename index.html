@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SG ToyHouse | LEGO, Pokémon, One Piece & Accessories</title>
+  <title>SG Toy House | LEGO, Pokémon, One Piece & Accessories</title>
 
   <meta
     name="description"
-    content="Browse LEGO, Pokémon, One Piece and collectible accessories at SG ToyHouse."
+    content="Browse LEGO, Pokémon, One Piece and collectible accessories at SG Toy House."
   >
 
   <style>
@@ -53,12 +53,14 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     .container {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
     }
-
-    /* Announcement bar */
 
     .announcement-bar {
       display: block;
@@ -67,20 +69,14 @@
       color: #070707;
       font-size: 13px;
       font-weight: 800;
-      line-height: 1.4;
       text-align: center;
-      transition:
-        background 0.2s ease,
-        color 0.2s ease;
+      transition: background 0.2s ease;
     }
 
     .announcement-bar:hover,
     .announcement-bar:focus-visible {
       background: var(--gold-light);
-      color: #000000;
     }
-
-    /* Compact category bar */
 
     .top-categories {
       background: #0b0b0b;
@@ -99,13 +95,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
       color: var(--gold-light);
       border-right: 1px solid var(--border);
       font-size: 13px;
       font-weight: 700;
-      line-height: 1;
-      text-align: center;
       white-space: nowrap;
       transition:
         background 0.2s ease,
@@ -121,13 +114,6 @@
       background: var(--surface-hover);
       color: #ffffff;
     }
-
-    .top-category-icon {
-      font-size: 15px;
-      line-height: 1;
-    }
-
-    /* Header */
 
     .site-header {
       position: sticky;
@@ -163,7 +149,6 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
-      transition: color 0.2s ease;
     }
 
     .nav-links a:hover,
@@ -171,8 +156,6 @@
     .nav-links .telegram-link {
       color: var(--gold-light);
     }
-
-    /* Hero */
 
     .hero {
       padding: 80px 0;
@@ -212,16 +195,17 @@
       font-size: 18px;
     }
 
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
+    .category-actions {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
     }
 
     .button {
       min-height: 48px;
-      padding: 0 24px;
+      padding: 0 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -229,11 +213,11 @@
       border-radius: 999px;
       font-size: 15px;
       font-weight: 700;
+      white-space: nowrap;
       transition:
         transform 0.2s ease,
         background 0.2s ease,
-        color 0.2s ease,
-        box-shadow 0.2s ease;
+        color 0.2s ease;
     }
 
     .button:hover,
@@ -244,14 +228,11 @@
     .button-primary {
       background: var(--gold);
       color: #070707;
-      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.16);
     }
 
     .button-primary:hover,
     .button-primary:focus-visible {
       background: var(--gold-light);
-      color: #000000;
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
     }
 
     .button-secondary {
@@ -261,11 +242,169 @@
 
     .button-secondary:hover,
     .button-secondary:focus-visible {
-      background: rgba(212, 175, 55, 0.12);
+      background: #1c180d;
       color: #ffffff;
     }
 
-    /* Footer */
+    .telegram-action {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .recently-added,
+    .reviews {
+      padding: 0 0 80px;
+    }
+
+    .product-grid,
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card,
+    .review-card {
+      min-width: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .product-card:hover,
+    .product-card:focus-visible,
+    .review-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-image,
+    .review-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #171717;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .product-image img,
+    .review-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .product-info,
+    .review-content {
+      padding: 18px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .product-category {
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-name {
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .product-link {
+      margin-top: auto;
+      color: var(--gold-light);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .review-card-header {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .review-source {
+      padding: 3px 7px;
+      color: var(--gold-light);
+      background: #1c180d;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .review-text {
+      margin-bottom: 16px;
+      color: var(--text);
+      font-size: 14px;
+      font-style: normal;
+      line-height: 1.6;
+    }
+
+    .review-author {
+      margin-top: auto;
+      padding-top: 14px;
+      color: var(--gold-light);
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .reviews-empty {
+      color: var(--muted);
+      text-align: center;
+    }
 
     .site-footer {
       background: #0b0b0b;
@@ -287,7 +426,9 @@
 
     .footer-links {
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 20px;
       list-style: none;
     }
 
@@ -295,7 +436,6 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
-      transition: color 0.2s ease;
     }
 
     .footer-links a:hover,
@@ -303,22 +443,21 @@
       color: var(--gold-light);
     }
 
-    /* Keyboard focus */
-
     a:focus-visible {
       outline: 3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
     }
 
-    /* Tablet */
+    @media (max-width: 900px) {
+      .product-grid,
+      .review-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
     @media (max-width: 760px) {
       .container {
         width: min(100% - 28px, 1120px);
-      }
-
-      .nav {
-        min-height: 58px;
       }
 
       .nav-links {
@@ -338,6 +477,11 @@
         letter-spacing: -2px;
       }
 
+      .category-actions {
+        max-width: 520px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .footer-content {
         padding: 26px 0;
         flex-direction: column;
@@ -345,21 +489,13 @@
       }
 
       .footer-links {
-        flex-wrap: wrap;
         justify-content: center;
       }
     }
 
-    /* Mobile */
-
     @media (max-width: 480px) {
       .container {
         width: min(100% - 20px, 1120px);
-      }
-
-      .announcement-bar {
-        padding: 7px 12px;
-        font-size: 12px;
       }
 
       .top-categories .container {
@@ -369,16 +505,7 @@
       .top-category {
         min-height: 38px;
         padding: 5px 2px;
-        gap: 3px;
         font-size: 10px;
-      }
-
-      .top-category-icon {
-        font-size: 12px;
-      }
-
-      .logo {
-        font-size: 18px;
       }
 
       .hero-content {
@@ -389,27 +516,20 @@
         font-size: 38px;
       }
 
-      .hero-description {
-        font-size: 16px;
+      .category-actions,
+      .product-grid,
+      .review-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .button {
+      .category-actions .button,
+      .telegram-action .button {
         width: 100%;
       }
-    }
 
-    @media (max-width: 360px) {
-      .top-category {
-        gap: 2px;
-        font-size: 9px;
-      }
-
-      .top-category-icon {
-        font-size: 11px;
+      .recently-added,
+      .reviews {
+        padding-bottom: 56px;
       }
     }
   </style>
@@ -421,45 +541,26 @@
     href="https://t.me/sgtoyhouse"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Contact SG ToyHouse on Telegram"
   >
     Contact us on Telegram →
   </a>
 
   <nav class="top-categories" aria-label="Product categories">
     <div class="container top-category-grid">
-      <a class="top-category" href="lego.html">
-        <span class="top-category-icon" aria-hidden="true">🧱</span>
-        <span>LEGO</span>
-      </a>
-
-      <a class="top-category" href="pokemon.html">
-        <span class="top-category-icon" aria-hidden="true">⚡</span>
-        <span>Pokémon</span>
-      </a>
-
-      <a class="top-category" href="onepiece.html">
-        <span class="top-category-icon" aria-hidden="true">☠️</span>
-        <span>One Piece</span>
-      </a>
-
-      <a class="top-category" href="accessories.html">
-        <span class="top-category-icon" aria-hidden="true">🎒</span>
-        <span>Accessories</span>
-      </a>
+      <a class="top-category" href="lego.html">LEGO</a>
+      <a class="top-category" href="pokemon.html">Pokémon</a>
+      <a class="top-category" href="onepiece.html">One Piece</a>
+      <a class="top-category" href="accessories.html">Accessories</a>
     </div>
   </nav>
 
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="index.html">SG TOYHOUSE</a>
+      <a class="logo" href="index.html">SG TOY HOUSE</a>
 
       <nav aria-label="Main navigation">
         <ul class="nav-links">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-
+          <li><a href="index.html">Home</a></li>
           <li>
             <a
               class="telegram-link"
@@ -483,18 +584,23 @@
             LEGO • Pokémon • One Piece • Accessories
           </p>
 
-          <h1>Welcome to SG ToyHouse</h1>
+          <h1>Welcome to SG Toy House</h1>
 
           <p class="hero-description">
             Browse available products, view prices and find the next addition
             to your collection.
           </p>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="lego.html">
-              Browse products
+          <div class="category-actions">
+            <a class="button button-primary" href="lego.html">LEGO</a>
+            <a class="button button-primary" href="pokemon.html">Pokémon</a>
+            <a class="button button-primary" href="onepiece.html">One Piece</a>
+            <a class="button button-primary" href="accessories.html">
+              Accessories
             </a>
+          </div>
 
+          <div class="telegram-action">
             <a
               class="button button-secondary"
               href="https://t.me/sgtoyhouse"
@@ -507,44 +613,202 @@
         </div>
       </div>
     </section>
+
+    <section class="recently-added">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Recently Added</h2>
+          <p>Discover the latest additions to SG Toy House.</p>
+        </div>
+
+        <div class="product-grid">
+          <a class="product-card" href="lego.html">
+            <div class="product-image">Add product image</div>
+            <div class="product-info">
+              <p class="product-category">LEGO</p>
+              <h3 class="product-name">Latest LEGO Product</h3>
+              <p class="product-link">View LEGO</p>
+            </div>
+          </a>
+
+          <a class="product-card" href="pokemon.html">
+            <div class="product-image">Add product image</div>
+            <div class="product-info">
+              <p class="product-category">Pokémon</p>
+              <h3 class="product-name">Latest Pokémon Product</h3>
+              <p class="product-link">View Pokémon</p>
+            </div>
+          </a>
+
+          <a class="product-card" href="onepiece.html">
+            <div class="product-image">Add product image</div>
+            <div class="product-info">
+              <p class="product-category">One Piece</p>
+              <h3 class="product-name">Latest One Piece Product</h3>
+              <p class="product-link">View One Piece</p>
+            </div>
+          </a>
+
+          <a class="product-card" href="accessories.html">
+            <div class="product-image">Add product image</div>
+            <div class="product-info">
+              <p class="product-category">Accessories</p>
+              <h3 class="product-name">Latest Accessory</h3>
+              <p class="product-link">View Accessories</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" aria-labelledby="reviews-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="reviews-heading">Reviews</h2>
+          <p>See what customers say about SG Toy House.</p>
+        </div>
+
+        <div
+          class="review-grid"
+          id="review-grid"
+          aria-live="polite"
+        ></div>
+
+        <p class="reviews-empty" id="reviews-empty" hidden>
+          Reviews will be added soon.
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <p>© 2026 SG ToyHouse. All rights reserved.</p>
+      <p>© 2026 SG Toy House. All rights reserved.</p>
 
       <ul class="footer-links">
         <li>
-          <a
-            href="https://t.me/sgtoyhouse"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://t.me/sgtoyhouse" target="_blank" rel="noopener noreferrer">
             Telegram
           </a>
         </li>
-
         <li>
-          <a
-            href="https://www.instagram.com/sgtoyhse/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.instagram.com/sgtoyhse/" target="_blank" rel="noopener noreferrer">
             Instagram
           </a>
         </li>
-
         <li>
-          <a
-            href="https://www.facebook.com/T0yH0use/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.facebook.com/T0yH0use/" target="_blank" rel="noopener noreferrer">
             Facebook
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@sgtoyhse" target="_blank" rel="noopener noreferrer">
+            TikTok
+          </a>
+        </li>
+        <li>
+          <a href="https://www.carousell.sg/u/archwizard/" target="_blank" rel="noopener noreferrer">
+            Carousell
           </a>
         </li>
       </ul>
     </div>
   </footer>
+
+  <script>
+    const reviewGrid = document.getElementById("review-grid");
+    const reviewsEmpty = document.getElementById("reviews-empty");
+
+    function renderStars(rating) {
+      const safeRating = Math.max(1, Math.min(5, Number(rating)));
+      return "★".repeat(safeRating) + "☆".repeat(5 - safeRating);
+    }
+
+    function createReviewCard(review) {
+      const article = document.createElement("article");
+      article.className = "review-card";
+
+      const photo = document.createElement("div");
+      photo.className = "review-photo";
+
+      if (review.photo) {
+        const image = document.createElement("img");
+        image.src = review.photo;
+        image.alt = review.photoAlt || "Photo submitted with a customer review";
+        image.loading = "lazy";
+
+        image.addEventListener("error", () => {
+          photo.textContent = "Review photo unavailable";
+        });
+
+        photo.appendChild(image);
+      } else {
+        photo.textContent = "Customer review";
+      }
+
+      const content = document.createElement("div");
+      content.className = "review-content";
+
+      const header = document.createElement("div");
+      header.className = "review-card-header";
+
+      const stars = document.createElement("p");
+      stars.className = "review-stars";
+      stars.textContent = renderStars(review.rating);
+      stars.setAttribute(
+        "aria-label",
+        `${Number(review.rating)} out of 5 stars`
+      );
+
+      const source = document.createElement("p");
+      source.className = "review-source";
+      source.textContent = review.source || "Customer";
+
+      const text = document.createElement("blockquote");
+      text.className = "review-text";
+      text.textContent = review.text;
+
+      const author = document.createElement("p");
+      author.className = "review-author";
+      author.textContent = review.author;
+
+      header.append(stars, source);
+      content.append(header, text, author);
+      article.append(photo, content);
+
+      return article;
+    }
+
+    async function loadReviews() {
+      try {
+        const response = await fetch(
+          `reviews.json?version=${Date.now()}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Unable to load reviews.json");
+        }
+
+        const reviews = await response.json();
+        reviewGrid.replaceChildren();
+
+        if (!Array.isArray(reviews) || reviews.length === 0) {
+          reviewsEmpty.hidden = false;
+          return;
+        }
+
+        reviewsEmpty.hidden = true;
+
+        reviews.forEach((review) => {
+          reviewGrid.appendChild(createReviewCard(review));
+        });
+      } catch (error) {
+        console.error(error);
+        reviewsEmpty.hidden = false;
+      }
+    }
+
+    loadReviews();
+  </script>
 </body>
 </html>
