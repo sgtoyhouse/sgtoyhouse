@@ -6,6 +6,13 @@
 
   <title>One Piece TCG | SG Toy House</title>
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/apple-touch-icon.png"
+  >
+
   <meta
     name="description"
     content="Browse One Piece TCG cards and sealed products available from SG Toy House."
@@ -203,7 +210,7 @@
       color: var(--gold-light);
     }
 
-    /* Page hero */
+    /* Page introduction */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -259,6 +266,8 @@
       border: 1px solid var(--border);
       border-radius: 14px;
     }
+
+    /* Search */
 
     .search-control {
       width: 100%;
@@ -351,7 +360,7 @@
       cursor: pointer;
     }
 
-    /* Product grid */
+    /* Product cards */
 
     .product-grid {
       display: grid;
@@ -389,8 +398,8 @@
       justify-content: center;
       position: relative;
       background: #171717;
-      border-bottom: 1px solid var(--border);
       color: var(--muted);
+      border-bottom: 1px solid var(--border);
       font-size: 13px;
       text-align: center;
     }
@@ -524,7 +533,7 @@
       pointer-events: none;
     }
 
-    /* Loading and empty state */
+    /* Messages */
 
     .product-message {
       padding: 50px 20px;
@@ -584,6 +593,8 @@
     .footer-links a:focus-visible {
       color: var(--gold-light);
     }
+
+    /* Focus */
 
     a:focus-visible,
     input:focus-visible,
@@ -968,12 +979,13 @@
     let onePieceProducts = [];
 
     function normalizeCategory(value) {
-      const normalizedValue = String(value || "")
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]/g, "");
+      const normalizedValue =
+        String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]/g, "");
 
       if (
         normalizedValue === "onepiece" ||
@@ -1069,7 +1081,7 @@
           maximumFractionDigits: 2
         }).format(numericPrice);
 
-      return `SGD$${formattedAmount}`;
+      return `SGD $${formattedAmount}`;
     }
 
     function getProductStatus(product) {
@@ -1141,7 +1153,10 @@
       ).includes(searchTerm);
     }
 
-    function sortProducts(products, sortValue) {
+    function sortProducts(
+      products,
+      sortValue
+    ) {
       const sortedProducts =
         [...products];
 
@@ -1165,15 +1180,9 @@
 
       if (sortValue === "year-newest") {
         sortedProducts.sort(
-          (first, second) => {
-            const firstYear =
-              getProductYear(first) || 0;
-
-            const secondYear =
-              getProductYear(second) || 0;
-
-            return secondYear - firstYear;
-          }
+          (first, second) =>
+            (getProductYear(second) || 0) -
+            (getProductYear(first) || 0)
         );
       }
 
@@ -1260,7 +1269,10 @@
       return sortedProducts;
     }
 
-    function createProductDetail(label, value) {
+    function createProductDetail(
+      label,
+      value
+    ) {
       const detail =
         document.createElement("span");
 
@@ -1332,9 +1344,7 @@
             imageArea.textContent =
               "Product image unavailable";
 
-            imageArea.appendChild(
-              status
-            );
+            imageArea.appendChild(status);
           }
         );
 
@@ -1392,9 +1402,7 @@
           )
         );
 
-        productInfo.appendChild(
-          details
-        );
+        productInfo.appendChild(details);
       }
 
       if (product.description) {
@@ -1407,9 +1415,7 @@
         description.textContent =
           product.description;
 
-        productInfo.appendChild(
-          description
-        );
+        productInfo.appendChild(description);
       }
 
       const bottom =
@@ -1478,9 +1484,7 @@
         enquiryLink
       );
 
-      productInfo.appendChild(
-        bottom
-      );
+      productInfo.appendChild(bottom);
 
       card.append(
         imageArea,
@@ -1602,9 +1606,7 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(
-                  data.products
-                )
+            : Array.isArray(data.products)
               ? data.products
               : [];
 
@@ -1618,9 +1620,7 @@
                 "";
 
               return (
-                normalizeCategory(
-                  category
-                ) ===
+                normalizeCategory(category) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
