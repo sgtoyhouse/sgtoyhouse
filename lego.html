@@ -12,7 +12,1103 @@
         name="description"
         content="Browse available LEGO sets and collectibles from SG Toy House."
     >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>LEGO | SG Toy House</title>
+
+  <meta
+    name="description"
+    content="Browse LEGO sets and collectibles available from SG Toy House."
+  >
+
+  <style>
+    :root {
+      --background: #070707;
+      --surface: #101010;
+      --surface-hover: #1a1a1a;
+      --text: #f8f4e8;
+      --muted: #b8ad91;
+      --border: #3c321c;
+      --gold: #d4af37;
+      --gold-light: #f0d675;
+      --danger: #ff8c8c;
+      --shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Announcement bar */
+
+    .announcement-bar {
+      display: block;
+      padding: 8px 20px;
+      background: var(--gold);
+      color: #070707;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+      text-align: center;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .announcement-bar:hover,
+    .announcement-bar:focus-visible {
+      background: var(--gold-light);
+      color: #000000;
+    }
+
+    /* Compact category navigation */
+
+    .top-categories {
+      background: #0b0b0b;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .top-category {
+      min-width: 0;
+      min-height: 40px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      border-right: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .top-category:last-child {
+      border-right: 0;
+    }
+
+    .top-category:hover,
+    .top-category:focus-visible {
+      background: var(--surface-hover);
+      color: #ffffff;
+    }
+
+    .top-category[aria-current="page"] {
+      background: var(--gold);
+      color: #070707;
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #070707;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links .telegram-link {
+      color: var(--gold-light);
+    }
+
+    /* Page introduction */
+
+    .page-hero {
+      padding: 70px 0 48px;
+      text-align: center;
+    }
+
+    .page-label {
+      margin-bottom: 12px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .page-hero h1 {
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+    }
+
+    .page-description {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    /* Products */
+
+    .products-section {
+      padding: 0 0 80px;
+    }
+
+    .product-toolbar {
+      margin-bottom: 24px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .product-count {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .product-count strong {
+      color: var(--gold-light);
+    }
+
+    .sort-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sort-control label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .sort-control select {
+      padding: 9px 34px 9px 12px;
+      background: #171717;
+      color: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      min-width: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #171717;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.03);
+    }
+
+    .product-status {
+      padding: 5px 9px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--gold);
+      color: #070707;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .product-status.sold-out {
+      background: #3a3a3a;
+      color: #ffffff;
+    }
+
+    .product-info {
+      padding: 18px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .product-category {
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-name {
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .product-description {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .product-bottom {
+      margin-top: auto;
+    }
+
+    .product-price {
+      margin-bottom: 12px;
+      color: var(--gold-light);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .product-button {
+      width: 100%;
+      min-height: 42px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold);
+      color: #070707;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .product-button:hover,
+    .product-button:focus-visible {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .product-button.disabled {
+      background: #242424;
+      color: #888888;
+      border-color: #343434;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Loading and empty states */
+
+    .product-message {
+      padding: 50px 20px;
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .product-message h2 {
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 24px;
+    }
+
+    .product-message.error {
+      color: var(--danger);
+    }
+
+    /* Footer */
+
+    .site-footer {
+      background: #0b0b0b;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-content p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 20px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--gold-light);
+    }
+
+    /* Focus */
+
+    a:focus-visible,
+    select:focus-visible {
+      outline: 3px solid rgba(212, 175, 55, 0.45);
+      outline-offset: 3px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        min-height: 58px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .page-hero {
+        padding: 52px 0 38px;
+      }
+
+      .page-hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .footer-content {
+        padding: 26px 0;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .product-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .sort-control {
+        justify-content: space-between;
+      }
+
+      .sort-control select {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 20px, 1120px);
+      }
+
+      .announcement-bar {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+
+      .top-categories .container {
+        width: 100%;
+      }
+
+      .top-category {
+        min-height: 38px;
+        padding: 5px 2px;
+        font-size: 10px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .page-hero h1 {
+        font-size: 42px;
+      }
+
+      .page-description {
+        font-size: 16px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .products-section {
+        padding-bottom: 56px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .top-category {
+        font-size: 9px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a
+    class="announcement-bar"
+    href="https://t.me/sgtoyhouse"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact SG Toy House on Telegram"
+  >
+    Contact us on Telegram →
+  </a>
+
+  <nav class="top-categories" aria-label="Product categories">
+    <div class="container top-category-grid">
+      <a
+        class="top-category"
+        href="lego.html"
+        aria-current="page"
+      >
+        LEGO
+      </a>
+
+      <a class="top-category" href="pokemon.html">
+        Pokémon
+      </a>
+
+      <a class="top-category" href="onepiece.html">
+        One Piece
+      </a>
+
+      <a class="top-category" href="accessories.html">
+        Accessories
+      </a>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="index.html">
+        SG TOY HOUSE
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+
+          <li>
+            <a
+              class="telegram-link"
+              href="https://t.me/sgtoyhouse"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Telegram
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="page-label">SG Toy House Collection</p>
+
+        <h1>LEGO</h1>
+
+        <p class="page-description">
+          Browse our available LEGO sets and collectibles.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="products-section"
+      aria-labelledby="lego-products-heading"
+    >
+      <div class="container">
+        <h2 id="lego-products-heading" hidden>
+          Available LEGO products
+        </h2>
+
+        <div class="product-toolbar">
+          <p class="product-count" id="product-count">
+            Loading LEGO products...
+          </p>
+
+          <div class="sort-control">
+            <label for="product-sort">Sort</label>
+
+            <select id="product-sort">
+              <option value="newest">Recently added</option>
+              <option value="name-ascending">Name: A to Z</option>
+              <option value="name-descending">Name: Z to A</option>
+              <option value="price-low">Price: Low to high</option>
+              <option value="price-high">Price: High to low</option>
+            </select>
+          </div>
+        </div>
+
+        <div
+          class="product-grid"
+          id="product-grid"
+          aria-live="polite"
+        ></div>
+
+        <div
+          class="product-message"
+          id="product-message"
+          hidden
+        >
+          <h2>No LEGO products available</h2>
+          <p>Please check again soon for new additions.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© 2026 SG Toy House. All rights reserved.</p>
+
+      <ul class="footer-links">
+        <li>
+          <a
+            href="https://t.me/sgtoyhouse"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Telegram
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.instagram.com/sgtoyhse/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.facebook.com/T0yH0use/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.tiktok.com/@sgtoyhse"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TikTok
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.carousell.sg/u/archwizard/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Carousell
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const CATEGORY_NAME = "LEGO";
+    const TELEGRAM_URL = "https://t.me/sgtoyhouse";
+
+    const productGrid = document.getElementById("product-grid");
+    const productCount = document.getElementById("product-count");
+    const productMessage = document.getElementById("product-message");
+    const productSort = document.getElementById("product-sort");
+
+    let legoProducts = [];
+
+    function normalizeCategory(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
+    }
+
+    function getProductName(product) {
+      return String(
+        product.name ||
+        product.title ||
+        product.productName ||
+        "LEGO product"
+      );
+    }
+
+    function getProductPrice(product) {
+      const value =
+        product.price ??
+        product.amount ??
+        product.productPrice;
+
+      if (
+        value === null ||
+        value === undefined ||
+        value === ""
+      ) {
+        return null;
+      }
+
+      const numericValue = Number(
+        String(value).replace(/[^0-9.-]/g, "")
+      );
+
+      return Number.isFinite(numericValue)
+        ? numericValue
+        : null;
+    }
+
+    function formatPrice(product) {
+      const price = getProductPrice(product);
+
+      if (price === null) {
+        return product.price || "Contact for price";
+      }
+
+      const currency =
+        product.currency ||
+        product.currencyCode ||
+        "SGD";
+
+      try {
+        return new Intl.NumberFormat("en-SG", {
+          style: "currency",
+          currency,
+          maximumFractionDigits: 2
+        }).format(price);
+      } catch (error) {
+        return `SGD ${price.toFixed(2)}`;
+      }
+    }
+
+    function getProductStatus(product) {
+      return String(
+        product.status ||
+        product.availability ||
+        "In Stock"
+      );
+    }
+
+    function isSoldOut(product) {
+      const status = getProductStatus(product)
+        .toLowerCase()
+        .replace(/[^a-z]/g, "");
+
+      return (
+        status.includes("soldout") ||
+        status.includes("unavailable") ||
+        status.includes("outofstock")
+      );
+    }
+
+    function getProductTimestamp(product) {
+      const value =
+        product.dateAdded ||
+        product.createdAt ||
+        product.updatedAt ||
+        product.date ||
+        "";
+
+      const timestamp = Date.parse(value);
+      return Number.isNaN(timestamp) ? 0 : timestamp;
+    }
+
+    function sortProducts(products, sortValue) {
+      const sortedProducts = [...products];
+
+      if (sortValue === "name-ascending") {
+        sortedProducts.sort((a, b) =>
+          getProductName(a).localeCompare(getProductName(b))
+        );
+      }
+
+      if (sortValue === "name-descending") {
+        sortedProducts.sort((a, b) =>
+          getProductName(b).localeCompare(getProductName(a))
+        );
+      }
+
+      if (sortValue === "price-low") {
+        sortedProducts.sort((a, b) => {
+          const priceA = getProductPrice(a);
+          const priceB = getProductPrice(b);
+
+          return (
+            (priceA === null ? Number.MAX_VALUE : priceA) -
+            (priceB === null ? Number.MAX_VALUE : priceB)
+          );
+        });
+      }
+
+      if (sortValue === "price-high") {
+        sortedProducts.sort((a, b) => {
+          const priceA = getProductPrice(a);
+          const priceB = getProductPrice(b);
+
+          return (
+            (priceB === null ? -1 : priceB) -
+            (priceA === null ? -1 : priceA)
+          );
+        });
+      }
+
+      if (sortValue === "newest") {
+        sortedProducts.sort(
+          (a, b) =>
+            getProductTimestamp(b) -
+            getProductTimestamp(a)
+        );
+      }
+
+      return sortedProducts;
+    }
+
+    function createProductCard(product) {
+      const card = document.createElement("article");
+      card.className = "product-card";
+
+      const imageArea = document.createElement("div");
+      imageArea.className = "product-image";
+
+      const imageSource =
+        product.image ||
+        product.imageUrl ||
+        product.photo ||
+        "";
+
+      if (imageSource) {
+        const image = document.createElement("img");
+        image.src = imageSource;
+        image.alt =
+          product.imageAlt ||
+          getProductName(product);
+        image.loading = "lazy";
+
+        image.addEventListener("error", () => {
+          imageArea.replaceChildren();
+          imageArea.textContent = "Product image unavailable";
+        });
+
+        imageArea.appendChild(image);
+      } else {
+        imageArea.textContent = "Product image";
+      }
+
+      const status = document.createElement("span");
+      status.className = "product-status";
+      status.textContent = getProductStatus(product);
+
+      if (isSoldOut(product)) {
+        status.classList.add("sold-out");
+      }
+
+      imageArea.appendChild(status);
+
+      const productInfo = document.createElement("div");
+      productInfo.className = "product-info";
+
+      const category = document.createElement("p");
+      category.className = "product-category";
+      category.textContent = CATEGORY_NAME;
+
+      const name = document.createElement("h3");
+      name.className = "product-name";
+      name.textContent = getProductName(product);
+
+      productInfo.append(category, name);
+
+      if (product.description) {
+        const description = document.createElement("p");
+        description.className = "product-description";
+        description.textContent = product.description;
+        productInfo.appendChild(description);
+      }
+
+      const bottom = document.createElement("div");
+      bottom.className = "product-bottom";
+
+      const price = document.createElement("p");
+      price.className = "product-price";
+      price.textContent = formatPrice(product);
+
+      const enquiryLink = document.createElement("a");
+      enquiryLink.className = "product-button";
+
+      if (isSoldOut(product)) {
+        enquiryLink.classList.add("disabled");
+        enquiryLink.textContent = "Sold out";
+        enquiryLink.setAttribute("aria-disabled", "true");
+      } else {
+        const productName = getProductName(product);
+        const enquiryMessage =
+          `Hi SG Toy House, I am interested in ${productName}.`;
+
+        enquiryLink.href =
+          product.telegramUrl ||
+          `${TELEGRAM_URL}?text=${encodeURIComponent(enquiryMessage)}`;
+
+        enquiryLink.target = "_blank";
+        enquiryLink.rel = "noopener noreferrer";
+        enquiryLink.textContent =
+          product.buttonText ||
+          "Enquire on Telegram";
+      }
+
+      bottom.append(price, enquiryLink);
+      productInfo.appendChild(bottom);
+      card.append(imageArea, productInfo);
+
+      return card;
+    }
+
+    function renderProducts() {
+      const sortedProducts = sortProducts(
+        legoProducts,
+        productSort.value
+      );
+
+      productGrid.replaceChildren();
+
+      if (sortedProducts.length === 0) {
+        productCount.textContent = "0 LEGO products";
+        productMessage.hidden = false;
+        return;
+      }
+
+      productMessage.hidden = true;
+
+      const countLabel =
+        sortedProducts.length === 1
+          ? "product"
+          : "products";
+
+      productCount.innerHTML =
+        `<strong>${sortedProducts.length}</strong> LEGO ${countLabel}`;
+
+      sortedProducts.forEach((product) => {
+        productGrid.appendChild(createProductCard(product));
+      });
+    }
+
+    async function loadProducts() {
+      try {
+        const response = await fetch(
+          `products.json?version=${Date.now()}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Unable to load products.json");
+        }
+
+        const data = await response.json();
+
+        const allProducts = Array.isArray(data)
+          ? data
+          : Array.isArray(data.products)
+            ? data.products
+            : [];
+
+        legoProducts = allProducts.filter((product) => {
+          const category =
+            product.category ||
+            product.type ||
+            product.collection ||
+            "";
+
+          return (
+            normalizeCategory(category) ===
+            normalizeCategory(CATEGORY_NAME)
+          );
+        });
+
+        renderProducts();
+      } catch (error) {
+        console.error(error);
+
+        productGrid.replaceChildren();
+        productCount.textContent =
+          "LEGO products could not be loaded.";
+
+        productMessage.hidden = false;
+        productMessage.classList.add("error");
+        productMessage.querySelector("h2").textContent =
+          "Unable to load products";
+        productMessage.querySelector("p").textContent =
+          "Please refresh the page or try again later.";
+      }
+    }
+
+    productSort.addEventListener("change", renderProducts);
+
+    loadProducts();
+  </script>
+</body>
+</html>
     <title>LEGO Inventory | SG Toy House</title>
 
     <style>
