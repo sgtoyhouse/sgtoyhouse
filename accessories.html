@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Browse card sleeves, binders, storage and accessories available from SG Toy House."
+    content="Browse card sleeves, binders, storage products and collectible accessories available from SG Toy House."
   >
 
   <style>
@@ -38,7 +38,13 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: var(--background);
+
+      background-color: var(--background);
+      background-image: url("images/backgrounds/backgroundlogo.jpg");
+      background-repeat: repeat;
+      background-size: 226px 159px;
+      background-position: top left;
+
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -61,6 +67,10 @@
     select,
     input {
       font: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
     }
 
     .container {
@@ -102,10 +112,10 @@
       color: #000000;
     }
 
-    /* Compact category navigation */
+    /* Category navigation */
 
     .top-categories {
-      background: #0b0b0b;
+      background: rgba(11, 11, 11, 0.96);
       border-bottom: 1px solid var(--border);
     }
 
@@ -154,7 +164,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: #070707;
+      background: rgba(7, 7, 7, 0.96);
       border-bottom: 1px solid var(--border);
     }
 
@@ -200,6 +210,13 @@
       text-align: center;
     }
 
+    .page-hero .container {
+      padding: 42px 24px;
+      background: rgba(7, 7, 7, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
     .page-label {
       margin-bottom: 12px;
       color: var(--gold);
@@ -225,7 +242,7 @@
       font-size: 18px;
     }
 
-    /* Products */
+    /* Product section */
 
     .products-section {
       padding: 0 0 80px;
@@ -238,7 +255,7 @@
       grid-template-columns: minmax(220px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.96);
       border: 1px solid var(--border);
       border-radius: 14px;
     }
@@ -349,7 +366,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.97);
       border: 1px solid var(--border);
       border-radius: 18px;
       transition:
@@ -435,13 +452,35 @@
       line-height: 1.35;
     }
 
+    .product-details {
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .product-detail {
+      padding: 4px 8px;
+      color: var(--muted);
+      background: #171717;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .product-detail strong {
+      color: var(--gold-light);
+    }
+
     .product-description {
-  margin-bottom: 16px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-  white-space: pre-line;
-}
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      white-space: pre-line;
+    }
 
     .product-bottom {
       margin-top: auto;
@@ -487,11 +526,11 @@
       pointer-events: none;
     }
 
-    /* Loading and empty states */
+    /* Loading, error and empty states */
 
     .product-message {
       padding: 50px 20px;
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.97);
       color: var(--muted);
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -511,7 +550,7 @@
     /* Footer */
 
     .site-footer {
-      background: #0b0b0b;
+      background: rgba(11, 11, 11, 0.96);
       border-top: 1px solid var(--border);
     }
 
@@ -551,6 +590,7 @@
     /* Focus */
 
     a:focus-visible,
+    input:focus-visible,
     select:focus-visible {
       outline: 3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
@@ -592,6 +632,10 @@
 
       .page-hero {
         padding: 52px 0 38px;
+      }
+
+      .page-hero .container {
+        padding: 34px 18px;
       }
 
       .page-hero h1 {
@@ -682,16 +726,24 @@
     href="https://t.me/sgtoyhse"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Contact SG Toy House on Telegram"
+    aria-label="Join SG Toy House on Telegram"
   >
-    Contact us on Telegram →
+    Singapore’s #1 Toy House. Join Us on Telegram →
   </a>
 
   <nav class="top-categories" aria-label="Product categories">
     <div class="container top-category-grid">
-      <a class="top-category" href="lego.html">LEGO</a>
-      <a class="top-category" href="pokemon.html">Pokémon</a>
-      <a class="top-category" href="onepiece.html">One Piece</a>
+      <a class="top-category" href="lego.html">
+        LEGO
+      </a>
+
+      <a class="top-category" href="pokemon.html">
+        Pokémon
+      </a>
+
+      <a class="top-category" href="onepiece.html">
+        One Piece
+      </a>
 
       <a
         class="top-category"
@@ -712,7 +764,9 @@
       <nav aria-label="Main navigation">
         <ul class="nav-links">
           <li>
-            <a href="index.html">Home</a>
+            <a href="index.html">
+              Home
+            </a>
           </li>
 
           <li>
@@ -740,7 +794,7 @@
         <h1>Accessories</h1>
 
         <p class="page-description">
-          Browse card sleeves, binders, storage and accessories.
+          Browse sleeves, binders, storage products and collectible accessories.
         </p>
       </div>
     </section>
@@ -766,7 +820,7 @@
             <input
               type="search"
               id="product-search"
-              placeholder="Search accessories..."
+              placeholder="Search by name, year or keyword..."
               autocomplete="off"
               enterkeyhint="search"
             >
@@ -777,7 +831,9 @@
           </p>
 
           <div class="sort-control">
-            <label for="product-sort">Sort</label>
+            <label for="product-sort">
+              Sort
+            </label>
 
             <select id="product-sort">
               <option value="newest">
@@ -790,6 +846,14 @@
 
               <option value="name-descending">
                 Name: Z to A
+              </option>
+
+              <option value="year-newest">
+                Year: Newest first
+              </option>
+
+              <option value="year-oldest">
+                Year: Oldest first
               </option>
 
               <option value="price-low">
@@ -816,7 +880,10 @@
           hidden
         >
           <h2>No accessories available</h2>
-          <p>Please check again soon for new additions.</p>
+
+          <p>
+            Please check again soon for new additions.
+          </p>
         </div>
       </div>
     </section>
@@ -825,7 +892,7 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <p>
-        © 2026 SG Toy House. All rights reserved.
+        © 2020 SG Toy House. All rights reserved. Singapore. Belgravia Drive.
       </p>
 
       <ul class="footer-links">
@@ -883,18 +950,24 @@
   </footer>
 
   <script>
-    /*
-      Products saved as "Accessories" or "Accessory" are accepted.
-    */
     const CATEGORY_NAME = "Accessories";
     const DISPLAY_CATEGORY_NAME = "Accessories";
     const TELEGRAM_URL = "https://t.me/sgtoyhse";
 
-    const productGrid = document.getElementById("product-grid");
-    const productCount = document.getElementById("product-count");
-    const productMessage = document.getElementById("product-message");
-    const productSearch = document.getElementById("product-search");
-    const productSort = document.getElementById("product-sort");
+    const productGrid =
+      document.getElementById("product-grid");
+
+    const productCount =
+      document.getElementById("product-count");
+
+    const productMessage =
+      document.getElementById("product-message");
+
+    const productSearch =
+      document.getElementById("product-search");
+
+    const productSort =
+      document.getElementById("product-sort");
 
     let accessoryProducts = [];
 
@@ -918,6 +991,7 @@
 
     function normalizeSearchText(value) {
       return String(value || "")
+        .trim()
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
@@ -930,6 +1004,34 @@
         product.productName ||
         "Accessory"
       );
+    }
+
+    function getProductImage(product) {
+      return String(
+        product.image ||
+        product.imageUrl ||
+        product.photo ||
+        ""
+      );
+    }
+
+    function getProductYear(product) {
+      const value =
+        product.year ??
+        product.releaseYear ??
+        "";
+
+      const numericYear = Number(value);
+
+      if (
+        !Number.isInteger(numericYear) ||
+        numericYear < 1900 ||
+        numericYear > 2100
+      ) {
+        return null;
+      }
+
+      return numericYear;
     }
 
     function getProductPrice(product) {
@@ -956,10 +1058,12 @@
     }
 
     function formatPrice(product) {
-      const numericPrice = getProductPrice(product);
+      const numericPrice =
+        getProductPrice(product);
 
       if (numericPrice === null) {
-        return product.price || "Contact for price";
+        return product.price ||
+          "Contact for price";
       }
 
       const currency =
@@ -968,11 +1072,14 @@
         "SGD";
 
       try {
-        return new Intl.NumberFormat("en-SG", {
-          style: "currency",
-          currency,
-          maximumFractionDigits: 2
-        }).format(numericPrice);
+        return new Intl.NumberFormat(
+          "en-SG",
+          {
+            style: "currency",
+            currency,
+            maximumFractionDigits: 2
+          }
+        ).format(numericPrice);
       } catch (error) {
         return `SGD ${numericPrice.toFixed(2)}`;
       }
@@ -987,9 +1094,10 @@
     }
 
     function isSoldOut(product) {
-      const normalizedStatus = getProductStatus(product)
-        .toLowerCase()
-        .replace(/[^a-z]/g, "");
+      const normalizedStatus =
+        getProductStatus(product)
+          .toLowerCase()
+          .replace(/[^a-z]/g, "");
 
       return (
         normalizedStatus.includes("soldout") ||
@@ -1006,12 +1114,18 @@
         product.date ||
         "";
 
-      const timestamp = Date.parse(dateValue);
+      const timestamp =
+        Date.parse(dateValue);
 
-      return Number.isNaN(timestamp) ? 0 : timestamp;
+      return Number.isNaN(timestamp)
+        ? 0
+        : timestamp;
     }
 
-    function productMatchesSearch(product, searchTerm) {
+    function productMatchesSearch(
+      product,
+      searchTerm
+    ) {
       if (!searchTerm) {
         return true;
       }
@@ -1019,92 +1133,191 @@
       const searchableText = [
         getProductName(product),
         product.description,
-        product.setNumber,
-        product.set,
-        product.sku,
-        product.productCode,
+        product.year,
+        product.releaseYear,
         product.brand,
         product.size,
         product.status,
         product.availability
       ]
-        .filter(Boolean)
+        .filter(
+          (value) =>
+            value !== null &&
+            value !== undefined &&
+            value !== ""
+        )
         .join(" ");
 
-      return normalizeSearchText(searchableText).includes(
-        searchTerm
-      );
+      return normalizeSearchText(
+        searchableText
+      ).includes(searchTerm);
     }
 
     function sortProducts(products, sortValue) {
       const sortedProducts = [...products];
 
       if (sortValue === "name-ascending") {
-        sortedProducts.sort((firstProduct, secondProduct) =>
-          getProductName(firstProduct).localeCompare(
-            getProductName(secondProduct)
-          )
+        sortedProducts.sort(
+          (first, second) =>
+            getProductName(first).localeCompare(
+              getProductName(second)
+            )
         );
       }
 
       if (sortValue === "name-descending") {
-        sortedProducts.sort((firstProduct, secondProduct) =>
-          getProductName(secondProduct).localeCompare(
-            getProductName(firstProduct)
-          )
+        sortedProducts.sort(
+          (first, second) =>
+            getProductName(second).localeCompare(
+              getProductName(first)
+            )
+        );
+      }
+
+      if (sortValue === "year-newest") {
+        sortedProducts.sort(
+          (first, second) => {
+            const firstYear =
+              getProductYear(first) || 0;
+
+            const secondYear =
+              getProductYear(second) || 0;
+
+            return secondYear - firstYear;
+          }
+        );
+      }
+
+      if (sortValue === "year-oldest") {
+        sortedProducts.sort(
+          (first, second) => {
+            const firstYear =
+              getProductYear(first);
+
+            const secondYear =
+              getProductYear(second);
+
+            const firstValue =
+              firstYear === null
+                ? Number.MAX_VALUE
+                : firstYear;
+
+            const secondValue =
+              secondYear === null
+                ? Number.MAX_VALUE
+                : secondYear;
+
+            return firstValue - secondValue;
+          }
         );
       }
 
       if (sortValue === "price-low") {
-        sortedProducts.sort((firstProduct, secondProduct) => {
-          const firstPrice = getProductPrice(firstProduct);
-          const secondPrice = getProductPrice(secondProduct);
+        sortedProducts.sort(
+          (first, second) => {
+            const firstPrice =
+              getProductPrice(first);
 
-          return (
-            (firstPrice === null ? Number.MAX_VALUE : firstPrice) -
-            (secondPrice === null ? Number.MAX_VALUE : secondPrice)
-          );
-        });
+            const secondPrice =
+              getProductPrice(second);
+
+            const firstValue =
+              firstPrice === null
+                ? Number.MAX_VALUE
+                : firstPrice;
+
+            const secondValue =
+              secondPrice === null
+                ? Number.MAX_VALUE
+                : secondPrice;
+
+            return firstValue - secondValue;
+          }
+        );
       }
 
       if (sortValue === "price-high") {
-        sortedProducts.sort((firstProduct, secondProduct) => {
-          const firstPrice = getProductPrice(firstProduct);
-          const secondPrice = getProductPrice(secondProduct);
+        sortedProducts.sort(
+          (first, second) => {
+            const firstPrice =
+              getProductPrice(first);
 
-          return (
-            (secondPrice === null ? -1 : secondPrice) -
-            (firstPrice === null ? -1 : firstPrice)
-          );
-        });
+            const secondPrice =
+              getProductPrice(second);
+
+            const firstValue =
+              firstPrice === null
+                ? -1
+                : firstPrice;
+
+            const secondValue =
+              secondPrice === null
+                ? -1
+                : secondPrice;
+
+            return secondValue - firstValue;
+          }
+        );
       }
 
       if (sortValue === "newest") {
         sortedProducts.sort(
-          (firstProduct, secondProduct) =>
-            getProductTimestamp(secondProduct) -
-            getProductTimestamp(firstProduct)
+          (first, second) =>
+            getProductTimestamp(second) -
+            getProductTimestamp(first)
         );
       }
 
       return sortedProducts;
     }
 
+    function createProductDetail(label, value) {
+      const detail =
+        document.createElement("span");
+
+      detail.className = "product-detail";
+
+      const strong =
+        document.createElement("strong");
+
+      strong.textContent = `${label}: `;
+
+      detail.append(
+        strong,
+        String(value)
+      );
+
+      return detail;
+    }
+
     function createProductCard(product) {
-      const card = document.createElement("article");
+      const card =
+        document.createElement("article");
+
       card.className = "product-card";
 
-      const imageArea = document.createElement("div");
+      const imageArea =
+        document.createElement("div");
+
       imageArea.className = "product-image";
 
+      const status =
+        document.createElement("span");
+
+      status.className = "product-status";
+      status.textContent =
+        getProductStatus(product);
+
+      if (isSoldOut(product)) {
+        status.classList.add("sold-out");
+      }
+
       const imageSource =
-        product.image ||
-        product.imageUrl ||
-        product.photo ||
-        "";
+        getProductImage(product);
 
       if (imageSource) {
-        const image = document.createElement("img");
+        const image =
+          document.createElement("img");
 
         image.src = imageSource;
         image.alt =
@@ -1112,121 +1325,213 @@
           getProductName(product);
         image.loading = "lazy";
 
-        image.addEventListener("error", () => {
-          imageArea.replaceChildren();
-          imageArea.textContent = "Product image unavailable";
-        });
+        image.addEventListener(
+          "error",
+          () => {
+            imageArea.replaceChildren();
+            imageArea.textContent =
+              "Product image unavailable";
+
+            imageArea.appendChild(status);
+          }
+        );
 
         imageArea.appendChild(image);
       } else {
-        imageArea.textContent = "Product image";
-      }
-
-      const status = document.createElement("span");
-      status.className = "product-status";
-      status.textContent = getProductStatus(product);
-
-      if (isSoldOut(product)) {
-        status.classList.add("sold-out");
+        imageArea.textContent =
+          "Product image";
       }
 
       imageArea.appendChild(status);
 
-      const productInfo = document.createElement("div");
-      productInfo.className = "product-info";
+      const productInfo =
+        document.createElement("div");
 
-      const category = document.createElement("p");
-      category.className = "product-category";
-      category.textContent = DISPLAY_CATEGORY_NAME;
+      productInfo.className =
+        "product-info";
 
-      const name = document.createElement("h3");
+      const category =
+        document.createElement("p");
+
+      category.className =
+        "product-category";
+
+      category.textContent =
+        DISPLAY_CATEGORY_NAME;
+
+      const name =
+        document.createElement("h3");
+
       name.className = "product-name";
-      name.textContent = getProductName(product);
+      name.textContent =
+        getProductName(product);
 
-      productInfo.append(category, name);
+      productInfo.append(
+        category,
+        name
+      );
 
-      if (product.description) {
-        const description = document.createElement("p");
-        description.className = "product-description";
-        description.textContent = product.description;
-        productInfo.appendChild(description);
+      const year =
+        getProductYear(product);
+
+      if (year) {
+        const details =
+          document.createElement("div");
+
+        details.className =
+          "product-details";
+
+        details.appendChild(
+          createProductDetail(
+            "Year",
+            year
+          )
+        );
+
+        productInfo.appendChild(details);
       }
 
-      const bottom = document.createElement("div");
-      bottom.className = "product-bottom";
+      if (product.description) {
+        const description =
+          document.createElement("p");
 
-      const price = document.createElement("p");
-      price.className = "product-price";
-      price.textContent = formatPrice(product);
+        description.className =
+          "product-description";
 
-      const enquiryLink = document.createElement("a");
-      enquiryLink.className = "product-button";
+        description.textContent =
+          product.description;
+
+        productInfo.appendChild(
+          description
+        );
+      }
+
+      const bottom =
+        document.createElement("div");
+
+      bottom.className =
+        "product-bottom";
+
+      const price =
+        document.createElement("p");
+
+      price.className =
+        "product-price";
+
+      price.textContent =
+        formatPrice(product);
+
+      const enquiryLink =
+        document.createElement("a");
+
+      enquiryLink.className =
+        "product-button";
 
       if (isSoldOut(product)) {
-        enquiryLink.classList.add("disabled");
-        enquiryLink.textContent = "Sold out";
-        enquiryLink.setAttribute("aria-disabled", "true");
-        enquiryLink.removeAttribute("href");
+        enquiryLink.classList.add(
+          "disabled"
+        );
+
+        enquiryLink.textContent =
+          "Sold out";
+
+        enquiryLink.setAttribute(
+          "aria-disabled",
+          "true"
+        );
+
+        enquiryLink.tabIndex = -1;
       } else {
-        const productName = getProductName(product);
+        const productName =
+          getProductName(product);
 
         const enquiryMessage =
           `Hi SG Toy House, I am interested in ${productName}.`;
 
         enquiryLink.href =
           product.telegramUrl ||
-          `${TELEGRAM_URL}?text=${encodeURIComponent(enquiryMessage)}`;
+          `${TELEGRAM_URL}?text=${
+            encodeURIComponent(
+              enquiryMessage
+            )
+          }`;
 
         enquiryLink.target = "_blank";
-        enquiryLink.rel = "noopener noreferrer";
+
+        enquiryLink.rel =
+          "noopener noreferrer";
 
         enquiryLink.textContent =
           product.buttonText ||
           "Enquire on Telegram";
       }
 
-      bottom.append(price, enquiryLink);
+      bottom.append(
+        price,
+        enquiryLink
+      );
+
       productInfo.appendChild(bottom);
-      card.append(imageArea, productInfo);
+
+      card.append(
+        imageArea,
+        productInfo
+      );
 
       return card;
     }
 
     function renderProducts() {
-      const enteredSearchTerm = productSearch.value.trim();
+      const enteredSearchTerm =
+        productSearch.value.trim();
 
-      const normalizedSearchTerm = normalizeSearchText(
-        enteredSearchTerm
-      );
+      const normalizedSearchTerm =
+        normalizeSearchText(
+          enteredSearchTerm
+        );
 
-      const matchingProducts = accessoryProducts.filter((product) =>
-        productMatchesSearch(product, normalizedSearchTerm)
-      );
+      const matchingProducts =
+        accessoryProducts.filter(
+          (product) =>
+            productMatchesSearch(
+              product,
+              normalizedSearchTerm
+            )
+        );
 
-      const sortedProducts = sortProducts(
-        matchingProducts,
-        productSort.value
-      );
+      const sortedProducts =
+        sortProducts(
+          matchingProducts,
+          productSort.value
+        );
 
       productGrid.replaceChildren();
-      productMessage.classList.remove("error");
+
+      productMessage.classList.remove(
+        "error"
+      );
 
       if (sortedProducts.length === 0) {
-        productCount.textContent = enteredSearchTerm
-          ? `No results for "${enteredSearchTerm}"`
-          : "0 accessories";
+        productCount.textContent =
+          enteredSearchTerm
+            ? `No results for "${enteredSearchTerm}"`
+            : "0 accessories";
 
         productMessage.hidden = false;
 
-        productMessage.querySelector("h2").textContent =
-          enteredSearchTerm
-            ? "No matching accessories"
-            : "No accessories available";
+        productMessage
+          .querySelector("h2")
+          .textContent =
+            enteredSearchTerm
+              ? "No matching accessories"
+              : "No accessories available";
 
-        productMessage.querySelector("p").textContent =
-          enteredSearchTerm
-            ? "Try a different product name, size or keyword."
-            : "Please check again soon for new additions.";
+        productMessage
+          .querySelector("p")
+          .textContent =
+            enteredSearchTerm
+              ? "Try a different product name, year or keyword."
+              : "Please check again soon for new additions.";
 
         return;
       }
@@ -1240,8 +1545,11 @@
 
       productCount.replaceChildren();
 
-      const strongCount = document.createElement("strong");
-      strongCount.textContent = String(sortedProducts.length);
+      const strongCount =
+        document.createElement("strong");
+
+      strongCount.textContent =
+        String(sortedProducts.length);
 
       productCount.append(
         strongCount,
@@ -1250,13 +1558,20 @@
           : ` ${productLabel}`
       );
 
-      sortedProducts.forEach((product) => {
-        productGrid.appendChild(createProductCard(product));
-      });
+      sortedProducts.forEach(
+        (product) => {
+          productGrid.appendChild(
+            createProductCard(product)
+          );
+        }
+      );
     }
 
     async function loadProducts() {
-      productGrid.setAttribute("aria-busy", "true");
+      productGrid.setAttribute(
+        "aria-busy",
+        "true"
+      );
 
       try {
         const response = await fetch(
@@ -1264,33 +1579,45 @@
         );
 
         if (!response.ok) {
-          throw new Error("Unable to load products.json");
+          throw new Error(
+            `Unable to load products.json: ${response.status}`
+          );
         }
 
-        const data = await response.json();
+        const data =
+          await response.json();
 
-        const allProducts = Array.isArray(data)
-          ? data
-          : Array.isArray(data.products)
-            ? data.products
-            : [];
+        const allProducts =
+          Array.isArray(data)
+            ? data
+            : Array.isArray(data.products)
+              ? data.products
+              : [];
 
-        accessoryProducts = allProducts.filter((product) => {
-          const category =
-            product.category ||
-            product.type ||
-            product.collection ||
-            "";
+        accessoryProducts =
+          allProducts.filter(
+            (product) => {
+              const category =
+                product.category ||
+                product.type ||
+                product.collection ||
+                "";
 
-          return (
-            normalizeCategory(category) ===
-            normalizeCategory(CATEGORY_NAME)
+              return (
+                normalizeCategory(category) ===
+                normalizeCategory(
+                  CATEGORY_NAME
+                )
+              );
+            }
           );
-        });
 
         renderProducts();
       } catch (error) {
-        console.error(error);
+        console.error(
+          "Accessory product loading error:",
+          error
+        );
 
         productGrid.replaceChildren();
 
@@ -1298,20 +1625,37 @@
           "Accessories could not be loaded.";
 
         productMessage.hidden = false;
-        productMessage.classList.add("error");
 
-        productMessage.querySelector("h2").textContent =
-          "Unable to load products";
+        productMessage.classList.add(
+          "error"
+        );
 
-        productMessage.querySelector("p").textContent =
-          "Please refresh the page or try again later.";
+        productMessage
+          .querySelector("h2")
+          .textContent =
+            "Unable to load products";
+
+        productMessage
+          .querySelector("p")
+          .textContent =
+            "Please refresh the page or try again later.";
       } finally {
-        productGrid.setAttribute("aria-busy", "false");
+        productGrid.setAttribute(
+          "aria-busy",
+          "false"
+        );
       }
     }
 
-    productSearch.addEventListener("input", renderProducts);
-    productSort.addEventListener("change", renderProducts);
+    productSearch.addEventListener(
+      "input",
+      renderProducts
+    );
+
+    productSort.addEventListener(
+      "change",
+      renderProducts
+    );
 
     loadProducts();
   </script>
