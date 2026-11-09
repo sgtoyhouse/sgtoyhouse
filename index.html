@@ -62,6 +62,8 @@
       margin: 0 auto;
     }
 
+    /* Announcement bar */
+
     .announcement-bar {
       display: block;
       padding: 8px 20px;
@@ -69,14 +71,20 @@
       color: #070707;
       font-size: 13px;
       font-weight: 800;
+      line-height: 1.4;
       text-align: center;
-      transition: background 0.2s ease;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
     }
 
     .announcement-bar:hover,
     .announcement-bar:focus-visible {
       background: var(--gold-light);
+      color: #000000;
     }
+
+    /* Compact category bar */
 
     .top-categories {
       background: #0b0b0b;
@@ -99,6 +107,8 @@
       border-right: 1px solid var(--border);
       font-size: 13px;
       font-weight: 700;
+      line-height: 1;
+      text-align: center;
       white-space: nowrap;
       transition:
         background 0.2s ease,
@@ -114,6 +124,8 @@
       background: var(--surface-hover);
       color: #ffffff;
     }
+
+    /* Header */
 
     .site-header {
       position: sticky;
@@ -149,6 +161,7 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover,
@@ -156,6 +169,8 @@
     .nav-links .telegram-link {
       color: var(--gold-light);
     }
+
+    /* Hero */
 
     .hero {
       padding: 80px 0;
@@ -180,12 +195,23 @@
     }
 
     .hero h1 {
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto 20px;
       color: #ffffff;
       font-size: clamp(42px, 7vw, 72px);
+      font-weight: 700;
+      font-style: normal;
       line-height: 1.05;
       letter-spacing: -3px;
+    }
+
+    .hero-brand {
+      display: block;
+      margin-top: 8px;
+      color: var(--gold-light);
+      font-weight: 800;
+      font-style: normal;
+      letter-spacing: -2px;
     }
 
     .hero-description {
@@ -195,17 +221,19 @@
       font-size: 18px;
     }
 
+    /* Buttons */
+
     .category-actions {
       max-width: 760px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
     }
 
     .button {
       min-height: 48px;
-      padding: 0 20px;
+      padding: 0 18px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -213,11 +241,13 @@
       border-radius: 999px;
       font-size: 15px;
       font-weight: 700;
+      text-align: center;
       white-space: nowrap;
       transition:
         transform 0.2s ease,
         background 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .button:hover,
@@ -228,11 +258,14 @@
     .button-primary {
       background: var(--gold);
       color: #070707;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.16);
     }
 
     .button-primary:hover,
     .button-primary:focus-visible {
       background: var(--gold-light);
+      color: #000000;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
     }
 
     .button-secondary {
@@ -252,6 +285,8 @@
       justify-content: center;
     }
 
+    /* Shared section headings */
+
     .section-heading {
       margin-bottom: 28px;
       text-align: center;
@@ -261,13 +296,17 @@
       margin-bottom: 6px;
       color: #ffffff;
       font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
       line-height: 1.2;
+      letter-spacing: -1px;
     }
 
     .section-heading p {
       color: var(--muted);
       font-size: 16px;
     }
+
+    /* Recently added and reviews */
 
     .recently-added,
     .reviews {
@@ -345,18 +384,39 @@
     }
 
     .product-name {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: #ffffff;
       font-size: 17px;
+      font-weight: 700;
       line-height: 1.35;
     }
 
-    .product-link {
-      margin-top: auto;
+    .product-price {
+      margin-bottom: 6px;
       color: var(--gold-light);
       font-size: 15px;
       font-weight: 700;
     }
+
+    .product-link {
+      margin-top: auto;
+      padding-top: 8px;
+      color: var(--gold-light);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .products-empty,
+    .reviews-empty {
+      padding: 28px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    /* Reviews */
 
     .review-card-header {
       margin-bottom: 14px;
@@ -401,10 +461,7 @@
       font-weight: 700;
     }
 
-    .reviews-empty {
-      color: var(--muted);
-      text-align: center;
-    }
+    /* Footer */
 
     .site-footer {
       background: #0b0b0b;
@@ -436,6 +493,7 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
+      transition: color 0.2s ease;
     }
 
     .footer-links a:hover,
@@ -443,10 +501,14 @@
       color: var(--gold-light);
     }
 
+    /* Focus */
+
     a:focus-visible {
       outline: 3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
     }
+
+    /* Responsive */
 
     @media (max-width: 900px) {
       .product-grid,
@@ -458,6 +520,10 @@
     @media (max-width: 760px) {
       .container {
         width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        min-height: 58px;
       }
 
       .nav-links {
@@ -479,7 +545,7 @@
 
       .category-actions {
         max-width: 520px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .footer-content {
@@ -498,6 +564,11 @@
         width: min(100% - 20px, 1120px);
       }
 
+      .announcement-bar {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+
       .top-categories .container {
         width: 100%;
       }
@@ -508,12 +579,24 @@
         font-size: 10px;
       }
 
+      .logo {
+        font-size: 18px;
+      }
+
       .hero-content {
         padding: 44px 18px;
       }
 
       .hero h1 {
         font-size: 38px;
+      }
+
+      .hero-brand {
+        margin-top: 6px;
+      }
+
+      .hero-description {
+        font-size: 16px;
       }
 
       .category-actions,
@@ -532,6 +615,12 @@
         padding-bottom: 56px;
       }
     }
+
+    @media (max-width: 360px) {
+      .top-category {
+        font-size: 9px;
+      }
+    }
   </style>
 </head>
 
@@ -541,6 +630,7 @@
     href="https://t.me/sgtoyhouse"
     target="_blank"
     rel="noopener noreferrer"
+    aria-label="Contact SG Toy House on Telegram"
   >
     Contact us on Telegram →
   </a>
@@ -556,11 +646,18 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="index.html">SG TOY HOUSE</a>
+      <a class="logo" href="index.html">
+        SG TOY HOUSE
+      </a>
 
       <nav aria-label="Main navigation">
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
+          <li>
+            <a href="index.html" aria-current="page">
+              Home
+            </a>
+          </li>
+
           <li>
             <a
               class="telegram-link"
@@ -584,17 +681,32 @@
             LEGO • Pokémon • One Piece • Accessories
           </p>
 
-          <h1>Welcome to SG Toy House</h1>
+          <h1>
+            Welcome to
+            <span class="hero-brand">SG Toy House</span>
+          </h1>
 
           <p class="hero-description">
             Browse available products, view prices and find the next addition
             to your collection.
           </p>
 
-          <div class="category-actions">
-            <a class="button button-primary" href="lego.html">LEGO</a>
-            <a class="button button-primary" href="pokemon.html">Pokémon</a>
-            <a class="button button-primary" href="onepiece.html">One Piece</a>
+          <div
+            class="category-actions"
+            aria-label="Browse product categories"
+          >
+            <a class="button button-primary" href="lego.html">
+              LEGO
+            </a>
+
+            <a class="button button-primary" href="pokemon.html">
+              Pokémon
+            </a>
+
+            <a class="button button-primary" href="onepiece.html">
+              One Piece
+            </a>
+
             <a class="button button-primary" href="accessories.html">
               Accessories
             </a>
@@ -614,54 +726,37 @@
       </div>
     </section>
 
-    <section class="recently-added">
+    <section
+      class="recently-added"
+      aria-labelledby="recently-added-heading"
+    >
       <div class="container">
         <div class="section-heading">
-          <h2>Recently Added</h2>
+          <h2 id="recently-added-heading">Recently Added</h2>
           <p>Discover the latest additions to SG Toy House.</p>
         </div>
 
-        <div class="product-grid">
-          <a class="product-card" href="lego.html">
-            <div class="product-image">Add product image</div>
-            <div class="product-info">
-              <p class="product-category">LEGO</p>
-              <h3 class="product-name">Latest LEGO Product</h3>
-              <p class="product-link">View LEGO</p>
-            </div>
-          </a>
+        <div
+          class="product-grid"
+          id="recent-product-grid"
+          aria-live="polite"
+          aria-busy="true"
+        ></div>
 
-          <a class="product-card" href="pokemon.html">
-            <div class="product-image">Add product image</div>
-            <div class="product-info">
-              <p class="product-category">Pokémon</p>
-              <h3 class="product-name">Latest Pokémon Product</h3>
-              <p class="product-link">View Pokémon</p>
-            </div>
-          </a>
-
-          <a class="product-card" href="onepiece.html">
-            <div class="product-image">Add product image</div>
-            <div class="product-info">
-              <p class="product-category">One Piece</p>
-              <h3 class="product-name">Latest One Piece Product</h3>
-              <p class="product-link">View One Piece</p>
-            </div>
-          </a>
-
-          <a class="product-card" href="accessories.html">
-            <div class="product-image">Add product image</div>
-            <div class="product-info">
-              <p class="product-category">Accessories</p>
-              <h3 class="product-name">Latest Accessory</h3>
-              <p class="product-link">View Accessories</p>
-            </div>
-          </a>
-        </div>
+        <p
+          class="products-empty"
+          id="recent-products-empty"
+          hidden
+        >
+          Recently added products will appear here soon.
+        </p>
       </div>
     </section>
 
-    <section class="reviews" aria-labelledby="reviews-heading">
+    <section
+      class="reviews"
+      aria-labelledby="reviews-heading"
+    >
       <div class="container">
         <div class="section-heading">
           <h2 id="reviews-heading">Reviews</h2>
@@ -672,9 +767,14 @@
           class="review-grid"
           id="review-grid"
           aria-live="polite"
+          aria-busy="true"
         ></div>
 
-        <p class="reviews-empty" id="reviews-empty" hidden>
+        <p
+          class="reviews-empty"
+          id="reviews-empty"
+          hidden
+        >
           Reviews will be added soon.
         </p>
       </div>
@@ -687,27 +787,51 @@
 
       <ul class="footer-links">
         <li>
-          <a href="https://t.me/sgtoyhouse" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://t.me/sgtoyhouse"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Telegram
           </a>
         </li>
+
         <li>
-          <a href="https://www.instagram.com/sgtoyhse/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/sgtoyhse/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Instagram
           </a>
         </li>
+
         <li>
-          <a href="https://www.facebook.com/T0yH0use/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com/T0yH0use/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Facebook
           </a>
         </li>
+
         <li>
-          <a href="https://www.tiktok.com/@sgtoyhse" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.tiktok.com/@sgtoyhse"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             TikTok
           </a>
         </li>
+
         <li>
-          <a href="https://www.carousell.sg/u/archwizard/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.carousell.sg/u/archwizard/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Carousell
           </a>
         </li>
@@ -716,11 +840,290 @@
   </footer>
 
   <script>
+    const CATEGORY_CONFIG = [
+      {
+        key: "lego",
+        label: "LEGO",
+        page: "lego.html"
+      },
+      {
+        key: "pokemon",
+        label: "Pokémon",
+        page: "pokemon.html"
+      },
+      {
+        key: "onepiece",
+        label: "One Piece",
+        page: "onepiece.html"
+      },
+      {
+        key: "accessories",
+        label: "Accessories",
+        page: "accessories.html"
+      }
+    ];
+
+    const recentProductGrid = document.getElementById(
+      "recent-product-grid"
+    );
+
+    const recentProductsEmpty = document.getElementById(
+      "recent-products-empty"
+    );
+
     const reviewGrid = document.getElementById("review-grid");
     const reviewsEmpty = document.getElementById("reviews-empty");
 
+    function normalizeProductCategory(value) {
+      const normalizedValue = String(value || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]/g, "");
+
+      if (
+        normalizedValue === "pokemon" ||
+        normalizedValue === "pokemontcg"
+      ) {
+        return "pokemon";
+      }
+
+      if (
+        normalizedValue === "onepiece" ||
+        normalizedValue === "onepiecetcg"
+      ) {
+        return "onepiece";
+      }
+
+      if (
+        normalizedValue === "accessory" ||
+        normalizedValue === "accessories"
+      ) {
+        return "accessories";
+      }
+
+      if (normalizedValue === "lego") {
+        return "lego";
+      }
+
+      return normalizedValue;
+    }
+
+    function getProductName(product) {
+      return String(
+        product.name ||
+        product.title ||
+        product.productName ||
+        "Recently added product"
+      );
+    }
+
+    function getProductImage(product) {
+      return String(
+        product.image ||
+        product.imageUrl ||
+        product.photo ||
+        ""
+      );
+    }
+
+    function getProductDate(product) {
+      const dateValue =
+        product.dateAdded ||
+        product.createdAt ||
+        product.updatedAt ||
+        product.date ||
+        "";
+
+      const timestamp = Date.parse(dateValue);
+
+      return Number.isNaN(timestamp) ? 0 : timestamp;
+    }
+
+    function getProductPrice(product) {
+      const value =
+        product.price ??
+        product.amount ??
+        product.productPrice;
+
+      if (
+        value === null ||
+        value === undefined ||
+        value === ""
+      ) {
+        return "";
+      }
+
+      const numericValue = Number(
+        String(value).replace(/[^0-9.-]/g, "")
+      );
+
+      if (!Number.isFinite(numericValue)) {
+        return String(value);
+      }
+
+      const currency =
+        product.currency ||
+        product.currencyCode ||
+        "SGD";
+
+      try {
+        return new Intl.NumberFormat("en-SG", {
+          style: "currency",
+          currency,
+          maximumFractionDigits: 2
+        }).format(numericValue);
+      } catch (error) {
+        return `SGD ${numericValue.toFixed(2)}`;
+      }
+    }
+
+    function findLatestProduct(products, categoryKey) {
+      const matchingProducts = products.filter((product) => {
+        const productCategory =
+          product.category ||
+          product.type ||
+          product.collection ||
+          "";
+
+        return (
+          normalizeProductCategory(productCategory) === categoryKey
+        );
+      });
+
+      matchingProducts.sort((firstProduct, secondProduct) => {
+        return (
+          getProductDate(secondProduct) -
+          getProductDate(firstProduct)
+        );
+      });
+
+      return matchingProducts[0] || null;
+    }
+
+    function createRecentProductCard(product, category) {
+      const card = document.createElement("a");
+
+      card.className = "product-card";
+      card.href = category.page;
+      card.setAttribute(
+        "aria-label",
+        `View ${getProductName(product)} in ${category.label}`
+      );
+
+      const imageArea = document.createElement("div");
+      imageArea.className = "product-image";
+
+      const imageSource = getProductImage(product);
+
+      if (imageSource) {
+        const image = document.createElement("img");
+
+        image.src = imageSource;
+        image.alt =
+          product.imageAlt ||
+          getProductName(product);
+        image.loading = "lazy";
+
+        image.addEventListener("error", () => {
+          imageArea.replaceChildren();
+          imageArea.textContent = "Product image unavailable";
+        });
+
+        imageArea.appendChild(image);
+      } else {
+        imageArea.textContent = "Product image";
+      }
+
+      const productInfo = document.createElement("div");
+      productInfo.className = "product-info";
+
+      const categoryName = document.createElement("p");
+      categoryName.className = "product-category";
+      categoryName.textContent = category.label;
+
+      const productName = document.createElement("h3");
+      productName.className = "product-name";
+      productName.textContent = getProductName(product);
+
+      productInfo.append(categoryName, productName);
+
+      const formattedPrice = getProductPrice(product);
+
+      if (formattedPrice) {
+        const productPrice = document.createElement("p");
+        productPrice.className = "product-price";
+        productPrice.textContent = formattedPrice;
+        productInfo.appendChild(productPrice);
+      }
+
+      const productLink = document.createElement("p");
+      productLink.className = "product-link";
+      productLink.textContent = `View ${category.label}`;
+
+      productInfo.appendChild(productLink);
+      card.append(imageArea, productInfo);
+
+      return card;
+    }
+
+    async function loadRecentProducts() {
+      recentProductGrid.setAttribute("aria-busy", "true");
+
+      try {
+        const response = await fetch(
+          `products.json?version=${Date.now()}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Unable to load products.json");
+        }
+
+        const data = await response.json();
+
+        const products = Array.isArray(data)
+          ? data
+          : Array.isArray(data.products)
+            ? data.products
+            : [];
+
+        recentProductGrid.replaceChildren();
+
+        CATEGORY_CONFIG.forEach((category) => {
+          const latestProduct = findLatestProduct(
+            products,
+            category.key
+          );
+
+          if (latestProduct) {
+            recentProductGrid.appendChild(
+              createRecentProductCard(
+                latestProduct,
+                category
+              )
+            );
+          }
+        });
+
+        recentProductsEmpty.hidden =
+          recentProductGrid.children.length > 0;
+      } catch (error) {
+        console.error(error);
+        recentProductGrid.replaceChildren();
+        recentProductsEmpty.hidden = false;
+      } finally {
+        recentProductGrid.setAttribute("aria-busy", "false");
+      }
+    }
+
     function renderStars(rating) {
-      const safeRating = Math.max(1, Math.min(5, Number(rating)));
+      const numericRating = Number(rating);
+
+      const safeRating = Number.isFinite(numericRating)
+        ? Math.max(1, Math.min(5, Math.round(numericRating)))
+        : 5;
+
       return "★".repeat(safeRating) + "☆".repeat(5 - safeRating);
     }
 
@@ -733,11 +1136,15 @@
 
       if (review.photo) {
         const image = document.createElement("img");
+
         image.src = review.photo;
-        image.alt = review.photoAlt || "Photo submitted with a customer review";
+        image.alt =
+          review.photoAlt ||
+          "Photo submitted with a customer review";
         image.loading = "lazy";
 
         image.addEventListener("error", () => {
+          photo.replaceChildren();
           photo.textContent = "Review photo unavailable";
         });
 
@@ -757,7 +1164,7 @@
       stars.textContent = renderStars(review.rating);
       stars.setAttribute(
         "aria-label",
-        `${Number(review.rating)} out of 5 stars`
+        `${Number(review.rating) || 5} out of 5 stars`
       );
 
       const source = document.createElement("p");
@@ -766,11 +1173,11 @@
 
       const text = document.createElement("blockquote");
       text.className = "review-text";
-      text.textContent = review.text;
+      text.textContent = review.text || "";
 
       const author = document.createElement("p");
       author.className = "review-author";
-      author.textContent = review.author;
+      author.textContent = review.author || "Customer";
 
       header.append(stars, source);
       content.append(header, text, author);
@@ -780,6 +1187,8 @@
     }
 
     async function loadReviews() {
+      reviewGrid.setAttribute("aria-busy", "true");
+
       try {
         const response = await fetch(
           `reviews.json?version=${Date.now()}`
@@ -789,10 +1198,17 @@
           throw new Error("Unable to load reviews.json");
         }
 
-        const reviews = await response.json();
+        const data = await response.json();
+
+        const reviews = Array.isArray(data)
+          ? data
+          : Array.isArray(data.reviews)
+            ? data.reviews
+            : [];
+
         reviewGrid.replaceChildren();
 
-        if (!Array.isArray(reviews) || reviews.length === 0) {
+        if (reviews.length === 0) {
           reviewsEmpty.hidden = false;
           return;
         }
@@ -804,10 +1220,14 @@
         });
       } catch (error) {
         console.error(error);
+        reviewGrid.replaceChildren();
         reviewsEmpty.hidden = false;
+      } finally {
+        reviewGrid.setAttribute("aria-busy", "false");
       }
     }
 
+    loadRecentProducts();
     loadReviews();
   </script>
 </body>
