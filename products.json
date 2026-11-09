@@ -1,7 +1,23 @@
 [
   {
+    "id": "product-98f716af-0e57-4649-8f8a-cc15318e725b",
+    "name": "Mega Zygarde Ex Premium Collection",
+    "category": "Pokémon",
+    "price": 95,
+    "currency": "SGD",
+    "status": "In Stock",
+    "setNumber": "",
+    "sku": "",
+    "description": "✨ Each set contains : \n- 1x Foil promo card (Mega Zygarde Ex)\n- 1x Oversize lenticular promo card (Nega Zygarde Ex)\n- 1x Tech sticker\n- 8x Booster Packs",
+    "image": "images/products/Pkm_Mega Zygarde_Ex_Premium_Collection.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse/12/2641",
+    "dateAdded": "2026-11-09T20:01:34.749Z",
+    "updatedAt": "2026-11-09T20:01:34.749Z"
+  },
+  {
     "id": "product-6d30642e-9da7-46d1-b291-60598b7392fe",
-    "name": "Marvel Series 2 Minifigures (Set of 12) (2023)",
+    "name": "Minifigures Marvel Series 2 (Set of 12) (2023)",
     "category": "LEGO",
     "price": 90,
     "currency": "SGD",
