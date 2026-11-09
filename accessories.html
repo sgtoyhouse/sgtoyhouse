@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse card sleeves, binders, deck boxes, top loaders, display cases and other collectible accessories from SG Toy House.">
+    <title>Accessories | SG Toy House</title>
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f1d675;
+            --black: #080808;
+            --dark: #101010;
+            --card: #171717;
+            --card-hover: #1d1d1d;
+            --white: #ffffff;
+            --muted: #b5b5b5;
+            --border: rgba(212, 175, 55, 0.22);
+            --telegram: #229ed9;
+            --danger: #e05858;
+            --success: #62c98b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            min-height: 100vh;
+            background: var(--black);
+            color: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+        body.menu-open { overflow: hidden; }
+        a { color: inherit; }
+        img { display: block; width: 100%; }
+        button, input, select { font: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        .container { width: min(1180px, 92%); margin: 0 auto; }
+
+        .announcement {
+            padding: 9px 16px;
+            background: var(--gold);
+            color: #080808;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.94);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .brand {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.35rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+        }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.94rem;
+            font-weight: 700;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+        .nav-telegram {
+            padding: 9px 16px;
+            border: 1px solid var(--gold);
+            border-radius: 999px;
+        }
+        .nav-telegram:hover { background: var(--gold); color: #080808 !important; }
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin: 5px 0;
+            background: var(--gold);
+        }
+
+        .page-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 92px 0 76px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(212,175,55,0.14), transparent 34%),
+                radial-gradient(circle at 80% 10%, rgba(34,158,217,0.10), transparent 28%),
+                linear-gradient(180deg, #101010 0%, #080808 100%);
+        }
+        .eyebrow {
+            display: inline-flex;
+            margin-bottom: 18px;
+            padding: 7px 13px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--gold-light);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .page-hero h1 {
+            max-width: 800px;
+            margin: 0 auto 18px;
+            font-size: clamp(2.4rem, 6vw, 4.8rem);
+            line-height: 1.05;
+        }
+        .page-hero h1 span { color: var(--gold); }
+        .page-hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .inventory { padding: 72px 0 88px; }
+        .inventory-toolbar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 18px;
+            align-items: end;
+            margin-bottom: 30px;
+        }
+        .section-heading h2 { margin-bottom: 6px; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+        .section-heading p { color: var(--muted); }
+        .controls { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+        .search-box, .filter-select {
+            min-height: 44px;
+            color: var(--white);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            outline: none;
+        }
+        .search-box { width: min(280px, 100%); padding: 0 14px; }
+        .filter-select { padding: 0 34px 0 12px; }
+        .search-box:focus, .filter-select:focus { border-color: var(--gold); }
+        .filter-select option { background: var(--card); }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+        .product-card {
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212,175,55,0.55);
+            background: var(--card-hover);
+        }
+        .product-image-wrap {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #f3f3f3;
+        }
+        .product-image {
+            height: 100%;
+            object-fit: contain;
+            padding: 14px;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-image { transform: scale(1.035); }
+        .stock-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(8,8,8,0.88);
+            color: var(--success);
+            font-size: 0.74rem;
+            font-weight: 800;
+        }
+        .stock-badge.out { color: #ff9a9a; }
+        .product-content { padding: 20px; }
+        .product-type {
+            margin-bottom: 8px;
+            color: var(--gold-light);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .product-content h3 { min-height: 54px; margin-bottom: 10px; font-size: 1.08rem; line-height: 1.4; }
+        .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .price { color: var(--gold); font-size: 1.25rem; font-weight: 900; }
+        .enquire-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            padding: 8px 13px;
+            border-radius: 8px;
+            background: var(--telegram);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.83rem;
+            font-weight: 800;
+        }
+        .enquire-button:hover { filter: brightness(1.08); }
+        .enquire-button.disabled { pointer-events: none; background: #555; color: #ccc; }
+
+        .empty-state, .loading-state {
+            grid-column: 1 / -1;
+            padding: 54px 24px;
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+            color: var(--muted);
+            text-align: center;
+        }
+        .empty-state strong, .loading-state strong { display: block; margin-bottom: 7px; color: var(--white); font-size: 1.15rem; }
+
+        .contact-section { padding: 70px 0; background: var(--dark); border-top: 1px solid var(--border); }
+        .contact-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            padding: 34px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.09), rgba(255,255,255,0.02));
+        }
+        .contact-card h2 { margin-bottom: 8px; }
+        .contact-card p { color: var(--muted); }
+        .telegram-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: var(--telegram);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        footer { padding: 28px 0; border-top: 1px solid var(--border); }
+        .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .footer-row p { color: var(--muted); font-size: 0.88rem; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; }
+        .footer-links a:hover { color: var(--gold); }
+
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .inventory-toolbar { grid-template-columns: 1fr; }
+            .controls { justify-content: flex-start; }
+            .contact-card { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 760px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 111px;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 18px 4%;
+                background: #0c0c0c;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 13px 10px; }
+            .nav-telegram { margin-top: 8px; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            .page-hero { padding: 70px 0 58px; }
+            .inventory { padding: 54px 0 68px; }
+            .product-grid { grid-template-columns: 1fr; }
+            .controls { display: grid; grid-template-columns: 1fr; }
+            .search-box, .filter-select { width: 100%; }
+            .footer-row { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement">
+        Join our Telegram community for promotions, discounts and new product updates.
+    </div>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a class="brand" href="index.html">SG TOY HOUSE</a>
+
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="lego.html">LEGO</a>
+                <a href="pokemon.html">Pokémon</a>
+                <a href="onepiece.html">One Piece</a>
+                <a class="active" href="accessories.html" aria-current="page">Accessories</a>
+                <a class="nav-telegram" href="https://t.me/sgtoyhouse" target="_blank" rel="noopener noreferrer">Telegram</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Protect • Organise • Display</span>
+                <h1>Collectible <span>Accessories</span></h1>
+                <p>Browse sleeves, binders, deck boxes, top loaders, display cases and other essentials for protecting and showcasing your collection.</p>
+            </div>
+        </section>
+
+        <section class="inventory" id="inventory">
+            <div class="container">
+                <div class="inventory-toolbar">
+                    <div class="section-heading">
+                        <h2>Accessories inventory</h2>
+                        <p id="resultsText">Loading available products...</p>
+                    </div>
+                    <div class="controls">
+                        <input class="search-box" id="searchInput" type="search" placeholder="Search accessories" aria-label="Search accessories">
+                        <select class="filter-select" id="stockFilter" aria-label="Filter by stock">
+                            <option value="all">All stock</option>
+                            <option value="in">In stock</option>
+                            <option value="out">Out of stock</option>
+                        </select>
+                        <select class="filter-select" id="sortSelect" aria-label="Sort products">
+                            <option value="default">Sort: Featured</option>
+                            <option value="name-asc">Name: A to Z</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                    <div class="loading-state"><strong>Loading accessories</strong>Please wait while the inventory is retrieved.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="contact-card">
+                    <div>
+                        <h2>Looking for a specific accessory?</h2>
+                        <p>Message SG Toy House to ask about availability, compatibility, collection or delivery.</p>
+                    </div>
+                    <a class="telegram-button" href="https://t.me/sgtoyhouse" target="_blank" rel="noopener noreferrer">✈ Message on Telegram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-row">
+            <p>© <span id="year"></span> SG Toy House. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="lego.html">LEGO</a>
+                <a href="pokemon.html">Pokémon</a>
+                <a href="onepiece.html">One Piece</a>
+                <a href="accessories.html">Accessories</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const TELEGRAM_URL = "https://t.me/sgtoyhouse";
+        const productGrid = document.getElementById("productGrid");
+        const resultsText = document.getElementById("resultsText");
+        const searchInput = document.getElementById("searchInput");
+        const stockFilter = document.getElementById("stockFilter");
+        const sortSelect = document.getElementById("sortSelect");
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        let accessories = [];
+
+        function normalizeStock(value) {
+            const stock = String(value ?? "").trim().toLowerCase();
+            return !["out of stock", "sold out", "unavailable", "false", "0"].includes(stock);
+        }
+
+        function readPrice(product) {
+            const value = product.price ?? product.Price ?? 0;
+            const parsed = Number(String(value).replace(/[^0-9.]/g, ""));
+            return Number.isFinite(parsed) ? parsed : 0;
+        }
+
+        function formatPrice(product) {
+            const raw = product.price ?? product.Price;
+            if (typeof raw === "string" && raw.includes("$")) return raw;
+            return `S$${readPrice(product).toFixed(2)}`;
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? "")
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        function renderProducts() {
+            const query = searchInput.value.trim().toLowerCase();
+            const stockValue = stockFilter.value;
+            const sortValue = sortSelect.value;
+
+            let visible = accessories.filter((product) => {
+                const name = String(product.name ?? product.title ?? "").toLowerCase();
+                const type = String(product.type ?? product.subcategory ?? "").toLowerCase();
+                const inStock = normalizeStock(product.stock ?? product.status ?? product.inStock);
+                const matchesSearch = !query || name.includes(query) || type.includes(query);
+                const matchesStock = stockValue === "all" || (stockValue === "in" ? inStock : !inStock);
+                return matchesSearch && matchesStock;
+            });
+
+            if (sortValue === "name-asc") {
+                visible.sort((a, b) => String(a.name ?? a.title).localeCompare(String(b.name ?? b.title)));
+            } else if (sortValue === "price-asc") {
+                visible.sort((a, b) => readPrice(a) - readPrice(b));
+            } else if (sortValue === "price-desc") {
+                visible.sort((a, b) => readPrice(b) - readPrice(a));
+            }
+
+            resultsText.textContent = `${visible.length} ${visible.length === 1 ? "product" : "products"} found`;
+
+            if (!visible.length) {
+                productGrid.innerHTML = `<div class="empty-state"><strong>No accessories found</strong>Try another search or stock filter. New items can be added through the inventory admin page.</div>`;
+                return;
+            }
+
+            productGrid.innerHTML = visible.map((product) => {
+                const name = escapeHtml(product.name ?? product.title ?? "Accessory");
+                const image = escapeHtml(product.image ?? product.imageUrl ?? "assets/products/placeholder.jpg");
+                const type = escapeHtml(product.type ?? product.subcategory ?? "Accessory");
+                const inStock = normalizeStock(product.stock ?? product.status ?? product.inStock);
+                const message = encodeURIComponent(`Hello SG Toy House, I would like to enquire about: ${product.name ?? product.title ?? "Accessory"}`);
+                const enquireUrl = `${TELEGRAM_URL}?text=${message}`;
+
+                return `
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img class="product-image" src="${image}" alt="${name}" loading="lazy" onerror="this.src='assets/products/placeholder.jpg'">
+                            <span class="stock-badge ${inStock ? "" : "out"}">${inStock ? "In Stock" : "Out of Stock"}</span>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-type">${type}</div>
+                            <h3>${name}</h3>
+                            <div class="product-bottom">
+                                <span class="price">${escapeHtml(formatPrice(product))}</span>
+                                <a class="enquire-button ${inStock ? "" : "disabled"}" href="${inStock ? enquireUrl : "#"}" target="_blank" rel="noopener noreferrer">${inStock ? "Enquire" : "Unavailable"}</a>
+                            </div>
+                        </div>
+                    </article>`;
+            }).join("");
+        }
+
+        async function loadProducts() {
+            try {
+                const response = await fetch("products.json", { cache: "no-store" });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                const products = Array.isArray(data) ? data : (data.products ?? []);
+
+                accessories = products.filter((product) =>
+                    String(product.category ?? "").trim().toLowerCase() === "accessories"
+                );
+
+                renderProducts();
+            } catch (error) {
+                console.error("Unable to load products.json:", error);
+                resultsText.textContent = "Inventory could not be loaded";
+                productGrid.innerHTML = `<div class="empty-state"><strong>Unable to load accessories</strong>Check that products.json is in the same folder and contains valid JSON.</div>`;
+            }
+        }
+
+        [searchInput, stockFilter, sortSelect].forEach((control) => {
+            control.addEventListener(control === searchInput ? "input" : "change", renderProducts);
+        });
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            document.body.classList.toggle("menu-open", isOpen);
+        });
+
+        navLinks.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                document.body.classList.remove("menu-open");
+            });
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+        loadProducts();
+    </script>
+</body>
+</html>
