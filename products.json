@@ -1,47 +1,18 @@
 [
-    {
-    "id": 1794181280635,
-    "name": " Set Sail Deck Set (Learn to Play!)",
-    "price": 65,
-    "category": "One Piece",
-    "stock": "In Stock",
-    "image": "assets/products/OPSetSailDeckSet.jpg",
-    "dateAdded": "2026-11-08"
-  },
   {
-    "id": 1794175820390,
-    "name": "Minifigures 71039 Marvel Series 2 (Set of 12) (2023)",
-    "price": 90,
-    "category": "LEGO",
-    "stock": "In Stock",
-    "image": "assets/products/LEGO_71039.jpg",
-    "dateAdded": "2026-11-08"
-  },
-  {
-    "id": 1794175784558,
-    "name": "Marvel 76210 Hulkbuster (2022)",
-    "price": 500,
-    "category": "LEGO",
-    "stock": "In Stock",
-    "image": "assets/products/LEGO_76210.jpg",
-    "dateAdded": "2026-11-07"
-  },
-  {
-    "id": 1794174926193,
-    "name": "30th Celebration ETB",
-    "price": 145,
-    "category": "Pokemon",
-    "stock": "In Stock",
-    "image": "assets/products/PKM30thETB.jpg",
-    "dateAdded": "2026-11-08"
-  },
-  {
-    "id": 1794175066481,
-    "name": "30th Booster Bundle",
-    "price": 85,
-    "category": "Pokemon",
-    "stock": "Last Few Left",
-    "image": "assets/products/PKM30thbb.jpg",
-    "dateAdded": "2026-11-07"
+    "id": "product-86d54aef-912f-4ff5-9411-af49aef0310f",
+    "name": "Pokémon Center Pikachu Plush Deck Case",
+    "category": "Accessories",
+    "price": 25,
+    "currency": "SGD",
+    "status": "In Stock",
+    "setNumber": "",
+    "sku": "",
+    "description": "✨ Soft fabric and embroidered details\n✨ Item Dimensions: 3.8 x 3.8 x 6 inches (9.6 x 9.6 x 15.2 cm)",
+    "image": "images/products/Acc_PikachuPlush.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse/171/4415?single",
+    "dateAdded": "2026-11-09T19:01:58.957Z",
+    "updatedAt": "2026-11-09T19:01:58.957Z"
   }
 ]
