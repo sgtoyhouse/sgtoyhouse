@@ -38,7 +38,13 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: var(--background);
+
+      background-color: var(--background);
+      background-image: url("images/backgrounds/backgroundlogo.jpg");
+      background-repeat: repeat;
+      background-size: 226px 159px;
+      background-position: top left;
+
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -109,7 +115,7 @@
     /* Category navigation */
 
     .top-categories {
-      background: #0b0b0b;
+      background: rgba(11, 11, 11, 0.96);
       border-bottom: 1px solid var(--border);
     }
 
@@ -158,7 +164,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: #070707;
+      background: rgba(7, 7, 7, 0.96);
       border-bottom: 1px solid var(--border);
     }
 
@@ -204,6 +210,13 @@
       text-align: center;
     }
 
+    .page-hero .container {
+      padding: 42px 24px;
+      background: rgba(7, 7, 7, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
     .page-label {
       margin-bottom: 12px;
       color: var(--gold);
@@ -242,7 +255,7 @@
       grid-template-columns: minmax(220px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.96);
       border: 1px solid var(--border);
       border-radius: 14px;
     }
@@ -353,7 +366,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.97);
       border: 1px solid var(--border);
       border-radius: 18px;
       transition:
@@ -432,7 +445,7 @@
     }
 
     .product-name {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: #ffffff;
       font-size: 17px;
       font-weight: 700;
@@ -517,7 +530,7 @@
 
     .product-message {
       padding: 50px 20px;
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.97);
       color: var(--muted);
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -537,7 +550,7 @@
     /* Footer */
 
     .site-footer {
-      background: #0b0b0b;
+      background: rgba(11, 11, 11, 0.96);
       border-top: 1px solid var(--border);
     }
 
@@ -619,6 +632,10 @@
 
       .page-hero {
         padding: 52px 0 38px;
+      }
+
+      .page-hero .container {
+        padding: 34px 18px;
       }
 
       .page-hero h1 {
@@ -709,9 +726,9 @@
     href="https://t.me/sgtoyhse"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Contact SG Toy House on Telegram"
+    aria-label="Join SG Toy House on Telegram"
   >
-    Contact us on Telegram →
+    Singapore’s #1 Toy House. Join Us on Telegram →
   </a>
 
   <nav class="top-categories" aria-label="Product categories">
@@ -747,7 +764,9 @@
       <nav aria-label="Main navigation">
         <ul class="nav-links">
           <li>
-            <a href="index.html">Home</a>
+            <a href="index.html">
+              Home
+            </a>
           </li>
 
           <li>
@@ -812,7 +831,9 @@
           </p>
 
           <div class="sort-control">
-            <label for="product-sort">Sort</label>
+            <label for="product-sort">
+              Sort
+            </label>
 
             <select id="product-sort">
               <option value="newest">
@@ -859,7 +880,10 @@
           hidden
         >
           <h2>No LEGO products available</h2>
-          <p>Please check again soon for new additions.</p>
+
+          <p>
+            Please check again soon for new additions.
+          </p>
         </div>
       </div>
     </section>
@@ -868,7 +892,7 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <p>
-        © 2026 SG Toy House. All rights reserved.
+        © 2020 SG Toy House. All rights reserved. Singapore. Belgravia Drive.
       </p>
 
       <ul class="footer-links">
@@ -1000,7 +1024,8 @@
 
       if (
         !Number.isInteger(numericYear) ||
-        numericYear <= 0
+        numericYear < 1900 ||
+        numericYear > 2100
       ) {
         return null;
       }
@@ -1032,10 +1057,12 @@
     }
 
     function formatPrice(product) {
-      const numericPrice = getProductPrice(product);
+      const numericPrice =
+        getProductPrice(product);
 
       if (numericPrice === null) {
-        return product.price || "Contact for price";
+        return product.price ||
+          "Contact for price";
       }
 
       const currency =
@@ -1044,11 +1071,14 @@
         "SGD";
 
       try {
-        return new Intl.NumberFormat("en-SG", {
-          style: "currency",
-          currency,
-          maximumFractionDigits: 2
-        }).format(numericPrice);
+        return new Intl.NumberFormat(
+          "en-SG",
+          {
+            style: "currency",
+            currency,
+            maximumFractionDigits: 2
+          }
+        ).format(numericPrice);
       } catch (error) {
         return `SGD ${numericPrice.toFixed(2)}`;
       }
@@ -1083,7 +1113,8 @@
         product.date ||
         "";
 
-      const timestamp = Date.parse(dateValue);
+      const timestamp =
+        Date.parse(dateValue);
 
       return Number.isNaN(timestamp)
         ? 0
@@ -1125,91 +1156,107 @@
       const sortedProducts = [...products];
 
       if (sortValue === "name-ascending") {
-        sortedProducts.sort((first, second) =>
-          getProductName(first).localeCompare(
-            getProductName(second)
-          )
+        sortedProducts.sort(
+          (first, second) =>
+            getProductName(first).localeCompare(
+              getProductName(second)
+            )
         );
       }
 
       if (sortValue === "name-descending") {
-        sortedProducts.sort((first, second) =>
-          getProductName(second).localeCompare(
-            getProductName(first)
-          )
+        sortedProducts.sort(
+          (first, second) =>
+            getProductName(second).localeCompare(
+              getProductName(first)
+            )
         );
       }
 
       if (sortValue === "year-newest") {
-        sortedProducts.sort((first, second) => {
-          const firstYear =
-            getProductYear(first) || 0;
+        sortedProducts.sort(
+          (first, second) => {
+            const firstYear =
+              getProductYear(first) || 0;
 
-          const secondYear =
-            getProductYear(second) || 0;
+            const secondYear =
+              getProductYear(second) || 0;
 
-          return secondYear - firstYear;
-        });
+            return secondYear - firstYear;
+          }
+        );
       }
 
       if (sortValue === "year-oldest") {
-        sortedProducts.sort((first, second) => {
-          const firstYear =
-            getProductYear(first);
+        sortedProducts.sort(
+          (first, second) => {
+            const firstYear =
+              getProductYear(first);
 
-          const secondYear =
-            getProductYear(second);
+            const secondYear =
+              getProductYear(second);
 
-          const firstValue =
-            firstYear === null
-              ? Number.MAX_VALUE
-              : firstYear;
+            const firstValue =
+              firstYear === null
+                ? Number.MAX_VALUE
+                : firstYear;
 
-          const secondValue =
-            secondYear === null
-              ? Number.MAX_VALUE
-              : secondYear;
+            const secondValue =
+              secondYear === null
+                ? Number.MAX_VALUE
+                : secondYear;
 
-          return firstValue - secondValue;
-        });
+            return firstValue - secondValue;
+          }
+        );
       }
 
       if (sortValue === "price-low") {
-        sortedProducts.sort((first, second) => {
-          const firstPrice = getProductPrice(first);
-          const secondPrice = getProductPrice(second);
+        sortedProducts.sort(
+          (first, second) => {
+            const firstPrice =
+              getProductPrice(first);
 
-          const firstValue =
-            firstPrice === null
-              ? Number.MAX_VALUE
-              : firstPrice;
+            const secondPrice =
+              getProductPrice(second);
 
-          const secondValue =
-            secondPrice === null
-              ? Number.MAX_VALUE
-              : secondPrice;
+            const firstValue =
+              firstPrice === null
+                ? Number.MAX_VALUE
+                : firstPrice;
 
-          return firstValue - secondValue;
-        });
+            const secondValue =
+              secondPrice === null
+                ? Number.MAX_VALUE
+                : secondPrice;
+
+            return firstValue - secondValue;
+          }
+        );
       }
 
       if (sortValue === "price-high") {
-        sortedProducts.sort((first, second) => {
-          const firstPrice = getProductPrice(first);
-          const secondPrice = getProductPrice(second);
+        sortedProducts.sort(
+          (first, second) => {
+            const firstPrice =
+              getProductPrice(first);
 
-          const firstValue =
-            firstPrice === null
-              ? -1
-              : firstPrice;
+            const secondPrice =
+              getProductPrice(second);
 
-          const secondValue =
-            secondPrice === null
-              ? -1
-              : secondPrice;
+            const firstValue =
+              firstPrice === null
+                ? -1
+                : firstPrice;
 
-          return secondValue - firstValue;
-        });
+            const secondValue =
+              secondPrice === null
+                ? -1
+                : secondPrice;
+
+            return secondValue - firstValue;
+          }
+        );
       }
 
       if (sortValue === "newest") {
@@ -1280,6 +1327,7 @@
 
         image.addEventListener("error", () => {
           imageArea.replaceChildren();
+
           imageArea.textContent =
             "Product image unavailable";
 
@@ -1288,7 +1336,8 @@
 
         imageArea.appendChild(image);
       } else {
-        imageArea.textContent = "Product image";
+        imageArea.textContent =
+          "Product image";
       }
 
       imageArea.appendChild(status);
@@ -1296,12 +1345,15 @@
       const productInfo =
         document.createElement("div");
 
-      productInfo.className = "product-info";
+      productInfo.className =
+        "product-info";
 
       const category =
         document.createElement("p");
 
-      category.className = "product-category";
+      category.className =
+        "product-category";
+
       category.textContent =
         DISPLAY_CATEGORY_NAME;
 
@@ -1312,7 +1364,10 @@
       name.textContent =
         getProductName(product);
 
-      productInfo.append(category, name);
+      productInfo.append(
+        category,
+        name
+      );
 
       const setNumber =
         getProductSetNumber(product);
@@ -1324,7 +1379,8 @@
         const details =
           document.createElement("div");
 
-        details.className = "product-details";
+        details.className =
+          "product-details";
 
         if (setNumber) {
           details.appendChild(
@@ -1357,18 +1413,23 @@
         description.textContent =
           product.description;
 
-        productInfo.appendChild(description);
+        productInfo.appendChild(
+          description
+        );
       }
 
       const bottom =
         document.createElement("div");
 
-      bottom.className = "product-bottom";
+      bottom.className =
+        "product-bottom";
 
       const price =
         document.createElement("p");
 
-      price.className = "product-price";
+      price.className =
+        "product-price";
+
       price.textContent =
         formatPrice(product);
 
@@ -1379,8 +1440,12 @@
         "product-button";
 
       if (isSoldOut(product)) {
-        enquiryLink.classList.add("disabled");
-        enquiryLink.textContent = "Sold out";
+        enquiryLink.classList.add(
+          "disabled"
+        );
+
+        enquiryLink.textContent =
+          "Sold out";
 
         enquiryLink.setAttribute(
           "aria-disabled",
@@ -1398,10 +1463,13 @@
         enquiryLink.href =
           product.telegramUrl ||
           `${TELEGRAM_URL}?text=${
-            encodeURIComponent(enquiryMessage)
+            encodeURIComponent(
+              enquiryMessage
+            )
           }`;
 
         enquiryLink.target = "_blank";
+
         enquiryLink.rel =
           "noopener noreferrer";
 
@@ -1410,9 +1478,17 @@
           "Enquire on Telegram";
       }
 
-      bottom.append(price, enquiryLink);
+      bottom.append(
+        price,
+        enquiryLink
+      );
+
       productInfo.appendChild(bottom);
-      card.append(imageArea, productInfo);
+
+      card.append(
+        imageArea,
+        productInfo
+      );
 
       return card;
     }
@@ -1427,11 +1503,12 @@
         );
 
       const matchingProducts =
-        legoProducts.filter((product) =>
-          productMatchesSearch(
-            product,
-            normalizedSearchTerm
-          )
+        legoProducts.filter(
+          (product) =>
+            productMatchesSearch(
+              product,
+              normalizedSearchTerm
+            )
         );
 
       const sortedProducts =
@@ -1493,11 +1570,13 @@
           : ` LEGO ${productLabel}`
       );
 
-      sortedProducts.forEach((product) => {
-        productGrid.appendChild(
-          createProductCard(product)
-        );
-      });
+      sortedProducts.forEach(
+        (product) => {
+          productGrid.appendChild(
+            createProductCard(product)
+          );
+        }
+      );
     }
 
     async function loadProducts() {
@@ -1528,20 +1607,22 @@
               : [];
 
         legoProducts =
-          allProducts.filter((product) => {
-            const category =
-              product.category ||
-              product.type ||
-              product.collection ||
-              "";
+          allProducts.filter(
+            (product) => {
+              const category =
+                product.category ||
+                product.type ||
+                product.collection ||
+                "";
 
-            return (
-              normalizeCategory(category) ===
-              normalizeCategory(
-                CATEGORY_NAME
-              )
-            );
-          });
+              return (
+                normalizeCategory(category) ===
+                normalizeCategory(
+                  CATEGORY_NAME
+                )
+              );
+            }
+          );
 
         renderProducts();
       } catch (error) {
