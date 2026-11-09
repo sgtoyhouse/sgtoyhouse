@@ -6,6 +6,13 @@
 
   <title>SG Toy House | LEGO, Pokémon, One Piece & Accessories</title>
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/apple-touch-icon.png"
+  >
+
   <meta
     name="description"
     content="Browse LEGO, Pokémon, One Piece and collectible accessories at SG Toy House."
@@ -1016,8 +1023,7 @@
         product.releaseYear ??
         "";
 
-      const numericYear =
-        Number(value);
+      const numericYear = Number(value);
 
       if (
         !Number.isInteger(numericYear) ||
@@ -1038,8 +1044,7 @@
         product.date ||
         "";
 
-      const timestamp =
-        Date.parse(dateValue);
+      const timestamp = Date.parse(dateValue);
 
       return Number.isNaN(timestamp)
         ? 0
@@ -1074,7 +1079,7 @@
           maximumFractionDigits: 2
         }).format(numericValue);
 
-      return `SGD$${formattedAmount}`;
+      return `SGD $${formattedAmount}`;
     }
 
     function findLatestProducts(
@@ -1108,14 +1113,12 @@
       const detail =
         document.createElement("span");
 
-      detail.className =
-        "product-detail";
+      detail.className = "product-detail";
 
       const strong =
         document.createElement("strong");
 
-      strong.textContent =
-        `${label}: `;
+      strong.textContent = `${label}: `;
 
       detail.append(
         strong,
@@ -1132,11 +1135,8 @@
       const card =
         document.createElement("a");
 
-      card.className =
-        "product-card";
-
-      card.href =
-        category.page;
+      card.className = "product-card";
+      card.href = category.page;
 
       card.setAttribute(
         "aria-label",
@@ -1146,8 +1146,7 @@
       const imageArea =
         document.createElement("div");
 
-      imageArea.className =
-        "product-image";
+      imageArea.className = "product-image";
 
       const imageSource =
         getProductImage(product);
@@ -1156,25 +1155,17 @@
         const image =
           document.createElement("img");
 
-        image.src =
-          imageSource;
-
+        image.src = imageSource;
         image.alt =
           product.imageAlt ||
           getProductName(product);
+        image.loading = "lazy";
 
-        image.loading =
-          "lazy";
-
-        image.addEventListener(
-          "error",
-          () => {
-            imageArea.replaceChildren();
-
-            imageArea.textContent =
-              "Product image unavailable";
-          }
-        );
+        image.addEventListener("error", () => {
+          imageArea.replaceChildren();
+          imageArea.textContent =
+            "Product image unavailable";
+        });
 
         imageArea.appendChild(image);
       } else {
@@ -1185,8 +1176,7 @@
       const productInfo =
         document.createElement("div");
 
-      productInfo.className =
-        "product-info";
+      productInfo.className = "product-info";
 
       const categoryName =
         document.createElement("p");
@@ -1251,9 +1241,7 @@
           );
         }
 
-        productInfo.appendChild(
-          details
-        );
+        productInfo.appendChild(details);
       }
 
       const formattedPrice =
@@ -1355,11 +1343,9 @@
           recentProductsEmpty.textContent =
             "Recently added products will appear here soon.";
 
-          recentProductsEmpty.hidden =
-            false;
+          recentProductsEmpty.hidden = false;
         } else {
-          recentProductsEmpty.hidden =
-            true;
+          recentProductsEmpty.hidden = true;
         }
       } catch (error) {
         console.error(
@@ -1376,8 +1362,7 @@
           "error"
         );
 
-        recentProductsEmpty.hidden =
-          false;
+        recentProductsEmpty.hidden = false;
       } finally {
         recentProductGrid.setAttribute(
           "aria-busy",
@@ -1411,38 +1396,31 @@
       const article =
         document.createElement("article");
 
-      article.className =
-        "review-card";
+      article.className = "review-card";
 
       const photo =
         document.createElement("div");
 
-      photo.className =
-        "review-photo";
+      photo.className = "review-photo";
 
       if (review.photo) {
         const image =
           document.createElement("img");
 
-        image.src =
-          review.photo;
+        image.src = review.photo;
 
         image.alt =
           review.photoAlt ||
           "Photo submitted with a customer review";
 
-        image.loading =
-          "lazy";
+        image.loading = "lazy";
 
-        image.addEventListener(
-          "error",
-          () => {
-            photo.replaceChildren();
+        image.addEventListener("error", () => {
+          photo.replaceChildren();
 
-            photo.textContent =
-              "Review photo unavailable";
-          }
-        );
+          photo.textContent =
+            "Review photo unavailable";
+        });
 
         photo.appendChild(image);
       } else {
@@ -1453,8 +1431,7 @@
       const content =
         document.createElement("div");
 
-      content.className =
-        "review-content";
+      content.className = "review-content";
 
       const header =
         document.createElement("div");
@@ -1465,9 +1442,7 @@
       const stars =
         document.createElement("p");
 
-      stars.className =
-        "review-stars";
-
+      stars.className = "review-stars";
       stars.textContent =
         renderStars(review.rating);
 
@@ -1490,27 +1465,21 @@
       const source =
         document.createElement("p");
 
-      source.className =
-        "review-source";
-
+      source.className = "review-source";
       source.textContent =
         review.source || "Customer";
 
       const text =
         document.createElement("blockquote");
 
-      text.className =
-        "review-text";
-
+      text.className = "review-text";
       text.textContent =
         review.text || "";
 
       const author =
         document.createElement("p");
 
-      author.className =
-        "review-author";
-
+      author.className = "review-author";
       author.textContent =
         review.author || "Customer";
 
@@ -1570,22 +1539,17 @@
           reviewsEmpty.textContent =
             "Reviews will be added soon.";
 
-          reviewsEmpty.hidden =
-            false;
-
+          reviewsEmpty.hidden = false;
           return;
         }
 
-        reviewsEmpty.hidden =
-          true;
+        reviewsEmpty.hidden = true;
 
-        reviews.forEach(
-          (review) => {
-            reviewGrid.appendChild(
-              createReviewCard(review)
-            );
-          }
-        );
+        reviews.forEach((review) => {
+          reviewGrid.appendChild(
+            createReviewCard(review)
+          );
+        });
       } catch (error) {
         console.error(
           "Review loading error:",
@@ -1601,8 +1565,7 @@
           "error"
         );
 
-        reviewsEmpty.hidden =
-          false;
+        reviewsEmpty.hidden = false;
       } finally {
         reviewGrid.setAttribute(
           "aria-busy",
