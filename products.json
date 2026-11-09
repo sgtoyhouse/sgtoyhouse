@@ -1,5 +1,21 @@
 [
   {
+    "id": "product-423e6d18-8c5e-43c7-8f3f-b4e47e2e5fd6",
+    "name": "Mega Charizard X ex Ultra Premium Collection",
+    "category": "Pokémon",
+    "price": 330,
+    "currency": "SGD",
+    "status": "In Stock",
+    "setNumber": "",
+    "sku": "",
+    "description": "✨Each set contains :\n- 1x Foil promo card (Mega Charizard X EX)\n- 1x Foil promo card (Oricorio EX)\n- 65x Card sleeves (Mega Charizard X)\n- 1x Playmat (Mega Charizard X)\n- 1x Deck box (Mega Charizard X)\n- 1x Metal coin (Mega Charizard X)\n- 6x Damage-counter dice\n- 18x Pokémon TCG booster packs",
+    "image": "images/products/Pkm_Mega Charizard X ex Ultra Premium Collection.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse/12/2672",
+    "dateAdded": "2026-11-09T20:12:43.430Z",
+    "updatedAt": "2026-11-09T20:12:43.430Z"
+  },
+  {
     "id": "product-98f716af-0e57-4649-8f8a-cc15318e725b",
     "name": "Mega Zygarde Ex Premium Collection",
     "category": "Pokémon",
