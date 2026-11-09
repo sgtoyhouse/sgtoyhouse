@@ -1,5 +1,21 @@
 [
   {
+    "id": "product-8b6b6f6b-48b7-42c7-a77f-865f08ee4bf4",
+    "name": "Standard Battle Pack Vol. 13",
+    "category": "One Piece",
+    "price": 6,
+    "currency": "SGD",
+    "status": "In Stock",
+    "setNumber": "",
+    "sku": "",
+    "description": "✨ Contains 1 of following :\n- OP12-028 Kouzuki Hiyori\n- OP12-062 Vinsmoke Sora\n- OP12-093 Morley\n- OP12-112 Baby 5\n✨ Obtainable only from battle event held in 2026",
+    "image": "images/products/OP_Standard Battle Pack Vol. 13.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse/13/2603",
+    "dateAdded": "2026-11-09T20:37:15.998Z",
+    "updatedAt": "2026-11-09T20:37:15.998Z"
+  },
+  {
     "id": "product-423e6d18-8c5e-43c7-8f3f-b4e47e2e5fd6",
     "name": "Mega Charizard X ex Ultra Premium Collection",
     "category": "Pokémon",
