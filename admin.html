@@ -32,7 +32,13 @@
 
     body {
       min-height: 100vh;
-      background: var(--background);
+
+      background-color: var(--background);
+      background-image: url("images/backgrounds/backgroundlogo.jpg");
+      background-repeat: repeat;
+      background-size: 226px 159px;
+      background-position: top left;
+
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -54,6 +60,10 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     [hidden] {
       display: none !important;
     }
@@ -66,7 +76,7 @@
     /* Header */
 
     .admin-header {
-      background: #0b0b0b;
+      background: rgba(11, 11, 11, 0.96);
       border-bottom: 1px solid var(--border);
     }
 
@@ -106,7 +116,12 @@
     /* Introduction */
 
     .page-intro {
-      padding: 52px 0 32px;
+      margin-top: 30px;
+      padding: 44px 24px;
+      background: rgba(7, 7, 7, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
       text-align: center;
     }
 
@@ -125,11 +140,11 @@
     /* Tabs */
 
     .admin-tabs {
-      margin-bottom: 26px;
+      margin: 26px 0;
       padding: 6px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.96);
       border: 1px solid var(--border);
       border-radius: 14px;
     }
@@ -142,6 +157,9 @@
       border: 0;
       border-radius: 9px;
       font-weight: 800;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
     }
 
     .tab-button:hover {
@@ -170,7 +188,7 @@
     .admin-section {
       margin-bottom: 24px;
       padding: 28px;
-      background: var(--surface);
+      background: rgba(16, 16, 16, 0.96);
       border: 1px solid var(--border);
       border-radius: 18px;
       box-shadow: var(--shadow);
@@ -272,7 +290,7 @@
       font-size: 11px;
     }
 
-    /* Image preview */
+    /* Image previews */
 
     .image-preview {
       width: min(260px, 100%);
@@ -323,11 +341,16 @@
       border: 1px solid var(--gold);
       border-radius: 9px;
       font-weight: 800;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .admin-button:hover,
     .admin-button:focus-visible {
       background: var(--gold-light);
+      transform: translateY(-1px);
     }
 
     .button-secondary {
@@ -359,7 +382,7 @@
       font-size: 12px;
     }
 
-    /* Status */
+    /* Messages */
 
     .status-message {
       margin-top: 16px;
@@ -380,11 +403,11 @@
       border: 1px solid rgba(206, 92, 92, 0.4);
     }
 
-    /* Data tools */
+    /* Import and export */
 
     .data-tools {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
@@ -450,6 +473,11 @@
       line-height: 1.65;
       white-space: pre;
       tab-size: 2;
+    }
+
+    .json-viewer pre:focus {
+      outline: 3px solid rgba(212, 175, 55, 0.35);
+      outline-offset: -3px;
     }
 
     /* Admin cards */
@@ -555,7 +583,7 @@
 
     .admin-footer {
       padding: 24px 0;
-      background: #0b0b0b;
+      background: rgba(11, 11, 11, 0.96);
       color: var(--muted);
       border-top: 1px solid var(--border);
       font-size: 13px;
@@ -585,6 +613,11 @@
         padding: 14px 0;
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .page-intro {
+        margin-top: 20px;
+        padding: 34px 18px;
       }
 
       .admin-section {
@@ -646,6 +679,15 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
       }
+
+      .json-viewer-actions .admin-button {
+        width: 100%;
+      }
+
+      .json-viewer pre {
+        max-height: 420px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -676,8 +718,10 @@
       <button
         class="tab-button active"
         type="button"
+        id="products-tab"
         role="tab"
         aria-selected="true"
+        aria-controls="products-panel"
         data-panel="products-panel"
       >
         Products
@@ -686,8 +730,10 @@
       <button
         class="tab-button"
         type="button"
+        id="reviews-tab"
         role="tab"
         aria-selected="false"
+        aria-controls="reviews-panel"
         data-panel="reviews-panel"
       >
         Reviews
@@ -696,12 +742,20 @@
 
     <!-- Products -->
 
-    <section class="admin-panel active" id="products-panel">
+    <section
+      class="admin-panel active"
+      id="products-panel"
+      role="tabpanel"
+      aria-labelledby="products-tab"
+    >
       <section class="admin-section">
         <div class="section-header">
           <div>
             <h2 id="product-form-title">Add Product</h2>
-            <p>Add a product to one of the four website categories.</p>
+
+            <p>
+              Add a product to LEGO, Pokémon, One Piece or Accessories.
+            </p>
           </div>
 
           <span class="item-count" id="product-total">
@@ -712,18 +766,22 @@
         <form id="product-form">
           <div class="form-grid">
             <div class="form-group">
-              <label for="product-name">Product name</label>
+              <label for="product-name">
+                Product name
+              </label>
 
               <input
                 type="text"
                 id="product-name"
-                placeholder="LEGO Roller Coaster"
+                placeholder="Product name"
                 required
               >
             </div>
 
             <div class="form-group">
-              <label for="product-category">Category</label>
+              <label for="product-category">
+                Category
+              </label>
 
               <select id="product-category" required>
                 <option value="LEGO">LEGO</option>
@@ -734,20 +792,24 @@
             </div>
 
             <div class="form-group">
-              <label for="product-price">Price in SGD</label>
+              <label for="product-price">
+                Price in SGD
+              </label>
 
               <input
                 type="number"
                 id="product-price"
                 min="0"
                 step="0.01"
-                placeholder="499.90"
+                placeholder="199.90"
                 required
               >
             </div>
 
             <div class="form-group">
-              <label for="product-status">Availability</label>
+              <label for="product-status">
+                Availability
+              </label>
 
               <select id="product-status" required>
                 <option value="In Stock">In Stock</option>
@@ -760,7 +822,9 @@
             <div class="form-group" id="set-number-group">
               <label for="product-set-number">
                 LEGO set number
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input
@@ -768,33 +832,41 @@
                 id="product-set-number"
                 placeholder="10261"
               >
+
+              <p class="field-help">
+                This field is available only for LEGO products.
+              </p>
             </div>
 
             <div class="form-group" id="year-group">
               <label for="product-year">
-                LEGO release year
-                <span class="optional-label">(optional)</span>
+                Release year
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input
                 type="number"
                 id="product-year"
-                min="1932"
+                min="1900"
                 max="2100"
                 step="1"
                 inputmode="numeric"
-                placeholder="2018"
+                placeholder="2026"
               >
 
               <p class="field-help">
-                This appears on the LEGO product card below the set number.
+                Release year is available for every category.
               </p>
             </div>
 
             <div class="form-group form-group-full">
               <label for="product-description">
                 Description
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <textarea
@@ -806,7 +878,9 @@
             <div class="form-group form-group-full">
               <label for="product-image">
                 Image path or URL
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input
@@ -819,7 +893,10 @@
                 Place local product photos inside images/products/.
               </p>
 
-              <div class="image-preview" id="product-image-preview">
+              <div
+                class="image-preview"
+                id="product-image-preview"
+              >
                 Product image preview
               </div>
             </div>
@@ -827,7 +904,9 @@
             <div class="form-group form-group-full">
               <label for="product-image-alt">
                 Image description
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input
@@ -840,7 +919,9 @@
             <div class="form-group form-group-full">
               <label for="product-telegram-url">
                 Custom Telegram link
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input
@@ -883,7 +964,7 @@
             <h2>Product Data</h2>
 
             <p>
-              Import, inspect, copy or export the website product data.
+              Import, preview, copy or export the product data.
             </p>
           </div>
         </div>
@@ -917,7 +998,7 @@
             <h3>Export or view products.json</h3>
 
             <p>
-              Preview or download the product data for the website.
+              Preview or download the current product data.
             </p>
 
             <div class="file-actions">
@@ -975,7 +1056,10 @@
         <div class="section-header">
           <div>
             <h2>Current Products</h2>
-            <p>Edit or delete products stored in this browser.</p>
+
+            <p>
+              Edit or delete products stored in this browser.
+            </p>
           </div>
         </div>
 
@@ -989,12 +1073,20 @@
 
     <!-- Reviews -->
 
-    <section class="admin-panel" id="reviews-panel">
+    <section
+      class="admin-panel"
+      id="reviews-panel"
+      role="tabpanel"
+      aria-labelledby="reviews-tab"
+    >
       <section class="admin-section">
         <div class="section-header">
           <div>
             <h2 id="review-form-title">Add Review</h2>
-            <p>Add a customer review with an optional photo.</p>
+
+            <p>
+              Add a customer review with an optional photo.
+            </p>
           </div>
 
           <span class="item-count" id="review-total">
@@ -1005,7 +1097,9 @@
         <form id="review-form">
           <div class="form-grid">
             <div class="form-group">
-              <label for="review-author">Customer name</label>
+              <label for="review-author">
+                Customer name
+              </label>
 
               <input
                 type="text"
@@ -1016,7 +1110,9 @@
             </div>
 
             <div class="form-group">
-              <label for="review-source">Review source</label>
+              <label for="review-source">
+                Review source
+              </label>
 
               <select id="review-source" required>
                 <option value="Carousell">Carousell</option>
@@ -1029,7 +1125,9 @@
             </div>
 
             <div class="form-group">
-              <label for="review-rating">Rating</label>
+              <label for="review-rating">
+                Rating
+              </label>
 
               <select id="review-rating" required>
                 <option value="5">5 stars</option>
@@ -1043,14 +1141,18 @@
             <div class="form-group">
               <label for="review-date">
                 Review date
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input type="date" id="review-date">
             </div>
 
             <div class="form-group form-group-full">
-              <label for="review-text">Review</label>
+              <label for="review-text">
+                Review
+              </label>
 
               <textarea
                 id="review-text"
@@ -1062,7 +1164,9 @@
             <div class="form-group form-group-full">
               <label for="review-photo">
                 Photo path or URL
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input
@@ -1075,7 +1179,10 @@
                 Place local review photos inside images/reviews/.
               </p>
 
-              <div class="image-preview" id="review-image-preview">
+              <div
+                class="image-preview"
+                id="review-image-preview"
+              >
                 Review photo preview
               </div>
             </div>
@@ -1083,7 +1190,9 @@
             <div class="form-group form-group-full">
               <label for="review-photo-alt">
                 Photo description
-                <span class="optional-label">(optional)</span>
+                <span class="optional-label">
+                  (optional)
+                </span>
               </label>
 
               <input
@@ -1122,7 +1231,7 @@
             <h2>Review Data</h2>
 
             <p>
-              Import, inspect, copy or export the homepage review data.
+              Import, preview, copy or export the review data.
             </p>
           </div>
         </div>
@@ -1156,7 +1265,7 @@
             <h3>Export or view reviews.json</h3>
 
             <p>
-              Preview or download the review data for the website.
+              Preview or download the current review data.
             </p>
 
             <div class="file-actions">
@@ -1214,7 +1323,10 @@
         <div class="section-header">
           <div>
             <h2>Current Reviews</h2>
-            <p>Edit or delete reviews stored in this browser.</p>
+
+            <p>
+              Edit or delete reviews stored in this browser.
+            </p>
           </div>
         </div>
 
@@ -1238,11 +1350,12 @@
     const REVIEW_STORAGE_KEY = "sgToyHouseReviews";
     const DEFAULT_TELEGRAM_URL = "https://t.me/sgtoyhse";
 
-    let products = cleanSkuFields(
+    let products = cleanProductData(
       loadStoredArray(PRODUCT_STORAGE_KEY)
     );
 
     let reviews = loadStoredArray(REVIEW_STORAGE_KEY);
+
     let editingProductId = null;
     let editingReviewId = null;
 
@@ -1278,9 +1391,6 @@
 
     const setNumberGroup =
       document.getElementById("set-number-group");
-
-    const yearGroup =
-      document.getElementById("year-group");
 
     const productDescriptionInput =
       document.getElementById("product-description");
@@ -1401,28 +1511,39 @@
 
     function loadStoredArray(storageKey) {
       try {
-        const value = localStorage.getItem(storageKey);
-        const parsed = value ? JSON.parse(value) : [];
+        const storedValue =
+          localStorage.getItem(storageKey);
 
-        return Array.isArray(parsed) ? parsed : [];
+        const parsedValue =
+          storedValue
+            ? JSON.parse(storedValue)
+            : [];
+
+        return Array.isArray(parsedValue)
+          ? parsedValue
+          : [];
       } catch (error) {
-        console.error(error);
+        console.error(
+          `Unable to load ${storageKey}:`,
+          error
+        );
+
         return [];
       }
     }
 
-    function cleanSkuFields(items) {
+    function cleanProductData(items) {
       return items.map((item) => {
-        const cleanedItem = { ...item };
+        const cleanItem = { ...item };
 
-        delete cleanedItem.sku;
+        delete cleanItem.sku;
 
-        return cleanedItem;
+        return cleanItem;
       });
     }
 
     function saveProducts() {
-      products = cleanSkuFields(products);
+      products = cleanProductData(products);
 
       localStorage.setItem(
         PRODUCT_STORAGE_KEY,
@@ -1450,16 +1571,25 @@
         .slice(2)}`;
     }
 
-    function showStatus(element, message, type = "success") {
+    function showStatus(
+      element,
+      message,
+      type = "success"
+    ) {
       element.textContent = message;
-      element.className = `status-message ${type}`;
+      element.className =
+        `status-message ${type}`;
+
       element.hidden = false;
 
-      window.clearTimeout(element.statusTimer);
+      window.clearTimeout(
+        element.statusTimer
+      );
 
-      element.statusTimer = window.setTimeout(() => {
-        element.hidden = true;
-      }, 3500);
+      element.statusTimer =
+        window.setTimeout(() => {
+          element.hidden = true;
+        }, 3500);
     }
 
     function formatPrice(value) {
@@ -1488,21 +1618,52 @@
       );
     }
 
-    function setImagePreview(preview, source, altText) {
+    function normalizeYear(value) {
+      if (
+        value === null ||
+        value === undefined ||
+        value === ""
+      ) {
+        return "";
+      }
+
+      const numericYear = Number(value);
+
+      if (
+        !Number.isInteger(numericYear) ||
+        numericYear < 1900 ||
+        numericYear > 2100
+      ) {
+        return "";
+      }
+
+      return numericYear;
+    }
+
+    function setImagePreview(
+      preview,
+      source,
+      altText
+    ) {
       preview.replaceChildren();
 
       if (!source) {
-        preview.textContent = "No image selected";
+        preview.textContent =
+          "No image selected";
+
         return;
       }
 
-      const image = document.createElement("img");
+      const image =
+        document.createElement("img");
 
       image.src = source;
-      image.alt = altText || "Image preview";
+      image.alt =
+        altText || "Image preview";
 
       image.addEventListener("error", () => {
         preview.replaceChildren();
+
         preview.textContent =
           "Image could not be previewed";
       });
@@ -1511,74 +1672,114 @@
     }
 
     function downloadJson(data, filename) {
-      const content = JSON.stringify(data, null, 2);
+      const jsonContent =
+        JSON.stringify(data, null, 2);
 
-      const blob = new Blob([content], {
-        type: "application/json"
-      });
+      const blob = new Blob(
+        [jsonContent],
+        { type: "application/json" }
+      );
 
-      const objectUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
+      const objectUrl =
+        URL.createObjectURL(blob);
 
-      link.href = objectUrl;
-      link.download = filename;
+      const downloadLink =
+        document.createElement("a");
 
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+      downloadLink.href = objectUrl;
+      downloadLink.download = filename;
+
+      document.body.appendChild(
+        downloadLink
+      );
+
+      downloadLink.click();
+      downloadLink.remove();
 
       URL.revokeObjectURL(objectUrl);
     }
 
     function readJsonFile(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
+      return new Promise(
+        (resolve, reject) => {
+          const reader = new FileReader();
 
-        reader.addEventListener("load", () => {
-          try {
-            resolve(JSON.parse(reader.result));
-          } catch (error) {
-            reject(
-              new Error("The selected file is not valid JSON.")
-            );
-          }
-        });
-
-        reader.addEventListener("error", () => {
-          reject(
-            new Error("The selected file could not be read.")
+          reader.addEventListener(
+            "load",
+            () => {
+              try {
+                resolve(
+                  JSON.parse(reader.result)
+                );
+              } catch (error) {
+                reject(
+                  new Error(
+                    "The selected file is not valid JSON."
+                  )
+                );
+              }
+            }
           );
-        });
 
-        reader.readAsText(file);
-      });
+          reader.addEventListener(
+            "error",
+            () => {
+              reject(
+                new Error(
+                  "The selected file could not be read."
+                )
+              );
+            }
+          );
+
+          reader.readAsText(file);
+        }
+      );
     }
 
-    async function copyJson(data, statusElement, filename) {
-      const content = JSON.stringify(data, null, 2);
+    async function copyJson(
+      data,
+      statusElement,
+      filename
+    ) {
+      const jsonText =
+        JSON.stringify(data, null, 2);
 
       try {
-        await navigator.clipboard.writeText(content);
+        await navigator.clipboard.writeText(
+          jsonText
+        );
 
         showStatus(
           statusElement,
           `${filename} copied to the clipboard.`
         );
       } catch (error) {
-        const textArea =
+        const temporaryTextArea =
           document.createElement("textarea");
 
-        textArea.value = content;
-        textArea.style.position = "fixed";
-        textArea.style.opacity = "0";
+        temporaryTextArea.value = jsonText;
+        temporaryTextArea.setAttribute(
+          "readonly",
+          ""
+        );
 
-        document.body.appendChild(textArea);
-        textArea.select();
+        temporaryTextArea.style.position =
+          "fixed";
+
+        temporaryTextArea.style.opacity =
+          "0";
+
+        document.body.appendChild(
+          temporaryTextArea
+        );
+
+        temporaryTextArea.select();
 
         const copied =
           document.execCommand("copy");
 
-        textArea.remove();
+        temporaryTextArea.remove();
 
         showStatus(
           statusElement,
@@ -1590,29 +1791,19 @@
       }
     }
 
-    function updateProductFields() {
-      const isLego =
-        productCategoryInput.value === "LEGO";
-
-      setNumberGroup.hidden = !isLego;
-      yearGroup.hidden = !isLego;
-
-      if (!isLego) {
-        productSetNumberInput.value = "";
-        productYearInput.value = "";
-      }
-    }
-
     function switchPanel(panelId) {
       tabButtons.forEach((button) => {
-        const active =
+        const isActive =
           button.dataset.panel === panelId;
 
-        button.classList.toggle("active", active);
+        button.classList.toggle(
+          "active",
+          isActive
+        );
 
         button.setAttribute(
           "aria-selected",
-          String(active)
+          String(isActive)
         );
       });
 
@@ -1624,10 +1815,22 @@
       });
     }
 
+    function updateProductFields() {
+      const isLego =
+        productCategoryInput.value ===
+        "LEGO";
+
+      setNumberGroup.hidden = !isLego;
+
+      if (!isLego) {
+        productSetNumberInput.value = "";
+      }
+    }
+
     function updateProductsJsonViewer() {
       productsJsonCode.textContent =
         JSON.stringify(
-          cleanSkuFields(products),
+          cleanProductData(products),
           null,
           2
         );
@@ -1635,54 +1838,91 @@
 
     function updateReviewsJsonViewer() {
       reviewsJsonCode.textContent =
-        JSON.stringify(reviews, null, 2);
+        JSON.stringify(
+          reviews,
+          null,
+          2
+        );
     }
 
     function resetProductForm() {
       editingProductId = null;
+
       productForm.reset();
 
-      productCategoryInput.value = "LEGO";
-      productStatusInput.value = "In Stock";
-      productFormTitle.textContent = "Add Product";
+      productCategoryInput.value =
+        "LEGO";
+
+      productStatusInput.value =
+        "In Stock";
+
+      productFormTitle.textContent =
+        "Add Product";
 
       updateProductFields();
-      setImagePreview(productImagePreview, "", "");
+
+      setImagePreview(
+        productImagePreview,
+        "",
+        ""
+      );
     }
 
     function resetReviewForm() {
       editingReviewId = null;
+
       reviewForm.reset();
 
-      reviewSourceInput.value = "Carousell";
-      reviewRatingInput.value = "5";
-      reviewFormTitle.textContent = "Add Review";
+      reviewSourceInput.value =
+        "Carousell";
 
-      setImagePreview(reviewImagePreview, "", "");
+      reviewRatingInput.value =
+        "5";
+
+      reviewFormTitle.textContent =
+        "Add Review";
+
+      setImagePreview(
+        reviewImagePreview,
+        "",
+        ""
+      );
     }
 
-    function createAdminImage(source, altText) {
-      const area = document.createElement("div");
-      area.className = "admin-card-image";
+    function createAdminImage(
+      source,
+      altText
+    ) {
+      const imageArea =
+        document.createElement("div");
+
+      imageArea.className =
+        "admin-card-image";
 
       if (!source) {
-        area.textContent = "No image";
-        return area;
+        imageArea.textContent =
+          "No image";
+
+        return imageArea;
       }
 
-      const image = document.createElement("img");
+      const image =
+        document.createElement("img");
 
       image.src = source;
-      image.alt = altText || "Item image";
+      image.alt =
+        altText || "Item image";
 
       image.addEventListener("error", () => {
-        area.replaceChildren();
-        area.textContent = "Image unavailable";
+        imageArea.replaceChildren();
+
+        imageArea.textContent =
+          "Image unavailable";
       });
 
-      area.appendChild(image);
+      imageArea.appendChild(image);
 
-      return area;
+      return imageArea;
     }
 
     function renderProducts() {
@@ -1699,25 +1939,39 @@
         products.length !== 0;
 
       products.forEach((product) => {
-        const card = document.createElement("article");
+        const card =
+          document.createElement("article");
+
         card.className = "admin-card";
 
-        const imageArea = createAdminImage(
-          product.image,
-          product.imageAlt || product.name
-        );
+        const imageArea =
+          createAdminImage(
+            product.image,
+            product.imageAlt ||
+              product.name
+          );
 
-        const content = document.createElement("div");
-        content.className = "admin-card-content";
+        const content =
+          document.createElement("div");
 
-        const category = document.createElement("p");
-        category.className = "admin-card-label";
+        content.className =
+          "admin-card-content";
+
+        const category =
+          document.createElement("p");
+
+        category.className =
+          "admin-card-label";
+
         category.textContent =
           product.category || "Product";
 
-        const name = document.createElement("h3");
+        const name =
+          document.createElement("h3");
+
         name.textContent =
-          product.name || "Unnamed product";
+          product.name ||
+          "Unnamed product";
 
         const description =
           document.createElement("p");
@@ -1726,10 +1980,14 @@
           "admin-card-description";
 
         description.textContent =
-          product.description || "No description";
+          product.description ||
+          "No description";
 
-        const meta = document.createElement("p");
-        meta.className = "admin-card-meta";
+        const meta =
+          document.createElement("p");
+
+        meta.className =
+          "admin-card-meta";
 
         const metaParts = [
           formatPrice(product.price),
@@ -1740,22 +1998,31 @@
           product.category === "LEGO" &&
           product.setNumber
         ) {
-          metaParts.push(`Set ${product.setNumber}`);
-        }
-
-        if (
-          product.category === "LEGO" &&
-          (product.year || product.releaseYear)
-        ) {
           metaParts.push(
-            `Year ${product.year || product.releaseYear}`
+            `Set ${product.setNumber}`
           );
         }
 
-        meta.textContent = metaParts.join(" • ");
+        const productYear =
+          normalizeYear(
+            product.year ??
+            product.releaseYear
+          );
 
-        const actions = document.createElement("div");
-        actions.className = "card-actions";
+        if (productYear) {
+          metaParts.push(
+            `Year ${productYear}`
+          );
+        }
+
+        meta.textContent =
+          metaParts.join(" • ");
+
+        const actions =
+          document.createElement("div");
+
+        actions.className =
+          "card-actions";
 
         const editButton =
           document.createElement("button");
@@ -1766,9 +2033,12 @@
         editButton.type = "button";
         editButton.textContent = "Edit";
 
-        editButton.addEventListener("click", () => {
-          editProduct(product.id);
-        });
+        editButton.addEventListener(
+          "click",
+          () => {
+            editProduct(product.id);
+          }
+        );
 
         const deleteButton =
           document.createElement("button");
@@ -1777,13 +2047,20 @@
           "admin-button button-danger button-small";
 
         deleteButton.type = "button";
-        deleteButton.textContent = "Delete";
+        deleteButton.textContent =
+          "Delete";
 
-        deleteButton.addEventListener("click", () => {
-          deleteProduct(product.id);
-        });
+        deleteButton.addEventListener(
+          "click",
+          () => {
+            deleteProduct(product.id);
+          }
+        );
 
-        actions.append(editButton, deleteButton);
+        actions.append(
+          editButton,
+          deleteButton
+        );
 
         content.append(
           category,
@@ -1793,7 +2070,11 @@
           actions
         );
 
-        card.append(imageArea, content);
+        card.append(
+          imageArea,
+          content
+        );
+
         productList.appendChild(card);
       });
 
@@ -1816,38 +2097,62 @@
         reviews.length !== 0;
 
       reviews.forEach((review) => {
-        const card = document.createElement("article");
+        const card =
+          document.createElement("article");
+
         card.className = "admin-card";
 
-        const imageArea = createAdminImage(
-          review.photo,
-          review.photoAlt || "Customer review photo"
-        );
+        const imageArea =
+          createAdminImage(
+            review.photo,
+            review.photoAlt ||
+              "Customer review photo"
+          );
 
-        const content = document.createElement("div");
-        content.className = "admin-card-content";
+        const content =
+          document.createElement("div");
 
-        const source = document.createElement("p");
-        source.className = "admin-card-label";
+        content.className =
+          "admin-card-content";
+
+        const source =
+          document.createElement("p");
+
+        source.className =
+          "admin-card-label";
+
         source.textContent =
           review.source || "Review";
 
-        const author = document.createElement("h3");
+        const author =
+          document.createElement("h3");
+
         author.textContent =
           review.author || "Customer";
 
-        const rating = document.createElement("p");
-        rating.className = "review-rating";
+        const rating =
+          document.createElement("p");
+
+        rating.className =
+          "review-rating";
+
         rating.textContent =
           formatStars(review.rating);
 
-        const text = document.createElement("p");
-        text.className = "admin-card-description";
+        const text =
+          document.createElement("p");
+
+        text.className =
+          "admin-card-description";
+
         text.textContent =
           review.text || "No review text";
 
-        const actions = document.createElement("div");
-        actions.className = "card-actions";
+        const actions =
+          document.createElement("div");
+
+        actions.className =
+          "card-actions";
 
         const editButton =
           document.createElement("button");
@@ -1858,9 +2163,12 @@
         editButton.type = "button";
         editButton.textContent = "Edit";
 
-        editButton.addEventListener("click", () => {
-          editReview(review.id);
-        });
+        editButton.addEventListener(
+          "click",
+          () => {
+            editReview(review.id);
+          }
+        );
 
         const deleteButton =
           document.createElement("button");
@@ -1869,13 +2177,20 @@
           "admin-button button-danger button-small";
 
         deleteButton.type = "button";
-        deleteButton.textContent = "Delete";
+        deleteButton.textContent =
+          "Delete";
 
-        deleteButton.addEventListener("click", () => {
-          deleteReview(review.id);
-        });
+        deleteButton.addEventListener(
+          "click",
+          () => {
+            deleteReview(review.id);
+          }
+        );
 
-        actions.append(editButton, deleteButton);
+        actions.append(
+          editButton,
+          deleteButton
+        );
 
         content.append(
           source,
@@ -1885,7 +2200,11 @@
           actions
         );
 
-        card.append(imageArea, content);
+        card.append(
+          imageArea,
+          content
+        );
+
         reviewList.appendChild(card);
       });
 
@@ -1895,15 +2214,18 @@
     }
 
     function editProduct(productId) {
-      const product = products.find(
-        (item) => item.id === productId
-      );
+      const product =
+        products.find(
+          (item) =>
+            item.id === productId
+        );
 
       if (!product) {
         return;
       }
 
-      editingProductId = product.id;
+      editingProductId =
+        product.id;
 
       productNameInput.value =
         product.name || "";
@@ -1921,7 +2243,10 @@
         product.setNumber || "";
 
       productYearInput.value =
-        product.year || product.releaseYear || "";
+        normalizeYear(
+          product.year ??
+          product.releaseYear
+        );
 
       productDescriptionInput.value =
         product.description || "";
@@ -1943,7 +2268,8 @@
       setImagePreview(
         productImagePreview,
         product.image,
-        product.imageAlt || product.name
+        product.imageAlt ||
+          product.name
       );
 
       productForm.scrollIntoView({
@@ -1953,15 +2279,18 @@
     }
 
     function editReview(reviewId) {
-      const review = reviews.find(
-        (item) => item.id === reviewId
-      );
+      const review =
+        reviews.find(
+          (item) =>
+            item.id === reviewId
+        );
 
       if (!review) {
         return;
       }
 
-      editingReviewId = review.id;
+      editingReviewId =
+        review.id;
 
       reviewAuthorInput.value =
         review.author || "";
@@ -1973,7 +2302,9 @@
         String(review.rating || 5);
 
       reviewDateInput.value =
-        String(review.dateAdded || "").slice(0, 10);
+        String(
+          review.dateAdded || ""
+        ).slice(0, 10);
 
       reviewTextInput.value =
         review.text || "";
@@ -1990,7 +2321,8 @@
       setImagePreview(
         reviewImagePreview,
         review.photo,
-        review.photoAlt || "Review photo"
+        review.photoAlt ||
+          "Review photo"
       );
 
       reviewForm.scrollIntoView({
@@ -2000,25 +2332,34 @@
     }
 
     function deleteProduct(productId) {
-      const product = products.find(
-        (item) => item.id === productId
-      );
+      const product =
+        products.find(
+          (item) =>
+            item.id === productId
+        );
 
       if (
         !product ||
-        !window.confirm(`Delete "${product.name}"?`)
+        !window.confirm(
+          `Delete "${product.name}"?`
+        )
       ) {
         return;
       }
 
-      products = products.filter(
-        (item) => item.id !== productId
-      );
+      products =
+        products.filter(
+          (item) =>
+            item.id !== productId
+        );
 
       saveProducts();
       renderProducts();
 
-      if (editingProductId === productId) {
+      if (
+        editingProductId ===
+        productId
+      ) {
         resetProductForm();
       }
 
@@ -2029,9 +2370,11 @@
     }
 
     function deleteReview(reviewId) {
-      const review = reviews.find(
-        (item) => item.id === reviewId
-      );
+      const review =
+        reviews.find(
+          (item) =>
+            item.id === reviewId
+        );
 
       if (
         !review ||
@@ -2042,14 +2385,19 @@
         return;
       }
 
-      reviews = reviews.filter(
-        (item) => item.id !== reviewId
-      );
+      reviews =
+        reviews.filter(
+          (item) =>
+            item.id !== reviewId
+        );
 
       saveReviews();
       renderReviews();
 
-      if (editingReviewId === reviewId) {
+      if (
+        editingReviewId ===
+        reviewId
+      ) {
         resetReviewForm();
       }
 
@@ -2060,9 +2408,14 @@
     }
 
     tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        switchPanel(button.dataset.panel);
-      });
+      button.addEventListener(
+        "click",
+        () => {
+          switchPanel(
+            button.dataset.panel
+          );
+        }
+      );
     });
 
     productCategoryInput.addEventListener(
@@ -2070,160 +2423,179 @@
       updateProductFields
     );
 
-    productForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+    productForm.addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
 
-      const wasEditing =
-        Boolean(editingProductId);
+        const wasEditing =
+          Boolean(editingProductId);
 
-      const oldProduct = products.find(
-        (item) => item.id === editingProductId
-      );
+        const existingProduct =
+          products.find(
+            (item) =>
+              item.id ===
+              editingProductId
+          );
 
-      const isLego =
-        productCategoryInput.value === "LEGO";
+        const isLego =
+          productCategoryInput.value ===
+          "LEGO";
 
-      const yearValue =
-        Number(productYearInput.value);
+        const productYear =
+          normalizeYear(
+            productYearInput.value
+          );
 
-      const product = {
-        id:
-          editingProductId ||
-          createId("product"),
+        const product = {
+          id:
+            editingProductId ||
+            createId("product"),
 
-        name:
-          productNameInput.value.trim(),
+          name:
+            productNameInput.value.trim(),
 
-        category:
-          productCategoryInput.value,
+          category:
+            productCategoryInput.value,
 
-        price:
-          Number(productPriceInput.value),
+          price:
+            Number(
+              productPriceInput.value
+            ),
 
-        currency:
-          "SGD",
+          currency:
+            "SGD",
 
-        status:
-          productStatusInput.value,
+          status:
+            productStatusInput.value,
 
-        setNumber:
-          isLego
-            ? productSetNumberInput.value.trim()
-            : "",
+          setNumber:
+            isLego
+              ? productSetNumberInput.value.trim()
+              : "",
 
-        year:
-          isLego &&
-          Number.isInteger(yearValue) &&
-          yearValue > 0
-            ? yearValue
-            : "",
+          year:
+            productYear,
 
-        description:
-          productDescriptionInput.value.trim(),
+          description:
+            productDescriptionInput.value.trim(),
 
-        image:
-          productImageInput.value.trim(),
+          image:
+            productImageInput.value.trim(),
 
-        imageAlt:
-          productImageAltInput.value.trim(),
+          imageAlt:
+            productImageAltInput.value.trim(),
 
-        telegramUrl:
-          productTelegramInput.value.trim() ||
-          DEFAULT_TELEGRAM_URL,
+          telegramUrl:
+            productTelegramInput.value.trim() ||
+            DEFAULT_TELEGRAM_URL,
 
-        dateAdded:
-          oldProduct?.dateAdded ||
-          new Date().toISOString(),
+          dateAdded:
+            existingProduct?.dateAdded ||
+            new Date().toISOString(),
 
-        updatedAt:
-          new Date().toISOString()
-      };
+          updatedAt:
+            new Date().toISOString()
+        };
 
-      if (wasEditing) {
-        products = products.map((item) =>
-          item.id === editingProductId
-            ? product
-            : item
+        if (wasEditing) {
+          products =
+            products.map((item) =>
+              item.id === editingProductId
+                ? product
+                : item
+            );
+        } else {
+          products.unshift(product);
+        }
+
+        saveProducts();
+        renderProducts();
+        resetProductForm();
+
+        showStatus(
+          productStatusMessage,
+          wasEditing
+            ? "Product updated."
+            : "Product saved."
         );
-      } else {
-        products.unshift(product);
       }
+    );
 
-      saveProducts();
-      renderProducts();
-      resetProductForm();
+    reviewForm.addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
 
-      showStatus(
-        productStatusMessage,
-        wasEditing
-          ? "Product updated."
-          : "Product saved."
-      );
-    });
+        const wasEditing =
+          Boolean(editingReviewId);
 
-    reviewForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+        const existingReview =
+          reviews.find(
+            (item) =>
+              item.id ===
+              editingReviewId
+          );
 
-      const wasEditing =
-        Boolean(editingReviewId);
+        const review = {
+          id:
+            editingReviewId ||
+            createId("review"),
 
-      const oldReview = reviews.find(
-        (item) => item.id === editingReviewId
-      );
+          author:
+            reviewAuthorInput.value.trim(),
 
-      const review = {
-        id:
-          editingReviewId ||
-          createId("review"),
+          source:
+            reviewSourceInput.value,
 
-        author:
-          reviewAuthorInput.value.trim(),
+          rating:
+            Number(
+              reviewRatingInput.value
+            ),
 
-        source:
-          reviewSourceInput.value,
+          text:
+            reviewTextInput.value.trim(),
 
-        rating:
-          Number(reviewRatingInput.value),
+          photo:
+            reviewPhotoInput.value.trim(),
 
-        text:
-          reviewTextInput.value.trim(),
+          photoAlt:
+            reviewPhotoAltInput.value.trim(),
 
-        photo:
-          reviewPhotoInput.value.trim(),
+          dateAdded:
+            reviewDateInput.value ||
+            existingReview?.dateAdded ||
+            new Date()
+              .toISOString()
+              .slice(0, 10),
 
-        photoAlt:
-          reviewPhotoAltInput.value.trim(),
+          updatedAt:
+            new Date().toISOString()
+        };
 
-        dateAdded:
-          reviewDateInput.value ||
-          oldReview?.dateAdded ||
-          new Date().toISOString().slice(0, 10),
+        if (wasEditing) {
+          reviews =
+            reviews.map((item) =>
+              item.id === editingReviewId
+                ? review
+                : item
+            );
+        } else {
+          reviews.unshift(review);
+        }
 
-        updatedAt:
-          new Date().toISOString()
-      };
+        saveReviews();
+        renderReviews();
+        resetReviewForm();
 
-      if (wasEditing) {
-        reviews = reviews.map((item) =>
-          item.id === editingReviewId
-            ? review
-            : item
+        showStatus(
+          reviewStatusMessage,
+          wasEditing
+            ? "Review updated."
+            : "Review saved."
         );
-      } else {
-        reviews.unshift(review);
       }
-
-      saveReviews();
-      renderReviews();
-      resetReviewForm();
-
-      showStatus(
-        reviewStatusMessage,
-        wasEditing
-          ? "Review updated."
-          : "Review saved."
-      );
-    });
+    );
 
     clearProductButton.addEventListener(
       "click",
@@ -2235,23 +2607,29 @@
       resetReviewForm
     );
 
-    productImageInput.addEventListener("input", () => {
-      setImagePreview(
-        productImagePreview,
-        productImageInput.value.trim(),
-        productImageAltInput.value.trim() ||
-          productNameInput.value.trim()
-      );
-    });
+    productImageInput.addEventListener(
+      "input",
+      () => {
+        setImagePreview(
+          productImagePreview,
+          productImageInput.value.trim(),
+          productImageAltInput.value.trim() ||
+            productNameInput.value.trim()
+        );
+      }
+    );
 
-    reviewPhotoInput.addEventListener("input", () => {
-      setImagePreview(
-        reviewImagePreview,
-        reviewPhotoInput.value.trim(),
-        reviewPhotoAltInput.value.trim() ||
-          "Review photo"
-      );
-    });
+    reviewPhotoInput.addEventListener(
+      "input",
+      () => {
+        setImagePreview(
+          reviewImagePreview,
+          reviewPhotoInput.value.trim(),
+          reviewPhotoAltInput.value.trim() ||
+            "Review photo"
+        );
+      }
+    );
 
     productImportInput.addEventListener(
       "change",
@@ -2264,12 +2642,15 @@
         }
 
         try {
-          const data = await readJsonFile(file);
+          const data =
+            await readJsonFile(file);
 
           const importedProducts =
             Array.isArray(data)
               ? data
-              : Array.isArray(data.products)
+              : Array.isArray(
+                    data.products
+                  )
                 ? data.products
                 : null;
 
@@ -2279,14 +2660,24 @@
             );
           }
 
-          products = cleanSkuFields(
-            importedProducts.map((product) => ({
-              ...product,
-              id:
-                product.id ||
-                createId("product")
-            }))
-          );
+          products =
+            cleanProductData(
+              importedProducts.map(
+                (product) => ({
+                  ...product,
+
+                  id:
+                    product.id ||
+                    createId("product"),
+
+                  year:
+                    normalizeYear(
+                      product.year ??
+                      product.releaseYear
+                    )
+                })
+              )
+            );
 
           saveProducts();
           renderProducts();
@@ -2294,7 +2685,7 @@
 
           showStatus(
             productStatusMessage,
-            `${products.length} products imported. SKU fields were removed.`
+            `${products.length} products imported.`
           );
         } catch (error) {
           showStatus(
@@ -2303,7 +2694,8 @@
             "error"
           );
         } finally {
-          productImportInput.value = "";
+          productImportInput.value =
+            "";
         }
       }
     );
@@ -2319,12 +2711,15 @@
         }
 
         try {
-          const data = await readJsonFile(file);
+          const data =
+            await readJsonFile(file);
 
           const importedReviews =
             Array.isArray(data)
               ? data
-              : Array.isArray(data.reviews)
+              : Array.isArray(
+                    data.reviews
+                  )
                 ? data.reviews
                 : null;
 
@@ -2334,14 +2729,16 @@
             );
           }
 
-          reviews = importedReviews.map(
-            (review) => ({
-              ...review,
-              id:
-                review.id ||
-                createId("review")
-            })
-          );
+          reviews =
+            importedReviews.map(
+              (review) => ({
+                ...review,
+
+                id:
+                  review.id ||
+                  createId("review")
+              })
+            );
 
           saveReviews();
           renderReviews();
@@ -2358,7 +2755,8 @@
             "error"
           );
         } finally {
-          reviewImportInput.value = "";
+          reviewImportInput.value =
+            "";
         }
       }
     );
@@ -2367,14 +2765,22 @@
       "click",
       () => {
         updateProductsJsonViewer();
-        productsJsonViewer.hidden = false;
+
+        productsJsonViewer.hidden =
+          false;
+
+        productsJsonViewer.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
       }
     );
 
     closeProductsJsonButton.addEventListener(
       "click",
       () => {
-        productsJsonViewer.hidden = true;
+        productsJsonViewer.hidden =
+          true;
       }
     );
 
@@ -2382,7 +2788,7 @@
       "click",
       () => {
         copyJson(
-          cleanSkuFields(products),
+          cleanProductData(products),
           productStatusMessage,
           "products.json"
         );
@@ -2392,7 +2798,9 @@
     exportProductsButton.addEventListener(
       "click",
       () => {
-        products = cleanSkuFields(products);
+        products =
+          cleanProductData(products);
+
         saveProducts();
 
         downloadJson(
@@ -2402,7 +2810,7 @@
 
         showStatus(
           productStatusMessage,
-          "products.json downloaded without SKU fields."
+          "products.json downloaded."
         );
       }
     );
@@ -2411,14 +2819,22 @@
       "click",
       () => {
         updateReviewsJsonViewer();
-        reviewsJsonViewer.hidden = false;
+
+        reviewsJsonViewer.hidden =
+          false;
+
+        reviewsJsonViewer.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
       }
     );
 
     closeReviewsJsonButton.addEventListener(
       "click",
       () => {
-        reviewsJsonViewer.hidden = true;
+        reviewsJsonViewer.hidden =
+          true;
       }
     );
 
