@@ -1020,28 +1020,27 @@
       }
     }
 
-    function findLatestProduct(products, categoryKey) {
-      const matchingProducts = products.filter((product) => {
-        const productCategory =
-          product.category ||
-          product.type ||
-          product.collection ||
-          "";
+    function findLatestProducts(products, categoryKey, limit = 2) {
+  return products
+    .filter((product) => {
+      const productCategory =
+        product.category ||
+        product.type ||
+        product.collection ||
+        "";
 
-        return (
-          normalizeProductCategory(productCategory) ===
-          categoryKey
-        );
-      });
-
-      matchingProducts.sort((firstProduct, secondProduct) => {
-        return (
-          getProductDate(secondProduct) -
-          getProductDate(firstProduct)
-        );
-      });
-
-      return matchingProducts[0] || null;
+      return (
+        normalizeProductCategory(productCategory) ===
+        categoryKey
+      );
+    })
+    .sort((firstProduct, secondProduct) => {
+      return (
+        getProductDate(secondProduct) -
+        getProductDate(firstProduct)
+      );
+    })
+    .slice(0, limit);
     }
 
     function createRecentProductCard(product, category) {
@@ -1162,20 +1161,21 @@
         recentProductsEmpty.classList.remove("error");
 
         CATEGORY_CONFIG.forEach((category) => {
-          const latestProduct = findLatestProduct(
-            products,
-            category.key
-          );
+  const latestProducts = findLatestProducts(
+    products,
+    category.key,
+    2
+  );
 
-          if (latestProduct) {
-            recentProductGrid.appendChild(
-              createRecentProductCard(
-                latestProduct,
-                category
-              )
-            );
-          }
-        });
+  latestProducts.forEach((product) => {
+    recentProductGrid.appendChild(
+      createRecentProductCard(
+        product,
+        category
+      )
+    );
+  });
+});
 
         if (recentProductGrid.children.length === 0) {
           recentProductsEmpty.textContent =
