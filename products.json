@@ -14,7 +14,8 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T10:11:46.770Z",
-    "updatedAt": "2026-11-10T10:16:19.453Z"
+    "updatedAt": "2026-11-10T10:16:19.453Z",
+    "popular": false
   },
   {
     "id": "product-1291d6bc-29c3-44b0-bedc-086b46ff22cc",
@@ -23,6 +24,7 @@
     "price": 210,
     "currency": "SGD",
     "status": "In Stock",
+    "popular": true,
     "setNumber": "",
     "year": 2026,
     "language": "English",
@@ -31,7 +33,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T09:32:33.913Z",
-    "updatedAt": "2026-11-10T09:32:33.913Z"
+    "updatedAt": "2026-11-10T11:19:28.998Z"
   },
   {
     "id": "product-810434a9-52a3-45f2-addd-25b82e9a0a1c",
@@ -47,7 +49,8 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T22:48:52.431Z",
-    "updatedAt": "2026-11-09T22:48:52.431Z"
+    "updatedAt": "2026-11-09T22:48:52.431Z",
+    "popular": false
   },
   {
     "id": "product-d16d64e6-4e0c-4140-9c97-a1f2bea58392",
@@ -64,7 +67,8 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:41:13.602Z",
-    "updatedAt": "2026-11-09T20:41:13.603Z"
+    "updatedAt": "2026-11-09T20:41:13.603Z",
+    "popular": false
   },
   {
     "id": "product-8b6b6f6b-48b7-42c7-a77f-865f08ee4bf4",
@@ -81,7 +85,8 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:37:15.998Z",
-    "updatedAt": "2026-11-09T20:37:15.998Z"
+    "updatedAt": "2026-11-09T20:37:15.998Z",
+    "popular": false
   },
   {
     "id": "product-423e6d18-8c5e-43c7-8f3f-b4e47e2e5fd6",
@@ -98,7 +103,8 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:12:43.430Z",
-    "updatedAt": "2026-11-09T20:12:43.430Z"
+    "updatedAt": "2026-11-09T20:12:43.430Z",
+    "popular": false
   },
   {
     "id": "product-98f716af-0e57-4649-8f8a-cc15318e725b",
@@ -115,7 +121,8 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:01:34.749Z",
-    "updatedAt": "2026-11-09T20:01:34.749Z"
+    "updatedAt": "2026-11-09T20:01:34.749Z",
+    "popular": false
   },
   {
     "id": "product-6d30642e-9da7-46d1-b291-60598b7392fe",
@@ -131,7 +138,8 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T19:25:02.501Z",
-    "updatedAt": "2026-11-09T19:25:02.501Z"
+    "updatedAt": "2026-11-09T19:25:02.501Z",
+    "popular": false
   },
   {
     "id": "product-86d54aef-912f-4ff5-9411-af49aef0310f",
@@ -147,6 +155,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T19:01:58.957Z",
-    "updatedAt": "2026-11-09T19:01:58.957Z"
+    "updatedAt": "2026-11-09T19:01:58.957Z",
+    "popular": false
   }
 ]
