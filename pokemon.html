@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -53,14 +54,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-
       background-color: var(--background);
       background-image:
         url("images/backgrounds/backgroundlogo.jpg");
       background-repeat: repeat;
       background-size: 226px 159px;
       background-position: top left;
-
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -895,10 +894,6 @@
                 Name: Z to A
               </option>
 
-              <option value="language-ascending">
-                Language: A to Z
-              </option>
-
               <option value="year-newest">
                 Year: Newest first
               </option>
@@ -1005,6 +1000,7 @@
 
   <script>
     const CATEGORY_NAME = "Pokémon";
+
     const DISPLAY_CATEGORY_NAME =
       "Pokémon TCG";
 
@@ -1279,39 +1275,6 @@
               .localeCompare(
                 getProductName(first)
               )
-        );
-      }
-
-      if (
-        sortValue === "language-ascending"
-      ) {
-        sortedProducts.sort(
-          (first, second) => {
-            const firstLanguage =
-              getProductLanguage(first);
-
-            const secondLanguage =
-              getProductLanguage(second);
-
-            if (
-              !firstLanguage &&
-              !secondLanguage
-            ) {
-              return 0;
-            }
-
-            if (!firstLanguage) {
-              return 1;
-            }
-
-            if (!secondLanguage) {
-              return -1;
-            }
-
-            return firstLanguage.localeCompare(
-              secondLanguage
-            );
-          }
         );
       }
 
@@ -1688,8 +1651,7 @@
             ? `No results for "${enteredSearchTerm}"`
             : "0 Pokémon products";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage
           .querySelector("h2")
@@ -1721,9 +1683,7 @@
         document.createElement("strong");
 
       strongCount.textContent =
-        String(
-          sortedProducts.length
-        );
+        String(sortedProducts.length);
 
       productCount.append(
         strongCount,
@@ -1799,8 +1759,7 @@
         productCount.textContent =
           "Pokémon products could not be loaded.";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage.classList.add(
           "error"
