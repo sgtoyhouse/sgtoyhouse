@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Accessories | SG Toy House</title>
+
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="/favicon.ico"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/apple-touch-icon.png"
+  >
 
   <meta
     name="description"
@@ -40,7 +56,8 @@
       flex-direction: column;
 
       background-color: var(--background);
-      background-image: url("images/backgrounds/backgroundlogo.jpg");
+      background-image:
+        url("images/backgrounds/backgroundlogo.jpg");
       background-repeat: repeat;
       background-size: 226px 159px;
       background-position: top left;
@@ -203,7 +220,7 @@
       color: var(--gold-light);
     }
 
-    /* Page hero */
+    /* Page introduction */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -236,7 +253,7 @@
     }
 
     .page-description {
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto;
       color: var(--muted);
       font-size: 18px;
@@ -252,7 +269,8 @@
       margin-bottom: 24px;
       padding: 16px;
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto auto;
+      grid-template-columns:
+        minmax(220px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
       background: rgba(16, 16, 16, 0.96);
@@ -264,7 +282,7 @@
 
     .search-control {
       width: 100%;
-      max-width: 380px;
+      max-width: 420px;
       position: relative;
     }
 
@@ -318,7 +336,8 @@
 
     .search-control input:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+      box-shadow:
+        0 0 0 3px rgba(212, 175, 55, 0.18);
     }
 
     .product-count {
@@ -353,11 +372,12 @@
       cursor: pointer;
     }
 
-    /* Product grid */
+    /* Product cards */
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -379,7 +399,8 @@
     .product-card:focus-within {
       transform: translateY(-4px);
       border-color: var(--gold);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
     .product-image {
@@ -391,8 +412,8 @@
       justify-content: center;
       position: relative;
       background: #171717;
-      border-bottom: 1px solid var(--border);
       color: var(--muted);
+      border-bottom: 1px solid var(--border);
       font-size: 13px;
       text-align: center;
     }
@@ -410,22 +431,36 @@
     }
 
     .product-status {
+      max-width: calc(100% - 20px);
       padding: 5px 9px;
       position: absolute;
       top: 10px;
       left: 10px;
+      overflow: hidden;
       background: var(--gold);
       color: #070707;
       border-radius: 999px;
       font-size: 10px;
       font-weight: 800;
       line-height: 1.2;
+      text-overflow: ellipsis;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .product-status.sold-out {
       background: #3a3a3a;
       color: #ffffff;
+    }
+
+    .product-status.preorder {
+      background: #7dd3fc;
+      color: #062033;
+    }
+
+    .product-status.reserved {
+      background: #f5c66d;
+      color: #2b1b00;
     }
 
     .product-info {
@@ -450,6 +485,7 @@
       font-size: 17px;
       font-weight: 700;
       line-height: 1.35;
+      overflow-wrap: anywhere;
     }
 
     .product-details {
@@ -479,6 +515,7 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
+      overflow-wrap: anywhere;
       white-space: pre-line;
     }
 
@@ -526,7 +563,7 @@
       pointer-events: none;
     }
 
-    /* Loading and empty state */
+    /* Loading and empty messages */
 
     .product-message {
       padding: 50px 20px;
@@ -592,7 +629,8 @@
     a:focus-visible,
     input:focus-visible,
     select:focus-visible {
-      outline: 3px solid rgba(212, 175, 55, 0.45);
+      outline:
+        3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
     }
 
@@ -600,7 +638,8 @@
 
     @media (max-width: 900px) {
       .product-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
 
       .product-toolbar {
@@ -731,7 +770,10 @@
     Singapore’s #1 Toy House. Join Us on Telegram →
   </a>
 
-  <nav class="top-categories" aria-label="Product categories">
+  <nav
+    class="top-categories"
+    aria-label="Product categories"
+  >
     <div class="container top-category-grid">
       <a class="top-category" href="lego.html">
         LEGO
@@ -804,7 +846,10 @@
       aria-labelledby="accessories-products-heading"
     >
       <div class="container">
-        <h2 id="accessories-products-heading" hidden>
+        <h2
+          id="accessories-products-heading"
+          hidden
+        >
           Available accessories
         </h2>
 
@@ -826,7 +871,10 @@
             >
           </div>
 
-          <p class="product-count" id="product-count">
+          <p
+            class="product-count"
+            id="product-count"
+          >
             Loading accessories...
           </p>
 
@@ -879,7 +927,9 @@
           id="product-message"
           hidden
         >
-          <h2>No accessories available</h2>
+          <h2>
+            No accessories available
+          </h2>
 
           <p>
             Please check again soon for new additions.
@@ -892,7 +942,8 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <p>
-        © 2020 SG Toy House. All rights reserved. Singapore. Belgravia Drive.
+        © 2020 SG Toy House. All rights reserved.
+        Singapore. Belgravia Drive.
       </p>
 
       <ul class="footer-links">
@@ -950,34 +1001,50 @@
   </footer>
 
   <script>
-    const CATEGORY_NAME = "Accessories";
-    const DISPLAY_CATEGORY_NAME = "Accessories";
-    const TELEGRAM_URL = "https://t.me/sgtoyhse";
+    const CATEGORY_NAME =
+      "Accessories";
+
+    const DISPLAY_CATEGORY_NAME =
+      "Accessories";
+
+    const TELEGRAM_URL =
+      "https://t.me/sgtoyhse";
 
     const productGrid =
-      document.getElementById("product-grid");
+      document.getElementById(
+        "product-grid"
+      );
 
     const productCount =
-      document.getElementById("product-count");
+      document.getElementById(
+        "product-count"
+      );
 
     const productMessage =
-      document.getElementById("product-message");
+      document.getElementById(
+        "product-message"
+      );
 
     const productSearch =
-      document.getElementById("product-search");
+      document.getElementById(
+        "product-search"
+      );
 
     const productSort =
-      document.getElementById("product-sort");
+      document.getElementById(
+        "product-sort"
+      );
 
     let accessoryProducts = [];
 
     function normalizeCategory(value) {
-      const normalizedValue = String(value || "")
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]/g, "");
+      const normalizedValue =
+        String(value || "")
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]/g, "");
 
       if (
         normalizedValue === "accessory" ||
@@ -1003,7 +1070,7 @@
         product.title ||
         product.productName ||
         "Accessory"
-      );
+      ).trim();
     }
 
     function getProductImage(product) {
@@ -1012,7 +1079,7 @@
         product.imageUrl ||
         product.photo ||
         ""
-      );
+      ).trim();
     }
 
     function getProductYear(product) {
@@ -1050,7 +1117,8 @@
       }
 
       const numericValue = Number(
-        String(value).replace(/[^0-9.-]/g, "")
+        String(value)
+          .replace(/[^0-9.-]/g, "")
       );
 
       return Number.isFinite(numericValue)
@@ -1073,7 +1141,7 @@
           maximumFractionDigits: 2
         }).format(numericPrice);
 
-      return `SGD$${formattedAmount}`;
+      return `SGD $${formattedAmount}`;
     }
 
     function getProductStatus(product) {
@@ -1081,19 +1149,38 @@
         product.status ||
         product.availability ||
         "In Stock"
-      );
+      ).trim();
     }
 
-    function isSoldOut(product) {
-      const normalizedStatus =
+    function getStatusClass(product) {
+      const status =
         getProductStatus(product)
           .toLowerCase()
           .replace(/[^a-z]/g, "");
 
+      if (
+        status.includes("soldout") ||
+        status.includes("unavailable") ||
+        status.includes("outofstock")
+      ) {
+        return "sold-out";
+      }
+
+      if (status.includes("preorder")) {
+        return "preorder";
+      }
+
+      if (status.includes("reserved")) {
+        return "reserved";
+      }
+
+      return "";
+    }
+
+    function isSoldOut(product) {
       return (
-        normalizedStatus.includes("soldout") ||
-        normalizedStatus.includes("unavailable") ||
-        normalizedStatus.includes("outofstock")
+        getStatusClass(product) ===
+        "sold-out"
       );
     }
 
@@ -1124,12 +1211,10 @@
       const searchableText = [
         getProductName(product),
         product.description,
-        product.year,
-        product.releaseYear,
+        getProductYear(product),
         product.brand,
         product.size,
-        product.status,
-        product.availability
+        getProductStatus(product)
       ]
         .filter(
           (value) =>
@@ -1151,35 +1236,39 @@
       const sortedProducts =
         [...products];
 
-      if (sortValue === "name-ascending") {
+      if (
+        sortValue === "name-ascending"
+      ) {
         sortedProducts.sort(
           (first, second) =>
-            getProductName(first).localeCompare(
-              getProductName(second)
-            )
+            getProductName(first)
+              .localeCompare(
+                getProductName(second)
+              )
         );
       }
 
-      if (sortValue === "name-descending") {
+      if (
+        sortValue === "name-descending"
+      ) {
         sortedProducts.sort(
           (first, second) =>
-            getProductName(second).localeCompare(
-              getProductName(first)
-            )
+            getProductName(second)
+              .localeCompare(
+                getProductName(first)
+              )
         );
       }
 
       if (sortValue === "year-newest") {
         sortedProducts.sort(
-          (first, second) => {
-            const firstYear =
-              getProductYear(first) || 0;
-
-            const secondYear =
-              getProductYear(second) || 0;
-
-            return secondYear - firstYear;
-          }
+          (first, second) =>
+            (
+              getProductYear(second) || 0
+            ) -
+            (
+              getProductYear(first) || 0
+            )
         );
       }
 
@@ -1309,14 +1398,17 @@
       status.className =
         "product-status";
 
-      status.textContent =
-        getProductStatus(product);
+      const statusClass =
+        getStatusClass(product);
 
-      if (isSoldOut(product)) {
+      if (statusClass) {
         status.classList.add(
-          "sold-out"
+          statusClass
         );
       }
+
+      status.textContent =
+        getProductStatus(product);
 
       const imageSource =
         getProductImage(product);
@@ -1341,9 +1433,7 @@
             imageArea.textContent =
               "Product image unavailable";
 
-            imageArea.appendChild(
-              status
-            );
+            imageArea.appendChild(status);
           }
         );
 
@@ -1414,7 +1504,9 @@
           "product-description";
 
         description.textContent =
-          product.description;
+          String(
+            product.description
+          );
 
         productInfo.appendChild(
           description
@@ -1529,7 +1621,9 @@
         "error"
       );
 
-      if (sortedProducts.length === 0) {
+      if (
+        sortedProducts.length === 0
+      ) {
         productCount.textContent =
           enteredSearchTerm
             ? `No results for "${enteredSearchTerm}"`
@@ -1549,7 +1643,7 @@
           .querySelector("p")
           .textContent =
             enteredSearchTerm
-              ? "Try a different product name, year or keyword."
+              ? "Try another product name, year or keyword."
               : "Please check again soon for new additions.";
 
         return;
@@ -1595,9 +1689,10 @@
       );
 
       try {
-        const response = await fetch(
-          `products.json?version=${Date.now()}`
-        );
+        const response =
+          await fetch(
+            `products.json?version=${Date.now()}`
+          );
 
         if (!response.ok) {
           throw new Error(
@@ -1611,9 +1706,7 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(
-                  data.products
-                )
+            : Array.isArray(data.products)
               ? data.products
               : [];
 
@@ -1627,9 +1720,7 @@
                 "";
 
               return (
-                normalizeCategory(
-                  category
-                ) ===
+                normalizeCategory(category) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
