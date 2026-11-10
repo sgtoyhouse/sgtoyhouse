@@ -254,7 +254,7 @@
       grid-column: 1 / -1;
     }
 
-    .form-group label {
+    .form-group > label {
       margin-bottom: 6px;
       display: block;
       color: var(--gold-light);
@@ -303,6 +303,84 @@
       margin-top: 5px;
       color: var(--muted);
       font-size: 11px;
+    }
+
+    /* Most Popular checkbox */
+
+    .admin-checkbox {
+      min-height: 44px;
+      padding: 10px 12px;
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface-alt);
+      color: var(--muted) !important;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      cursor: pointer;
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .admin-checkbox:hover {
+      color: #ffffff !important;
+      border-color: var(--gold);
+    }
+
+    .admin-checkbox input {
+      width: 1px;
+      height: 1px;
+      min-height: 1px;
+      padding: 0;
+      position: absolute;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .admin-checkbox-mark {
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #0d0d0d;
+      border: 2px solid var(--muted);
+      border-radius: 5px;
+    }
+
+    .admin-checkbox input:checked +
+    .admin-checkbox-mark {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .admin-checkbox input:checked +
+    .admin-checkbox-mark::after {
+      width: 5px;
+      height: 9px;
+      border: solid #070707;
+      border-width: 0 2px 2px 0;
+      content: "";
+      transform:
+        translateY(-1px)
+        rotate(45deg);
+    }
+
+    .admin-checkbox input:focus-visible +
+    .admin-checkbox-mark {
+      outline:
+        3px solid rgba(212, 175, 55, 0.4);
+      outline-offset: 3px;
+    }
+
+    .admin-checkbox:has(input:checked) {
+      color: var(--gold-light) !important;
+      background: #1c180d;
+      border-color: var(--gold);
     }
 
     /* Image preview */
@@ -395,7 +473,7 @@
       font-size: 12px;
     }
 
-    /* Status messages */
+    /* Messages */
 
     .status-message {
       margin-top: 16px;
@@ -489,7 +567,7 @@
       tab-size: 2;
     }
 
-    /* Current-item cards */
+    /* Admin cards */
 
     .admin-list {
       display: grid;
@@ -572,11 +650,29 @@
       font-weight: 700;
     }
 
+    .popular-badge {
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      color: #070707;
+      background: var(--gold);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
     .review-rating {
       margin-bottom: 8px;
       color: var(--gold);
       font-size: 14px;
       letter-spacing: 1px;
+    }
+
+    .review-date {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .card-actions {
@@ -751,7 +847,7 @@
       </button>
     </div>
 
-    <!-- Products panel -->
+    <!-- Products -->
 
     <section
       class="admin-panel active"
@@ -863,6 +959,38 @@
               </select>
             </div>
 
+            <div class="form-group">
+              <label>
+                Homepage feature
+                <span class="optional-label">
+                  (optional)
+                </span>
+              </label>
+
+              <label
+                class="admin-checkbox"
+                for="product-popular"
+              >
+                <input
+                  type="checkbox"
+                  id="product-popular"
+                >
+
+                <span
+                  class="admin-checkbox-mark"
+                  aria-hidden="true"
+                ></span>
+
+                <span>
+                  Show in Most Popular
+                </span>
+              </label>
+
+              <p class="field-help">
+                Up to four selected products appear in the homepage Most Popular section.
+              </p>
+            </div>
+
             <div
               class="form-group"
               id="set-number-group"
@@ -902,10 +1030,6 @@
                 inputmode="numeric"
                 placeholder="2026"
               >
-
-              <p class="field-help">
-                Available for every product category.
-              </p>
             </div>
 
             <div
@@ -925,11 +1049,6 @@
                   Select language
                 </option>
               </select>
-
-              <p class="field-help">
-                Pokémon supports English, Japanese and Simplified Chinese.
-                One Piece supports English and Japanese.
-              </p>
             </div>
 
             <div class="form-group form-group-full">
@@ -942,7 +1061,7 @@
 
               <textarea
                 id="product-description"
-                placeholder="Add product details or condition. Press Enter for a visible line break."
+                placeholder="Add product details or condition."
               ></textarea>
             </div>
 
@@ -959,10 +1078,6 @@
                 id="product-image"
                 placeholder="images/products/product-name.webp"
               >
-
-              <p class="field-help">
-                Place local product images inside images/products/.
-              </p>
 
               <div
                 class="image-preview"
@@ -1000,10 +1115,6 @@
                 id="product-telegram-url"
                 placeholder="https://t.me/sgtoyhse"
               >
-
-              <p class="field-help">
-                Leave blank to use the main SG Toy House Telegram link.
-              </p>
             </div>
           </div>
 
@@ -1155,7 +1266,7 @@
       </section>
     </section>
 
-    <!-- Reviews panel -->
+    <!-- Reviews -->
 
     <section
       class="admin-panel"
@@ -1514,15 +1625,22 @@
       ]
     };
 
-    let products = cleanProductData(
-      loadStoredArray(PRODUCT_STORAGE_KEY)
-    );
+    let products =
+      cleanProductData(
+        loadStoredArray(
+          PRODUCT_STORAGE_KEY
+        )
+      );
 
     let reviews =
-      loadStoredArray(REVIEW_STORAGE_KEY);
+      loadStoredArray(
+        REVIEW_STORAGE_KEY
+      );
 
     let editingProductId = null;
     let editingReviewId = null;
+
+    /* Elements */
 
     const tabButtons =
       document.querySelectorAll(
@@ -1562,6 +1680,11 @@
     const productStatusInput =
       document.getElementById(
         "product-status"
+      );
+
+    const productPopularInput =
+      document.getElementById(
+        "product-popular"
       );
 
     const productSetNumberInput =
@@ -1784,10 +1907,14 @@
         "reviews-json-code"
       );
 
+    /* Data helpers */
+
     function loadStoredArray(storageKey) {
       try {
         const storedValue =
-          localStorage.getItem(storageKey);
+          localStorage.getItem(
+            storageKey
+          );
 
         const parsedValue =
           storedValue
@@ -1821,21 +1948,30 @@
             status.toLowerCase()
         );
 
-      return matchedStatus || "In Stock";
+      return (
+        matchedStatus ||
+        "In Stock"
+      );
     }
 
     function cleanProductData(items) {
       return items.map((item) => {
         const cleanItem = {
           ...item,
+
           status:
             normalizeProductStatus(
               item.status ||
               item.availability
-            )
+            ),
+
+          popular:
+            item.popular === true ||
+            item.mostPopular === true
         };
 
         delete cleanItem.sku;
+        delete cleanItem.mostPopular;
 
         return cleanItem;
       });
@@ -1864,7 +2000,10 @@
         typeof crypto.randomUUID ===
           "function"
       ) {
-        return `${prefix}-${crypto.randomUUID()}`;
+        return (
+          `${prefix}-` +
+          crypto.randomUUID()
+        );
       }
 
       return (
@@ -1907,29 +2046,66 @@
       }
 
       const formattedAmount =
-        new Intl.NumberFormat("en-SG", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }).format(numericValue);
+        new Intl.NumberFormat(
+          "en-SG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        ).format(numericValue);
 
       return `SGD $${formattedAmount}`;
     }
 
     function formatStars(rating) {
-      const safeRating = Math.max(
-        1,
-        Math.min(
-          5,
-          Math.round(
-            Number(rating) || 5
+      const safeRating =
+        Math.max(
+          1,
+          Math.min(
+            5,
+            Math.round(
+              Number(rating) || 5
+            )
           )
-        )
-      );
+        );
 
       return (
         "★".repeat(safeRating) +
         "☆".repeat(5 - safeRating)
       );
+    }
+
+    function formatReviewDate(value) {
+      if (!value) {
+        return "";
+      }
+
+      const normalizedValue =
+        /^\d{4}-\d{2}-\d{2}$/.test(
+          String(value)
+        )
+          ? `${value}T12:00:00`
+          : value;
+
+      const date =
+        new Date(normalizedValue);
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return String(value);
+      }
+
+      return new Intl.DateTimeFormat(
+        "en-SG",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      ).format(date);
     }
 
     function showStatus(
@@ -1950,34 +2126,43 @@
       );
 
       element.statusTimer =
-        window.setTimeout(() => {
-          element.hidden = true;
-        }, 3500);
+        window.setTimeout(
+          () => {
+            element.hidden = true;
+          },
+          3500
+        );
     }
 
+    /* Interface helpers */
+
     function switchPanel(panelId) {
-      tabButtons.forEach((button) => {
-        const isActive =
-          button.dataset.panel ===
-          panelId;
+      tabButtons.forEach(
+        (button) => {
+          const isActive =
+            button.dataset.panel ===
+            panelId;
 
-        button.classList.toggle(
-          "active",
-          isActive
-        );
+          button.classList.toggle(
+            "active",
+            isActive
+          );
 
-        button.setAttribute(
-          "aria-selected",
-          String(isActive)
-        );
-      });
+          button.setAttribute(
+            "aria-selected",
+            String(isActive)
+          );
+        }
+      );
 
-      adminPanels.forEach((panel) => {
-        panel.classList.toggle(
-          "active",
-          panel.id === panelId
-        );
-      });
+      adminPanels.forEach(
+        (panel) => {
+          panel.classList.toggle(
+            "active",
+            panel.id === panelId
+          );
+        }
+      );
     }
 
     function updateProductFields(
@@ -1998,8 +2183,9 @@
       }
 
       const languages =
-        CATEGORY_LANGUAGES[category] ||
-        [];
+        CATEGORY_LANGUAGES[
+          category
+        ] || [];
 
       languageGroup.hidden =
         languages.length === 0;
@@ -2013,7 +2199,6 @@
         );
 
       emptyOption.value = "";
-
       emptyOption.textContent =
         "Select language";
 
@@ -2021,22 +2206,23 @@
         emptyOption
       );
 
-      languages.forEach((language) => {
-        const option =
-          document.createElement(
-            "option"
-          );
+      languages.forEach(
+        (language) => {
+          const option =
+            document.createElement(
+              "option"
+            );
 
-        option.value =
-          language;
+          option.value =
+            language;
 
-        option.textContent =
-          language;
+          option.textContent =
+            language;
 
-        productLanguageInput.appendChild(
-          option
-        );
-      });
+          productLanguageInput
+            .appendChild(option);
+        }
+      );
 
       if (
         preferredLanguage &&
@@ -2072,7 +2258,8 @@
       image.src = source;
 
       image.alt =
-        altText || "Image preview";
+        altText ||
+        "Image preview";
 
       image.addEventListener(
         "error",
@@ -2110,7 +2297,8 @@
       image.src = source;
 
       image.alt =
-        altText || "Item image";
+        altText ||
+        "Item image";
 
       image.addEventListener(
         "error",
@@ -2137,6 +2325,9 @@
 
       productStatusInput.value =
         "In Stock";
+
+      productPopularInput.checked =
+        false;
 
       productFormTitle.textContent =
         "Add Product";
@@ -2171,6 +2362,8 @@
       );
     }
 
+    /* Rendering */
+
     function renderProducts() {
       productList.replaceChildren();
 
@@ -2184,162 +2377,207 @@
       productEmpty.hidden =
         products.length !== 0;
 
-      products.forEach((product) => {
-        const card =
-          document.createElement(
-            "article"
-          );
+      products.forEach(
+        (product) => {
+          const card =
+            document.createElement(
+              "article"
+            );
 
-        card.className =
-          "admin-card";
+          card.className =
+            "admin-card";
 
-        const imageArea =
-          createAdminImage(
-            product.image,
-            product.imageAlt ||
+          const imageArea =
+            createAdminImage(
+              product.image,
+              product.imageAlt ||
               product.name
+            );
+
+          const content =
+            document.createElement(
+              "div"
+            );
+
+          content.className =
+            "admin-card-content";
+
+          const category =
+            document.createElement(
+              "p"
+            );
+
+          category.className =
+            "admin-card-label";
+
+          category.textContent =
+            product.category ||
+            "Product";
+
+          const name =
+            document.createElement(
+              "h3"
+            );
+
+          name.textContent =
+            product.name ||
+            "Unnamed product";
+
+          content.append(
+            category,
+            name
           );
 
-        const content =
-          document.createElement("div");
+          if (product.popular === true) {
+            const popularBadge =
+              document.createElement(
+                "span"
+              );
 
-        content.className =
-          "admin-card-content";
+            popularBadge.className =
+              "popular-badge";
 
-        const category =
-          document.createElement("p");
+            popularBadge.textContent =
+              "Most Popular";
 
-        category.className =
-          "admin-card-label";
-
-        category.textContent =
-          product.category ||
-          "Product";
-
-        const name =
-          document.createElement("h3");
-
-        name.textContent =
-          product.name ||
-          "Unnamed product";
-
-        const description =
-          document.createElement("p");
-
-        description.className =
-          "admin-card-description";
-
-        description.textContent =
-          product.description ||
-          "No description";
-
-        const meta =
-          document.createElement("p");
-
-        meta.className =
-          "admin-card-meta";
-
-        const metaParts = [
-          formatPrice(product.price),
-          normalizeProductStatus(
-            product.status
-          )
-        ];
-
-        if (
-          product.category === "LEGO" &&
-          product.setNumber
-        ) {
-          metaParts.push(
-            `Set ${product.setNumber}`
-          );
-        }
-
-        const year =
-          normalizeYear(
-            product.year ??
-            product.releaseYear
-          );
-
-        if (year) {
-          metaParts.push(
-            `Year ${year}`
-          );
-        }
-
-        if (product.language) {
-          metaParts.push(
-            `Language ${product.language}`
-          );
-        }
-
-        meta.textContent =
-          metaParts.join(" • ");
-
-        const actions =
-          document.createElement("div");
-
-        actions.className =
-          "card-actions";
-
-        const editButton =
-          document.createElement(
-            "button"
-          );
-
-        editButton.className =
-          "admin-button button-secondary button-small";
-
-        editButton.type = "button";
-        editButton.textContent = "Edit";
-
-        editButton.addEventListener(
-          "click",
-          () => {
-            editProduct(product.id);
+            content.appendChild(
+              popularBadge
+            );
           }
-        );
 
-        const deleteButton =
-          document.createElement(
-            "button"
+          const description =
+            document.createElement(
+              "p"
+            );
+
+          description.className =
+            "admin-card-description";
+
+          description.textContent =
+            product.description ||
+            "No description";
+
+          const meta =
+            document.createElement(
+              "p"
+            );
+
+          meta.className =
+            "admin-card-meta";
+
+          const metaParts = [
+            formatPrice(product.price),
+            normalizeProductStatus(
+              product.status
+            )
+          ];
+
+          if (
+            product.category ===
+              "LEGO" &&
+            product.setNumber
+          ) {
+            metaParts.push(
+              `Set ${product.setNumber}`
+            );
+          }
+
+          const year =
+            normalizeYear(
+              product.year ??
+              product.releaseYear
+            );
+
+          if (year) {
+            metaParts.push(
+              `Year ${year}`
+            );
+          }
+
+          if (product.language) {
+            metaParts.push(
+              `Language ${product.language}`
+            );
+          }
+
+          meta.textContent =
+            metaParts.join(" • ");
+
+          const actions =
+            document.createElement(
+              "div"
+            );
+
+          actions.className =
+            "card-actions";
+
+          const editButton =
+            document.createElement(
+              "button"
+            );
+
+          editButton.className =
+            "admin-button button-secondary button-small";
+
+          editButton.type =
+            "button";
+
+          editButton.textContent =
+            "Edit";
+
+          editButton.addEventListener(
+            "click",
+            () => {
+              editProduct(
+                product.id
+              );
+            }
           );
 
-        deleteButton.className =
-          "admin-button button-danger button-small";
+          const deleteButton =
+            document.createElement(
+              "button"
+            );
 
-        deleteButton.type = "button";
+          deleteButton.className =
+            "admin-button button-danger button-small";
 
-        deleteButton.textContent =
-          "Delete";
+          deleteButton.type =
+            "button";
 
-        deleteButton.addEventListener(
-          "click",
-          () => {
-            deleteProduct(product.id);
-          }
-        );
+          deleteButton.textContent =
+            "Delete";
 
-        actions.append(
-          editButton,
-          deleteButton
-        );
+          deleteButton.addEventListener(
+            "click",
+            () => {
+              deleteProduct(
+                product.id
+              );
+            }
+          );
 
-        content.append(
-          category,
-          name,
-          description,
-          meta,
-          actions
-        );
+          actions.append(
+            editButton,
+            deleteButton
+          );
 
-        card.append(
-          imageArea,
-          content
-        );
+          content.append(
+            description,
+            meta,
+            actions
+          );
 
-        productList.appendChild(card);
-      });
+          card.append(
+            imageArea,
+            content
+          );
+
+          productList.appendChild(
+            card
+          );
+        }
+      );
 
       if (
         !productsJsonViewer.hidden
@@ -2361,128 +2599,174 @@
       reviewEmpty.hidden =
         reviews.length !== 0;
 
-      reviews.forEach((review) => {
-        const card =
-          document.createElement(
-            "article"
-          );
+      reviews.forEach(
+        (review) => {
+          const card =
+            document.createElement(
+              "article"
+            );
 
-        card.className =
-          "admin-card";
+          card.className =
+            "admin-card";
 
-        const imageArea =
-          createAdminImage(
-            review.photo,
-            review.photoAlt ||
+          const imageArea =
+            createAdminImage(
+              review.photo,
+              review.photoAlt ||
               "Review photo"
-          );
+            );
 
-        const content =
-          document.createElement("div");
+          const content =
+            document.createElement(
+              "div"
+            );
 
-        content.className =
-          "admin-card-content";
+          content.className =
+            "admin-card-content";
 
-        const source =
-          document.createElement("p");
+          const source =
+            document.createElement(
+              "p"
+            );
 
-        source.className =
-          "admin-card-label";
+          source.className =
+            "admin-card-label";
 
-        source.textContent =
-          review.source ||
-          "Review";
+          source.textContent =
+            review.source ||
+            "Review";
 
-        const author =
-          document.createElement("h3");
+          const author =
+            document.createElement(
+              "h3"
+            );
 
-        author.textContent =
-          review.author ||
-          "Customer";
+          author.textContent =
+            review.author ||
+            "Customer";
 
-        const rating =
-          document.createElement("p");
+          const rating =
+            document.createElement(
+              "p"
+            );
 
-        rating.className =
-          "review-rating";
+          rating.className =
+            "review-rating";
 
-        rating.textContent =
-          formatStars(review.rating);
+          rating.textContent =
+            formatStars(
+              review.rating
+            );
 
-        const text =
-          document.createElement("p");
+          const date =
+            document.createElement(
+              "p"
+            );
 
-        text.className =
-          "admin-card-description";
+          date.className =
+            "review-date";
 
-        text.textContent =
-          review.text ||
-          "No review text";
+          date.textContent =
+            formatReviewDate(
+              review.dateAdded ||
+              review.reviewDate ||
+              review.date
+            );
 
-        const actions =
-          document.createElement("div");
-
-        actions.className =
-          "card-actions";
-
-        const editButton =
-          document.createElement(
-            "button"
-          );
-
-        editButton.className =
-          "admin-button button-secondary button-small";
-
-        editButton.type = "button";
-        editButton.textContent = "Edit";
-
-        editButton.addEventListener(
-          "click",
-          () => {
-            editReview(review.id);
+          if (!date.textContent) {
+            date.hidden = true;
           }
-        );
 
-        const deleteButton =
-          document.createElement(
-            "button"
+          const text =
+            document.createElement(
+              "p"
+            );
+
+          text.className =
+            "admin-card-description";
+
+          text.textContent =
+            review.text ||
+            "No review text";
+
+          const actions =
+            document.createElement(
+              "div"
+            );
+
+          actions.className =
+            "card-actions";
+
+          const editButton =
+            document.createElement(
+              "button"
+            );
+
+          editButton.className =
+            "admin-button button-secondary button-small";
+
+          editButton.type =
+            "button";
+
+          editButton.textContent =
+            "Edit";
+
+          editButton.addEventListener(
+            "click",
+            () => {
+              editReview(
+                review.id
+              );
+            }
           );
 
-        deleteButton.className =
-          "admin-button button-danger button-small";
+          const deleteButton =
+            document.createElement(
+              "button"
+            );
 
-        deleteButton.type = "button";
+          deleteButton.className =
+            "admin-button button-danger button-small";
 
-        deleteButton.textContent =
-          "Delete";
+          deleteButton.type =
+            "button";
 
-        deleteButton.addEventListener(
-          "click",
-          () => {
-            deleteReview(review.id);
-          }
-        );
+          deleteButton.textContent =
+            "Delete";
 
-        actions.append(
-          editButton,
-          deleteButton
-        );
+          deleteButton.addEventListener(
+            "click",
+            () => {
+              deleteReview(
+                review.id
+              );
+            }
+          );
 
-        content.append(
-          source,
-          author,
-          rating,
-          text,
-          actions
-        );
+          actions.append(
+            editButton,
+            deleteButton
+          );
 
-        card.append(
-          imageArea,
-          content
-        );
+          content.append(
+            source,
+            author,
+            rating,
+            date,
+            text,
+            actions
+          );
 
-        reviewList.appendChild(card);
-      });
+          card.append(
+            imageArea,
+            content
+          );
+
+          reviewList.appendChild(
+            card
+          );
+        }
+      );
 
       if (
         !reviewsJsonViewer.hidden
@@ -2490,6 +2774,8 @@
         updateReviewsJsonViewer();
       }
     }
+
+    /* Edit and delete */
 
     function editProduct(productId) {
       const product =
@@ -2518,6 +2804,10 @@
         normalizeProductStatus(
           product.status
         );
+
+      productPopularInput.checked =
+        product.popular === true ||
+        product.mostPopular === true;
 
       productSetNumberInput.value =
         product.setNumber || "";
@@ -2551,7 +2841,7 @@
         productImagePreview,
         product.image,
         product.imageAlt ||
-          product.name
+        product.name
       );
 
       productForm.scrollIntoView({
@@ -2588,7 +2878,10 @@
 
       reviewDateInput.value =
         String(
-          review.dateAdded || ""
+          review.dateAdded ||
+          review.reviewDate ||
+          review.date ||
+          ""
         ).slice(0, 10);
 
       reviewTextInput.value =
@@ -2607,7 +2900,7 @@
         reviewImagePreview,
         review.photo,
         review.photoAlt ||
-          "Review photo"
+        "Review photo"
       );
 
       reviewForm.scrollIntoView({
@@ -2680,7 +2973,8 @@
       renderReviews();
 
       if (
-        editingReviewId === reviewId
+        editingReviewId ===
+        reviewId
       ) {
         resetReviewForm();
       }
@@ -2690,6 +2984,8 @@
         "Review deleted."
       );
     }
+
+    /* JSON helpers */
 
     function downloadJson(
       data,
@@ -2802,7 +3098,9 @@
     function updateProductsJsonViewer() {
       productsJsonCode.textContent =
         JSON.stringify(
-          cleanProductData(products),
+          cleanProductData(
+            products
+          ),
           null,
           2
         );
@@ -2817,16 +3115,20 @@
         );
     }
 
-    tabButtons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        () => {
-          switchPanel(
-            button.dataset.panel
-          );
-        }
-      );
-    });
+    /* Tab and form events */
+
+    tabButtons.forEach(
+      (button) => {
+        button.addEventListener(
+          "click",
+          () => {
+            switchPanel(
+              button.dataset.panel
+            );
+          }
+        );
+      }
+    );
 
     productCategoryInput
       .addEventListener(
@@ -2895,6 +3197,9 @@
             normalizeProductStatus(
               productStatusInput.value
             ),
+
+          popular:
+            productPopularInput.checked,
 
           setNumber:
             isLego
@@ -3086,9 +3391,9 @@
             productImageAltInput
               .value
               .trim() ||
-              productNameInput
-                .value
-                .trim()
+            productNameInput
+              .value
+              .trim()
           );
         }
       );
@@ -3105,10 +3410,12 @@
             reviewPhotoAltInput
               .value
               .trim() ||
-              "Review image"
+            "Review image"
           );
         }
       );
+
+    /* Import products */
 
     productImportInput
       .addEventListener(
@@ -3161,6 +3468,10 @@
                         product.releaseYear
                       ),
 
+                    popular:
+                      product.popular === true ||
+                      product.mostPopular === true,
+
                     status:
                       normalizeProductStatus(
                         product.status ||
@@ -3190,6 +3501,8 @@
           }
         }
       );
+
+    /* Import reviews */
 
     reviewImportInput
       .addEventListener(
@@ -3258,6 +3571,8 @@
         }
       );
 
+    /* Product JSON actions */
+
     showProductsJsonButton
       .addEventListener(
         "click",
@@ -3315,6 +3630,8 @@
         }
       );
 
+    /* Review JSON actions */
+
     showReviewsJsonButton
       .addEventListener(
         "click",
@@ -3362,6 +3679,8 @@
           );
         }
       );
+
+    /* Initialise */
 
     saveProducts();
     resetProductForm();
