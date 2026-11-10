@@ -99,8 +99,8 @@
       width: 1px;
       height: 1px;
       padding: 0;
-      overflow: hidden;
       position: absolute;
+      overflow: hidden;
       white-space: nowrap;
       border: 0;
       clip: rect(0, 0, 0, 0);
@@ -220,7 +220,7 @@
       color: var(--gold-light);
     }
 
-    /* Page introduction */
+    /* Page hero */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -278,7 +278,7 @@
       border-radius: 14px;
     }
 
-    /* Search and availability filter */
+    /* Search and filter */
 
     .search-area {
       min-width: 0;
@@ -749,9 +749,65 @@
       color: var(--gold-light);
     }
 
+    /* Floating back-to-top button */
+
+    .back-to-top {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      background: var(--gold);
+      color: #070707;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px);
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top:active {
+      transform: translateY(0);
+    }
+
+    .back-to-top-arrow {
+      width: 12px;
+      height: 12px;
+      margin-top: 5px;
+      border-top: 3px solid currentColor;
+      border-left: 3px solid currentColor;
+      transform: rotate(45deg);
+    }
+
     /* Focus */
 
     a:focus-visible,
+    button:focus-visible,
     input:focus-visible,
     select:focus-visible {
       outline:
@@ -778,8 +834,7 @@
 
     @media (max-width: 760px) {
       .container {
-        width:
-          min(100% - 28px, 1120px);
+        width: min(100% - 28px, 1120px);
       }
 
       .nav {
@@ -824,8 +879,7 @@
       }
 
       .product-count {
-        grid-column: auto;
-        grid-row: auto;
+        white-space: normal;
       }
 
       .sort-control {
@@ -849,8 +903,7 @@
 
     @media (max-width: 480px) {
       .container {
-        width:
-          min(100% - 20px, 1120px);
+        width: min(100% - 20px, 1120px);
       }
 
       .announcement-bar {
@@ -887,11 +940,28 @@
       .products-section {
         padding-bottom: 56px;
       }
+
+      .back-to-top {
+        width: 44px;
+        height: 44px;
+        right: 14px;
+        bottom: 14px;
+      }
     }
 
     @media (max-width: 360px) {
       .top-category {
         font-size: 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .back-to-top {
+        transition: none;
       }
     }
   </style>
@@ -1169,6 +1239,19 @@
     </div>
   </footer>
 
+  <button
+    class="back-to-top"
+    id="back-to-top"
+    type="button"
+    aria-label="Back to top"
+    title="Back to top"
+  >
+    <span
+      class="back-to-top-arrow"
+      aria-hidden="true"
+    ></span>
+  </button>
+
   <script>
     const CATEGORY_NAME = "LEGO";
     const DISPLAY_CATEGORY_NAME = "LEGO";
@@ -1204,6 +1287,11 @@
     const productSort =
       document.getElementById(
         "product-sort"
+      );
+
+    const backToTopButton =
+      document.getElementById(
+        "back-to-top"
       );
 
     let legoProducts = [];
@@ -1285,12 +1373,15 @@
         return null;
       }
 
-      const numericValue = Number(
-        String(value)
-          .replace(/[^0-9.-]/g, "")
-      );
+      const numericValue =
+        Number(
+          String(value)
+            .replace(/[^0-9.-]/g, "")
+        );
 
-      return Number.isFinite(numericValue)
+      return Number.isFinite(
+        numericValue
+      )
         ? numericValue
         : null;
     }
@@ -1300,15 +1391,20 @@
         getProductPrice(product);
 
       if (numericPrice === null) {
-        return product.price ||
-          "Contact for price";
+        return (
+          product.price ||
+          "Contact for price"
+        );
       }
 
       const formattedAmount =
-        new Intl.NumberFormat("en-SG", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }).format(numericPrice);
+        new Intl.NumberFormat(
+          "en-SG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        ).format(numericPrice);
 
       return `SGD $${formattedAmount}`;
     }
@@ -1345,7 +1441,9 @@
         return "sold-out";
       }
 
-      if (status.includes("preorder")) {
+      if (
+        status.includes("preorder")
+      ) {
         return "preorder";
       }
 
@@ -1452,7 +1550,9 @@
         );
       }
 
-      if (sortValue === "year-newest") {
+      if (
+        sortValue === "year-newest"
+      ) {
         sortedProducts.sort(
           (first, second) =>
             (
@@ -1464,7 +1564,9 @@
         );
       }
 
-      if (sortValue === "year-oldest") {
+      if (
+        sortValue === "year-oldest"
+      ) {
         sortedProducts.sort(
           (first, second) => {
             const firstYear =
@@ -1473,22 +1575,25 @@
             const secondYear =
               getProductYear(second);
 
-            const firstValue =
-              firstYear === null
-                ? Number.MAX_VALUE
-                : firstYear;
-
-            const secondValue =
-              secondYear === null
-                ? Number.MAX_VALUE
-                : secondYear;
-
-            return firstValue - secondValue;
+            return (
+              (
+                firstYear === null
+                  ? Number.MAX_VALUE
+                  : firstYear
+              ) -
+              (
+                secondYear === null
+                  ? Number.MAX_VALUE
+                  : secondYear
+              )
+            );
           }
         );
       }
 
-      if (sortValue === "price-low") {
+      if (
+        sortValue === "price-low"
+      ) {
         sortedProducts.sort(
           (first, second) => {
             const firstPrice =
@@ -1497,22 +1602,25 @@
             const secondPrice =
               getProductPrice(second);
 
-            const firstValue =
-              firstPrice === null
-                ? Number.MAX_VALUE
-                : firstPrice;
-
-            const secondValue =
-              secondPrice === null
-                ? Number.MAX_VALUE
-                : secondPrice;
-
-            return firstValue - secondValue;
+            return (
+              (
+                firstPrice === null
+                  ? Number.MAX_VALUE
+                  : firstPrice
+              ) -
+              (
+                secondPrice === null
+                  ? Number.MAX_VALUE
+                  : secondPrice
+              )
+            );
           }
         );
       }
 
-      if (sortValue === "price-high") {
+      if (
+        sortValue === "price-high"
+      ) {
         sortedProducts.sort(
           (first, second) => {
             const firstPrice =
@@ -1521,17 +1629,18 @@
             const secondPrice =
               getProductPrice(second);
 
-            const firstValue =
-              firstPrice === null
-                ? -1
-                : firstPrice;
-
-            const secondValue =
-              secondPrice === null
-                ? -1
-                : secondPrice;
-
-            return secondValue - firstValue;
+            return (
+              (
+                secondPrice === null
+                  ? -1
+                  : secondPrice
+              ) -
+              (
+                firstPrice === null
+                  ? -1
+                  : firstPrice
+              )
+            );
           }
         );
       }
@@ -1573,7 +1682,9 @@
 
     function createProductCard(product) {
       const card =
-        document.createElement("article");
+        document.createElement(
+          "article"
+        );
 
       card.className =
         "product-card";
@@ -1609,13 +1720,15 @@
         const image =
           document.createElement("img");
 
-        image.src = imageSource;
+        image.src =
+          imageSource;
 
         image.alt =
           product.imageAlt ||
           getProductName(product);
 
-        image.loading = "lazy";
+        image.loading =
+          "lazy";
 
         image.addEventListener(
           "error",
@@ -1625,17 +1738,23 @@
             imageArea.textContent =
               "Product image unavailable";
 
-            imageArea.appendChild(status);
+            imageArea.appendChild(
+              status
+            );
           }
         );
 
-        imageArea.appendChild(image);
+        imageArea.appendChild(
+          image
+        );
       } else {
         imageArea.textContent =
           "Product image";
       }
 
-      imageArea.appendChild(status);
+      imageArea.appendChild(
+        status
+      );
 
       const productInfo =
         document.createElement("div");
@@ -1843,7 +1962,9 @@
         "error"
       );
 
-      if (sortedProducts.length === 0) {
+      if (
+        sortedProducts.length === 0
+      ) {
         if (
           availableItemsFilter.checked &&
           enteredSearchTerm
@@ -1855,7 +1976,9 @@
         ) {
           productCount.textContent =
             "0 available LEGO products";
-        } else if (enteredSearchTerm) {
+        } else if (
+          enteredSearchTerm
+        ) {
           productCount.textContent =
             `No results for "${enteredSearchTerm}"`;
         } else {
@@ -1887,7 +2010,8 @@
         return;
       }
 
-      productMessage.hidden = true;
+      productMessage.hidden =
+        true;
 
       const productLabel =
         sortedProducts.length === 1
@@ -1900,12 +2024,16 @@
         document.createElement("strong");
 
       strongCount.textContent =
-        String(sortedProducts.length);
+        String(
+          sortedProducts.length
+        );
 
       let countText =
         ` LEGO ${productLabel}`;
 
-      if (availableItemsFilter.checked) {
+      if (
+        availableItemsFilter.checked
+      ) {
         countText =
           ` available LEGO ${productLabel}`;
       }
@@ -1955,7 +2083,9 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(data.products)
+            : Array.isArray(
+                  data.products
+                )
               ? data.products
               : [];
 
@@ -1969,7 +2099,9 @@
                 "";
 
               return (
-                normalizeCategory(category) ===
+                normalizeCategory(
+                  category
+                ) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
@@ -2013,6 +2145,16 @@
       }
     }
 
+    function updateBackToTopButton() {
+      const shouldShow =
+        window.scrollY > 320;
+
+      backToTopButton.classList.toggle(
+        "visible",
+        shouldShow
+      );
+    }
+
     productSearch.addEventListener(
       "input",
       renderProducts
@@ -2028,6 +2170,33 @@
       renderProducts
     );
 
+    backToTopButton.addEventListener(
+      "click",
+      () => {
+        const prefersReducedMotion =
+          window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches;
+
+        window.scrollTo({
+          top: 0,
+          behavior:
+            prefersReducedMotion
+              ? "auto"
+              : "smooth"
+        });
+      }
+    );
+
+    window.addEventListener(
+      "scroll",
+      updateBackToTopButton,
+      {
+        passive: true
+      }
+    );
+
+    updateBackToTopButton();
     loadProducts();
   </script>
 </body>
