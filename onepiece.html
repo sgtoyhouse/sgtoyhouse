@@ -56,14 +56,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-
       background-color: var(--background);
       background-image:
         url("images/backgrounds/backgroundlogo.jpg");
       background-repeat: repeat;
       background-size: 226px 159px;
       background-position: top left;
-
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -272,7 +270,7 @@
       padding: 16px;
       display: grid;
       grid-template-columns:
-        minmax(340px, 1fr) auto auto;
+        minmax(420px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
       background: rgba(16, 16, 16, 0.96);
@@ -280,20 +278,20 @@
       border-radius: 14px;
     }
 
-    /* Search and availability filter */
+    /* Search and filters */
 
     .search-area {
       min-width: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      flex-direction: column;
       gap: 12px;
     }
 
     .search-control {
-      min-width: 180px;
-      max-width: 420px;
+      width: 100%;
+      max-width: 520px;
       position: relative;
-      flex: 1;
     }
 
     .search-control::before {
@@ -350,18 +348,24 @@
         0 0 0 3px rgba(212, 175, 55, 0.18);
     }
 
-    .availability-filter {
-      min-height: 42px;
-      padding: 8px 14px;
+    .filter-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-check {
+      min-height: 40px;
+      padding: 7px 12px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
+      gap: 7px;
       background: #171717;
       color: var(--muted);
       border: 1px solid var(--border);
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       white-space: nowrap;
       cursor: pointer;
@@ -371,12 +375,12 @@
         background 0.2s ease;
     }
 
-    .availability-filter:hover {
+    .filter-check:hover {
       color: #ffffff;
       border-color: var(--gold);
     }
 
-    .availability-filter input {
+    .filter-check input {
       width: 1px;
       height: 1px;
       position: absolute;
@@ -385,7 +389,7 @@
       pointer-events: none;
     }
 
-    .availability-checkmark {
+    .filter-checkmark {
       width: 18px;
       height: 18px;
       display: inline-flex;
@@ -400,14 +404,14 @@
         border-color 0.2s ease;
     }
 
-    .availability-filter input:checked +
-    .availability-checkmark {
+    .filter-check input:checked +
+    .filter-checkmark {
       background: var(--green);
       border-color: var(--green);
     }
 
-    .availability-filter input:checked +
-    .availability-checkmark::after {
+    .filter-check input:checked +
+    .filter-checkmark::after {
       width: 4px;
       height: 8px;
       border: solid #04150a;
@@ -418,14 +422,14 @@
         rotate(45deg);
     }
 
-    .availability-filter input:focus-visible +
-    .availability-checkmark {
+    .filter-check input:focus-visible +
+    .filter-checkmark {
       outline:
         3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
     }
 
-    .availability-filter:has(input:checked) {
+    .filter-check:has(input:checked) {
       background: rgba(34, 197, 94, 0.12);
       color: #86efac;
       border-color: var(--green);
@@ -603,7 +607,7 @@
       color: var(--gold-light);
     }
 
-    /* Five-line scrollable descriptions */
+    /* Five-line scrollable description */
 
     .product-description {
       max-height: calc(1.55em * 5);
@@ -751,8 +755,6 @@
       color: var(--gold-light);
     }
 
-    /* Focus */
-
     a:focus-visible,
     input:focus-visible,
     select:focus-visible {
@@ -761,9 +763,9 @@
       outline-offset: 3px;
     }
 
-    /* Responsive layout */
+    /* Responsive */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
       .product-toolbar {
         grid-template-columns: 1fr auto;
       }
@@ -810,23 +812,25 @@
 
       .search-area {
         grid-column: auto;
-        align-items: stretch;
-        flex-direction: column;
       }
 
       .search-control {
-        width: 100%;
         max-width: none;
       }
 
-      .availability-filter {
+      .filter-group {
+        display: grid;
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .filter-check {
         width: 100%;
         justify-content: center;
       }
 
       .product-count {
-        grid-column: auto;
-        grid-row: auto;
+        white-space: normal;
       }
 
       .sort-control {
@@ -878,6 +882,10 @@
 
       .page-description {
         font-size: 16px;
+      }
+
+      .filter-group {
+        grid-template-columns: 1fr;
       }
 
       .product-grid {
@@ -1010,22 +1018,54 @@
               >
             </div>
 
-            <label
-              class="availability-filter"
-              for="available-items-filter"
+            <div
+              class="filter-group"
+              aria-label="Product filters"
             >
-              <input
-                type="checkbox"
-                id="available-items-filter"
-              >
+              <label class="filter-check">
+                <input
+                  type="checkbox"
+                  id="available-items-filter"
+                >
 
-              <span
-                class="availability-checkmark"
-                aria-hidden="true"
-              ></span>
+                <span
+                  class="filter-checkmark"
+                  aria-hidden="true"
+                ></span>
 
-              <span>Items available</span>
-            </label>
+                <span>Items available</span>
+              </label>
+
+              <label class="filter-check">
+                <input
+                  type="checkbox"
+                  class="language-filter"
+                  value="English"
+                >
+
+                <span
+                  class="filter-checkmark"
+                  aria-hidden="true"
+                ></span>
+
+                <span>English</span>
+              </label>
+
+              <label class="filter-check">
+                <input
+                  type="checkbox"
+                  class="language-filter"
+                  value="Japanese"
+                >
+
+                <span
+                  class="filter-checkmark"
+                  aria-hidden="true"
+                ></span>
+
+                <span>Japanese</span>
+              </label>
+            </div>
           </div>
 
           <p
@@ -1197,6 +1237,11 @@
         "available-items-filter"
       );
 
+    const languageFilters =
+      document.querySelectorAll(
+        ".language-filter"
+      );
+
     const productSort =
       document.getElementById(
         "product-sort"
@@ -1299,10 +1344,11 @@
         return null;
       }
 
-      const numericValue = Number(
-        String(value)
-          .replace(/[^0-9.-]/g, "")
-      );
+      const numericValue =
+        Number(
+          String(value)
+            .replace(/[^0-9.-]/g, "")
+        );
 
       return Number.isFinite(numericValue)
         ? numericValue
@@ -1314,8 +1360,10 @@
         getProductPrice(product);
 
       if (numericPrice === null) {
-        return product.price ||
-          "Contact for price";
+        return (
+          product.price ||
+          "Contact for price"
+        );
       }
 
       const formattedAmount =
@@ -1393,6 +1441,36 @@
         statusClass === "" ||
         statusClass === "preorder" ||
         statusClass === "almost-gone"
+      );
+    }
+
+    function getSelectedLanguages() {
+      return Array
+        .from(languageFilters)
+        .filter(
+          (filter) =>
+            filter.checked
+        )
+        .map(
+          (filter) =>
+            filter.value
+        );
+    }
+
+    function matchesLanguageFilters(
+      product
+    ) {
+      const selectedLanguages =
+        getSelectedLanguages();
+
+      if (
+        selectedLanguages.length === 0
+      ) {
+        return true;
+      }
+
+      return selectedLanguages.includes(
+        getProductLanguage(product)
       );
     }
 
@@ -1584,17 +1662,13 @@
       value
     ) {
       const detail =
-        document.createElement(
-          "span"
-        );
+        document.createElement("span");
 
       detail.className =
         "product-detail";
 
       const strong =
-        document.createElement(
-          "strong"
-        );
+        document.createElement("strong");
 
       strong.textContent =
         `${label}: `;
@@ -1617,17 +1691,13 @@
         "product-card";
 
       const imageArea =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
       imageArea.className =
         "product-image";
 
       const status =
-        document.createElement(
-          "span"
-        );
+        document.createElement("span");
 
       status.className =
         "product-status";
@@ -1649,9 +1719,7 @@
 
       if (imageSource) {
         const image =
-          document.createElement(
-            "img"
-          );
+          document.createElement("img");
 
         image.src =
           imageSource;
@@ -1685,22 +1753,16 @@
           "Product image";
       }
 
-      imageArea.appendChild(
-        status
-      );
+      imageArea.appendChild(status);
 
       const productInfo =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
       productInfo.className =
         "product-info";
 
       const category =
-        document.createElement(
-          "p"
-        );
+        document.createElement("p");
 
       category.className =
         "product-category";
@@ -1709,9 +1771,7 @@
         DISPLAY_CATEGORY_NAME;
 
       const name =
-        document.createElement(
-          "h3"
-        );
+        document.createElement("h3");
 
       name.className =
         "product-name";
@@ -1732,9 +1792,7 @@
 
       if (year || language) {
         const details =
-          document.createElement(
-            "div"
-          );
+          document.createElement("div");
 
         details.className =
           "product-details";
@@ -1764,17 +1822,13 @@
 
       if (product.description) {
         const description =
-          document.createElement(
-            "p"
-          );
+          document.createElement("p");
 
         description.className =
           "product-description";
 
         description.textContent =
-          String(
-            product.description
-          );
+          String(product.description);
 
         description.tabIndex = 0;
 
@@ -1789,17 +1843,13 @@
       }
 
       const bottom =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
       bottom.className =
         "product-bottom";
 
       const price =
-        document.createElement(
-          "p"
-        );
+        document.createElement("p");
 
       price.className =
         "product-price";
@@ -1808,9 +1858,7 @@
         formatPrice(product);
 
       const enquiryLink =
-        document.createElement(
-          "a"
-        );
+        document.createElement("a");
 
       enquiryLink.className =
         "product-button";
@@ -1828,8 +1876,7 @@
           "true"
         );
 
-        enquiryLink.tabIndex =
-          -1;
+        enquiryLink.tabIndex = -1;
       } else {
         const productName =
           getProductName(product);
@@ -1882,6 +1929,9 @@
           enteredSearchTerm
         );
 
+      const selectedLanguages =
+        getSelectedLanguages();
+
       const matchingProducts =
         onePieceProducts.filter(
           (product) => {
@@ -1895,9 +1945,15 @@
               !availableItemsFilter.checked ||
               isAvailableItem(product);
 
+            const matchesLanguage =
+              matchesLanguageFilters(
+                product
+              );
+
             return (
               matchesSearch &&
-              matchesAvailability
+              matchesAvailability &&
+              matchesLanguage
             );
           }
         );
@@ -1917,26 +1973,10 @@
       if (
         sortedProducts.length === 0
       ) {
-        if (
-          availableItemsFilter.checked &&
+        productCount.textContent =
           enteredSearchTerm
-        ) {
-          productCount.textContent =
-            `No available results for "${enteredSearchTerm}"`;
-        } else if (
-          availableItemsFilter.checked
-        ) {
-          productCount.textContent =
-            "0 available One Piece products";
-        } else if (
-          enteredSearchTerm
-        ) {
-          productCount.textContent =
-            `No results for "${enteredSearchTerm}"`;
-        } else {
-          productCount.textContent =
-            "0 One Piece products";
-        }
+            ? `No results for "${enteredSearchTerm}"`
+            : "0 matching One Piece products";
 
         productMessage.hidden =
           false;
@@ -1944,20 +1984,28 @@
         productMessage
           .querySelector("h2")
           .textContent =
-            availableItemsFilter.checked
-              ? "No available One Piece products"
-              : enteredSearchTerm
-                ? "No matching One Piece products"
-                : "No One Piece products available";
+            "No matching One Piece products";
 
-        productMessage
-          .querySelector("p")
-          .textContent =
-            availableItemsFilter.checked
-              ? "No In Stock, Preorder or Almost Gone products match the current search."
-              : enteredSearchTerm
-                ? "Try another product name, language, year or keyword."
-                : "Please check again soon for new additions.";
+        if (
+          selectedLanguages.length > 0
+        ) {
+          productMessage
+            .querySelector("p")
+            .textContent =
+              `No products match the selected language filters: ${selectedLanguages.join(", ")}.`;
+        } else if (
+          availableItemsFilter.checked
+        ) {
+          productMessage
+            .querySelector("p")
+            .textContent =
+              "No In Stock, Preorder or Almost Gone products match the current search.";
+        } else {
+          productMessage
+            .querySelector("p")
+            .textContent =
+              "Try another product name, language, year or keyword.";
+        }
 
         return;
       }
@@ -1973,9 +2021,7 @@
       productCount.replaceChildren();
 
       const strongCount =
-        document.createElement(
-          "strong"
-        );
+        document.createElement("strong");
 
       strongCount.textContent =
         String(
@@ -1992,11 +2038,18 @@
           ` available One Piece ${productLabel}`;
       }
 
+      if (
+        selectedLanguages.length > 0
+      ) {
+        countText +=
+          ` in ${selectedLanguages.join(
+            " or "
+          )}`;
+      }
+
       if (enteredSearchTerm) {
-        countText =
-          availableItemsFilter.checked
-            ? ` matching available One Piece ${productLabel}`
-            : ` matching One Piece ${productLabel}`;
+        countText +=
+          ` matching "${enteredSearchTerm}"`;
       }
 
       productCount.append(
@@ -2007,9 +2060,7 @@
       sortedProducts.forEach(
         (product) => {
           productGrid.appendChild(
-            createProductCard(
-              product
-            )
+            createProductCard(product)
           );
         }
       );
@@ -2109,6 +2160,15 @@
     availableItemsFilter.addEventListener(
       "change",
       renderProducts
+    );
+
+    languageFilters.forEach(
+      (filter) => {
+        filter.addEventListener(
+          "change",
+          renderProducts
+        );
+      }
     );
 
     productSort.addEventListener(
