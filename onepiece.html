@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>One Piece TCG | SG Toy House</title>
 
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="/favicon.ico"
+  >
+
   <link
     rel="apple-touch-icon"
     sizes="180x180"
@@ -15,7 +24,7 @@
 
   <meta
     name="description"
-    content="Browse One Piece TCG cards and sealed products available from SG Toy House."
+    content="Browse English and Japanese One Piece TCG products available from SG Toy House."
   >
 
   <style>
@@ -47,7 +56,8 @@
       flex-direction: column;
 
       background-color: var(--background);
-      background-image: url("images/backgrounds/backgroundlogo.jpg");
+      background-image:
+        url("images/backgrounds/backgroundlogo.jpg");
       background-repeat: repeat;
       background-size: 226px 159px;
       background-position: top left;
@@ -243,13 +253,13 @@
     }
 
     .page-description {
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto;
       color: var(--muted);
       font-size: 18px;
     }
 
-    /* Products */
+    /* Product section */
 
     .products-section {
       padding: 0 0 80px;
@@ -259,7 +269,8 @@
       margin-bottom: 24px;
       padding: 16px;
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto auto;
+      grid-template-columns:
+        minmax(220px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
       background: rgba(16, 16, 16, 0.96);
@@ -271,7 +282,7 @@
 
     .search-control {
       width: 100%;
-      max-width: 380px;
+      max-width: 420px;
       position: relative;
     }
 
@@ -325,7 +336,8 @@
 
     .search-control input:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+      box-shadow:
+        0 0 0 3px rgba(212, 175, 55, 0.18);
     }
 
     .product-count {
@@ -364,7 +376,8 @@
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -386,7 +399,8 @@
     .product-card:focus-within {
       transform: translateY(-4px);
       border-color: var(--gold);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
     .product-image {
@@ -417,22 +431,36 @@
     }
 
     .product-status {
+      max-width: calc(100% - 20px);
       padding: 5px 9px;
       position: absolute;
       top: 10px;
       left: 10px;
+      overflow: hidden;
       background: var(--gold);
       color: #070707;
       border-radius: 999px;
       font-size: 10px;
       font-weight: 800;
       line-height: 1.2;
+      text-overflow: ellipsis;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .product-status.sold-out {
       background: #3a3a3a;
       color: #ffffff;
+    }
+
+    .product-status.preorder {
+      background: #7dd3fc;
+      color: #062033;
+    }
+
+    .product-status.reserved {
+      background: #f5c66d;
+      color: #2b1b00;
     }
 
     .product-info {
@@ -457,6 +485,7 @@
       font-size: 17px;
       font-weight: 700;
       line-height: 1.35;
+      overflow-wrap: anywhere;
     }
 
     .product-details {
@@ -486,6 +515,7 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
+      overflow-wrap: anywhere;
       white-space: pre-line;
     }
 
@@ -533,7 +563,7 @@
       pointer-events: none;
     }
 
-    /* Messages */
+    /* Loading and empty messages */
 
     .product-message {
       padding: 50px 20px;
@@ -599,7 +629,8 @@
     a:focus-visible,
     input:focus-visible,
     select:focus-visible {
-      outline: 3px solid rgba(212, 175, 55, 0.45);
+      outline:
+        3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
     }
 
@@ -607,7 +638,8 @@
 
     @media (max-width: 900px) {
       .product-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
 
       .product-toolbar {
@@ -738,7 +770,10 @@
     Singapore’s #1 Toy House. Join Us on Telegram →
   </a>
 
-  <nav class="top-categories" aria-label="Product categories">
+  <nav
+    class="top-categories"
+    aria-label="Product categories"
+  >
     <div class="container top-category-grid">
       <a class="top-category" href="lego.html">
         LEGO
@@ -801,7 +836,7 @@
         <h1>One Piece TCG</h1>
 
         <p class="page-description">
-          Browse our available One Piece TCG cards and sealed products.
+          Browse our English and Japanese One Piece TCG cards and sealed products.
         </p>
       </div>
     </section>
@@ -811,7 +846,10 @@
       aria-labelledby="one-piece-products-heading"
     >
       <div class="container">
-        <h2 id="one-piece-products-heading" hidden>
+        <h2
+          id="one-piece-products-heading"
+          hidden
+        >
           Available One Piece products
         </h2>
 
@@ -827,13 +865,16 @@
             <input
               type="search"
               id="product-search"
-              placeholder="Search by name, year or keyword..."
+              placeholder="Search by name, language, year or keyword..."
               autocomplete="off"
               enterkeyhint="search"
             >
           </div>
 
-          <p class="product-count" id="product-count">
+          <p
+            class="product-count"
+            id="product-count"
+          >
             Loading One Piece products...
           </p>
 
@@ -853,6 +894,10 @@
 
               <option value="name-descending">
                 Name: Z to A
+              </option>
+
+              <option value="language-ascending">
+                Language: A to Z
               </option>
 
               <option value="year-newest">
@@ -886,7 +931,9 @@
           id="product-message"
           hidden
         >
-          <h2>No One Piece products available</h2>
+          <h2>
+            No One Piece products available
+          </h2>
 
           <p>
             Please check again soon for new additions.
@@ -899,7 +946,8 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <p>
-        © 2020 SG Toy House. All rights reserved. Singapore. Belgravia Drive.
+        © 2020 SG Toy House. All rights reserved.
+        Singapore. Belgravia Drive.
       </p>
 
       <ul class="footer-links">
@@ -957,24 +1005,44 @@
   </footer>
 
   <script>
-    const CATEGORY_NAME = "One Piece";
-    const DISPLAY_CATEGORY_NAME = "One Piece TCG";
-    const TELEGRAM_URL = "https://t.me/sgtoyhse";
+    const CATEGORY_NAME =
+      "One Piece";
+
+    const DISPLAY_CATEGORY_NAME =
+      "One Piece TCG";
+
+    const TELEGRAM_URL =
+      "https://t.me/sgtoyhse";
+
+    const ALLOWED_LANGUAGES = [
+      "English",
+      "Japanese"
+    ];
 
     const productGrid =
-      document.getElementById("product-grid");
+      document.getElementById(
+        "product-grid"
+      );
 
     const productCount =
-      document.getElementById("product-count");
+      document.getElementById(
+        "product-count"
+      );
 
     const productMessage =
-      document.getElementById("product-message");
+      document.getElementById(
+        "product-message"
+      );
 
     const productSearch =
-      document.getElementById("product-search");
+      document.getElementById(
+        "product-search"
+      );
 
     const productSort =
-      document.getElementById("product-sort");
+      document.getElementById(
+        "product-sort"
+      );
 
     let onePieceProducts = [];
 
@@ -1011,7 +1079,7 @@
         product.title ||
         product.productName ||
         "One Piece product"
-      );
+      ).trim();
     }
 
     function getProductImage(product) {
@@ -1020,7 +1088,23 @@
         product.imageUrl ||
         product.photo ||
         ""
-      );
+      ).trim();
+    }
+
+    function getProductLanguage(product) {
+      const language =
+        String(
+          product.language || ""
+        ).trim();
+
+      const matchedLanguage =
+        ALLOWED_LANGUAGES.find(
+          (allowedLanguage) =>
+            allowedLanguage.toLowerCase() ===
+            language.toLowerCase()
+        );
+
+      return matchedLanguage || language;
     }
 
     function getProductYear(product) {
@@ -1058,7 +1142,8 @@
       }
 
       const numericValue = Number(
-        String(value).replace(/[^0-9.-]/g, "")
+        String(value)
+          .replace(/[^0-9.-]/g, "")
       );
 
       return Number.isFinite(numericValue)
@@ -1089,19 +1174,38 @@
         product.status ||
         product.availability ||
         "In Stock"
-      );
+      ).trim();
     }
 
-    function isSoldOut(product) {
-      const normalizedStatus =
+    function getStatusClass(product) {
+      const status =
         getProductStatus(product)
           .toLowerCase()
           .replace(/[^a-z]/g, "");
 
+      if (
+        status.includes("soldout") ||
+        status.includes("unavailable") ||
+        status.includes("outofstock")
+      ) {
+        return "sold-out";
+      }
+
+      if (status.includes("preorder")) {
+        return "preorder";
+      }
+
+      if (status.includes("reserved")) {
+        return "reserved";
+      }
+
+      return "";
+    }
+
+    function isSoldOut(product) {
       return (
-        normalizedStatus.includes("soldout") ||
-        normalizedStatus.includes("unavailable") ||
-        normalizedStatus.includes("outofstock")
+        getStatusClass(product) ===
+        "sold-out"
       );
     }
 
@@ -1132,13 +1236,9 @@
       const searchableText = [
         getProductName(product),
         product.description,
-        product.year,
-        product.releaseYear,
-        product.language,
-        product.setNumber,
-        product.productCode,
-        product.status,
-        product.availability
+        getProductYear(product),
+        getProductLanguage(product),
+        getProductStatus(product)
       ]
         .filter(
           (value) =>
@@ -1160,29 +1260,72 @@
       const sortedProducts =
         [...products];
 
-      if (sortValue === "name-ascending") {
+      if (
+        sortValue === "name-ascending"
+      ) {
         sortedProducts.sort(
           (first, second) =>
-            getProductName(first).localeCompare(
-              getProductName(second)
-            )
+            getProductName(first)
+              .localeCompare(
+                getProductName(second)
+              )
         );
       }
 
-      if (sortValue === "name-descending") {
+      if (
+        sortValue === "name-descending"
+      ) {
         sortedProducts.sort(
           (first, second) =>
-            getProductName(second).localeCompare(
-              getProductName(first)
-            )
+            getProductName(second)
+              .localeCompare(
+                getProductName(first)
+              )
+        );
+      }
+
+      if (
+        sortValue === "language-ascending"
+      ) {
+        sortedProducts.sort(
+          (first, second) => {
+            const firstLanguage =
+              getProductLanguage(first);
+
+            const secondLanguage =
+              getProductLanguage(second);
+
+            if (
+              !firstLanguage &&
+              !secondLanguage
+            ) {
+              return 0;
+            }
+
+            if (!firstLanguage) {
+              return 1;
+            }
+
+            if (!secondLanguage) {
+              return -1;
+            }
+
+            return firstLanguage.localeCompare(
+              secondLanguage
+            );
+          }
         );
       }
 
       if (sortValue === "year-newest") {
         sortedProducts.sort(
           (first, second) =>
-            (getProductYear(second) || 0) -
-            (getProductYear(first) || 0)
+            (
+              getProductYear(second) || 0
+            ) -
+            (
+              getProductYear(first) || 0
+            )
         );
       }
 
@@ -1312,14 +1455,17 @@
       status.className =
         "product-status";
 
-      status.textContent =
-        getProductStatus(product);
+      const statusClass =
+        getStatusClass(product);
 
-      if (isSoldOut(product)) {
+      if (statusClass) {
         status.classList.add(
-          "sold-out"
+          statusClass
         );
       }
+
+      status.textContent =
+        getProductStatus(product);
 
       const imageSource =
         getProductImage(product);
@@ -1388,21 +1534,37 @@
       const year =
         getProductYear(product);
 
-      if (year) {
+      const language =
+        getProductLanguage(product);
+
+      if (year || language) {
         const details =
           document.createElement("div");
 
         details.className =
           "product-details";
 
-        details.appendChild(
-          createProductDetail(
-            "Year",
-            year
-          )
-        );
+        if (year) {
+          details.appendChild(
+            createProductDetail(
+              "Year",
+              year
+            )
+          );
+        }
 
-        productInfo.appendChild(details);
+        if (language) {
+          details.appendChild(
+            createProductDetail(
+              "Language",
+              language
+            )
+          );
+        }
+
+        productInfo.appendChild(
+          details
+        );
       }
 
       if (product.description) {
@@ -1413,9 +1575,13 @@
           "product-description";
 
         description.textContent =
-          product.description;
+          String(
+            product.description
+          );
 
-        productInfo.appendChild(description);
+        productInfo.appendChild(
+          description
+        );
       }
 
       const bottom =
@@ -1484,7 +1650,9 @@
         enquiryLink
       );
 
-      productInfo.appendChild(bottom);
+      productInfo.appendChild(
+        bottom
+      );
 
       card.append(
         imageArea,
@@ -1524,7 +1692,9 @@
         "error"
       );
 
-      if (sortedProducts.length === 0) {
+      if (
+        sortedProducts.length === 0
+      ) {
         productCount.textContent =
           enteredSearchTerm
             ? `No results for "${enteredSearchTerm}"`
@@ -1544,7 +1714,7 @@
           .querySelector("p")
           .textContent =
             enteredSearchTerm
-              ? "Try a different product name, year or keyword."
+              ? "Try another product name, language, year or keyword."
               : "Please check again soon for new additions.";
 
         return;
@@ -1590,9 +1760,10 @@
       );
 
       try {
-        const response = await fetch(
-          `products.json?version=${Date.now()}`
-        );
+        const response =
+          await fetch(
+            `products.json?version=${Date.now()}`
+          );
 
         if (!response.ok) {
           throw new Error(
@@ -1606,7 +1777,9 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(data.products)
+            : Array.isArray(
+                  data.products
+                )
               ? data.products
               : [];
 
@@ -1620,7 +1793,9 @@
                 "";
 
               return (
-                normalizeCategory(category) ===
+                normalizeCategory(
+                  category
+                ) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
