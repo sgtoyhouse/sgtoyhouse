@@ -38,6 +38,8 @@
       --gold: #d4af37;
       --gold-light: #f0d675;
       --danger: #ff8c8c;
+      --green: #22c55e;
+      --red: #dc2626;
     }
 
     * {
@@ -105,7 +107,7 @@
       clip-path: inset(50%);
     }
 
-    /* Announcement bar */
+    /* Announcement */
 
     .announcement-bar {
       display: block;
@@ -257,7 +259,7 @@
       font-size: 18px;
     }
 
-    /* Product section */
+    /* Products */
 
     .products-section {
       padding: 0 0 80px;
@@ -268,7 +270,7 @@
       padding: 16px;
       display: grid;
       grid-template-columns:
-        minmax(220px, 1fr) auto auto;
+        minmax(340px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
       background: rgba(16, 16, 16, 0.96);
@@ -276,12 +278,20 @@
       border-radius: 14px;
     }
 
-    /* Search */
+    /* Search and availability filter */
+
+    .search-area {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
     .search-control {
-      width: 100%;
+      min-width: 180px;
       max-width: 420px;
       position: relative;
+      flex: 1;
     }
 
     .search-control::before {
@@ -336,6 +346,87 @@
       border-color: var(--gold);
       box-shadow:
         0 0 0 3px rgba(212, 175, 55, 0.18);
+    }
+
+    .availability-filter {
+      min-height: 42px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      background: #171717;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .availability-filter:hover {
+      color: #ffffff;
+      border-color: var(--gold);
+    }
+
+    .availability-filter input {
+      width: 1px;
+      height: 1px;
+      position: absolute;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .availability-checkmark {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #0d0d0d;
+      border: 2px solid var(--muted);
+      border-radius: 5px;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .availability-filter input:checked +
+    .availability-checkmark {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .availability-filter input:checked +
+    .availability-checkmark::after {
+      width: 4px;
+      height: 8px;
+      border: solid #04150a;
+      border-width: 0 2px 2px 0;
+      content: "";
+      transform:
+        translateY(-1px)
+        rotate(45deg);
+    }
+
+    .availability-filter input:focus-visible +
+    .availability-checkmark {
+      outline:
+        3px solid rgba(212, 175, 55, 0.45);
+      outline-offset: 3px;
+    }
+
+    .availability-filter:has(input:checked) {
+      background: rgba(34, 197, 94, 0.12);
+      color: #86efac;
+      border-color: var(--green);
     }
 
     .product-count {
@@ -428,6 +519,8 @@
       transform: scale(1.03);
     }
 
+    /* Availability badges */
+
     .product-status {
       max-width: calc(100% - 20px);
       padding: 5px 9px;
@@ -435,8 +528,8 @@
       top: 10px;
       left: 10px;
       overflow: hidden;
-      background: var(--gold);
-      color: #070707;
+      background: var(--green);
+      color: #04150a;
       border-radius: 999px;
       font-size: 10px;
       font-weight: 800;
@@ -446,19 +539,19 @@
       white-space: nowrap;
     }
 
-    .product-status.sold-out {
-      background: #3a3a3a;
-      color: #ffffff;
-    }
-
     .product-status.preorder {
-      background: #7dd3fc;
-      color: #062033;
+      background: var(--green);
+      color: #04150a;
     }
 
-    .product-status.reserved {
-      background: #f5c66d;
-      color: #2b1b00;
+    .product-status.almost-gone {
+      background: var(--gold);
+      color: #070707;
+    }
+
+    .product-status.sold-out {
+      background: var(--red);
+      color: #ffffff;
     }
 
     .product-info {
@@ -508,10 +601,7 @@
       color: var(--gold-light);
     }
 
-    /*
-      Maximum visible description height: five lines.
-      Longer descriptions scroll vertically.
-    */
+    /* Five-line scrollable description */
 
     .product-description {
       max-height: calc(1.55em * 5);
@@ -519,6 +609,7 @@
       padding-right: 8px;
       overflow-x: hidden;
       overflow-y: auto;
+      overscroll-behavior: contain;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
@@ -597,7 +688,7 @@
       pointer-events: none;
     }
 
-    /* Loading and empty messages */
+    /* Empty and error messages */
 
     .product-message {
       padding: 50px 20px;
@@ -670,23 +761,18 @@
 
     /* Responsive */
 
-    @media (max-width: 900px) {
-      .product-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
+    @media (max-width: 1000px) {
       .product-toolbar {
         grid-template-columns: 1fr auto;
       }
 
-      .search-control {
-        max-width: none;
+      .search-area {
+        grid-column: 1 / -1;
       }
 
-      .product-count {
-        grid-column: 1 / -1;
-        grid-row: 2;
+      .product-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -718,6 +804,22 @@
       .product-toolbar {
         grid-template-columns: 1fr;
         align-items: stretch;
+      }
+
+      .search-area {
+        grid-column: auto;
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search-control {
+        width: 100%;
+        max-width: none;
+      }
+
+      .availability-filter {
+        width: 100%;
+        justify-content: center;
       }
 
       .product-count {
@@ -880,29 +982,45 @@
       aria-labelledby="pokemon-products-heading"
     >
       <div class="container">
-        <h2
-          id="pokemon-products-heading"
-          hidden
-        >
+        <h2 id="pokemon-products-heading" hidden>
           Available Pokémon products
         </h2>
 
         <div class="product-toolbar">
-          <div class="search-control">
-            <label
-              class="visually-hidden"
-              for="product-search"
-            >
-              Search Pokémon products
-            </label>
+          <div class="search-area">
+            <div class="search-control">
+              <label
+                class="visually-hidden"
+                for="product-search"
+              >
+                Search Pokémon products
+              </label>
 
-            <input
-              type="search"
-              id="product-search"
-              placeholder="Search by name, language, year or keyword..."
-              autocomplete="off"
-              enterkeyhint="search"
+              <input
+                type="search"
+                id="product-search"
+                placeholder="Search by name, language, year or keyword..."
+                autocomplete="off"
+                enterkeyhint="search"
+              >
+            </div>
+
+            <label
+              class="availability-filter"
+              for="available-items-filter"
             >
+              <input
+                type="checkbox"
+                id="available-items-filter"
+              >
+
+              <span
+                class="availability-checkmark"
+                aria-hidden="true"
+              ></span>
+
+              <span>Items available</span>
+            </label>
           </div>
 
           <p
@@ -1069,6 +1187,11 @@
         "product-search"
       );
 
+    const availableItemsFilter =
+      document.getElementById(
+        "available-items-filter"
+      );
+
     const productSort =
       document.getElementById(
         "product-sort"
@@ -1191,20 +1314,33 @@
       }
 
       const formattedAmount =
-        new Intl.NumberFormat("en-SG", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }).format(numericPrice);
+        new Intl.NumberFormat(
+          "en-SG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        ).format(numericPrice);
 
       return `SGD $${formattedAmount}`;
     }
 
     function getProductStatus(product) {
-      return String(
-        product.status ||
-        product.availability ||
-        "In Stock"
-      ).trim();
+      const rawStatus =
+        String(
+          product.status ||
+          product.availability ||
+          "In Stock"
+        ).trim();
+
+      if (
+        rawStatus.toLowerCase() ===
+        "reserved"
+      ) {
+        return "Almost Gone";
+      }
+
+      return rawStatus;
     }
 
     function getStatusClass(product) {
@@ -1225,8 +1361,11 @@
         return "preorder";
       }
 
-      if (status.includes("reserved")) {
-        return "reserved";
+      if (
+        status.includes("almostgone") ||
+        status.includes("reserved")
+      ) {
+        return "almost-gone";
       }
 
       return "";
@@ -1236,6 +1375,17 @@
       return (
         getStatusClass(product) ===
         "sold-out"
+      );
+    }
+
+    function isAvailableItem(product) {
+      const statusClass =
+        getStatusClass(product);
+
+      return (
+        statusClass === "" ||
+        statusClass === "preorder" ||
+        statusClass === "almost-gone"
       );
     }
 
@@ -1471,13 +1621,15 @@
         const image =
           document.createElement("img");
 
-        image.src = imageSource;
+        image.src =
+          imageSource;
 
         image.alt =
           product.imageAlt ||
           getProductName(product);
 
-        image.loading = "lazy";
+        image.loading =
+          "lazy";
 
         image.addEventListener(
           "error",
@@ -1487,7 +1639,9 @@
             imageArea.textContent =
               "Product image unavailable";
 
-            imageArea.appendChild(status);
+            imageArea.appendChild(
+              status
+            );
           }
         );
 
@@ -1559,7 +1713,9 @@
           );
         }
 
-        productInfo.appendChild(details);
+        productInfo.appendChild(
+          details
+        );
       }
 
       if (product.description) {
@@ -1618,7 +1774,8 @@
           "true"
         );
 
-        enquiryLink.tabIndex = -1;
+        enquiryLink.tabIndex =
+          -1;
       } else {
         const productName =
           getProductName(product);
@@ -1650,7 +1807,9 @@
         enquiryLink
       );
 
-      productInfo.appendChild(bottom);
+      productInfo.appendChild(
+        bottom
+      );
 
       card.append(
         imageArea,
@@ -1671,11 +1830,22 @@
 
       const matchingProducts =
         pokemonProducts.filter(
-          (product) =>
-            productMatchesSearch(
-              product,
-              normalizedSearchTerm
-            )
+          (product) => {
+            const matchesSearch =
+              productMatchesSearch(
+                product,
+                normalizedSearchTerm
+              );
+
+            const matchesAvailability =
+              !availableItemsFilter.checked ||
+              isAvailableItem(product);
+
+            return (
+              matchesSearch &&
+              matchesAvailability
+            );
+          }
         );
 
       const sortedProducts =
@@ -1691,31 +1861,51 @@
       );
 
       if (sortedProducts.length === 0) {
-        productCount.textContent =
+        if (
+          availableItemsFilter.checked &&
           enteredSearchTerm
-            ? `No results for "${enteredSearchTerm}"`
-            : "0 Pokémon products";
+        ) {
+          productCount.textContent =
+            `No available results for "${enteredSearchTerm}"`;
+        } else if (
+          availableItemsFilter.checked
+        ) {
+          productCount.textContent =
+            "0 available Pokémon products";
+        } else if (enteredSearchTerm) {
+          productCount.textContent =
+            `No results for "${enteredSearchTerm}"`;
+        } else {
+          productCount.textContent =
+            "0 Pokémon products";
+        }
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage
           .querySelector("h2")
           .textContent =
-            enteredSearchTerm
-              ? "No matching Pokémon products"
-              : "No Pokémon products available";
+            availableItemsFilter.checked
+              ? "No available Pokémon products"
+              : enteredSearchTerm
+                ? "No matching Pokémon products"
+                : "No Pokémon products available";
 
         productMessage
           .querySelector("p")
           .textContent =
-            enteredSearchTerm
-              ? "Try another product name, language, year or keyword."
-              : "Please check again soon for new additions.";
+            availableItemsFilter.checked
+              ? "No In Stock, Preorder or Almost Gone products match the current search."
+              : enteredSearchTerm
+                ? "Try another product name, language, year or keyword."
+                : "Please check again soon for new additions.";
 
         return;
       }
 
-      productMessage.hidden = true;
+      productMessage.hidden =
+        true;
 
       const productLabel =
         sortedProducts.length === 1
@@ -1730,11 +1920,26 @@
       strongCount.textContent =
         String(sortedProducts.length);
 
+      let countText =
+        ` Pokémon ${productLabel}`;
+
+      if (
+        availableItemsFilter.checked
+      ) {
+        countText =
+          ` available Pokémon ${productLabel}`;
+      }
+
+      if (enteredSearchTerm) {
+        countText =
+          availableItemsFilter.checked
+            ? ` matching available Pokémon ${productLabel}`
+            : ` matching Pokémon ${productLabel}`;
+      }
+
       productCount.append(
         strongCount,
-        enteredSearchTerm
-          ? ` matching Pokémon ${productLabel}`
-          : ` Pokémon ${productLabel}`
+        countText
       );
 
       sortedProducts.forEach(
@@ -1770,7 +1975,9 @@
         const allProducts =
           Array.isArray(data)
             ? data
-            : Array.isArray(data.products)
+            : Array.isArray(
+                  data.products
+                )
               ? data.products
               : [];
 
@@ -1784,7 +1991,9 @@
                 "";
 
               return (
-                normalizeCategory(category) ===
+                normalizeCategory(
+                  category
+                ) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
@@ -1804,7 +2013,8 @@
         productCount.textContent =
           "Pokémon products could not be loaded.";
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage.classList.add(
           "error"
@@ -1829,6 +2039,11 @@
 
     productSearch.addEventListener(
       "input",
+      renderProducts
+    );
+
+    availableItemsFilter.addEventListener(
+      "change",
       renderProducts
     );
 
