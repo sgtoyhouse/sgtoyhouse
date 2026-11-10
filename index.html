@@ -360,7 +360,44 @@
       gap: 16px;
     }
 
-    /* Cards */
+    /*
+      Additional reviews become vertically scrollable.
+      JavaScript sets the maximum height to the bottom
+      of the eighth review card.
+    */
+
+    .review-scroll-area {
+      overflow-x: hidden;
+      overflow-y: hidden;
+      scrollbar-color: var(--gold) #171717;
+      scrollbar-width: thin;
+    }
+
+    .review-scroll-area.is-scrollable {
+      padding-right: 10px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .review-scroll-area::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .review-scroll-area::-webkit-scrollbar-track {
+      background: #171717;
+      border-radius: 999px;
+    }
+
+    .review-scroll-area::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .review-scroll-area::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-light);
+    }
+
+    /* Product and review cards */
 
     .product-card,
     .review-card {
@@ -910,11 +947,16 @@
         </div>
 
         <div
-          class="review-grid"
-          id="review-grid"
-          aria-live="polite"
-          aria-busy="true"
-        ></div>
+          class="review-scroll-area"
+          id="review-scroll-area"
+        >
+          <div
+            class="review-grid"
+            id="review-grid"
+            aria-live="polite"
+            aria-busy="true"
+          ></div>
+        </div>
 
         <p
           class="reviews-empty"
@@ -990,6 +1032,7 @@
 
   <script>
     const PRODUCTS_PER_CATEGORY = 2;
+    const MAX_VISIBLE_REVIEWS = 8;
 
     const CATEGORY_CONFIG = [
       {
@@ -1022,6 +1065,11 @@
     const recentProductsEmpty =
       document.getElementById(
         "recent-products-empty"
+      );
+
+    const reviewScrollArea =
+      document.getElementById(
+        "review-scroll-area"
       );
 
     const reviewGrid =
@@ -1441,15 +1489,17 @@
         const products =
           Array.isArray(data)
             ? data
-            : Array.isArray(data.products)
+            : Array.isArray(
+                  data.products
+                )
               ? data.products
               : [];
 
         recentProductGrid.replaceChildren();
 
-        recentProductsEmpty.classList.remove(
-          "error"
-        );
+        recentProductsEmpty
+          .classList
+          .remove("error");
 
         CATEGORY_CONFIG.forEach(
           (category) => {
@@ -1461,12 +1511,13 @@
 
             latestProducts.forEach(
               (product) => {
-                recentProductGrid.appendChild(
-                  createRecentProductCard(
-                    product,
-                    category
-                  )
-                );
+                recentProductGrid
+                  .appendChild(
+                    createRecentProductCard(
+                      product,
+                      category
+                    )
+                  );
               }
             );
           }
@@ -1497,9 +1548,9 @@
         recentProductsEmpty.textContent =
           "Recently added products could not be loaded.";
 
-        recentProductsEmpty.classList.add(
-          "error"
-        );
+        recentProductsEmpty
+          .classList
+          .add("error");
 
         recentProductsEmpty.hidden =
           false;
@@ -1532,39 +1583,42 @@
       );
     }
 
-    /*
-      Converts a review date into a sortable timestamp.
-
-      Reviews may use:
-      - dateAdded
-      - reviewDate
-      - date
-
-      Date-only values receive a midday time to prevent the date
-      from shifting because of timezone conversion.
-    */
-
-    function getReviewTimestamp(review) {
-      const dateValue =
+    function getReviewDateValue(review) {
+      return (
         review.dateAdded ||
         review.reviewDate ||
         review.date ||
-        "";
+        ""
+      );
+    }
+
+    function normalizeReviewDateValue(
+      dateValue
+    ) {
+      if (!dateValue) {
+        return "";
+      }
+
+      return /^\d{4}-\d{2}-\d{2}$/.test(
+        String(dateValue)
+      )
+        ? `${dateValue}T12:00:00`
+        : dateValue;
+    }
+
+    function getReviewTimestamp(review) {
+      const dateValue =
+        getReviewDateValue(review);
 
       if (!dateValue) {
         return 0;
       }
 
-      const normalizedDateValue =
-        /^\d{4}-\d{2}-\d{2}$/.test(
-          String(dateValue)
-        )
-          ? `${dateValue}T12:00:00`
-          : dateValue;
-
       const timestamp =
         Date.parse(
-          normalizedDateValue
+          normalizeReviewDateValue(
+            dateValue
+          )
         );
 
       return Number.isNaN(timestamp)
@@ -1574,25 +1628,17 @@
 
     function formatReviewDate(review) {
       const dateValue =
-        review.dateAdded ||
-        review.reviewDate ||
-        review.date ||
-        "";
+        getReviewDateValue(review);
 
       if (!dateValue) {
         return "";
       }
 
-      const normalizedDateValue =
-        /^\d{4}-\d{2}-\d{2}$/.test(
-          String(dateValue)
-        )
-          ? `${dateValue}T12:00:00`
-          : dateValue;
-
       const parsedDate =
         new Date(
-          normalizedDateValue
+          normalizeReviewDateValue(
+            dateValue
+          )
         );
 
       if (
@@ -1647,6 +1693,19 @@
 
             photo.textContent =
               "Review photo unavailable";
+
+            requestAnimationFrame(
+              updateReviewScrollArea
+            );
+          }
+        );
+
+        image.addEventListener(
+          "load",
+          () => {
+            requestAnimationFrame(
+              updateReviewScrollArea
+            );
           }
         );
 
@@ -1772,6 +1831,163 @@
       return article;
     }
 
+    function sortReviewsNewestFirst(
+      reviews
+    ) {
+      return reviews
+        .map(
+          (
+            review,
+            originalIndex
+          ) => ({
+            review,
+            originalIndex
+          })
+        )
+        .sort(
+          (
+            first,
+            second
+          ) => {
+            const firstTimestamp =
+              getReviewTimestamp(
+                first.review
+              );
+
+            const secondTimestamp =
+              getReviewTimestamp(
+                second.review
+              );
+
+            if (
+              firstTimestamp ===
+              secondTimestamp
+            ) {
+              return (
+                first.originalIndex -
+                second.originalIndex
+              );
+            }
+
+            return (
+              secondTimestamp -
+              firstTimestamp
+            );
+          }
+        )
+        .map(
+          ({ review }) =>
+            review
+        );
+    }
+
+    /*
+      Set the visible review area to end at the bottom
+      of the eighth review card. Additional cards remain
+      available through vertical scrolling.
+    */
+
+    function updateReviewScrollArea() {
+      const reviewCards =
+        Array.from(
+          reviewGrid.querySelectorAll(
+            ".review-card"
+          )
+        );
+
+      reviewScrollArea
+        .classList
+        .remove("is-scrollable");
+
+      reviewScrollArea.style.maxHeight =
+        "";
+
+      if (
+        reviewCards.length <=
+        MAX_VISIBLE_REVIEWS
+      ) {
+        reviewScrollArea.removeAttribute(
+          "tabindex"
+        );
+
+        reviewScrollArea.removeAttribute(
+          "aria-label"
+        );
+
+        return;
+      }
+
+      const eighthCard =
+        reviewCards[
+          MAX_VISIBLE_REVIEWS - 1
+        ];
+
+      const gridTop =
+        reviewGrid
+          .getBoundingClientRect()
+          .top;
+
+      const eighthCardBottom =
+        eighthCard
+          .getBoundingClientRect()
+          .bottom;
+
+      const visibleHeight =
+        Math.ceil(
+          eighthCardBottom -
+          gridTop
+        );
+
+      reviewScrollArea.style.maxHeight =
+        `${visibleHeight}px`;
+
+      reviewScrollArea
+        .classList
+        .add("is-scrollable");
+
+      reviewScrollArea.tabIndex = 0;
+
+      reviewScrollArea.setAttribute(
+        "aria-label",
+        "Customer reviews. Scroll to view additional reviews."
+      );
+    }
+
+    function prepareReviewScrollArea() {
+      requestAnimationFrame(
+        () => {
+          updateReviewScrollArea();
+
+          const reviewImages =
+            reviewGrid.querySelectorAll(
+              ".review-photo img"
+            );
+
+          reviewImages.forEach(
+            (image) => {
+              if (!image.complete) {
+                image.addEventListener(
+                  "load",
+                  updateReviewScrollArea,
+                  {
+                    once: true
+                  }
+                );
+
+                image.addEventListener(
+                  "error",
+                  updateReviewScrollArea,
+                  {
+                    once: true
+                  }
+                );
+              }
+            }
+          );
+        }
+      );
+    }
+
     async function loadReviews() {
       reviewGrid.setAttribute(
         "aria-busy",
@@ -1796,70 +2012,29 @@
         const rawReviews =
           Array.isArray(data)
             ? data
-            : Array.isArray(data.reviews)
+            : Array.isArray(
+                  data.reviews
+                )
               ? data.reviews
               : [];
 
-        /*
-          Sort reviews newest first.
-
-          The original index is stored temporarily so reviews with
-          the same date retain their original order. Reviews without
-          valid dates receive timestamp 0 and appear last.
-        */
-
         const reviews =
-          rawReviews
-            .map(
-              (
-                review,
-                originalIndex
-              ) => ({
-                review,
-                originalIndex
-              })
-            )
-            .sort(
-              (
-                first,
-                second
-              ) => {
-                const firstTimestamp =
-                  getReviewTimestamp(
-                    first.review
-                  );
-
-                const secondTimestamp =
-                  getReviewTimestamp(
-                    second.review
-                  );
-
-                if (
-                  firstTimestamp ===
-                  secondTimestamp
-                ) {
-                  return (
-                    first.originalIndex -
-                    second.originalIndex
-                  );
-                }
-
-                return (
-                  secondTimestamp -
-                  firstTimestamp
-                );
-              }
-            )
-            .map(
-              ({ review }) =>
-                review
-            );
+          sortReviewsNewestFirst(
+            rawReviews
+          );
 
         reviewGrid.replaceChildren();
 
-        reviewsEmpty.classList.remove(
-          "error"
-        );
+        reviewScrollArea
+          .classList
+          .remove("is-scrollable");
+
+        reviewScrollArea.style.maxHeight =
+          "";
+
+        reviewsEmpty
+          .classList
+          .remove("error");
 
         if (reviews.length === 0) {
           reviewsEmpty.textContent =
@@ -1881,6 +2056,8 @@
             );
           }
         );
+
+        prepareReviewScrollArea();
       } catch (error) {
         console.error(
           "Review loading error:",
@@ -1889,12 +2066,19 @@
 
         reviewGrid.replaceChildren();
 
+        reviewScrollArea
+          .classList
+          .remove("is-scrollable");
+
+        reviewScrollArea.style.maxHeight =
+          "";
+
         reviewsEmpty.textContent =
           "Reviews could not be loaded. Please try again later.";
 
-        reviewsEmpty.classList.add(
-          "error"
-        );
+        reviewsEmpty
+          .classList
+          .add("error");
 
         reviewsEmpty.hidden =
           false;
@@ -1905,6 +2089,23 @@
         );
       }
     }
+
+    let reviewResizeTimer;
+
+    window.addEventListener(
+      "resize",
+      () => {
+        window.clearTimeout(
+          reviewResizeTimer
+        );
+
+        reviewResizeTimer =
+          window.setTimeout(
+            updateReviewScrollArea,
+            120
+          );
+      }
+    );
 
     loadRecentProducts();
     loadReviews();
