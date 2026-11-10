@@ -38,6 +38,8 @@
       --gold: #d4af37;
       --gold-light: #f0d675;
       --danger: #ff8c8c;
+      --green: #22c55e;
+      --red: #dc2626;
     }
 
     * {
@@ -268,7 +270,7 @@
       padding: 16px;
       display: grid;
       grid-template-columns:
-        minmax(220px, 1fr) auto auto;
+        minmax(340px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
       background: rgba(16, 16, 16, 0.96);
@@ -276,12 +278,20 @@
       border-radius: 14px;
     }
 
-    /* Search */
+    /* Search and availability filter */
+
+    .search-area {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
     .search-control {
-      width: 100%;
+      min-width: 180px;
       max-width: 420px;
       position: relative;
+      flex: 1;
     }
 
     .search-control::before {
@@ -336,6 +346,87 @@
       border-color: var(--gold);
       box-shadow:
         0 0 0 3px rgba(212, 175, 55, 0.18);
+    }
+
+    .availability-filter {
+      min-height: 42px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      background: #171717;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .availability-filter:hover {
+      color: #ffffff;
+      border-color: var(--gold);
+    }
+
+    .availability-filter input {
+      width: 1px;
+      height: 1px;
+      position: absolute;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .availability-checkmark {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #0d0d0d;
+      border: 2px solid var(--muted);
+      border-radius: 5px;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .availability-filter input:checked +
+    .availability-checkmark {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .availability-filter input:checked +
+    .availability-checkmark::after {
+      width: 4px;
+      height: 8px;
+      border: solid #04150a;
+      border-width: 0 2px 2px 0;
+      content: "";
+      transform:
+        translateY(-1px)
+        rotate(45deg);
+    }
+
+    .availability-filter input:focus-visible +
+    .availability-checkmark {
+      outline:
+        3px solid rgba(212, 175, 55, 0.45);
+      outline-offset: 3px;
+    }
+
+    .availability-filter:has(input:checked) {
+      background: rgba(34, 197, 94, 0.12);
+      color: #86efac;
+      border-color: var(--green);
     }
 
     .product-count {
@@ -428,6 +519,8 @@
       transform: scale(1.03);
     }
 
+    /* Availability badges */
+
     .product-status {
       max-width: calc(100% - 20px);
       padding: 5px 9px;
@@ -435,8 +528,8 @@
       top: 10px;
       left: 10px;
       overflow: hidden;
-      background: var(--gold);
-      color: #070707;
+      background: var(--green);
+      color: #04150a;
       border-radius: 999px;
       font-size: 10px;
       font-weight: 800;
@@ -446,19 +539,19 @@
       white-space: nowrap;
     }
 
-    .product-status.sold-out {
-      background: #3a3a3a;
-      color: #ffffff;
-    }
-
     .product-status.preorder {
-      background: #7dd3fc;
-      color: #062033;
+      background: var(--green);
+      color: #04150a;
     }
 
-    .product-status.reserved {
-      background: #f5c66d;
-      color: #2b1b00;
+    .product-status.almost-gone {
+      background: var(--gold);
+      color: #070707;
+    }
+
+    .product-status.sold-out {
+      background: var(--red);
+      color: #ffffff;
     }
 
     .product-info {
@@ -508,10 +601,7 @@
       color: var(--gold-light);
     }
 
-    /*
-      Description is limited to five visible lines.
-      Longer descriptions can be scrolled vertically.
-    */
+    /* Five-line scrollable description */
 
     .product-description {
       max-height: calc(1.55em * 5);
@@ -519,6 +609,7 @@
       padding-right: 8px;
       overflow-x: hidden;
       overflow-y: auto;
+      overscroll-behavior: contain;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
@@ -526,6 +617,13 @@
       scrollbar-color: var(--gold) #171717;
       scrollbar-width: thin;
       white-space: pre-line;
+    }
+
+    .product-description:focus-visible {
+      border-radius: 6px;
+      outline:
+        2px solid rgba(212, 175, 55, 0.65);
+      outline-offset: 3px;
     }
 
     .product-description::-webkit-scrollbar {
@@ -663,29 +761,25 @@
 
     /* Responsive */
 
-    @media (max-width: 900px) {
-      .product-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
+    @media (max-width: 1000px) {
       .product-toolbar {
         grid-template-columns: 1fr auto;
       }
 
-      .search-control {
-        max-width: none;
+      .search-area {
+        grid-column: 1 / -1;
       }
 
-      .product-count {
-        grid-column: 1 / -1;
-        grid-row: 2;
+      .product-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 760px) {
       .container {
-        width: min(100% - 28px, 1120px);
+        width:
+          min(100% - 28px, 1120px);
       }
 
       .nav {
@@ -711,6 +805,22 @@
       .product-toolbar {
         grid-template-columns: 1fr;
         align-items: stretch;
+      }
+
+      .search-area {
+        grid-column: auto;
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search-control {
+        width: 100%;
+        max-width: none;
+      }
+
+      .availability-filter {
+        width: 100%;
+        justify-content: center;
       }
 
       .product-count {
@@ -739,7 +849,8 @@
 
     @media (max-width: 480px) {
       .container {
-        width: min(100% - 20px, 1120px);
+        width:
+          min(100% - 20px, 1120px);
       }
 
       .announcement-bar {
@@ -893,21 +1004,40 @@
         </h2>
 
         <div class="product-toolbar">
-          <div class="search-control">
-            <label
-              class="visually-hidden"
-              for="product-search"
-            >
-              Search LEGO products
-            </label>
+          <div class="search-area">
+            <div class="search-control">
+              <label
+                class="visually-hidden"
+                for="product-search"
+              >
+                Search LEGO products
+              </label>
 
-            <input
-              type="search"
-              id="product-search"
-              placeholder="Search by name, set number or year..."
-              autocomplete="off"
-              enterkeyhint="search"
+              <input
+                type="search"
+                id="product-search"
+                placeholder="Search by name, set number or year..."
+                autocomplete="off"
+                enterkeyhint="search"
+              >
+            </div>
+
+            <label
+              class="availability-filter"
+              for="available-items-filter"
             >
+              <input
+                type="checkbox"
+                id="available-items-filter"
+              >
+
+              <span
+                class="availability-checkmark"
+                aria-hidden="true"
+              ></span>
+
+              <span>Items available</span>
+            </label>
           </div>
 
           <p
@@ -1066,6 +1196,11 @@
         "product-search"
       );
 
+    const availableItemsFilter =
+      document.getElementById(
+        "available-items-filter"
+      );
+
     const productSort =
       document.getElementById(
         "product-sort"
@@ -1179,11 +1314,21 @@
     }
 
     function getProductStatus(product) {
-      return String(
-        product.status ||
-        product.availability ||
-        "In Stock"
-      ).trim();
+      const rawStatus =
+        String(
+          product.status ||
+          product.availability ||
+          "In Stock"
+        ).trim();
+
+      if (
+        rawStatus.toLowerCase() ===
+        "reserved"
+      ) {
+        return "Almost Gone";
+      }
+
+      return rawStatus;
     }
 
     function getStatusClass(product) {
@@ -1204,8 +1349,11 @@
         return "preorder";
       }
 
-      if (status.includes("reserved")) {
-        return "reserved";
+      if (
+        status.includes("almostgone") ||
+        status.includes("reserved")
+      ) {
+        return "almost-gone";
       }
 
       return "";
@@ -1215,6 +1363,17 @@
       return (
         getStatusClass(product) ===
         "sold-out"
+      );
+    }
+
+    function isAvailableItem(product) {
+      const statusClass =
+        getStatusClass(product);
+
+      return (
+        statusClass === "" ||
+        statusClass === "preorder" ||
+        statusClass === "almost-gone"
       );
     }
 
@@ -1654,11 +1813,22 @@
 
       const matchingProducts =
         legoProducts.filter(
-          (product) =>
-            productMatchesSearch(
-              product,
-              normalizedSearchTerm
-            )
+          (product) => {
+            const matchesSearch =
+              productMatchesSearch(
+                product,
+                normalizedSearchTerm
+              );
+
+            const matchesAvailability =
+              !availableItemsFilter.checked ||
+              isAvailableItem(product);
+
+            return (
+              matchesSearch &&
+              matchesAvailability
+            );
+          }
         );
 
       const sortedProducts =
@@ -1674,10 +1844,24 @@
       );
 
       if (sortedProducts.length === 0) {
-        productCount.textContent =
+        if (
+          availableItemsFilter.checked &&
           enteredSearchTerm
-            ? `No results for "${enteredSearchTerm}"`
-            : "0 LEGO products";
+        ) {
+          productCount.textContent =
+            `No available results for "${enteredSearchTerm}"`;
+        } else if (
+          availableItemsFilter.checked
+        ) {
+          productCount.textContent =
+            "0 available LEGO products";
+        } else if (enteredSearchTerm) {
+          productCount.textContent =
+            `No results for "${enteredSearchTerm}"`;
+        } else {
+          productCount.textContent =
+            "0 LEGO products";
+        }
 
         productMessage.hidden =
           false;
@@ -1685,16 +1869,20 @@
         productMessage
           .querySelector("h2")
           .textContent =
-            enteredSearchTerm
-              ? "No matching LEGO products"
-              : "No LEGO products available";
+            availableItemsFilter.checked
+              ? "No available LEGO products"
+              : enteredSearchTerm
+                ? "No matching LEGO products"
+                : "No LEGO products available";
 
         productMessage
           .querySelector("p")
           .textContent =
-            enteredSearchTerm
-              ? "Try another product name, set number, year or keyword."
-              : "Please check again soon for new additions.";
+            availableItemsFilter.checked
+              ? "No In Stock, Preorder or Almost Gone products match the current search."
+              : enteredSearchTerm
+                ? "Try another product name, set number, year or keyword."
+                : "Please check again soon for new additions.";
 
         return;
       }
@@ -1714,11 +1902,24 @@
       strongCount.textContent =
         String(sortedProducts.length);
 
+      let countText =
+        ` LEGO ${productLabel}`;
+
+      if (availableItemsFilter.checked) {
+        countText =
+          ` available LEGO ${productLabel}`;
+      }
+
+      if (enteredSearchTerm) {
+        countText =
+          availableItemsFilter.checked
+            ? ` matching available LEGO ${productLabel}`
+            : ` matching LEGO ${productLabel}`;
+      }
+
       productCount.append(
         strongCount,
-        enteredSearchTerm
-          ? ` matching LEGO ${productLabel}`
-          : ` LEGO ${productLabel}`
+        countText
       );
 
       sortedProducts.forEach(
@@ -1814,6 +2015,11 @@
 
     productSearch.addEventListener(
       "input",
+      renderProducts
+    );
+
+    availableItemsFilter.addEventListener(
+      "change",
       renderProducts
     );
 
