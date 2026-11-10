@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -54,14 +55,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-
       background-color: var(--background);
       background-image:
         url("images/backgrounds/backgroundlogo.jpg");
       background-repeat: repeat;
       background-size: 226px 159px;
       background-position: top left;
-
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -111,7 +110,7 @@
       color: #000000;
     }
 
-    /* Category navigation */
+    /* Product category navigation */
 
     .top-categories {
       background: rgba(11, 11, 11, 0.96);
@@ -240,7 +239,6 @@
     }
 
     .hero-brand {
-      display: inline;
       color: var(--gold-light);
       font-weight: 800;
       letter-spacing: -2px;
@@ -259,7 +257,8 @@
       max-width: 760px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 10px;
     }
 
@@ -356,11 +355,12 @@
     .product-grid,
     .review-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
-    /* Cards */
+    /* Product and review cards */
 
     .product-card,
     .review-card {
@@ -432,6 +432,7 @@
       font-size: 17px;
       font-weight: 700;
       line-height: 1.35;
+      overflow-wrap: anywhere;
     }
 
     .product-details {
@@ -471,7 +472,7 @@
       font-weight: 700;
     }
 
-    /* Reviews */
+    /* Review cards */
 
     .review-card-header {
       margin-bottom: 14px;
@@ -504,16 +505,27 @@
       color: var(--text);
       font-size: 14px;
       line-height: 1.6;
+      overflow-wrap: anywhere;
       white-space: pre-line;
     }
 
-    .review-author {
+    .review-footer {
       margin-top: auto;
       padding-top: 14px;
-      color: var(--gold-light);
       border-top: 1px solid var(--border);
+    }
+
+    .review-author {
+      color: var(--gold-light);
       font-size: 13px;
       font-weight: 700;
+    }
+
+    .review-date {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
     }
 
     /* Empty and error messages */
@@ -736,10 +748,7 @@
         One Piece
       </a>
 
-      <a
-        class="top-category"
-        href="accessories.html"
-      >
+      <a class="top-category" href="accessories.html">
         Accessories
       </a>
     </div>
@@ -1092,7 +1101,8 @@
         product.releaseYear ??
         "";
 
-      const numericYear = Number(value);
+      const numericYear =
+        Number(value);
 
       if (
         !Number.isInteger(numericYear) ||
@@ -1141,20 +1151,24 @@
         return "";
       }
 
-      const numericValue = Number(
-        String(value)
-          .replace(/[^0-9.-]/g, "")
-      );
+      const numericValue =
+        Number(
+          String(value)
+            .replace(/[^0-9.-]/g, "")
+        );
 
       if (!Number.isFinite(numericValue)) {
         return String(value);
       }
 
       const formattedAmount =
-        new Intl.NumberFormat("en-SG", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }).format(numericValue);
+        new Intl.NumberFormat(
+          "en-SG",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }
+        ).format(numericValue);
 
       return `SGD $${formattedAmount}`;
     }
@@ -1244,13 +1258,15 @@
         const image =
           document.createElement("img");
 
-        image.src = imageSource;
+        image.src =
+          imageSource;
 
         image.alt =
           product.imageAlt ||
           getProductName(product);
 
-        image.loading = "lazy";
+        image.loading =
+          "lazy";
 
         image.addEventListener(
           "error",
@@ -1453,7 +1469,9 @@
         );
 
         if (
-          recentProductGrid.children.length === 0
+          recentProductGrid
+            .children
+            .length === 0
         ) {
           recentProductsEmpty.textContent =
             "Recently added products will appear here soon.";
@@ -1508,6 +1526,50 @@
         "★".repeat(safeRating) +
         "☆".repeat(5 - safeRating)
       );
+    }
+
+    function formatReviewDate(review) {
+      const dateValue =
+        review.dateAdded ||
+        review.reviewDate ||
+        review.date ||
+        "";
+
+      if (!dateValue) {
+        return "";
+      }
+
+      /*
+        Append a local time to YYYY-MM-DD values so the displayed
+        date does not shift because of timezone conversion.
+      */
+
+      const normalizedDateValue =
+        /^\d{4}-\d{2}-\d{2}$/.test(
+          String(dateValue)
+        )
+          ? `${dateValue}T12:00:00`
+          : dateValue;
+
+      const parsedDate =
+        new Date(normalizedDateValue);
+
+      if (
+        Number.isNaN(
+          parsedDate.getTime()
+        )
+      ) {
+        return String(dateValue);
+      }
+
+      return new Intl.DateTimeFormat(
+        "en-SG",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      ).format(parsedDate);
     }
 
     function createReviewCard(review) {
@@ -1581,7 +1643,10 @@
         Number.isFinite(numericRating)
           ? Math.max(
               1,
-              Math.min(5, numericRating)
+              Math.min(
+                5,
+                numericRating
+              )
             )
           : 5;
 
@@ -1597,7 +1662,8 @@
         "review-source";
 
       source.textContent =
-        review.source || "Customer";
+        review.source ||
+        "Customer";
 
       const text =
         document.createElement(
@@ -1610,6 +1676,12 @@
       text.textContent =
         review.text || "";
 
+      const footer =
+        document.createElement("div");
+
+      footer.className =
+        "review-footer";
+
       const author =
         document.createElement("p");
 
@@ -1617,7 +1689,28 @@
         "review-author";
 
       author.textContent =
-        review.author || "Customer";
+        review.author ||
+        "Customer";
+
+      const reviewDateText =
+        formatReviewDate(review);
+
+      footer.appendChild(author);
+
+      if (reviewDateText) {
+        const reviewDate =
+          document.createElement("p");
+
+        reviewDate.className =
+          "review-date";
+
+        reviewDate.textContent =
+          reviewDateText;
+
+        footer.appendChild(
+          reviewDate
+        );
+      }
 
       header.append(
         stars,
@@ -1627,7 +1720,7 @@
       content.append(
         header,
         text,
-        author
+        footer
       );
 
       article.append(
@@ -1685,11 +1778,13 @@
         reviewsEmpty.hidden =
           true;
 
-        reviews.forEach((review) => {
-          reviewGrid.appendChild(
-            createReviewCard(review)
-          );
-        });
+        reviews.forEach(
+          (review) => {
+            reviewGrid.appendChild(
+              createReviewCard(review)
+            );
+          }
+        );
       } catch (error) {
         console.error(
           "Review loading error:",
