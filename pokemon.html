@@ -508,13 +508,49 @@
       color: var(--gold-light);
     }
 
+    /*
+      Maximum visible description height: five lines.
+      Longer descriptions scroll vertically.
+    */
+
     .product-description {
+      max-height: calc(1.55em * 5);
       margin-bottom: 16px;
+      padding-right: 8px;
+      overflow-x: hidden;
+      overflow-y: auto;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
       overflow-wrap: anywhere;
+      scrollbar-color: var(--gold) #171717;
+      scrollbar-width: thin;
       white-space: pre-line;
+    }
+
+    .product-description:focus-visible {
+      border-radius: 6px;
+      outline:
+        2px solid rgba(212, 175, 55, 0.65);
+      outline-offset: 3px;
+    }
+
+    .product-description::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .product-description::-webkit-scrollbar-track {
+      background: #171717;
+      border-radius: 999px;
+    }
+
+    .product-description::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .product-description::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-light);
     }
 
     .product-bottom {
@@ -1420,7 +1456,9 @@
         getStatusClass(product);
 
       if (statusClass) {
-        status.classList.add(statusClass);
+        status.classList.add(
+          statusClass
+        );
       }
 
       status.textContent =
@@ -1533,6 +1571,13 @@
 
         description.textContent =
           String(product.description);
+
+        description.tabIndex = 0;
+
+        description.setAttribute(
+          "aria-label",
+          `Description for ${getProductName(product)}. Scroll for more.`
+        );
 
         productInfo.appendChild(
           description
