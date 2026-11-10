@@ -1,32 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
-
-  <title>Accessories | SG Toy House</title>
-
-  <meta
-    name="description"
-    content="Browse card sleeves, binders, storage products and collectible accessories available from SG Toy House."
-  >
-
-  <link
-    rel="icon"
-    type="image/x-icon"
-    href="/favicon.ico"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/apple-touch-icon.png"
-  >
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Accessories | SG Toy House</title>
+<meta content="Browse card sleeves, binders, storage products and collectible accessories available from SG Toy House." name="description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<style>
     :root {
       --background: #070707;
       --surface: #101010;
@@ -270,7 +252,7 @@
       padding: 16px;
       display: grid;
       grid-template-columns:
-        minmax(340px, 1fr) auto auto;
+        minmax(420px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
       background: rgba(16, 16, 16, 0.96);
@@ -278,20 +260,20 @@
       border-radius: 14px;
     }
 
-    /* Search */
+    /* Search and filters */
 
     .search-area {
       min-width: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      flex-direction: column;
       gap: 12px;
     }
 
     .search-control {
-      min-width: 180px;
-      max-width: 420px;
+      width: 100%;
+      max-width: 520px;
       position: relative;
-      flex: 1;
     }
 
     .search-control::before {
@@ -348,20 +330,24 @@
         0 0 0 3px rgba(212, 175, 55, 0.18);
     }
 
-    /* Availability filter */
+    .filter-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-    .availability-filter {
-      min-height: 42px;
-      padding: 8px 14px;
+    .filter-check {
+      min-height: 40px;
+      padding: 7px 12px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
+      gap: 7px;
       background: #171717;
       color: var(--muted);
       border: 1px solid var(--border);
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       white-space: nowrap;
       cursor: pointer;
@@ -371,12 +357,12 @@
         background 0.2s ease;
     }
 
-    .availability-filter:hover {
+    .filter-check:hover {
       color: #ffffff;
       border-color: var(--gold);
     }
 
-    .availability-filter input {
+    .filter-check input {
       width: 1px;
       height: 1px;
       position: absolute;
@@ -385,7 +371,7 @@
       pointer-events: none;
     }
 
-    .availability-checkmark {
+    .filter-checkmark {
       width: 18px;
       height: 18px;
       display: inline-flex;
@@ -397,14 +383,14 @@
       border-radius: 5px;
     }
 
-    .availability-filter input:checked +
-    .availability-checkmark {
+    .filter-check input:checked +
+    .filter-checkmark {
       background: var(--green);
       border-color: var(--green);
     }
 
-    .availability-filter input:checked +
-    .availability-checkmark::after {
+    .filter-check input:checked +
+    .filter-checkmark::after {
       width: 4px;
       height: 8px;
       border: solid #04150a;
@@ -415,14 +401,14 @@
         rotate(45deg);
     }
 
-    .availability-filter input:focus-visible +
-    .availability-checkmark {
+    .filter-check input:focus-visible +
+    .filter-checkmark {
       outline:
         3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
     }
 
-    .availability-filter:has(input:checked) {
+    .filter-check:has(input:checked) {
       background: rgba(34, 197, 94, 0.12);
       color: #86efac;
       border-color: var(--green);
@@ -814,7 +800,7 @@
 
     /* Tablet */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
       .product-toolbar {
         grid-template-columns: 1fr auto;
       }
@@ -861,16 +847,19 @@
 
       .search-area {
         grid-column: auto;
-        align-items: stretch;
-        flex-direction: column;
       }
 
       .search-control {
-        width: 100%;
         max-width: none;
       }
 
-      .availability-filter {
+      .filter-group {
+        display: grid;
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .filter-check {
         width: 100%;
         justify-content: center;
       }
@@ -901,7 +890,7 @@
 
     /*
       Mobile layout:
-      Keep two accessory cards on each row.
+      Keep two product cards on each row.
     */
 
     @media (max-width: 480px) {
@@ -946,6 +935,10 @@
 
       .product-toolbar {
         padding: 12px;
+      }
+
+      .filter-group {
+        grid-template-columns: 1fr;
       }
 
       .product-grid {
@@ -1060,295 +1053,239 @@
         transition: none;
       }
     }
-  </style>
+  
+
+    /* Sticky announcement and combined navigation */
+    .sticky-top-area {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+    .sticky-top-area .announcement-bar {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .sticky-top-area .site-header {
+      width: 100%;
+      position: relative;
+      top: auto;
+      z-index: auto;
+      background: rgba(7, 7, 7, 0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .main-navigation {
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: minmax(190px, 1.4fr) repeat(4, minmax(100px, 1fr));
+      align-items: stretch;
+    }
+    .navigation-link {
+      min-width: 0;
+      padding: 10px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      border-right: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .navigation-link:first-child { border-left: 1px solid var(--border); }
+    .navigation-link:last-child { border-right: 1px solid var(--border); }
+    .navigation-link:hover,
+    .navigation-link:focus-visible { background: var(--surface-hover); color: #ffffff; }
+    .navigation-home {
+      justify-content: flex-start;
+      padding-right: 18px;
+      padding-left: 18px;
+      color: var(--gold-light);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .navigation-link[aria-current="page"] {
+      background: #1c180d;
+      color: var(--gold-light);
+      box-shadow: inset 0 -3px 0 var(--gold);
+    }
+    @media (max-width: 760px) {
+      .main-navigation {
+        width: 100%;
+        min-height: 48px;
+        display: flex;
+        align-items: stretch;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      .main-navigation::-webkit-scrollbar { display: none; }
+      .navigation-link {
+        min-width: max-content;
+        min-height: 48px;
+        padding: 8px 15px;
+        flex: 0 0 auto;
+        border-right: 1px solid var(--border);
+        border-bottom: 0;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .navigation-link:first-child { border-left: 0; }
+      .navigation-home {
+        padding-right: 16px;
+        padding-left: 16px;
+        justify-content: center;
+        font-size: 12px;
+      }
+    }
+    @media (max-width: 480px) {
+      .main-navigation { min-height: 44px; }
+      .navigation-link {
+        min-height: 44px;
+        padding: 7px 12px;
+        font-size: 10px;
+      }
+      .navigation-home {
+        padding-right: 13px;
+        padding-left: 13px;
+        font-size: 11px;
+        letter-spacing: 0;
+      }
+    }
+</style>
 </head>
-
 <body>
-  <a
-    class="announcement-bar"
-    href="https://t.me/sgtoyhse"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Join SG Toy House on Telegram"
-  >
-    Singapore’s #1 Toy House. Join Us on Telegram →
-  </a>
+<div class="sticky-top-area">
+<a aria-label="Join SG Toy House on Telegram" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">Singapore’s #1 Toy House. Join Us on Telegram →</a>
+<header class="site-header">
+<nav aria-label="Main navigation" class="container main-navigation">
+<a aria-label="SG Toy House home" class="navigation-link navigation-home" href="index.html">SG Toy House</a>
+<a class="navigation-link" href="lego.html">LEGO</a>
+<a class="navigation-link" href="pokemon.html">Pokémon</a>
+<a class="navigation-link" href="onepiece.html">One Piece</a>
+<a aria-current="page" class="navigation-link" href="accessories.html">Accessories</a>
+</nav>
+</header>
+</div>
 
-  <nav
-    class="top-categories"
-    aria-label="Product categories"
-  >
-    <div class="container top-category-grid">
-      <a
-        class="top-category"
-        href="lego.html"
-      >
-        LEGO
-      </a>
 
-      <a
-        class="top-category"
-        href="pokemon.html"
-      >
-        Pokémon
-      </a>
-
-      <a
-        class="top-category"
-        href="onepiece.html"
-      >
-        One Piece
-      </a>
-
-      <a
-        class="top-category"
-        href="accessories.html"
-        aria-current="page"
-      >
-        Accessories
-      </a>
-    </div>
-  </nav>
-
-  <header class="site-header">
-    <div class="container nav">
-      <a
-        class="logo"
-        href="index.html"
-      >
-        SG TOY HOUSE
-      </a>
-
-      <nav aria-label="Main navigation">
-        <ul class="nav-links">
-          <li>
-            <a href="index.html">
-              Home
-            </a>
-          </li>
-
-          <li>
-            <a
-              class="telegram-link"
-              href="https://t.me/sgtoyhse"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Telegram
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <p class="page-label">
+<main>
+<section class="page-hero">
+<div class="container">
+<p class="page-label">
           SG Toy House Collection
         </p>
-
-        <h1>Accessories</h1>
-
-        <p class="page-description">
-          Browse sleeves, binders, storage products and collectible accessories.
-        </p>
-      </div>
-    </section>
-
-    <section
-      class="products-section"
-      aria-labelledby="accessories-products-heading"
-    >
-      <div class="container">
-        <h2
-          id="accessories-products-heading"
-          hidden
-        >
-          Accessories
-        </h2>
-
-        <div class="product-toolbar">
-          <div class="search-area">
-            <div class="search-control">
-              <label
-                class="visually-hidden"
-                for="product-search"
-              >
-                Search accessories
-              </label>
-
-              <input
-                type="search"
-                id="product-search"
-                placeholder="Search by name, year or keyword..."
-                autocomplete="off"
-                enterkeyhint="search"
-              >
-            </div>
-
-            <label
-              class="availability-filter"
-              for="available-items-filter"
-            >
-              <input
-                type="checkbox"
-                id="available-items-filter"
-              >
-
-              <span
-                class="availability-checkmark"
-                aria-hidden="true"
-              ></span>
-
-              <span>Items available</span>
-            </label>
-          </div>
-
-          <p
-            class="product-count"
-            id="product-count"
-          >
-            Loading accessories...
-          </p>
-
-          <div class="sort-control">
-            <label for="product-sort">
+<h1>Accessories</h1>
+<p class="page-description">Browse sleeves, binders, storage products and collectible accessories.</p>
+</div>
+</section>
+<section aria-labelledby="accessories-products-heading" class="products-section">
+<div class="container">
+<h2 hidden="" id="accessories-products-heading">Accessories</h2>
+<div class="product-toolbar">
+<div class="search-area">
+<div class="search-control">
+<label class="visually-hidden" for="product-search">Search Accessories</label>
+<input autocomplete="off" enterkeyhint="search" id="product-search" placeholder="Search by name, year or keyword..." type="search"/>
+</div>
+<div aria-label="Product filters" class="filter-group">
+<label class="filter-check">
+<input id="available-items-filter" type="checkbox"/>
+<span aria-hidden="true" class="filter-checkmark"></span>
+<span>Items available</span>
+</label>
+</div>
+</div>
+<p class="product-count" id="product-count">Loading Accessories...</p>
+<div class="sort-control">
+<label for="product-sort">
               Sort
             </label>
-
-            <select id="product-sort">
-              <option value="newest">
+<select id="product-sort">
+<option value="newest">
                 Recently added
               </option>
-
-              <option value="name-ascending">
+<option value="name-ascending">
                 Name: A to Z
               </option>
-
-              <option value="name-descending">
+<option value="name-descending">
                 Name: Z to A
               </option>
-
-              <option value="year-newest">
+<option value="year-newest">
                 Year: Newest first
               </option>
-
-              <option value="year-oldest">
+<option value="year-oldest">
                 Year: Oldest first
               </option>
-
-              <option value="price-low">
+<option value="price-low">
                 Price: Low to high
               </option>
-
-              <option value="price-high">
+<option value="price-high">
                 Price: High to low
               </option>
-            </select>
-          </div>
-        </div>
-
-        <div
-          class="product-grid"
-          id="product-grid"
-          aria-live="polite"
-          aria-busy="true"
-        ></div>
-
-        <div
-          class="product-message"
-          id="product-message"
-          hidden
-        >
-          <h2>
-            No accessories available
-          </h2>
-
-          <p>
+</select>
+</div>
+</div>
+<div aria-busy="true" aria-live="polite" class="product-grid" id="product-grid"></div>
+<div class="product-message" hidden="" id="product-message">
+<h2>No Accessories available</h2>
+<p>
             Please check again soon for new additions.
           </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <p>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-content">
+<p>
         © 2020 SG Toy House. All rights reserved.
         Singapore. Belgravia Drive.
       </p>
-
-      <ul class="footer-links">
-        <li>
-          <a
-            href="https://t.me/sgtoyhse"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+<ul class="footer-links">
+<li>
+<a href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">
             Telegram
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.instagram.com/sgtoyhse/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://www.instagram.com/sgtoyhse/" rel="noopener noreferrer" target="_blank">
             Instagram
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.facebook.com/T0yH0use/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://www.facebook.com/T0yH0use/" rel="noopener noreferrer" target="_blank">
             Facebook
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.tiktok.com/@sgtoyhse"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://www.tiktok.com/@sgtoyhse" rel="noopener noreferrer" target="_blank">
             TikTok
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://carousell.app.link/Lg9QpkISV7b"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://carousell.app.link/Lg9QpkISV7b" rel="noopener noreferrer" target="_blank">
             Carousell
           </a>
-        </li>
-      </ul>
-    </div>
-  </footer>
-
-  <button
-    class="back-to-top"
-    id="back-to-top"
-    type="button"
-    aria-label="Back to top"
-    title="Back to top"
-  >
-    <span
-      class="back-to-top-arrow"
-      aria-hidden="true"
-    ></span>
-  </button>
-
-  <script>
+</li>
+</ul>
+</div>
+</footer>
+<button aria-label="Back to top" class="back-to-top" id="back-to-top" title="Back to top" type="button">
+<span aria-hidden="true" class="back-to-top-arrow"></span>
+</button>
+<script>
     const CATEGORY_NAME =
       "Accessories";
 
@@ -1357,6 +1294,11 @@
 
     const TELEGRAM_URL =
       "https://t.me/sgtoyhse";
+
+    const ALLOWED_LANGUAGES = [
+      "English",
+      "Japanese",
+    ];
 
     const productGrid =
       document.getElementById(
@@ -1383,6 +1325,11 @@
         "available-items-filter"
       );
 
+    const languageFilters =
+      document.querySelectorAll(
+        ".language-filter"
+      );
+
     const productSort =
       document.getElementById(
         "product-sort"
@@ -1405,10 +1352,10 @@
           .replace(/[^a-z0-9]/g, "");
 
       if (
-        normalized === "accessory" ||
-        normalized === "accessories"
+        normalized === "onepiece" ||
+        normalized === "onepiecetcg"
       ) {
-        return "accessories";
+        return "onepiece";
       }
 
       return normalized;
@@ -1427,7 +1374,7 @@
         product.name ||
         product.title ||
         product.productName ||
-        "Accessory"
+        "Accessory product"
       ).trim();
     }
 
@@ -1438,6 +1385,26 @@
         product.photo ||
         ""
       ).trim();
+    }
+
+    function getProductLanguage(product) {
+      const language =
+        String(
+          product.language || ""
+        ).trim();
+
+      const matchedLanguage =
+        ALLOWED_LANGUAGES.find(
+          (allowedLanguage) =>
+            allowedLanguage
+              .toLowerCase() ===
+            language.toLowerCase()
+        );
+
+      return (
+        matchedLanguage ||
+        language
+      );
     }
 
     function getProductYear(product) {
@@ -1572,6 +1539,37 @@
       );
     }
 
+    function getSelectedLanguages() {
+      return Array.from(
+        languageFilters
+      )
+        .filter(
+          (filter) =>
+            filter.checked
+        )
+        .map(
+          (filter) =>
+            filter.value
+        );
+    }
+
+    function matchesLanguageFilters(
+      product
+    ) {
+      const selectedLanguages =
+        getSelectedLanguages();
+
+      if (
+        selectedLanguages.length === 0
+      ) {
+        return true;
+      }
+
+      return selectedLanguages.includes(
+        getProductLanguage(product)
+      );
+    }
+
     function getProductTimestamp(product) {
       const dateValue =
         product.dateAdded ||
@@ -1600,8 +1598,7 @@
         getProductName(product),
         product.description,
         getProductYear(product),
-        product.brand,
-        product.size,
+        getProductLanguage(product),
         getProductStatus(product)
       ]
         .filter(
@@ -1814,15 +1811,13 @@
         const image =
           document.createElement("img");
 
-        image.src =
-          imageSource;
+        image.src = imageSource;
 
         image.alt =
           product.imageAlt ||
           getProductName(product);
 
-        image.loading =
-          "lazy";
+        image.loading = "lazy";
 
         image.addEventListener(
           "error",
@@ -1838,9 +1833,7 @@
           }
         );
 
-        imageArea.appendChild(
-          image
-        );
+        imageArea.appendChild(image);
       } else {
         imageArea.textContent =
           "Product image";
@@ -1880,17 +1873,10 @@
       const year =
         getProductYear(product);
 
-      const brand =
-        String(
-          product.brand || ""
-        ).trim();
+      const language =
+        getProductLanguage(product);
 
-      const size =
-        String(
-          product.size || ""
-        ).trim();
-
-      if (year || brand || size) {
+      if (year || language) {
         const details =
           document.createElement("div");
 
@@ -1906,20 +1892,11 @@
           );
         }
 
-        if (brand) {
+        if (language) {
           details.appendChild(
             createProductDetail(
-              "Brand",
-              brand
-            )
-          );
-        }
-
-        if (size) {
-          details.appendChild(
-            createProductDetail(
-              "Size",
-              size
+              "Language",
+              language
             )
           );
         }
@@ -2012,9 +1989,7 @@
         enquiryLink
       );
 
-      productInfo.appendChild(
-        bottom
-      );
+      productInfo.appendChild(bottom);
 
       card.append(
         imageArea,
@@ -2033,6 +2008,9 @@
           enteredSearchTerm
         );
 
+      const selectedLanguages =
+        getSelectedLanguages();
+
       const matchingProducts =
         accessoryProducts.filter(
           (product) => {
@@ -2046,9 +2024,15 @@
               !availableItemsFilter.checked ||
               isAvailableItem(product);
 
+            const matchesLanguage =
+              matchesLanguageFilters(
+                product
+              );
+
             return (
               matchesSearch &&
-              matchesAvailability
+              matchesAvailability &&
+              matchesLanguage
             );
           }
         );
@@ -2066,51 +2050,43 @@
       );
 
       if (sortedProducts.length === 0) {
-        if (
-          availableItemsFilter.checked &&
+        productCount.textContent =
           enteredSearchTerm
-        ) {
-          productCount.textContent =
-            `No available results for "${enteredSearchTerm}"`;
-        } else if (
-          availableItemsFilter.checked
-        ) {
-          productCount.textContent =
-            "0 available accessories";
-        } else if (enteredSearchTerm) {
-          productCount.textContent =
-            `No results for "${enteredSearchTerm}"`;
-        } else {
-          productCount.textContent =
-            "0 accessories";
-        }
+            ? `No results for "${enteredSearchTerm}"`
+            : "0 matching Accessories";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage
           .querySelector("h2")
           .textContent =
-            availableItemsFilter.checked
-              ? "No available accessories"
-              : enteredSearchTerm
-                ? "No matching accessories"
-                : "No accessories available";
+            "No matching Accessories";
 
-        productMessage
-          .querySelector("p")
-          .textContent =
-            availableItemsFilter.checked
-              ? "No In Stock, Preorder or Almost Gone products match the current search."
-              : enteredSearchTerm
-                ? "Try another product name, year or keyword."
-                : "Please check again soon for new additions.";
+        if (
+          selectedLanguages.length > 0
+        ) {
+          productMessage
+            .querySelector("p")
+            .textContent =
+              `No products match the selected language filters: ${selectedLanguages.join(", ")}.`;
+        } else if (
+          availableItemsFilter.checked
+        ) {
+          productMessage
+            .querySelector("p")
+            .textContent =
+              "No In Stock, Preorder or Almost Gone products match the current search.";
+        } else {
+          productMessage
+            .querySelector("p")
+            .textContent =
+              "Try another product name, year or keyword.";
+        }
 
         return;
       }
 
-      productMessage.hidden =
-        true;
+      productMessage.hidden = true;
 
       const productLabel =
         sortedProducts.length === 1
@@ -2131,6 +2107,15 @@
       if (availableItemsFilter.checked) {
         countText =
           ` available ${productLabel}`;
+      }
+
+      if (
+        selectedLanguages.length > 0
+      ) {
+        countText +=
+          ` in ${selectedLanguages.join(
+            " or "
+          )}`;
       }
 
       if (enteredSearchTerm) {
@@ -2210,8 +2195,7 @@
         productCount.textContent =
           "Accessories could not be loaded.";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage.classList.add(
           "error"
@@ -2249,6 +2233,15 @@
     availableItemsFilter.addEventListener(
       "change",
       renderProducts
+    );
+
+    languageFilters.forEach(
+      (filter) => {
+        filter.addEventListener(
+          "change",
+          renderProducts
+        );
+      }
     );
 
     productSort.addEventListener(
