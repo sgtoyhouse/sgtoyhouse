@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1"
   >
 
   <title>One Piece TCG | SG Toy House</title>
@@ -138,7 +137,8 @@
 
     .top-category-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
     }
 
     .top-category {
@@ -399,9 +399,6 @@
       background: #0d0d0d;
       border: 2px solid var(--muted);
       border-radius: 5px;
-      transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
     }
 
     .filter-check input:checked +
@@ -435,6 +432,8 @@
       border-color: var(--green);
     }
 
+    /* Count and sort */
+
     .product-count {
       color: var(--muted);
       font-size: 14px;
@@ -467,7 +466,7 @@
       cursor: pointer;
     }
 
-    /* Product cards */
+    /* Product grid */
 
     .product-grid {
       display: grid;
@@ -525,7 +524,7 @@
       transform: scale(1.03);
     }
 
-    /* Availability badges */
+    /* Status */
 
     .product-status {
       max-width: calc(100% - 20px);
@@ -559,6 +558,8 @@
       background: var(--red);
       color: #ffffff;
     }
+
+    /* Product information */
 
     .product-info {
       padding: 18px;
@@ -607,8 +608,6 @@
       color: var(--gold-light);
     }
 
-    /* Five-line description */
-
     .product-description {
       max-height: calc(1.55em * 5);
       margin-bottom: 16px;
@@ -646,10 +645,6 @@
       border-radius: 999px;
     }
 
-    .product-description::-webkit-scrollbar-thumb:hover {
-      background: var(--gold-light);
-    }
-
     .product-bottom {
       margin-top: auto;
     }
@@ -674,6 +669,7 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 800;
+      line-height: 1.25;
       text-align: center;
       transition:
         background 0.2s ease,
@@ -694,7 +690,7 @@
       pointer-events: none;
     }
 
-    /* Empty and error messages */
+    /* Empty and error message */
 
     .product-message {
       padding: 50px 20px;
@@ -747,7 +743,6 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
-      transition: color 0.2s ease;
     }
 
     .footer-links a:hover,
@@ -755,7 +750,7 @@
       color: var(--gold-light);
     }
 
-    /* Back-to-top button */
+    /* Back to top */
 
     .back-to-top {
       width: 48px;
@@ -821,7 +816,7 @@
       outline-offset: 3px;
     }
 
-    /* Responsive */
+    /* Tablet */
 
     @media (max-width: 1100px) {
       .product-toolbar {
@@ -896,6 +891,7 @@
       }
 
       .sort-control select {
+        min-width: 0;
         flex: 1;
       }
 
@@ -910,14 +906,19 @@
       }
     }
 
+    /*
+      Mobile layout:
+      Keep two One Piece cards on each row.
+    */
+
     @media (max-width: 480px) {
       .container {
-        width: min(100% - 20px, 1120px);
+        width: min(100% - 16px, 1120px);
       }
 
       .announcement-bar {
-        padding: 7px 12px;
-        font-size: 12px;
+        padding: 7px 10px;
+        font-size: 11px;
       }
 
       .top-categories .container {
@@ -934,12 +935,24 @@
         font-size: 18px;
       }
 
+      .page-hero {
+        padding: 38px 0 30px;
+      }
+
+      .page-hero .container {
+        padding: 28px 14px;
+      }
+
       .page-hero h1 {
-        font-size: 42px;
+        font-size: 40px;
       }
 
       .page-description {
-        font-size: 16px;
+        font-size: 15px;
+      }
+
+      .product-toolbar {
+        padding: 12px;
       }
 
       .filter-group {
@@ -947,7 +960,66 @@
       }
 
       .product-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .product-card {
+        border-radius: 12px;
+      }
+
+      .product-info {
+        padding: 11px;
+      }
+
+      .product-status {
+        max-width: calc(100% - 14px);
+        padding: 4px 6px;
+        top: 7px;
+        left: 7px;
+        font-size: 8px;
+      }
+
+      .product-category {
+        margin-bottom: 4px;
+        font-size: 8px;
+        letter-spacing: 0.7px;
+      }
+
+      .product-name {
+        margin-bottom: 6px;
+        font-size: 13px;
+        line-height: 1.3;
+      }
+
+      .product-details {
+        margin-bottom: 8px;
+        gap: 4px;
+      }
+
+      .product-detail {
+        padding: 2px 5px;
+        font-size: 8px;
+      }
+
+      .product-description {
+        max-height: calc(1.45em * 5);
+        margin-bottom: 10px;
+        padding-right: 4px;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .product-price {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .product-button {
+        min-height: 38px;
+        padding: 7px 8px;
+        font-size: 11px;
       }
 
       .products-section {
@@ -965,6 +1037,28 @@
     @media (max-width: 360px) {
       .top-category {
         font-size: 9px;
+      }
+
+      .product-grid {
+        gap: 8px;
+      }
+
+      .product-info {
+        padding: 9px;
+      }
+
+      .product-name {
+        font-size: 12px;
+      }
+
+      .product-description {
+        font-size: 10px;
+      }
+
+      .product-button {
+        padding-right: 5px;
+        padding-left: 5px;
+        font-size: 10px;
       }
     }
 
@@ -1083,7 +1177,7 @@
           id="one-piece-products-heading"
           hidden
         >
-          Available One Piece products
+          One Piece products
         </h2>
 
         <div class="product-toolbar">
@@ -1355,7 +1449,7 @@
     let onePieceProducts = [];
 
     function normalizeCategory(value) {
-      const normalizedValue =
+      const normalized =
         String(value || "")
           .trim()
           .toLowerCase()
@@ -1364,13 +1458,13 @@
           .replace(/[^a-z0-9]/g, "");
 
       if (
-        normalizedValue === "onepiece" ||
-        normalizedValue === "onepiecetcg"
+        normalized === "onepiece" ||
+        normalized === "onepiecetcg"
       ) {
         return "onepiece";
       }
 
-      return normalizedValue;
+      return normalized;
     }
 
     function normalizeSearchText(value) {
@@ -1422,18 +1516,18 @@
         product.releaseYear ??
         "";
 
-      const numericYear =
+      const year =
         Number(value);
 
       if (
-        !Number.isInteger(numericYear) ||
-        numericYear < 1900 ||
-        numericYear > 2100
+        !Number.isInteger(year) ||
+        year < 1900 ||
+        year > 2100
       ) {
         return null;
       }
 
-      return numericYear;
+      return year;
     }
 
     function getProductPrice(product) {
@@ -1450,44 +1544,42 @@
         return null;
       }
 
-      const numericValue =
+      const amount =
         Number(
           String(value)
             .replace(/[^0-9.-]/g, "")
         );
 
-      return Number.isFinite(
-        numericValue
-      )
-        ? numericValue
+      return Number.isFinite(amount)
+        ? amount
         : null;
     }
 
     function formatPrice(product) {
-      const numericPrice =
+      const amount =
         getProductPrice(product);
 
-      if (numericPrice === null) {
+      if (amount === null) {
         return (
           product.price ||
           "Contact for price"
         );
       }
 
-      const formattedAmount =
+      return (
+        "SGD $" +
         new Intl.NumberFormat(
           "en-SG",
           {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
           }
-        ).format(numericPrice);
-
-      return `SGD $${formattedAmount}`;
+        ).format(amount)
+      );
     }
 
     function getProductStatus(product) {
-      const rawStatus =
+      const status =
         String(
           product.status ||
           product.availability ||
@@ -1495,13 +1587,13 @@
         ).trim();
 
       if (
-        rawStatus.toLowerCase() ===
+        status.toLowerCase() ===
         "reserved"
       ) {
         return "Almost Gone";
       }
 
-      return rawStatus;
+      return status;
     }
 
     function getStatusClass(product) {
@@ -1518,9 +1610,7 @@
         return "sold-out";
       }
 
-      if (
-        status.includes("preorder")
-      ) {
+      if (status.includes("preorder")) {
         return "preorder";
       }
 
@@ -1553,8 +1643,9 @@
     }
 
     function getSelectedLanguages() {
-      return Array
-        .from(languageFilters)
+      return Array.from(
+        languageFilters
+      )
         .filter(
           (filter) =>
             filter.checked
@@ -1698,9 +1789,7 @@
         );
       }
 
-      if (
-        sortValue === "price-low"
-      ) {
+      if (sortValue === "price-low") {
         sortedProducts.sort(
           (first, second) => {
             const firstPrice =
@@ -1725,9 +1814,7 @@
         );
       }
 
-      if (
-        sortValue === "price-high"
-      ) {
+      if (sortValue === "price-high") {
         sortedProducts.sort(
           (first, second) => {
             const firstPrice =
@@ -1752,9 +1839,7 @@
         );
       }
 
-      if (
-        sortValue === "newest"
-      ) {
+      if (sortValue === "newest") {
         sortedProducts.sort(
           (first, second) =>
             getProductTimestamp(second) -
@@ -1829,15 +1914,13 @@
         const image =
           document.createElement("img");
 
-        image.src =
-          imageSource;
+        image.src = imageSource;
 
         image.alt =
           product.imageAlt ||
           getProductName(product);
 
-        image.loading =
-          "lazy";
+        image.loading = "lazy";
 
         image.addEventListener(
           "error",
@@ -1853,9 +1936,7 @@
           }
         );
 
-        imageArea.appendChild(
-          image
-        );
+        imageArea.appendChild(image);
       } else {
         imageArea.textContent =
           "Product image";
@@ -1986,18 +2067,13 @@
 
         enquiryLink.tabIndex = -1;
       } else {
-        const productName =
-          getProductName(product);
-
-        const enquiryMessage =
-          `Hi SG Toy House, I am interested in ${productName}.`;
+        const message =
+          `Hi SG Toy House, I am interested in ${getProductName(product)}.`;
 
         enquiryLink.href =
           product.telegramUrl ||
           `${TELEGRAM_URL}?text=${
-            encodeURIComponent(
-              enquiryMessage
-            )
+            encodeURIComponent(message)
           }`;
 
         enquiryLink.target =
@@ -2016,9 +2092,7 @@
         enquiryLink
       );
 
-      productInfo.appendChild(
-        bottom
-      );
+      productInfo.appendChild(bottom);
 
       card.append(
         imageArea,
@@ -2032,7 +2106,7 @@
       const enteredSearchTerm =
         productSearch.value.trim();
 
-      const normalizedSearchTerm =
+      const searchTerm =
         normalizeSearchText(
           enteredSearchTerm
         );
@@ -2046,7 +2120,7 @@
             const matchesSearch =
               productMatchesSearch(
                 product,
-                normalizedSearchTerm
+                searchTerm
               );
 
             const matchesAvailability =
@@ -2078,16 +2152,13 @@
         "error"
       );
 
-      if (
-        sortedProducts.length === 0
-      ) {
+      if (sortedProducts.length === 0) {
         productCount.textContent =
           enteredSearchTerm
             ? `No results for "${enteredSearchTerm}"`
             : "0 matching One Piece products";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage
           .querySelector("h2")
@@ -2127,20 +2198,16 @@
 
       productCount.replaceChildren();
 
-      const strongCount =
+      const strong =
         document.createElement("strong");
 
-      strongCount.textContent =
-        String(
-          sortedProducts.length
-        );
+      strong.textContent =
+        String(sortedProducts.length);
 
       let countText =
         ` One Piece ${productLabel}`;
 
-      if (
-        availableItemsFilter.checked
-      ) {
+      if (availableItemsFilter.checked) {
         countText =
           ` available One Piece ${productLabel}`;
       }
@@ -2160,7 +2227,7 @@
       }
 
       productCount.append(
-        strongCount,
+        strong,
         countText
       );
 
@@ -2194,17 +2261,15 @@
         const data =
           await response.json();
 
-        const allProducts =
+        const products =
           Array.isArray(data)
             ? data
-            : Array.isArray(
-                  data.products
-                )
+            : Array.isArray(data.products)
               ? data.products
               : [];
 
         onePieceProducts =
-          allProducts.filter(
+          products.filter(
             (product) => {
               const category =
                 product.category ||
@@ -2213,9 +2278,7 @@
                 "";
 
               return (
-                normalizeCategory(
-                  category
-                ) ===
+                normalizeCategory(category) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
@@ -2235,8 +2298,7 @@
         productCount.textContent =
           "One Piece products could not be loaded.";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage.classList.add(
           "error"
@@ -2293,7 +2355,7 @@
     backToTopButton.addEventListener(
       "click",
       () => {
-        const prefersReducedMotion =
+        const reducedMotion =
           window.matchMedia(
             "(prefers-reduced-motion: reduce)"
           ).matches;
@@ -2301,7 +2363,7 @@
         window.scrollTo({
           top: 0,
           behavior:
-            prefersReducedMotion
+            reducedMotion
               ? "auto"
               : "smooth"
         });
