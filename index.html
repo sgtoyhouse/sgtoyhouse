@@ -110,7 +110,7 @@
       color: #000000;
     }
 
-    /* Product category navigation */
+    /* Category navigation */
 
     .top-categories {
       background: rgba(11, 11, 11, 0.96);
@@ -360,7 +360,7 @@
       gap: 16px;
     }
 
-    /* Product and review cards */
+    /* Cards */
 
     .product-card,
     .review-card {
@@ -416,6 +416,8 @@
       flex: 1;
       flex-direction: column;
     }
+
+    /* Product cards */
 
     .product-category {
       margin-bottom: 6px;
@@ -1371,7 +1373,9 @@
           );
         }
 
-        productInfo.appendChild(details);
+        productInfo.appendChild(
+          details
+        );
       }
 
       const formattedPrice =
@@ -1528,6 +1532,46 @@
       );
     }
 
+    /*
+      Converts a review date into a sortable timestamp.
+
+      Reviews may use:
+      - dateAdded
+      - reviewDate
+      - date
+
+      Date-only values receive a midday time to prevent the date
+      from shifting because of timezone conversion.
+    */
+
+    function getReviewTimestamp(review) {
+      const dateValue =
+        review.dateAdded ||
+        review.reviewDate ||
+        review.date ||
+        "";
+
+      if (!dateValue) {
+        return 0;
+      }
+
+      const normalizedDateValue =
+        /^\d{4}-\d{2}-\d{2}$/.test(
+          String(dateValue)
+        )
+          ? `${dateValue}T12:00:00`
+          : dateValue;
+
+      const timestamp =
+        Date.parse(
+          normalizedDateValue
+        );
+
+      return Number.isNaN(timestamp)
+        ? 0
+        : timestamp;
+    }
+
     function formatReviewDate(review) {
       const dateValue =
         review.dateAdded ||
@@ -1539,11 +1583,6 @@
         return "";
       }
 
-      /*
-        Append a local time to YYYY-MM-DD values so the displayed
-        date does not shift because of timezone conversion.
-      */
-
       const normalizedDateValue =
         /^\d{4}-\d{2}-\d{2}$/.test(
           String(dateValue)
@@ -1552,7 +1591,9 @@
           : dateValue;
 
       const parsedDate =
-        new Date(normalizedDateValue);
+        new Date(
+          normalizedDateValue
+        );
 
       if (
         Number.isNaN(
@@ -1752,12 +1793,67 @@
         const data =
           await response.json();
 
-        const reviews =
+        const rawReviews =
           Array.isArray(data)
             ? data
             : Array.isArray(data.reviews)
               ? data.reviews
               : [];
+
+        /*
+          Sort reviews newest first.
+
+          The original index is stored temporarily so reviews with
+          the same date retain their original order. Reviews without
+          valid dates receive timestamp 0 and appear last.
+        */
+
+        const reviews =
+          rawReviews
+            .map(
+              (
+                review,
+                originalIndex
+              ) => ({
+                review,
+                originalIndex
+              })
+            )
+            .sort(
+              (
+                first,
+                second
+              ) => {
+                const firstTimestamp =
+                  getReviewTimestamp(
+                    first.review
+                  );
+
+                const secondTimestamp =
+                  getReviewTimestamp(
+                    second.review
+                  );
+
+                if (
+                  firstTimestamp ===
+                  secondTimestamp
+                ) {
+                  return (
+                    first.originalIndex -
+                    second.originalIndex
+                  );
+                }
+
+                return (
+                  secondTimestamp -
+                  firstTimestamp
+                );
+              }
+            )
+            .map(
+              ({ review }) =>
+                review
+            );
 
         reviewGrid.replaceChildren();
 
