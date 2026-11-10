@@ -1,5 +1,27 @@
 [
   {
+    "id": "review-12335f72-b05a-4b14-907d-10110c7cd6ab",
+    "author": "Amirul Adli",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Excellent seller. Easy to deal with. Fast delivery too 😄",
+    "photo": "images/reviews/review260205.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-05",
+    "updatedAt": "2026-11-10T14:30:09.440Z"
+  },
+  {
+    "id": "review-c1b44802-e468-48bc-9867-0d019dbe2469",
+    "author": "Charles Xue",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Great deal , friendly seller! Will purchase again",
+    "photo": "images/reviews/review260203_3.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-03",
+    "updatedAt": "2026-11-10T14:28:14.953Z"
+  },
+  {
     "id": "review-1ec4ed9b-0b85-42a2-9262-ffcc62bf54e5",
     "author": "Betty",
     "source": "Telegram",
