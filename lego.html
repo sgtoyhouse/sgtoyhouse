@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>LEGO | SG Toy House</title>
 
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="/favicon.ico"
+  >
+
   <link
     rel="apple-touch-icon"
     sizes="180x180"
@@ -47,7 +55,8 @@
       flex-direction: column;
 
       background-color: var(--background);
-      background-image: url("images/backgrounds/backgroundlogo.jpg");
+      background-image:
+        url("images/backgrounds/backgroundlogo.jpg");
       background-repeat: repeat;
       background-size: 226px 159px;
       background-position: top left;
@@ -210,7 +219,7 @@
       color: var(--gold-light);
     }
 
-    /* Page hero */
+    /* Page introduction */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -249,7 +258,7 @@
       font-size: 18px;
     }
 
-    /* Products */
+    /* Product section */
 
     .products-section {
       padding: 0 0 80px;
@@ -259,7 +268,8 @@
       margin-bottom: 24px;
       padding: 16px;
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto auto;
+      grid-template-columns:
+        minmax(220px, 1fr) auto auto;
       align-items: center;
       gap: 16px;
       background: rgba(16, 16, 16, 0.96);
@@ -325,7 +335,8 @@
 
     .search-control input:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+      box-shadow:
+        0 0 0 3px rgba(212, 175, 55, 0.18);
     }
 
     .product-count {
@@ -364,7 +375,8 @@
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -386,7 +398,8 @@
     .product-card:focus-within {
       transform: translateY(-4px);
       border-color: var(--gold);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
     .product-image {
@@ -409,7 +422,8 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      transition: transform 0.25s ease;
+      transition:
+        transform 0.25s ease;
     }
 
     .product-card:hover .product-image img {
@@ -533,7 +547,7 @@
       pointer-events: none;
     }
 
-    /* Messages */
+    /* Product messages */
 
     .product-message {
       padding: 50px 20px;
@@ -586,7 +600,8 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
-      transition: color 0.2s ease;
+      transition:
+        color 0.2s ease;
     }
 
     .footer-links a:hover,
@@ -599,7 +614,8 @@
     a:focus-visible,
     input:focus-visible,
     select:focus-visible {
-      outline: 3px solid rgba(212, 175, 55, 0.45);
+      outline:
+        3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
     }
 
@@ -607,11 +623,13 @@
 
     @media (max-width: 900px) {
       .product-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
 
       .product-toolbar {
-        grid-template-columns: 1fr auto;
+        grid-template-columns:
+          1fr auto;
       }
 
       .search-control {
@@ -626,7 +644,8 @@
 
     @media (max-width: 760px) {
       .container {
-        width: min(100% - 28px, 1120px);
+        width:
+          min(100% - 28px, 1120px);
       }
 
       .nav {
@@ -680,7 +699,8 @@
 
     @media (max-width: 480px) {
       .container {
-        width: min(100% - 20px, 1120px);
+        width:
+          min(100% - 20px, 1120px);
       }
 
       .announcement-bar {
@@ -738,7 +758,10 @@
     Singapore’s #1 Toy House. Join Us on Telegram →
   </a>
 
-  <nav class="top-categories" aria-label="Product categories">
+  <nav
+    class="top-categories"
+    aria-label="Product categories"
+  >
     <div class="container top-category-grid">
       <a
         class="top-category"
@@ -748,15 +771,24 @@
         LEGO
       </a>
 
-      <a class="top-category" href="pokemon.html">
+      <a
+        class="top-category"
+        href="pokemon.html"
+      >
         Pokémon
       </a>
 
-      <a class="top-category" href="onepiece.html">
+      <a
+        class="top-category"
+        href="onepiece.html"
+      >
         One Piece
       </a>
 
-      <a class="top-category" href="accessories.html">
+      <a
+        class="top-category"
+        href="accessories.html"
+      >
         Accessories
       </a>
     </div>
@@ -764,7 +796,10 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="index.html">
+      <a
+        class="logo"
+        href="index.html"
+      >
         SG TOY HOUSE
       </a>
 
@@ -811,7 +846,10 @@
       aria-labelledby="lego-products-heading"
     >
       <div class="container">
-        <h2 id="lego-products-heading" hidden>
+        <h2
+          id="lego-products-heading"
+          hidden
+        >
           Available LEGO products
         </h2>
 
@@ -833,7 +871,10 @@
             >
           </div>
 
-          <p class="product-count" id="product-count">
+          <p
+            class="product-count"
+            id="product-count"
+          >
             Loading LEGO products...
           </p>
 
@@ -886,7 +927,9 @@
           id="product-message"
           hidden
         >
-          <h2>No LEGO products available</h2>
+          <h2>
+            No LEGO products available
+          </h2>
 
           <p>
             Please check again soon for new additions.
@@ -899,7 +942,8 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <p>
-        © 2020 SG Toy House. All rights reserved. Singapore. Belgravia Drive.
+        © 2020 SG Toy House. All rights reserved.
+        Singapore. Belgravia Drive.
       </p>
 
       <ul class="footer-links">
@@ -959,22 +1003,33 @@
   <script>
     const CATEGORY_NAME = "LEGO";
     const DISPLAY_CATEGORY_NAME = "LEGO";
-    const TELEGRAM_URL = "https://t.me/sgtoyhse";
+    const TELEGRAM_URL =
+      "https://t.me/sgtoyhse";
 
     const productGrid =
-      document.getElementById("product-grid");
+      document.getElementById(
+        "product-grid"
+      );
 
     const productCount =
-      document.getElementById("product-count");
+      document.getElementById(
+        "product-count"
+      );
 
     const productMessage =
-      document.getElementById("product-message");
+      document.getElementById(
+        "product-message"
+      );
 
     const productSearch =
-      document.getElementById("product-search");
+      document.getElementById(
+        "product-search"
+      );
 
     const productSort =
-      document.getElementById("product-sort");
+      document.getElementById(
+        "product-sort"
+      );
 
     let legoProducts = [];
 
@@ -1027,7 +1082,8 @@
         product.releaseYear ??
         "";
 
-      const numericYear = Number(value);
+      const numericYear =
+        Number(value);
 
       if (
         !Number.isInteger(numericYear) ||
@@ -1055,7 +1111,8 @@
       }
 
       const numericValue = Number(
-        String(value).replace(/[^0-9.-]/g, "")
+        String(value)
+          .replace(/[^0-9.-]/g, "")
       );
 
       return Number.isFinite(numericValue)
@@ -1096,9 +1153,15 @@
           .replace(/[^a-z]/g, "");
 
       return (
-        normalizedStatus.includes("soldout") ||
-        normalizedStatus.includes("unavailable") ||
-        normalizedStatus.includes("outofstock")
+        normalizedStatus.includes(
+          "soldout"
+        ) ||
+        normalizedStatus.includes(
+          "unavailable"
+        ) ||
+        normalizedStatus.includes(
+          "outofstock"
+        )
       );
     }
 
@@ -1149,32 +1212,46 @@
       ).includes(searchTerm);
     }
 
-    function sortProducts(products, sortValue) {
-      const sortedProducts = [...products];
+    function sortProducts(
+      products,
+      sortValue
+    ) {
+      const sortedProducts =
+        [...products];
 
-      if (sortValue === "name-ascending") {
+      if (
+        sortValue === "name-ascending"
+      ) {
         sortedProducts.sort(
           (first, second) =>
-            getProductName(first).localeCompare(
-              getProductName(second)
-            )
+            getProductName(first)
+              .localeCompare(
+                getProductName(second)
+              )
         );
       }
 
-      if (sortValue === "name-descending") {
+      if (
+        sortValue === "name-descending"
+      ) {
         sortedProducts.sort(
           (first, second) =>
-            getProductName(second).localeCompare(
-              getProductName(first)
-            )
+            getProductName(second)
+              .localeCompare(
+                getProductName(first)
+              )
         );
       }
 
       if (sortValue === "year-newest") {
         sortedProducts.sort(
           (first, second) =>
-            (getProductYear(second) || 0) -
-            (getProductYear(first) || 0)
+            (
+              getProductYear(second) || 0
+            ) -
+            (
+              getProductYear(first) || 0
+            )
         );
       }
 
@@ -1261,7 +1338,10 @@
       return sortedProducts;
     }
 
-    function createProductDetail(label, value) {
+    function createProductDetail(
+      label,
+      value
+    ) {
       const detail =
         document.createElement("span");
 
@@ -1325,14 +1405,17 @@
 
         image.loading = "lazy";
 
-        image.addEventListener("error", () => {
-          imageArea.replaceChildren();
+        image.addEventListener(
+          "error",
+          () => {
+            imageArea.replaceChildren();
 
-          imageArea.textContent =
-            "Product image unavailable";
+            imageArea.textContent =
+              "Product image unavailable";
 
-          imageArea.appendChild(status);
-        });
+            imageArea.appendChild(status);
+          }
+        );
 
         imageArea.appendChild(image);
       } else {
@@ -1415,7 +1498,9 @@
         description.textContent =
           product.description;
 
-        productInfo.appendChild(description);
+        productInfo.appendChild(
+          description
+        );
       }
 
       const bottom =
@@ -1530,7 +1615,8 @@
             ? `No results for "${enteredSearchTerm}"`
             : "0 LEGO products";
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage
           .querySelector("h2")
@@ -1562,7 +1648,9 @@
         document.createElement("strong");
 
       strongCount.textContent =
-        String(sortedProducts.length);
+        String(
+          sortedProducts.length
+        );
 
       productCount.append(
         strongCount,
@@ -1571,11 +1659,13 @@
           : ` LEGO ${productLabel}`
       );
 
-      sortedProducts.forEach((product) => {
-        productGrid.appendChild(
-          createProductCard(product)
-        );
-      });
+      sortedProducts.forEach(
+        (product) => {
+          productGrid.appendChild(
+            createProductCard(product)
+          );
+        }
+      );
     }
 
     async function loadProducts() {
@@ -1585,9 +1675,10 @@
       );
 
       try {
-        const response = await fetch(
-          `products.json?version=${Date.now()}`
-        );
+        const response =
+          await fetch(
+            `products.json?version=${Date.now()}`
+          );
 
         if (!response.ok) {
           throw new Error(
@@ -1606,18 +1697,22 @@
               : [];
 
         legoProducts =
-          allProducts.filter((product) => {
-            const category =
-              product.category ||
-              product.type ||
-              product.collection ||
-              "";
+          allProducts.filter(
+            (product) => {
+              const category =
+                product.category ||
+                product.type ||
+                product.collection ||
+                "";
 
-            return (
-              normalizeCategory(category) ===
-              normalizeCategory(CATEGORY_NAME)
-            );
-          });
+              return (
+                normalizeCategory(category) ===
+                normalizeCategory(
+                  CATEGORY_NAME
+                )
+              );
+            }
+          );
 
         renderProducts();
       } catch (error) {
@@ -1631,7 +1726,8 @@
         productCount.textContent =
           "LEGO products could not be loaded.";
 
-        productMessage.hidden = false;
+        productMessage.hidden =
+          false;
 
         productMessage.classList.add(
           "error"
