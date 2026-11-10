@@ -92,7 +92,7 @@
       margin: 0 auto;
     }
 
-    /* Announcement */
+    /* Announcement bar */
 
     .announcement-bar {
       display: block;
@@ -123,7 +123,8 @@
 
     .top-category-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
     }
 
     .top-category {
@@ -261,7 +262,8 @@
       max-width: 760px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 10px;
     }
 
@@ -300,6 +302,8 @@
     .button-primary:focus-visible {
       background: var(--gold-light);
       color: #000000;
+      box-shadow:
+        0 10px 30px rgba(212, 175, 55, 0.25);
     }
 
     .button-secondary {
@@ -319,7 +323,7 @@
       justify-content: center;
     }
 
-    /* Sections */
+    /* Homepage sections */
 
     .most-popular,
     .recently-added,
@@ -358,11 +362,12 @@
     .product-grid,
     .review-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
-    /* Cards */
+    /* Product and review cards */
 
     .product-card,
     .review-card {
@@ -420,7 +425,7 @@
       flex-direction: column;
     }
 
-    /* Product card content */
+    /* Product cards */
 
     .popular-label {
       padding: 5px 9px;
@@ -483,6 +488,14 @@
       font-weight: 700;
     }
 
+    .product-listed-date {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
     .product-link {
       margin-top: auto;
       padding-top: 8px;
@@ -491,7 +504,7 @@
       font-weight: 700;
     }
 
-    /* Reviews */
+    /* Review scrolling */
 
     .review-scroll-area {
       overflow-x: hidden;
@@ -519,6 +532,12 @@
       background: var(--gold);
       border-radius: 999px;
     }
+
+    .review-scroll-area::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-light);
+    }
+
+    /* Review cards */
 
     .review-card-header {
       margin-bottom: 14px;
@@ -574,7 +593,7 @@
       font-weight: 600;
     }
 
-    /* Messages */
+    /* Empty and error messages */
 
     .products-empty,
     .reviews-empty {
@@ -623,6 +642,7 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
+      transition: color 0.2s ease;
     }
 
     .footer-links a:hover,
@@ -630,7 +650,7 @@
       color: var(--gold-light);
     }
 
-    /* Back to top */
+    /* Back-to-top button */
 
     .back-to-top {
       width: 48px;
@@ -670,6 +690,10 @@
     .back-to-top:focus-visible {
       background: var(--gold-light);
       transform: translateY(-3px);
+    }
+
+    .back-to-top:active {
+      transform: translateY(0);
     }
 
     .back-to-top-arrow {
@@ -718,9 +742,15 @@
 
       .hero-content {
         padding: 44px 22px 52px;
+        border-radius: 20px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
       }
 
       .category-actions {
+        max-width: 520px;
         grid-template-columns:
           repeat(2, minmax(0, 1fr));
       }
@@ -743,8 +773,8 @@
     }
 
     /*
-      Mobile:
-      Product and review cards remain two columns.
+      Mobile layout:
+      Keep two product and review cards on each row.
     */
 
     @media (max-width: 480px) {
@@ -769,6 +799,10 @@
 
       .logo {
         font-size: 18px;
+      }
+
+      .hero {
+        padding: 48px 0 56px;
       }
 
       .hero-content {
@@ -817,9 +851,9 @@
         font-size: 27px;
       }
 
-      /*
-        Two mobile columns.
-      */
+      .section-heading p {
+        font-size: 14px;
+      }
 
       .product-grid,
       .review-grid {
@@ -870,6 +904,11 @@
       .product-price {
         margin-bottom: 4px;
         font-size: 12px;
+      }
+
+      .product-listed-date {
+        margin-bottom: 4px;
+        font-size: 9px;
       }
 
       .product-link {
@@ -1112,6 +1151,8 @@
       </div>
     </section>
 
+    <!-- Most Popular -->
+
     <section
       class="most-popular"
       aria-labelledby="most-popular-heading"
@@ -1144,6 +1185,8 @@
       </div>
     </section>
 
+    <!-- Recently Added -->
+
     <section
       class="recently-added"
       aria-labelledby="recently-added-heading"
@@ -1155,7 +1198,7 @@
           </h2>
 
           <p>
-            Discover the latest additions to SG Toy House.
+            Discover the newest product from each category.
           </p>
         </div>
 
@@ -1175,6 +1218,8 @@
         </p>
       </div>
     </section>
+
+    <!-- Reviews -->
 
     <section
       class="reviews"
@@ -1289,7 +1334,7 @@
   </button>
 
   <script>
-    const PRODUCTS_PER_CATEGORY = 2;
+    const PRODUCTS_PER_CATEGORY = 1;
     const MAX_POPULAR_PRODUCTS = 4;
     const MAX_VISIBLE_REVIEWS = 8;
 
@@ -1477,6 +1522,48 @@
         : timestamp;
     }
 
+    function formatProductListedDate(product) {
+      const dateValue =
+        product.dateAdded ||
+        product.createdAt ||
+        product.date ||
+        "";
+
+      if (!dateValue) {
+        return "";
+      }
+
+      const stringDateValue =
+        String(dateValue).trim();
+
+      const normalizedDateValue =
+        /^\d{4}-\d{2}-\d{2}$/.test(
+          stringDateValue
+        )
+          ? `${stringDateValue}T12:00:00`
+          : stringDateValue;
+
+      const parsedDate =
+        new Date(normalizedDateValue);
+
+      if (
+        Number.isNaN(
+          parsedDate.getTime()
+        )
+      ) {
+        return stringDateValue;
+      }
+
+      return new Intl.DateTimeFormat(
+        "en-SG",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      ).format(parsedDate);
+    }
+
     function formatProductPrice(product) {
       const value =
         product.price ??
@@ -1553,7 +1640,8 @@
     function createProductCard(
       product,
       category,
-      showPopularLabel = false
+      showPopularLabel = false,
+      showListedDate = false
     ) {
       const card =
         document.createElement("a");
@@ -1658,7 +1746,7 @@
       const language =
         getProductLanguage(product);
 
-      const showSet =
+      const showSetNumber =
         category.key === "lego" &&
         setNumber;
 
@@ -1670,7 +1758,7 @@
         language;
 
       if (
-        showSet ||
+        showSetNumber ||
         year ||
         showLanguage
       ) {
@@ -1680,7 +1768,7 @@
         details.className =
           "product-details";
 
-        if (showSet) {
+        if (showSetNumber) {
           details.appendChild(
             createProductDetail(
               "Set",
@@ -1728,6 +1816,28 @@
         productInfo.appendChild(price);
       }
 
+      if (showListedDate) {
+        const listedDateText =
+          formatProductListedDate(
+            product
+          );
+
+        if (listedDateText) {
+          const listedDate =
+            document.createElement("p");
+
+          listedDate.className =
+            "product-listed-date";
+
+          listedDate.textContent =
+            `Listed on: ${listedDateText}`;
+
+          productInfo.appendChild(
+            listedDate
+          );
+        }
+      }
+
       const linkText =
         document.createElement("p");
 
@@ -1737,7 +1847,9 @@
       linkText.textContent =
         `View ${category.label}`;
 
-      productInfo.appendChild(linkText);
+      productInfo.appendChild(
+        linkText
+      );
 
       card.append(
         imageArea,
@@ -1820,23 +1932,35 @@
             const category =
               getCategoryConfig(product);
 
-            if (category) {
-              popularProductGrid
-                .appendChild(
-                  createProductCard(
-                    product,
-                    category,
-                    true
-                  )
-                );
+            if (!category) {
+              return;
             }
+
+            popularProductGrid.appendChild(
+              createProductCard(
+                product,
+                category,
+                true,
+                false
+              )
+            );
           }
         );
 
-        popularProductsEmpty.hidden =
+        if (
           popularProductGrid
             .children
-            .length !== 0;
+            .length === 0
+        ) {
+          popularProductsEmpty.textContent =
+            "Most Popular products will appear here soon.";
+
+          popularProductsEmpty.hidden =
+            false;
+        } else {
+          popularProductsEmpty.hidden =
+            true;
+        }
 
         CATEGORY_CONFIG.forEach(
           (category) => {
@@ -1870,7 +1994,9 @@
                   .appendChild(
                     createProductCard(
                       product,
-                      category
+                      category,
+                      false,
+                      true
                     )
                   );
               }
@@ -1878,10 +2004,20 @@
           }
         );
 
-        recentProductsEmpty.hidden =
+        if (
           recentProductGrid
             .children
-            .length !== 0;
+            .length === 0
+        ) {
+          recentProductsEmpty.textContent =
+            "Recently added products will appear here soon.";
+
+          recentProductsEmpty.hidden =
+            false;
+        } else {
+          recentProductsEmpty.hidden =
+            true;
+        }
       } catch (error) {
         console.error(
           "Product loading error:",
@@ -2095,9 +2231,23 @@
       stars.textContent =
         renderStars(review.rating);
 
+      const numericRating =
+        Number(review.rating);
+
+      const accessibleRating =
+        Number.isFinite(numericRating)
+          ? Math.max(
+              1,
+              Math.min(
+                5,
+                numericRating
+              )
+            )
+          : 5;
+
       stars.setAttribute(
         "aria-label",
-        `${Number(review.rating) || 5} out of 5 stars`
+        `${accessibleRating} out of 5 stars`
       );
 
       const source =
@@ -2172,6 +2322,42 @@
       );
 
       return card;
+    }
+
+    function sortReviewsNewestFirst(
+      reviews
+    ) {
+      return reviews
+        .map(
+          (
+            review,
+            originalIndex
+          ) => ({
+            review,
+            originalIndex
+          })
+        )
+        .sort(
+          (first, second) => {
+            const difference =
+              getReviewTimestamp(
+                second.review
+              ) -
+              getReviewTimestamp(
+                first.review
+              );
+
+            return (
+              difference ||
+              first.originalIndex -
+              second.originalIndex
+            );
+          }
+        )
+        .map(
+          ({ review }) =>
+            review
+        );
     }
 
     function updateReviewScrollArea() {
@@ -2265,37 +2451,9 @@
               : [];
 
         const reviews =
-          rawReviews
-            .map(
-              (
-                review,
-                originalIndex
-              ) => ({
-                review,
-                originalIndex
-              })
-            )
-            .sort(
-              (first, second) => {
-                const difference =
-                  getReviewTimestamp(
-                    second.review
-                  ) -
-                  getReviewTimestamp(
-                    first.review
-                  );
-
-                return (
-                  difference ||
-                  first.originalIndex -
-                  second.originalIndex
-                );
-              }
-            )
-            .map(
-              ({ review }) =>
-                review
-            );
+          sortReviewsNewestFirst(
+            rawReviews
+          );
 
         reviewGrid.replaceChildren();
 
@@ -2304,6 +2462,9 @@
           .remove("error");
 
         if (reviews.length === 0) {
+          reviewsEmpty.textContent =
+            "Reviews will be added soon.";
+
           reviewsEmpty.hidden =
             false;
 
