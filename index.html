@@ -88,7 +88,7 @@
       margin: 0 auto;
     }
 
-    /* Announcement bar */
+    /* Announcement */
 
     .announcement-bar {
       display: block;
@@ -251,7 +251,7 @@
       font-size: 18px;
     }
 
-    /* Hero buttons */
+    /* Buttons */
 
     .category-actions {
       max-width: 760px;
@@ -318,7 +318,22 @@
       justify-content: center;
     }
 
-    /* Sections */
+    /* Homepage sections */
+
+    .most-popular,
+    .recently-added,
+    .reviews {
+      padding: 0 0 80px;
+    }
+
+    .most-popular .container,
+    .recently-added .container,
+    .reviews .container {
+      padding: 34px;
+      background: rgba(7, 7, 7, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
 
     .section-heading {
       margin-bottom: 28px;
@@ -339,62 +354,12 @@
       font-size: 16px;
     }
 
-    .recently-added,
-    .reviews {
-      padding: 0 0 80px;
-    }
-
-    .recently-added .container,
-    .reviews .container {
-      padding: 34px;
-      background: rgba(7, 7, 7, 0.9);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-    }
-
     .product-grid,
     .review-grid {
       display: grid;
       grid-template-columns:
         repeat(4, minmax(0, 1fr));
       gap: 16px;
-    }
-
-    /*
-      Additional reviews become vertically scrollable.
-      JavaScript sets the maximum height to the bottom
-      of the eighth review card.
-    */
-
-    .review-scroll-area {
-      overflow-x: hidden;
-      overflow-y: hidden;
-      scrollbar-color: var(--gold) #171717;
-      scrollbar-width: thin;
-    }
-
-    .review-scroll-area.is-scrollable {
-      padding-right: 10px;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-    }
-
-    .review-scroll-area::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .review-scroll-area::-webkit-scrollbar-track {
-      background: #171717;
-      border-radius: 999px;
-    }
-
-    .review-scroll-area::-webkit-scrollbar-thumb {
-      background: var(--gold);
-      border-radius: 999px;
-    }
-
-    .review-scroll-area::-webkit-scrollbar-thumb:hover {
-      background: var(--gold-light);
     }
 
     /* Product and review cards */
@@ -431,6 +396,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       background: #171717;
       color: var(--muted);
       border-bottom: 1px solid var(--border);
@@ -452,6 +418,22 @@
       display: flex;
       flex: 1;
       flex-direction: column;
+    }
+
+    /* Most Popular badge */
+
+    .popular-label {
+      padding: 5px 9px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--gold);
+      color: #070707;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
     /* Product cards */
@@ -509,6 +491,39 @@
       color: var(--gold-light);
       font-size: 15px;
       font-weight: 700;
+    }
+
+    /* Review scrolling */
+
+    .review-scroll-area {
+      overflow-x: hidden;
+      overflow-y: hidden;
+      scrollbar-color: var(--gold) #171717;
+      scrollbar-width: thin;
+    }
+
+    .review-scroll-area.is-scrollable {
+      padding-right: 10px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .review-scroll-area::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .review-scroll-area::-webkit-scrollbar-track {
+      background: #171717;
+      border-radius: 999px;
+    }
+
+    .review-scroll-area::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .review-scroll-area::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-light);
     }
 
     /* Review cards */
@@ -624,7 +639,8 @@
       color: var(--gold-light);
     }
 
-    a:focus-visible {
+    a:focus-visible,
+    .review-scroll-area:focus-visible {
       outline:
         3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
@@ -672,6 +688,7 @@
           repeat(2, minmax(0, 1fr));
       }
 
+      .most-popular .container,
       .recently-added .container,
       .reviews .container {
         padding: 26px 20px;
@@ -740,11 +757,13 @@
         width: 100%;
       }
 
+      .most-popular,
       .recently-added,
       .reviews {
         padding-bottom: 56px;
       }
 
+      .most-popular .container,
       .recently-added .container,
       .reviews .container {
         padding: 24px 16px;
@@ -899,6 +918,42 @@
       </div>
     </section>
 
+    <!-- Most Popular -->
+
+    <section
+      class="most-popular"
+      aria-labelledby="most-popular-heading"
+    >
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="most-popular-heading">
+            Most Popular
+          </h2>
+
+          <p>
+            Explore some of the most popular collectibles at SG Toy House.
+          </p>
+        </div>
+
+        <div
+          class="product-grid"
+          id="popular-product-grid"
+          aria-live="polite"
+          aria-busy="true"
+        ></div>
+
+        <p
+          class="products-empty"
+          id="popular-products-empty"
+          hidden
+        >
+          Most Popular products will appear here soon.
+        </p>
+      </div>
+    </section>
+
+    <!-- Recently Added -->
+
     <section
       class="recently-added"
       aria-labelledby="recently-added-heading"
@@ -930,6 +985,8 @@
         </p>
       </div>
     </section>
+
+    <!-- Reviews -->
 
     <section
       class="reviews"
@@ -1032,6 +1089,7 @@
 
   <script>
     const PRODUCTS_PER_CATEGORY = 2;
+    const MAX_POPULAR_PRODUCTS = 4;
     const MAX_VISIBLE_REVIEWS = 8;
 
     const CATEGORY_CONFIG = [
@@ -1056,6 +1114,16 @@
         page: "accessories.html"
       }
     ];
+
+    const popularProductGrid =
+      document.getElementById(
+        "popular-product-grid"
+      );
+
+    const popularProductsEmpty =
+      document.getElementById(
+        "popular-products-empty"
+      );
 
     const recentProductGrid =
       document.getElementById(
@@ -1119,12 +1187,33 @@
       return normalizedValue;
     }
 
+    function getCategoryConfig(product) {
+      const productCategory =
+        product.category ||
+        product.type ||
+        product.collection ||
+        "";
+
+      const normalizedCategory =
+        normalizeProductCategory(
+          productCategory
+        );
+
+      return (
+        CATEGORY_CONFIG.find(
+          (category) =>
+            category.key ===
+            normalizedCategory
+        ) || null
+      );
+    }
+
     function getProductName(product) {
       return String(
         product.name ||
         product.title ||
         product.productName ||
-        "Recently added product"
+        "Product"
       );
     }
 
@@ -1223,36 +1312,6 @@
       return `SGD $${formattedAmount}`;
     }
 
-    function findLatestProducts(
-      products,
-      categoryKey,
-      limit = PRODUCTS_PER_CATEGORY
-    ) {
-      return products
-        .filter((product) => {
-          const productCategory =
-            product.category ||
-            product.type ||
-            product.collection ||
-            "";
-
-          return (
-            normalizeProductCategory(
-              productCategory
-            ) === categoryKey
-          );
-        })
-        .sort(
-          (
-            firstProduct,
-            secondProduct
-          ) =>
-            getProductDate(secondProduct) -
-            getProductDate(firstProduct)
-        )
-        .slice(0, limit);
-    }
-
     function createProductDetail(
       label,
       value
@@ -1277,9 +1336,10 @@
       return detail;
     }
 
-    function createRecentProductCard(
+    function createProductCard(
       product,
-      category
+      category,
+      showPopularLabel = false
     ) {
       const card =
         document.createElement("a");
@@ -1325,6 +1385,23 @@
 
             imageArea.textContent =
               "Product image unavailable";
+
+            if (showPopularLabel) {
+              const label =
+                document.createElement(
+                  "span"
+                );
+
+              label.className =
+                "popular-label";
+
+              label.textContent =
+                "Most Popular";
+
+              imageArea.appendChild(
+                label
+              );
+            }
           }
         );
 
@@ -1332,6 +1409,19 @@
       } else {
         imageArea.textContent =
           "Product image";
+      }
+
+      if (showPopularLabel) {
+        const label =
+          document.createElement("span");
+
+        label.className =
+          "popular-label";
+
+        label.textContent =
+          "Most Popular";
+
+        imageArea.appendChild(label);
       }
 
       const productInfo =
@@ -1465,6 +1555,160 @@
       return card;
     }
 
+    async function getProductData() {
+      const response =
+        await fetch(
+          `products.json?version=${Date.now()}`
+        );
+
+      if (!response.ok) {
+        throw new Error(
+          `Unable to load products.json: ${response.status}`
+        );
+      }
+
+      const data =
+        await response.json();
+
+      return Array.isArray(data)
+        ? data
+        : Array.isArray(data.products)
+          ? data.products
+          : [];
+    }
+
+    async function loadPopularProducts() {
+      popularProductGrid.setAttribute(
+        "aria-busy",
+        "true"
+      );
+
+      try {
+        const products =
+          await getProductData();
+
+        const popularProducts =
+          products
+            .filter(
+              (product) =>
+                product.popular === true ||
+                product.mostPopular === true
+            )
+            .sort(
+              (
+                firstProduct,
+                secondProduct
+              ) =>
+                getProductDate(
+                  secondProduct
+                ) -
+                getProductDate(
+                  firstProduct
+                )
+            )
+            .slice(
+              0,
+              MAX_POPULAR_PRODUCTS
+            );
+
+        popularProductGrid
+          .replaceChildren();
+
+        popularProductsEmpty
+          .classList
+          .remove("error");
+
+        popularProducts.forEach(
+          (product) => {
+            const category =
+              getCategoryConfig(product);
+
+            if (!category) {
+              return;
+            }
+
+            popularProductGrid
+              .appendChild(
+                createProductCard(
+                  product,
+                  category,
+                  true
+                )
+              );
+          }
+        );
+
+        if (
+          popularProductGrid
+            .children
+            .length === 0
+        ) {
+          popularProductsEmpty
+            .textContent =
+              "Most Popular products will appear here soon.";
+
+          popularProductsEmpty.hidden =
+            false;
+        } else {
+          popularProductsEmpty.hidden =
+            true;
+        }
+      } catch (error) {
+        console.error(
+          "Popular product loading error:",
+          error
+        );
+
+        popularProductGrid
+          .replaceChildren();
+
+        popularProductsEmpty.textContent =
+          "Most Popular products could not be loaded.";
+
+        popularProductsEmpty
+          .classList
+          .add("error");
+
+        popularProductsEmpty.hidden =
+          false;
+      } finally {
+        popularProductGrid.setAttribute(
+          "aria-busy",
+          "false"
+        );
+      }
+    }
+
+    function findLatestProducts(
+      products,
+      categoryKey,
+      limit = PRODUCTS_PER_CATEGORY
+    ) {
+      return products
+        .filter((product) => {
+          const productCategory =
+            product.category ||
+            product.type ||
+            product.collection ||
+            "";
+
+          return (
+            normalizeProductCategory(
+              productCategory
+            ) === categoryKey
+          );
+        })
+        .sort(
+          (
+            firstProduct,
+            secondProduct
+          ) =>
+            getProductDate(secondProduct) -
+            getProductDate(firstProduct)
+        )
+        .slice(0, limit);
+    }
+
     async function loadRecentProducts() {
       recentProductGrid.setAttribute(
         "aria-busy",
@@ -1472,30 +1716,11 @@
       );
 
       try {
-        const response =
-          await fetch(
-            `products.json?version=${Date.now()}`
-          );
-
-        if (!response.ok) {
-          throw new Error(
-            `Unable to load products.json: ${response.status}`
-          );
-        }
-
-        const data =
-          await response.json();
-
         const products =
-          Array.isArray(data)
-            ? data
-            : Array.isArray(
-                  data.products
-                )
-              ? data.products
-              : [];
+          await getProductData();
 
-        recentProductGrid.replaceChildren();
+        recentProductGrid
+          .replaceChildren();
 
         recentProductsEmpty
           .classList
@@ -1513,7 +1738,7 @@
               (product) => {
                 recentProductGrid
                   .appendChild(
-                    createRecentProductCard(
+                    createProductCard(
                       product,
                       category
                     )
@@ -1543,7 +1768,8 @@
           error
         );
 
-        recentProductGrid.replaceChildren();
+        recentProductGrid
+          .replaceChildren();
 
         recentProductsEmpty.textContent =
           "Recently added products could not be loaded.";
@@ -1659,6 +1885,56 @@
       ).format(parsedDate);
     }
 
+    function sortReviewsNewestFirst(
+      reviews
+    ) {
+      return reviews
+        .map(
+          (
+            review,
+            originalIndex
+          ) => ({
+            review,
+            originalIndex
+          })
+        )
+        .sort(
+          (
+            first,
+            second
+          ) => {
+            const firstTimestamp =
+              getReviewTimestamp(
+                first.review
+              );
+
+            const secondTimestamp =
+              getReviewTimestamp(
+                second.review
+              );
+
+            if (
+              firstTimestamp ===
+              secondTimestamp
+            ) {
+              return (
+                first.originalIndex -
+                second.originalIndex
+              );
+            }
+
+            return (
+              secondTimestamp -
+              firstTimestamp
+            );
+          }
+        )
+        .map(
+          ({ review }) =>
+            review
+        );
+    }
+
     function createReviewCard(review) {
       const article =
         document.createElement("article");
@@ -1687,13 +1963,8 @@
           "lazy";
 
         image.addEventListener(
-          "error",
+          "load",
           () => {
-            photo.replaceChildren();
-
-            photo.textContent =
-              "Review photo unavailable";
-
             requestAnimationFrame(
               updateReviewScrollArea
             );
@@ -1701,8 +1972,13 @@
         );
 
         image.addEventListener(
-          "load",
+          "error",
           () => {
+            photo.replaceChildren();
+
+            photo.textContent =
+              "Review photo unavailable";
+
             requestAnimationFrame(
               updateReviewScrollArea
             );
@@ -1792,10 +2068,10 @@
         review.author ||
         "Customer";
 
+      footer.appendChild(author);
+
       const reviewDateText =
         formatReviewDate(review);
-
-      footer.appendChild(author);
 
       if (reviewDateText) {
         const reviewDate =
@@ -1830,62 +2106,6 @@
 
       return article;
     }
-
-    function sortReviewsNewestFirst(
-      reviews
-    ) {
-      return reviews
-        .map(
-          (
-            review,
-            originalIndex
-          ) => ({
-            review,
-            originalIndex
-          })
-        )
-        .sort(
-          (
-            first,
-            second
-          ) => {
-            const firstTimestamp =
-              getReviewTimestamp(
-                first.review
-              );
-
-            const secondTimestamp =
-              getReviewTimestamp(
-                second.review
-              );
-
-            if (
-              firstTimestamp ===
-              secondTimestamp
-            ) {
-              return (
-                first.originalIndex -
-                second.originalIndex
-              );
-            }
-
-            return (
-              secondTimestamp -
-              firstTimestamp
-            );
-          }
-        )
-        .map(
-          ({ review }) =>
-            review
-        );
-    }
-
-    /*
-      Set the visible review area to end at the bottom
-      of the eighth review card. Additional cards remain
-      available through vertical scrolling.
-    */
 
     function updateReviewScrollArea() {
       const reviewCards =
@@ -1953,41 +2173,6 @@
       );
     }
 
-    function prepareReviewScrollArea() {
-      requestAnimationFrame(
-        () => {
-          updateReviewScrollArea();
-
-          const reviewImages =
-            reviewGrid.querySelectorAll(
-              ".review-photo img"
-            );
-
-          reviewImages.forEach(
-            (image) => {
-              if (!image.complete) {
-                image.addEventListener(
-                  "load",
-                  updateReviewScrollArea,
-                  {
-                    once: true
-                  }
-                );
-
-                image.addEventListener(
-                  "error",
-                  updateReviewScrollArea,
-                  {
-                    once: true
-                  }
-                );
-              }
-            }
-          );
-        }
-      );
-    }
-
     async function loadReviews() {
       reviewGrid.setAttribute(
         "aria-busy",
@@ -2012,9 +2197,7 @@
         const rawReviews =
           Array.isArray(data)
             ? data
-            : Array.isArray(
-                  data.reviews
-                )
+            : Array.isArray(data.reviews)
               ? data.reviews
               : [];
 
@@ -2057,7 +2240,9 @@
           }
         );
 
-        prepareReviewScrollArea();
+        requestAnimationFrame(
+          updateReviewScrollArea
+        );
       } catch (error) {
         console.error(
           "Review loading error:",
@@ -2107,6 +2292,7 @@
       }
     );
 
+    loadPopularProducts();
     loadRecentProducts();
     loadReviews();
   </script>
