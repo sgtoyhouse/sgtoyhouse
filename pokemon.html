@@ -1,33 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
-
-  <title>Pokémon TCG | SG Toy House</title>
-
-  <meta
-    name="description"
-    content="Browse English, Japanese and Simplified Chinese Pokémon TCG products available from SG Toy House."
-  >
-
-  <link
-    rel="icon"
-    type="image/x-icon"
-    href="/favicon.ico"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/apple-touch-icon.png"
-  >
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Pokémon TCG | SG Toy House</title>
+<meta content="Browse English, Japanese and Simplified Chinese Pokémon TCG products available from SG Toy House." name="description"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<style>
     :root {
       --background: #070707;
       --surface: #101010;
@@ -1072,342 +1053,255 @@
         transition: none;
       }
     }
-  </style>
+  
+
+    /* Sticky announcement and combined navigation */
+    .sticky-top-area {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+    .sticky-top-area .announcement-bar {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .sticky-top-area .site-header {
+      width: 100%;
+      position: relative;
+      top: auto;
+      z-index: auto;
+      background: rgba(7, 7, 7, 0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .main-navigation {
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: minmax(190px, 1.4fr) repeat(4, minmax(100px, 1fr));
+      align-items: stretch;
+    }
+    .navigation-link {
+      min-width: 0;
+      padding: 10px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      border-right: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .navigation-link:first-child { border-left: 1px solid var(--border); }
+    .navigation-link:last-child { border-right: 1px solid var(--border); }
+    .navigation-link:hover,
+    .navigation-link:focus-visible { background: var(--surface-hover); color: #ffffff; }
+    .navigation-home {
+      justify-content: flex-start;
+      padding-right: 18px;
+      padding-left: 18px;
+      color: var(--gold-light);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .navigation-link[aria-current="page"] {
+      background: #1c180d;
+      color: var(--gold-light);
+      box-shadow: inset 0 -3px 0 var(--gold);
+    }
+    @media (max-width: 760px) {
+      .main-navigation {
+        width: 100%;
+        min-height: 48px;
+        display: flex;
+        align-items: stretch;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      .main-navigation::-webkit-scrollbar { display: none; }
+      .navigation-link {
+        min-width: max-content;
+        min-height: 48px;
+        padding: 8px 15px;
+        flex: 0 0 auto;
+        border-right: 1px solid var(--border);
+        border-bottom: 0;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .navigation-link:first-child { border-left: 0; }
+      .navigation-home {
+        padding-right: 16px;
+        padding-left: 16px;
+        justify-content: center;
+        font-size: 12px;
+      }
+    }
+    @media (max-width: 480px) {
+      .main-navigation { min-height: 44px; }
+      .navigation-link {
+        min-height: 44px;
+        padding: 7px 12px;
+        font-size: 10px;
+      }
+      .navigation-home {
+        padding-right: 13px;
+        padding-left: 13px;
+        font-size: 11px;
+        letter-spacing: 0;
+      }
+    }
+</style>
 </head>
-
 <body>
-  <a
-    class="announcement-bar"
-    href="https://t.me/sgtoyhse"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Join SG Toy House on Telegram"
-  >
-    Singapore’s #1 Toy House. Join Us on Telegram →
-  </a>
+<div class="sticky-top-area">
+<a aria-label="Join SG Toy House on Telegram" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">Singapore’s #1 Toy House. Join Us on Telegram →</a>
+<header class="site-header">
+<nav aria-label="Main navigation" class="container main-navigation">
+<a aria-label="SG Toy House home" class="navigation-link navigation-home" href="index.html">SG Toy House</a>
+<a class="navigation-link" href="lego.html">LEGO</a>
+<a class="navigation-link" aria-current="page" href="pokemon.html">Pokémon</a>
+<a aria-current="page" class="navigation-link" href="onepiece.html">One Piece</a>
+<a class="navigation-link" href="accessories.html">Accessories</a>
+</nav>
+</header>
+</div>
 
-  <nav
-    class="top-categories"
-    aria-label="Product categories"
-  >
-    <div class="container top-category-grid">
-      <a
-        class="top-category"
-        href="lego.html"
-      >
-        LEGO
-      </a>
 
-      <a
-        class="top-category"
-        href="pokemon.html"
-        aria-current="page"
-      >
-        Pokémon
-      </a>
-
-      <a
-        class="top-category"
-        href="onepiece.html"
-      >
-        One Piece
-      </a>
-
-      <a
-        class="top-category"
-        href="accessories.html"
-      >
-        Accessories
-      </a>
-    </div>
-  </nav>
-
-  <header class="site-header">
-    <div class="container nav">
-      <a
-        class="logo"
-        href="index.html"
-      >
-        SG TOY HOUSE
-      </a>
-
-      <nav aria-label="Main navigation">
-        <ul class="nav-links">
-          <li>
-            <a href="index.html">
-              Home
-            </a>
-          </li>
-
-          <li>
-            <a
-              class="telegram-link"
-              href="https://t.me/sgtoyhse"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Telegram
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <p class="page-label">
+<main>
+<section class="page-hero">
+<div class="container">
+<p class="page-label">
           SG Toy House Collection
         </p>
+<h1>Pokémon TCG</h1>
+<p class="page-description">Browse our English, Japanese and Simplified Chinese Pokémon TCG cards and sealed products.</p>
+</div>
+</section>
+<section aria-labelledby="pokemon-products-heading" class="products-section">
+<div class="container">
+<h2 hidden="" id="pokemon-products-heading">Pokémon products</h2>
+<div class="product-toolbar">
+<div class="search-area">
+<div class="search-control">
+<label class="visually-hidden" for="product-search">Search Pokémon products</label>
+<input autocomplete="off" enterkeyhint="search" id="product-search" placeholder="Search by name, language, year or keyword..." type="search"/>
+</div>
+<div aria-label="Product filters" class="filter-group">
+<label class="filter-check">
+<input id="available-items-filter" type="checkbox"/>
+<span aria-hidden="true" class="filter-checkmark"></span>
+<span>Items available</span>
+</label>
+<label class="filter-check">
+<input class="language-filter" type="checkbox" value="English"/>
+<span aria-hidden="true" class="filter-checkmark"></span>
+<span>English</span>
+</label>
+<label class="filter-check">
+<input class="language-filter" type="checkbox" value="Japanese"/>
+<span aria-hidden="true" class="filter-checkmark"></span>
+<span>Japanese</span>
+</label>
+<label class="filter-check">
+<input class="language-filter" type="checkbox" value="Simplified Chinese"/>
+<span aria-hidden="true" class="filter-checkmark"></span>
+<span>Simplified Chinese</span>
+</label>
 
-        <h1>Pokémon TCG</h1>
-
-        <p class="page-description">
-          Browse our English, Japanese and Simplified Chinese Pokémon TCG cards and sealed products.
-        </p>
-      </div>
-    </section>
-
-    <section
-      class="products-section"
-      aria-labelledby="pokemon-products-heading"
-    >
-      <div class="container">
-        <h2
-          id="pokemon-products-heading"
-          hidden
-        >
-          Pokémon products
-        </h2>
-
-        <div class="product-toolbar">
-          <div class="search-area">
-            <div class="search-control">
-              <label
-                class="visually-hidden"
-                for="product-search"
-              >
-                Search Pokémon products
-              </label>
-
-              <input
-                type="search"
-                id="product-search"
-                placeholder="Search by name, language, year or keyword..."
-                autocomplete="off"
-                enterkeyhint="search"
-              >
-            </div>
-
-            <div
-              class="filter-group"
-              aria-label="Product filters"
-            >
-              <label class="filter-check">
-                <input
-                  type="checkbox"
-                  id="available-items-filter"
-                >
-
-                <span
-                  class="filter-checkmark"
-                  aria-hidden="true"
-                ></span>
-
-                <span>Items available</span>
-              </label>
-
-              <label class="filter-check">
-                <input
-                  type="checkbox"
-                  class="language-filter"
-                  value="English"
-                >
-
-                <span
-                  class="filter-checkmark"
-                  aria-hidden="true"
-                ></span>
-
-                <span>English</span>
-              </label>
-
-              <label class="filter-check">
-                <input
-                  type="checkbox"
-                  class="language-filter"
-                  value="Japanese"
-                >
-
-                <span
-                  class="filter-checkmark"
-                  aria-hidden="true"
-                ></span>
-
-                <span>Japanese</span>
-              </label>
-
-              <label class="filter-check">
-                <input
-                  type="checkbox"
-                  class="language-filter"
-                  value="Simplified Chinese"
-                >
-
-                <span
-                  class="filter-checkmark"
-                  aria-hidden="true"
-                ></span>
-
-                <span>Simplified Chinese</span>
-              </label>
-            </div>
-          </div>
-
-          <p
-            class="product-count"
-            id="product-count"
-          >
-            Loading Pokémon products...
-          </p>
-
-          <div class="sort-control">
-            <label for="product-sort">
+</div>
+</div>
+<p class="product-count" id="product-count">Loading Pokémon products...</p>
+<div class="sort-control">
+<label for="product-sort">
               Sort
             </label>
-
-            <select id="product-sort">
-              <option value="newest">
+<select id="product-sort">
+<option value="newest">
                 Recently added
               </option>
-
-              <option value="name-ascending">
+<option value="name-ascending">
                 Name: A to Z
               </option>
-
-              <option value="name-descending">
+<option value="name-descending">
                 Name: Z to A
               </option>
-
-              <option value="year-newest">
+<option value="year-newest">
                 Year: Newest first
               </option>
-
-              <option value="year-oldest">
+<option value="year-oldest">
                 Year: Oldest first
               </option>
-
-              <option value="price-low">
+<option value="price-low">
                 Price: Low to high
               </option>
-
-              <option value="price-high">
+<option value="price-high">
                 Price: High to low
               </option>
-            </select>
-          </div>
-        </div>
-
-        <div
-          class="product-grid"
-          id="product-grid"
-          aria-live="polite"
-          aria-busy="true"
-        ></div>
-
-        <div
-          class="product-message"
-          id="product-message"
-          hidden
-        >
-          <h2>
-            No Pokémon products available
-          </h2>
-
-          <p>
+</select>
+</div>
+</div>
+<div aria-busy="true" aria-live="polite" class="product-grid" id="product-grid"></div>
+<div class="product-message" hidden="" id="product-message">
+<h2>No Pokémon products available</h2>
+<p>
             Please check again soon for new additions.
           </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <p>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-content">
+<p>
         © 2020 SG Toy House. All rights reserved.
         Singapore. Belgravia Drive.
       </p>
-
-      <ul class="footer-links">
-        <li>
-          <a
-            href="https://t.me/sgtoyhse"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+<ul class="footer-links">
+<li>
+<a href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">
             Telegram
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.instagram.com/sgtoyhse/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://www.instagram.com/sgtoyhse/" rel="noopener noreferrer" target="_blank">
             Instagram
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.facebook.com/T0yH0use/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://www.facebook.com/T0yH0use/" rel="noopener noreferrer" target="_blank">
             Facebook
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://www.tiktok.com/@sgtoyhse"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://www.tiktok.com/@sgtoyhse" rel="noopener noreferrer" target="_blank">
             TikTok
           </a>
-        </li>
-
-        <li>
-          <a
-            href="https://carousell.app.link/Lg9QpkISV7b"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+</li>
+<li>
+<a href="https://carousell.app.link/Lg9QpkISV7b" rel="noopener noreferrer" target="_blank">
             Carousell
           </a>
-        </li>
-      </ul>
-    </div>
-  </footer>
-
-  <button
-    class="back-to-top"
-    id="back-to-top"
-    type="button"
-    aria-label="Back to top"
-    title="Back to top"
-  >
-    <span
-      class="back-to-top-arrow"
-      aria-hidden="true"
-    ></span>
-  </button>
-
-  <script>
+</li>
+</ul>
+</div>
+</footer>
+<button aria-label="Back to top" class="back-to-top" id="back-to-top" title="Back to top" type="button">
+<span aria-hidden="true" class="back-to-top-arrow"></span>
+</button>
+<script>
     const CATEGORY_NAME =
       "Pokémon";
 
@@ -1420,7 +1314,6 @@
     const ALLOWED_LANGUAGES = [
       "English",
       "Japanese",
-      "Simplified Chinese"
     ];
 
     const productGrid =
