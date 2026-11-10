@@ -54,14 +54,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-
       background-color: var(--background);
       background-image:
         url("images/backgrounds/backgroundlogo.jpg");
       background-repeat: repeat;
       background-size: 226px 159px;
       background-position: top left;
-
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -510,13 +508,47 @@
       color: var(--gold-light);
     }
 
+    /* Five-line scrollable description */
+
     .product-description {
+      max-height: calc(1.55em * 5);
       margin-bottom: 16px;
+      padding-right: 8px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
       overflow-wrap: anywhere;
+      scrollbar-color: var(--gold) #171717;
+      scrollbar-width: thin;
       white-space: pre-line;
+    }
+
+    .product-description:focus-visible {
+      border-radius: 6px;
+      outline:
+        2px solid rgba(212, 175, 55, 0.65);
+      outline-offset: 3px;
+    }
+
+    .product-description::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .product-description::-webkit-scrollbar-track {
+      background: #171717;
+      border-radius: 999px;
+    }
+
+    .product-description::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .product-description::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-light);
     }
 
     .product-bottom {
@@ -1507,6 +1539,13 @@
           String(
             product.description
           );
+
+        description.tabIndex = 0;
+
+        description.setAttribute(
+          "aria-label",
+          `Description for ${getProductName(product)}. Scroll for more.`
+        );
 
         productInfo.appendChild(
           description
