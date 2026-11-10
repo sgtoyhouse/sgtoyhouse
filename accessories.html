@@ -10,6 +10,11 @@
 
   <title>Accessories | SG Toy House</title>
 
+  <meta
+    name="description"
+    content="Browse card sleeves, binders, storage products and collectible accessories available from SG Toy House."
+  >
+
   <link
     rel="icon"
     type="image/x-icon"
@@ -20,11 +25,6 @@
     rel="apple-touch-icon"
     sizes="180x180"
     href="/apple-touch-icon.png"
-  >
-
-  <meta
-    name="description"
-    content="Browse card sleeves, binders, storage products and collectible accessories available from SG Toy House."
   >
 
   <style>
@@ -220,7 +220,7 @@
       color: var(--gold-light);
     }
 
-    /* Page introduction */
+    /* Page hero */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -749,9 +749,65 @@
       color: var(--gold-light);
     }
 
+    /* Floating back-to-top button */
+
+    .back-to-top {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      background: var(--gold);
+      color: #070707;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px);
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top:active {
+      transform: translateY(0);
+    }
+
+    .back-to-top-arrow {
+      width: 12px;
+      height: 12px;
+      margin-top: 5px;
+      border-top: 3px solid currentColor;
+      border-left: 3px solid currentColor;
+      transform: rotate(45deg);
+    }
+
     /* Focus */
 
     a:focus-visible,
+    button:focus-visible,
     input:focus-visible,
     select:focus-visible {
       outline:
@@ -823,8 +879,7 @@
       }
 
       .product-count {
-        grid-column: auto;
-        grid-row: auto;
+        white-space: normal;
       }
 
       .sort-control {
@@ -885,11 +940,28 @@
       .products-section {
         padding-bottom: 56px;
       }
+
+      .back-to-top {
+        width: 44px;
+        height: 44px;
+        right: 14px;
+        bottom: 14px;
+      }
     }
 
     @media (max-width: 360px) {
       .top-category {
         font-size: 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .back-to-top {
+        transition: none;
       }
     }
   </style>
@@ -911,15 +983,24 @@
     aria-label="Product categories"
   >
     <div class="container top-category-grid">
-      <a class="top-category" href="lego.html">
+      <a
+        class="top-category"
+        href="lego.html"
+      >
         LEGO
       </a>
 
-      <a class="top-category" href="pokemon.html">
+      <a
+        class="top-category"
+        href="pokemon.html"
+      >
         Pokémon
       </a>
 
-      <a class="top-category" href="onepiece.html">
+      <a
+        class="top-category"
+        href="onepiece.html"
+      >
         One Piece
       </a>
 
@@ -935,7 +1016,10 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="index.html">
+      <a
+        class="logo"
+        href="index.html"
+      >
         SG TOY HOUSE
       </a>
 
@@ -1155,6 +1239,19 @@
     </div>
   </footer>
 
+  <button
+    class="back-to-top"
+    id="back-to-top"
+    type="button"
+    aria-label="Back to top"
+    title="Back to top"
+  >
+    <span
+      class="back-to-top-arrow"
+      aria-hidden="true"
+    ></span>
+  </button>
+
   <script>
     const CATEGORY_NAME =
       "Accessories";
@@ -1193,6 +1290,11 @@
     const productSort =
       document.getElementById(
         "product-sort"
+      );
+
+    const backToTopButton =
+      document.getElementById(
+        "back-to-top"
       );
 
     let accessoryProducts = [];
@@ -1276,12 +1378,15 @@
         return null;
       }
 
-      const numericValue = Number(
-        String(value)
-          .replace(/[^0-9.-]/g, "")
-      );
+      const numericValue =
+        Number(
+          String(value)
+            .replace(/[^0-9.-]/g, "")
+        );
 
-      return Number.isFinite(numericValue)
+      return Number.isFinite(
+        numericValue
+      )
         ? numericValue
         : null;
     }
@@ -1291,8 +1396,10 @@
         getProductPrice(product);
 
       if (numericPrice === null) {
-        return product.price ||
-          "Contact for price";
+        return (
+          product.price ||
+          "Contact for price"
+        );
       }
 
       const formattedAmount =
@@ -1474,18 +1581,18 @@
             const secondYear =
               getProductYear(second);
 
-            const firstValue =
-              firstYear === null
-                ? Number.MAX_VALUE
-                : firstYear;
-
-            const secondValue =
-              secondYear === null
-                ? Number.MAX_VALUE
-                : secondYear;
-
-            return firstValue -
-              secondValue;
+            return (
+              (
+                firstYear === null
+                  ? Number.MAX_VALUE
+                  : firstYear
+              ) -
+              (
+                secondYear === null
+                  ? Number.MAX_VALUE
+                  : secondYear
+              )
+            );
           }
         );
       }
@@ -1501,18 +1608,18 @@
             const secondPrice =
               getProductPrice(second);
 
-            const firstValue =
-              firstPrice === null
-                ? Number.MAX_VALUE
-                : firstPrice;
-
-            const secondValue =
-              secondPrice === null
-                ? Number.MAX_VALUE
-                : secondPrice;
-
-            return firstValue -
-              secondValue;
+            return (
+              (
+                firstPrice === null
+                  ? Number.MAX_VALUE
+                  : firstPrice
+              ) -
+              (
+                secondPrice === null
+                  ? Number.MAX_VALUE
+                  : secondPrice
+              )
+            );
           }
         );
       }
@@ -1528,18 +1635,18 @@
             const secondPrice =
               getProductPrice(second);
 
-            const firstValue =
-              firstPrice === null
-                ? -1
-                : firstPrice;
-
-            const secondValue =
-              secondPrice === null
-                ? -1
-                : secondPrice;
-
-            return secondValue -
-              firstValue;
+            return (
+              (
+                secondPrice === null
+                  ? -1
+                  : secondPrice
+              ) -
+              (
+                firstPrice === null
+                  ? -1
+                  : firstPrice
+              )
+            );
           }
         );
       }
@@ -1562,17 +1669,13 @@
       value
     ) {
       const detail =
-        document.createElement(
-          "span"
-        );
+        document.createElement("span");
 
       detail.className =
         "product-detail";
 
       const strong =
-        document.createElement(
-          "strong"
-        );
+        document.createElement("strong");
 
       strong.textContent =
         `${label}: `;
@@ -1595,17 +1698,13 @@
         "product-card";
 
       const imageArea =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
       imageArea.className =
         "product-image";
 
       const status =
-        document.createElement(
-          "span"
-        );
+        document.createElement("span");
 
       status.className =
         "product-status";
@@ -1627,9 +1726,7 @@
 
       if (imageSource) {
         const image =
-          document.createElement(
-            "img"
-          );
+          document.createElement("img");
 
         image.src =
           imageSource;
@@ -1668,17 +1765,13 @@
       );
 
       const productInfo =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
       productInfo.className =
         "product-info";
 
       const category =
-        document.createElement(
-          "p"
-        );
+        document.createElement("p");
 
       category.className =
         "product-category";
@@ -1687,9 +1780,7 @@
         DISPLAY_CATEGORY_NAME;
 
       const name =
-        document.createElement(
-          "h3"
-        );
+        document.createElement("h3");
 
       name.className =
         "product-name";
@@ -1705,21 +1796,49 @@
       const year =
         getProductYear(product);
 
-      if (year) {
+      const brand =
+        String(
+          product.brand || ""
+        ).trim();
+
+      const size =
+        String(
+          product.size || ""
+        ).trim();
+
+      if (year || brand || size) {
         const details =
-          document.createElement(
-            "div"
-          );
+          document.createElement("div");
 
         details.className =
           "product-details";
 
-        details.appendChild(
-          createProductDetail(
-            "Year",
-            year
-          )
-        );
+        if (year) {
+          details.appendChild(
+            createProductDetail(
+              "Year",
+              year
+            )
+          );
+        }
+
+        if (brand) {
+          details.appendChild(
+            createProductDetail(
+              "Brand",
+              brand
+            )
+          );
+        }
+
+        if (size) {
+          details.appendChild(
+            createProductDetail(
+              "Size",
+              size
+            )
+          );
+        }
 
         productInfo.appendChild(
           details
@@ -1728,17 +1847,13 @@
 
       if (product.description) {
         const description =
-          document.createElement(
-            "p"
-          );
+          document.createElement("p");
 
         description.className =
           "product-description";
 
         description.textContent =
-          String(
-            product.description
-          );
+          String(product.description);
 
         description.tabIndex = 0;
 
@@ -1753,17 +1868,13 @@
       }
 
       const bottom =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
       bottom.className =
         "product-bottom";
 
       const price =
-        document.createElement(
-          "p"
-        );
+        document.createElement("p");
 
       price.className =
         "product-price";
@@ -1772,9 +1883,7 @@
         formatPrice(product);
 
       const enquiryLink =
-        document.createElement(
-          "a"
-        );
+        document.createElement("a");
 
       enquiryLink.className =
         "product-button";
@@ -1937,9 +2046,7 @@
       productCount.replaceChildren();
 
       const strongCount =
-        document.createElement(
-          "strong"
-        );
+        document.createElement("strong");
 
       strongCount.textContent =
         String(
@@ -2063,6 +2170,13 @@
       }
     }
 
+    function updateBackToTopButton() {
+      backToTopButton.classList.toggle(
+        "visible",
+        window.scrollY > 320
+      );
+    }
+
     productSearch.addEventListener(
       "input",
       renderProducts
@@ -2078,6 +2192,33 @@
       renderProducts
     );
 
+    backToTopButton.addEventListener(
+      "click",
+      () => {
+        const prefersReducedMotion =
+          window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches;
+
+        window.scrollTo({
+          top: 0,
+          behavior:
+            prefersReducedMotion
+              ? "auto"
+              : "smooth"
+        });
+      }
+    );
+
+    window.addEventListener(
+      "scroll",
+      updateBackToTopButton,
+      {
+        passive: true
+      }
+    );
+
+    updateBackToTopButton();
     loadProducts();
   </script>
 </body>
