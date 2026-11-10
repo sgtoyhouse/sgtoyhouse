@@ -1,5 +1,49 @@
 [
   {
+    "id": "review-fdb04400-0fe9-43f2-8a8d-2e7346441c0b",
+    "author": "Justin Cheu",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Fast and smooth transaction! item got delivered less than an hr. seller is very friendly 💯🙏",
+    "photo": "images/reviews/review260128.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-28",
+    "updatedAt": "2026-11-10T10:55:57.112Z"
+  },
+  {
+    "id": "review-d332e8ee-0e83-458a-8906-682dc66b8145",
+    "author": "Lim De Yao",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Items received hassle-free and in good condition. Seller was prompt and accomodating!",
+    "photo": "images/reviews/review260127_1.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-27",
+    "updatedAt": "2026-11-10T10:53:30.178Z"
+  },
+  {
+    "id": "review-7f41b6bf-ef69-487e-a0a7-87ac9eb8d3e1",
+    "author": "Muhammad Firdaus",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Item receive well. Delivery was fast and with ease. Boss, very accommodating and respond promptly. My first time buying, will purchase more. Thanks boss for the transaction.",
+    "photo": "images/reviews/review260127.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-27",
+    "updatedAt": "2026-11-10T10:51:38.690Z"
+  },
+  {
+    "id": "review-27424feb-5c07-4f29-823e-0d15fdab51f0",
+    "author": "Alan Zhai",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Nicest seller I’ve ever met! Highly recommend to all!",
+    "photo": "images/reviews/review260124_1.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-24",
+    "updatedAt": "2026-11-10T10:47:50.364Z"
+  },
+  {
     "id": "review-e5b71b1f-c1ff-418c-9a38-10b958777e9c",
     "author": "Genslick",
     "source": "Telegram",
