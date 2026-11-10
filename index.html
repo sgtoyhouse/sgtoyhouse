@@ -92,10 +92,21 @@
       margin: 0 auto;
     }
 
-    /* Announcement bar */
+    /* Sticky announcement and combined navigation */
+
+    .sticky-top-area {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
 
     .announcement-bar {
+      width: 100%;
       display: block;
+      position: relative;
+      z-index: 1;
       padding: 8px 20px;
       background: var(--gold);
       color: #070707;
@@ -114,16 +125,11 @@
       color: #000000;
     }
 
-    /* Sticky combined navigation */
-
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
       width: 100%;
+      position: relative;
       background: rgba(7, 7, 7, 0.97);
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -1021,8 +1027,9 @@
 </head>
 
 <body>
-  <a
-    class="announcement-bar"
+  <div class="sticky-top-area">
+    <a
+      class="announcement-bar"
     href="https://t.me/sgtoyhse"
     target="_blank"
     rel="noopener noreferrer"
@@ -1040,8 +1047,9 @@
         class="navigation-link navigation-home"
         href="index.html"
         aria-current="page"
+        aria-label="SG Toy House home"
       >
-        SG Toy House
+        SGTH
       </a>
 
       <a class="navigation-link" href="lego.html">
@@ -1070,7 +1078,7 @@
       </a>
     </nav>
   </header>
-
+  </div>
 
   <main>
     <section class="hero">
