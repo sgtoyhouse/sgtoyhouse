@@ -114,31 +114,41 @@
       color: #000000;
     }
 
-    /* Category navigation */
+    /* Sticky combined navigation */
 
-    .top-categories {
-      background: rgba(11, 11, 11, 0.96);
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      background: rgba(7, 7, 7, 0.97);
       border-bottom: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    .top-category-grid {
+    .main-navigation {
+      min-height: 58px;
       display: grid;
       grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+        minmax(150px, 1.4fr)
+        repeat(4, minmax(90px, 1fr))
+        minmax(100px, 1fr);
+      align-items: stretch;
     }
 
-    .top-category {
+    .navigation-link {
       min-width: 0;
-      min-height: 40px;
-      padding: 6px 10px;
+      padding: 10px 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gold-light);
+      color: var(--muted);
       border-right: 1px solid var(--border);
       font-size: 13px;
       font-weight: 700;
-      line-height: 1;
+      line-height: 1.2;
       text-align: center;
       white-space: nowrap;
       transition:
@@ -146,59 +156,40 @@
         color 0.2s ease;
     }
 
-    .top-category:last-child {
-      border-right: 0;
+    .navigation-link:first-child {
+      border-left: 1px solid var(--border);
     }
 
-    .top-category:hover,
-    .top-category:focus-visible {
+    .navigation-link:hover,
+    .navigation-link:focus-visible {
       background: var(--surface-hover);
       color: #ffffff;
     }
 
-    /* Header */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(7, 7, 7, 0.96);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      min-height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .logo {
+    .navigation-home {
+      justify-content: flex-start;
+      padding-right: 18px;
+      padding-left: 18px;
       color: var(--gold-light);
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible,
-    .nav-links .telegram-link {
+    .navigation-home[aria-current="page"] {
+      background: #1c180d;
       color: var(--gold-light);
+    }
+
+    .navigation-telegram {
+      color: var(--gold-light);
+    }
+
+    .navigation-telegram:hover,
+    .navigation-telegram:focus-visible {
+      background: var(--gold);
+      color: #070707;
     }
 
     /* Hero */
@@ -728,12 +719,33 @@
         width: min(100% - 28px, 1120px);
       }
 
-      .nav {
-        min-height: 58px;
+      .main-navigation {
+        width: 100%;
+        min-height: 0;
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
       }
 
-      .nav-links {
-        display: none;
+      .navigation-link {
+        min-height: 44px;
+        padding: 7px 4px;
+        border-bottom: 1px solid var(--border);
+        font-size: 11px;
+        white-space: normal;
+      }
+
+      .navigation-link:first-child {
+        border-left: 0;
+      }
+
+      .navigation-link:nth-child(3n) {
+        border-right: 0;
+      }
+
+      .navigation-home {
+        justify-content: center;
+        padding: 7px 4px;
+        font-size: 12px;
       }
 
       .hero {
@@ -787,18 +799,20 @@
         font-size: 11px;
       }
 
-      .top-categories .container {
-        width: 100%;
+      .main-navigation {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
       }
 
-      .top-category {
-        min-height: 38px;
-        padding: 5px 2px;
+      .navigation-link {
+        min-height: 42px;
+        padding: 6px 3px;
         font-size: 10px;
       }
 
-      .logo {
-        font-size: 18px;
+      .navigation-home {
+        font-size: 11px;
+        letter-spacing: 0;
       }
 
       .hero {
@@ -965,7 +979,7 @@
     }
 
     @media (max-width: 360px) {
-      .top-category {
+      .navigation-link {
         font-size: 9px;
       }
 
@@ -1007,75 +1021,46 @@
     Singapore’s #1 Toy House. Join Us on Telegram →
   </a>
 
-  <nav
-    class="top-categories"
-    aria-label="Product categories"
-  >
-    <div class="container top-category-grid">
+  <header class="site-header">
+    <nav
+      class="container main-navigation"
+      aria-label="Main navigation"
+    >
       <a
-        class="top-category"
-        href="lego.html"
+        class="navigation-link navigation-home"
+        href="index.html"
+        aria-current="page"
       >
+        SG Toy House
+      </a>
+
+      <a class="navigation-link" href="lego.html">
         LEGO
       </a>
 
-      <a
-        class="top-category"
-        href="pokemon.html"
-      >
+      <a class="navigation-link" href="pokemon.html">
         Pokémon
       </a>
 
-      <a
-        class="top-category"
-        href="onepiece.html"
-      >
+      <a class="navigation-link" href="onepiece.html">
         One Piece
       </a>
 
-      <a
-        class="top-category"
-        href="accessories.html"
-      >
+      <a class="navigation-link" href="accessories.html">
         Accessories
       </a>
-    </div>
-  </nav>
 
-  <header class="site-header">
-    <div class="container nav">
       <a
-        class="logo"
-        href="index.html"
+        class="navigation-link navigation-telegram"
+        href="https://t.me/sgtoyhse"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        SG TOY HOUSE
+        Telegram
       </a>
-
-      <nav aria-label="Main navigation">
-        <ul class="nav-links">
-          <li>
-            <a
-              href="index.html"
-              aria-current="page"
-            >
-              Home
-            </a>
-          </li>
-
-          <li>
-            <a
-              class="telegram-link"
-              href="https://t.me/sgtoyhse"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Telegram
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    </nav>
   </header>
+
 
   <main>
     <section class="hero">
