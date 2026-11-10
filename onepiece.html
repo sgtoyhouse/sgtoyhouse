@@ -712,6 +712,21 @@
       color: var(--muted);
       font-size: 14px;
     }
+    .footer-location-link {
+      color: var(--gold-light);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: rgba(240, 214, 117, 0.55);
+      text-underline-offset: 3px;
+      transition:
+        color 0.2s ease,
+        text-decoration-color 0.2s ease;
+    }
+    .footer-location-link:hover,
+    .footer-location-link:focus-visible {
+      color: #ffffff;
+      text-decoration-color: var(--gold-light);
+    }
 
     .footer-links {
       display: flex;
@@ -937,7 +952,7 @@
         padding: 12px;
       }
 
-      /* Keep all filter buttons in one straight mobile row */
+      /* Keep all filter buttons in one straight row on mobile. */
       .filter-group {
         width: 100%;
         display: flex;
@@ -1212,7 +1227,7 @@
 <a aria-label="SG Toy House home" class="navigation-link navigation-home" href="index.html">SG Toy House</a>
 <a class="navigation-link" href="lego.html">LEGO</a>
 <a class="navigation-link" href="pokemon.html">Pokémon</a>
-<a aria-current="page" class="navigation-link" href="onepiece.html">One Piece</a>
+<a class="navigation-link" aria-current="page" href="onepiece.html">One Piece</a>
 <a class="navigation-link" href="accessories.html">Accessories</a>
 </nav>
 </header>
@@ -1300,8 +1315,16 @@
 <footer class="site-footer">
 <div class="container footer-content">
 <p>
-        © 2020 SG Toy House. All rights reserved.
-        Singapore. Belgravia Drive.
+        <a
+          class="footer-location-link"
+          href="https://maps.app.goo.gl/s9VNcQQ7p5qqfCEU9"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Open collection address in Google Maps"
+        >
+          Collection Address
+        </a>.
+        Delivery Service Available.
       </p>
 <ul class="footer-links">
 <li>
@@ -1347,7 +1370,7 @@
 
     const ALLOWED_LANGUAGES = [
       "English",
-      "Japanese",
+      "Japanese"
     ];
 
     const productGrid =
