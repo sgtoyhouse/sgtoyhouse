@@ -1,14 +1,25 @@
 [
   {
-    "id": "review-d522fcb3-5065-4ce7-a8e3-97e72104c61b",
-    "author": "Haziman",
+    "id": "review-e5b71b1f-c1ff-418c-9a38-10b958777e9c",
+    "author": "Genslick",
     "source": "Telegram",
     "rating": 5,
-    "text": "Thanks for the hit! As always a joy buying from them ❤️🫰🏼",
-    "photo": "images/reviews/review091126.jpg",
-    "photoAlt": "RGB Mew pulled by lucky customer!",
-    "dateAdded": "2026-11-09",
-    "updatedAt": "2026-12-09T18:52:26.216Z"
+    "text": "Just bought them from @SGTHouse. Prompt reply and a very friendly seller! Highly recommend, one of the more cheaper OP Boxes in SG.",
+    "photo": "images/reviews/review260124.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-24",
+    "updatedAt": "2026-11-10T10:43:09.334Z"
+  },
+  {
+    "id": "review-aaa3f2ee-5ffa-4524-8a15-76484927e02d",
+    "author": "Lim De Yao",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Received item hassle free! Seller was very responsive and prompt!",
+    "photo": "images/reviews/review260122.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-22",
+    "updatedAt": "2026-11-10T10:40:58.857Z"
   },
   {
     "id": "review-9cf1634e-a6c0-4713-8883-ed445cef4dec",
@@ -16,9 +27,20 @@
     "source": "Telegram",
     "rating": 5,
     "text": "Managed to pull this SP out of the EB05 box that came yesterday!",
-    "photo": "images/reviews/review031126.jpg",
+    "photo": "images/reviews/review261103.jpg",
     "photoAlt": "",
     "dateAdded": "2026-11-03",
-    "updatedAt": "2026-11-09T19:43:27.552Z"
+    "updatedAt": "2026-11-10T10:38:58.868Z"
+  },
+  {
+    "id": "review-d522fcb3-5065-4ce7-a8e3-97e72104c61b",
+    "author": "Haziman",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Thanks for the hit! As always a joy buying from them ❤️🫰🏼",
+    "photo": "images/reviews/review261109.jpg",
+    "photoAlt": "RGB Mew pulled by lucky customer!",
+    "dateAdded": "2026-11-09",
+    "updatedAt": "2026-11-10T10:40:04.001Z"
   }
 ]
