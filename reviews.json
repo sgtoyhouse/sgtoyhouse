@@ -1,5 +1,93 @@
 [
   {
+    "id": "review-1ec4ed9b-0b85-42a2-9262-ffcc62bf54e5",
+    "author": "Betty",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Seller is very responsive and it’s delivered safely the next day 👍🏼",
+    "photo": "images/reviews/review260203_2.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-03",
+    "updatedAt": "2026-11-10T13:51:16.469Z"
+  },
+  {
+    "id": "review-cd31e9bf-ca09-42a2-bfb4-e8636096a049",
+    "author": "Mohammed Firozi",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Received items in good condition. Fast delivery within the next day. Fast and easy transaction as well. 👍",
+    "photo": "images/reviews/review260203__1.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-03",
+    "updatedAt": "2026-11-10T13:29:22.077Z"
+  },
+  {
+    "id": "review-6248b8c5-818a-492e-81fd-7c8e970c1096",
+    "author": "Derrick",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "smooth collection, easy deal. 🙏🏼🥳",
+    "photo": "images/reviews/review260203.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-03",
+    "updatedAt": "2026-11-10T13:24:10.533Z"
+  },
+  {
+    "id": "review-c51b6eb0-0868-4c67-a605-2812163c005b",
+    "author": "Fabian",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Fast and smooth transaction with next day delivery.",
+    "photo": "images/reviews/review260131_1.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-31",
+    "updatedAt": "2026-11-10T13:22:05.315Z"
+  },
+  {
+    "id": "review-9d9f1c71-bab2-4cf5-acbc-24e08c60be6f",
+    "author": "Goh Yan Qing",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Quick and fast delivery!! Thx!",
+    "photo": "images/reviews/review260131.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-31",
+    "updatedAt": "2026-11-10T13:20:42.092Z"
+  },
+  {
+    "id": "review-ca4d759d-f58a-49dd-bb13-5455f55ed89b",
+    "author": "Andy",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Received in great condition!\nSeller is friendly and accomodating.Highly recommended!😊",
+    "photo": "images/reviews/review260130_1.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-30",
+    "updatedAt": "2026-11-10T13:19:12.214Z"
+  },
+  {
+    "id": "review-a5a59b94-f5a7-4087-b00e-709f9204fc22",
+    "author": "Marcus Sim",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Seller was accommodating to odd hours for pick up. Price is by far one of the more reasonable ones in the market. Passionate seller with great products!",
+    "photo": "images/reviews/review260130.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-30",
+    "updatedAt": "2026-11-10T13:17:19.165Z"
+  },
+  {
+    "id": "review-dfb93cd5-a06f-42de-a330-69660b131b4f",
+    "author": "Farnil",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Got it so fast",
+    "photo": "images/reviews/review260129_1.jpg",
+    "photoAlt": "",
+    "dateAdded": "2026-01-29",
+    "updatedAt": "2026-11-10T13:15:18.913Z"
+  },
+  {
     "id": "review-8ec85c84-f9a4-4a86-a21c-851ee090baaa",
     "author": "Justin Cheu",
     "source": "Telegram",
