@@ -5,10 +5,15 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1"
   >
 
   <title>LEGO | SG Toy House</title>
+
+  <meta
+    name="description"
+    content="Browse LEGO sets available from SG Toy House."
+  >
 
   <link
     rel="icon"
@@ -20,11 +25,6 @@
     rel="apple-touch-icon"
     sizes="180x180"
     href="/apple-touch-icon.png"
-  >
-
-  <meta
-    name="description"
-    content="Browse LEGO sets available from SG Toy House."
   >
 
   <style>
@@ -107,7 +107,7 @@
       clip-path: inset(50%);
     }
 
-    /* Announcement bar */
+    /* Announcement */
 
     .announcement-bar {
       display: block;
@@ -138,7 +138,8 @@
 
     .top-category-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
     }
 
     .top-category {
@@ -220,7 +221,7 @@
       color: var(--gold-light);
     }
 
-    /* Page hero */
+    /* Hero */
 
     .page-hero {
       padding: 70px 0 48px;
@@ -259,7 +260,7 @@
       font-size: 18px;
     }
 
-    /* Product section */
+    /* Products */
 
     .products-section {
       padding: 0 0 80px;
@@ -278,7 +279,7 @@
       border-radius: 14px;
     }
 
-    /* Search and filter */
+    /* Search */
 
     .search-area {
       min-width: 0;
@@ -348,6 +349,8 @@
         0 0 0 3px rgba(212, 175, 55, 0.18);
     }
 
+    /* Availability filter */
+
     .availability-filter {
       min-height: 42px;
       padding: 8px 14px;
@@ -393,9 +396,6 @@
       background: #0d0d0d;
       border: 2px solid var(--muted);
       border-radius: 5px;
-      transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
     }
 
     .availability-filter input:checked +
@@ -429,6 +429,8 @@
       border-color: var(--green);
     }
 
+    /* Count and sorting */
+
     .product-count {
       color: var(--muted);
       font-size: 14px;
@@ -461,7 +463,7 @@
       cursor: pointer;
     }
 
-    /* Product cards */
+    /* Product grid */
 
     .product-grid {
       display: grid;
@@ -519,7 +521,7 @@
       transform: scale(1.03);
     }
 
-    /* Availability badges */
+    /* Status badges */
 
     .product-status {
       max-width: calc(100% - 20px);
@@ -553,6 +555,8 @@
       background: var(--red);
       color: #ffffff;
     }
+
+    /* Product information */
 
     .product-info {
       padding: 18px;
@@ -601,8 +605,6 @@
       color: var(--gold-light);
     }
 
-    /* Five-line scrollable description */
-
     .product-description {
       max-height: calc(1.55em * 5);
       margin-bottom: 16px;
@@ -640,10 +642,6 @@
       border-radius: 999px;
     }
 
-    .product-description::-webkit-scrollbar-thumb:hover {
-      background: var(--gold-light);
-    }
-
     .product-bottom {
       margin-top: auto;
     }
@@ -668,6 +666,7 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 800;
+      line-height: 1.25;
       text-align: center;
       transition:
         background 0.2s ease,
@@ -688,7 +687,7 @@
       pointer-events: none;
     }
 
-    /* Loading and empty messages */
+    /* Empty/error message */
 
     .product-message {
       padding: 50px 20px;
@@ -741,7 +740,6 @@
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
-      transition: color 0.2s ease;
     }
 
     .footer-links a:hover,
@@ -749,7 +747,7 @@
       color: var(--gold-light);
     }
 
-    /* Floating back-to-top button */
+    /* Back to top */
 
     .back-to-top {
       width: 48px;
@@ -815,7 +813,7 @@
       outline-offset: 3px;
     }
 
-    /* Responsive */
+    /* Tablet */
 
     @media (max-width: 1000px) {
       .product-toolbar {
@@ -901,14 +899,19 @@
       }
     }
 
+    /*
+      Mobile layout:
+      Keep two product cards in every row.
+    */
+
     @media (max-width: 480px) {
       .container {
-        width: min(100% - 20px, 1120px);
+        width: min(100% - 16px, 1120px);
       }
 
       .announcement-bar {
-        padding: 7px 12px;
-        font-size: 12px;
+        padding: 7px 10px;
+        font-size: 11px;
       }
 
       .top-categories .container {
@@ -925,16 +928,87 @@
         font-size: 18px;
       }
 
+      .page-hero {
+        padding: 38px 0 30px;
+      }
+
+      .page-hero .container {
+        padding: 28px 14px;
+      }
+
       .page-hero h1 {
         font-size: 42px;
       }
 
       .page-description {
-        font-size: 16px;
+        font-size: 15px;
+      }
+
+      .product-toolbar {
+        padding: 12px;
       }
 
       .product-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .product-card {
+        border-radius: 12px;
+      }
+
+      .product-info {
+        padding: 11px;
+      }
+
+      .product-status {
+        max-width: calc(100% - 14px);
+        padding: 4px 6px;
+        top: 7px;
+        left: 7px;
+        font-size: 8px;
+      }
+
+      .product-category {
+        margin-bottom: 4px;
+        font-size: 8px;
+        letter-spacing: 0.7px;
+      }
+
+      .product-name {
+        margin-bottom: 6px;
+        font-size: 13px;
+        line-height: 1.3;
+      }
+
+      .product-details {
+        margin-bottom: 8px;
+        gap: 4px;
+      }
+
+      .product-detail {
+        padding: 2px 5px;
+        font-size: 8px;
+      }
+
+      .product-description {
+        max-height: calc(1.45em * 5);
+        margin-bottom: 10px;
+        padding-right: 4px;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .product-price {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .product-button {
+        min-height: 38px;
+        padding: 7px 8px;
+        font-size: 11px;
       }
 
       .products-section {
@@ -952,6 +1026,28 @@
     @media (max-width: 360px) {
       .top-category {
         font-size: 9px;
+      }
+
+      .product-grid {
+        gap: 8px;
+      }
+
+      .product-info {
+        padding: 9px;
+      }
+
+      .product-name {
+        font-size: 12px;
+      }
+
+      .product-description {
+        font-size: 10px;
+      }
+
+      .product-button {
+        padding-right: 5px;
+        padding-left: 5px;
+        font-size: 10px;
       }
     }
 
@@ -1070,7 +1166,7 @@
           id="lego-products-heading"
           hidden
         >
-          Available LEGO products
+          LEGO products
         </h2>
 
         <div class="product-toolbar">
@@ -1345,18 +1441,18 @@
         product.releaseYear ??
         "";
 
-      const numericYear =
+      const year =
         Number(value);
 
       if (
-        !Number.isInteger(numericYear) ||
-        numericYear < 1900 ||
-        numericYear > 2100
+        !Number.isInteger(year) ||
+        year < 1900 ||
+        year > 2100
       ) {
         return null;
       }
 
-      return numericYear;
+      return year;
     }
 
     function getProductPrice(product) {
@@ -1373,40 +1469,38 @@
         return null;
       }
 
-      const numericValue =
+      const amount =
         Number(
           String(value)
             .replace(/[^0-9.-]/g, "")
         );
 
-      return Number.isFinite(
-        numericValue
-      )
-        ? numericValue
+      return Number.isFinite(amount)
+        ? amount
         : null;
     }
 
     function formatPrice(product) {
-      const numericPrice =
+      const amount =
         getProductPrice(product);
 
-      if (numericPrice === null) {
+      if (amount === null) {
         return (
           product.price ||
           "Contact for price"
         );
       }
 
-      const formattedAmount =
+      return (
+        "SGD $" +
         new Intl.NumberFormat(
           "en-SG",
           {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
           }
-        ).format(numericPrice);
-
-      return `SGD $${formattedAmount}`;
+        ).format(amount)
+      );
     }
 
     function getProductStatus(product) {
@@ -1441,9 +1535,7 @@
         return "sold-out";
       }
 
-      if (
-        status.includes("preorder")
-      ) {
+      if (status.includes("preorder")) {
         return "preorder";
       }
 
@@ -1591,9 +1683,7 @@
         );
       }
 
-      if (
-        sortValue === "price-low"
-      ) {
+      if (sortValue === "price-low") {
         sortedProducts.sort(
           (first, second) => {
             const firstPrice =
@@ -1618,9 +1708,7 @@
         );
       }
 
-      if (
-        sortValue === "price-high"
-      ) {
+      if (sortValue === "price-high") {
         sortedProducts.sort(
           (first, second) => {
             const firstPrice =
@@ -1720,15 +1808,13 @@
         const image =
           document.createElement("img");
 
-        image.src =
-          imageSource;
+        image.src = imageSource;
 
         image.alt =
           product.imageAlt ||
           getProductName(product);
 
-        image.loading =
-          "lazy";
+        image.loading = "lazy";
 
         image.addEventListener(
           "error",
@@ -1744,17 +1830,13 @@
           }
         );
 
-        imageArea.appendChild(
-          image
-        );
+        imageArea.appendChild(image);
       } else {
         imageArea.textContent =
           "Product image";
       }
 
-      imageArea.appendChild(
-        status
-      );
+      imageArea.appendChild(status);
 
       const productInfo =
         document.createElement("div");
@@ -1879,18 +1961,13 @@
 
         enquiryLink.tabIndex = -1;
       } else {
-        const productName =
-          getProductName(product);
-
-        const enquiryMessage =
-          `Hi SG Toy House, I am interested in ${productName}.`;
+        const message =
+          `Hi SG Toy House, I am interested in ${getProductName(product)}.`;
 
         enquiryLink.href =
           product.telegramUrl ||
           `${TELEGRAM_URL}?text=${
-            encodeURIComponent(
-              enquiryMessage
-            )
+            encodeURIComponent(message)
           }`;
 
         enquiryLink.target =
@@ -1909,9 +1986,7 @@
         enquiryLink
       );
 
-      productInfo.appendChild(
-        bottom
-      );
+      productInfo.appendChild(bottom);
 
       card.append(
         imageArea,
@@ -1925,7 +2000,7 @@
       const enteredSearchTerm =
         productSearch.value.trim();
 
-      const normalizedSearchTerm =
+      const searchTerm =
         normalizeSearchText(
           enteredSearchTerm
         );
@@ -1936,7 +2011,7 @@
             const matchesSearch =
               productMatchesSearch(
                 product,
-                normalizedSearchTerm
+                searchTerm
               );
 
             const matchesAvailability =
@@ -1962,9 +2037,7 @@
         "error"
       );
 
-      if (
-        sortedProducts.length === 0
-      ) {
+      if (sortedProducts.length === 0) {
         if (
           availableItemsFilter.checked &&
           enteredSearchTerm
@@ -1976,9 +2049,7 @@
         ) {
           productCount.textContent =
             "0 available LEGO products";
-        } else if (
-          enteredSearchTerm
-        ) {
+        } else if (enteredSearchTerm) {
           productCount.textContent =
             `No results for "${enteredSearchTerm}"`;
         } else {
@@ -1986,8 +2057,7 @@
             "0 LEGO products";
         }
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage
           .querySelector("h2")
@@ -2004,14 +2074,13 @@
             availableItemsFilter.checked
               ? "No In Stock, Preorder or Almost Gone products match the current search."
               : enteredSearchTerm
-                ? "Try another product name, set number, year or keyword."
+                ? "Try another name, set number, year or keyword."
                 : "Please check again soon for new additions.";
 
         return;
       }
 
-      productMessage.hidden =
-        true;
+      productMessage.hidden = true;
 
       const productLabel =
         sortedProducts.length === 1
@@ -2020,33 +2089,27 @@
 
       productCount.replaceChildren();
 
-      const strongCount =
+      const strong =
         document.createElement("strong");
 
-      strongCount.textContent =
-        String(
-          sortedProducts.length
-        );
+      strong.textContent =
+        String(sortedProducts.length);
 
       let countText =
         ` LEGO ${productLabel}`;
 
-      if (
-        availableItemsFilter.checked
-      ) {
+      if (availableItemsFilter.checked) {
         countText =
           ` available LEGO ${productLabel}`;
       }
 
       if (enteredSearchTerm) {
-        countText =
-          availableItemsFilter.checked
-            ? ` matching available LEGO ${productLabel}`
-            : ` matching LEGO ${productLabel}`;
+        countText +=
+          ` matching "${enteredSearchTerm}"`;
       }
 
       productCount.append(
-        strongCount,
+        strong,
         countText
       );
 
@@ -2080,17 +2143,15 @@
         const data =
           await response.json();
 
-        const allProducts =
+        const products =
           Array.isArray(data)
             ? data
-            : Array.isArray(
-                  data.products
-                )
+            : Array.isArray(data.products)
               ? data.products
               : [];
 
         legoProducts =
-          allProducts.filter(
+          products.filter(
             (product) => {
               const category =
                 product.category ||
@@ -2099,9 +2160,7 @@
                 "";
 
               return (
-                normalizeCategory(
-                  category
-                ) ===
+                normalizeCategory(category) ===
                 normalizeCategory(
                   CATEGORY_NAME
                 )
@@ -2121,8 +2180,7 @@
         productCount.textContent =
           "LEGO products could not be loaded.";
 
-        productMessage.hidden =
-          false;
+        productMessage.hidden = false;
 
         productMessage.classList.add(
           "error"
@@ -2146,12 +2204,9 @@
     }
 
     function updateBackToTopButton() {
-      const shouldShow =
-        window.scrollY > 320;
-
       backToTopButton.classList.toggle(
         "visible",
-        shouldShow
+        window.scrollY > 320
       );
     }
 
@@ -2173,7 +2228,7 @@
     backToTopButton.addEventListener(
       "click",
       () => {
-        const prefersReducedMotion =
+        const reducedMotion =
           window.matchMedia(
             "(prefers-reduced-motion: reduce)"
           ).matches;
@@ -2181,7 +2236,7 @@
         window.scrollTo({
           top: 0,
           behavior:
-            prefersReducedMotion
+            reducedMotion
               ? "auto"
               : "smooth"
         });
