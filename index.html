@@ -79,6 +79,10 @@
       max-width: 100%;
     }
 
+    button {
+      font: inherit;
+    }
+
     [hidden] {
       display: none !important;
     }
@@ -88,7 +92,7 @@
       margin: 0 auto;
     }
 
-    /* Announcement */
+    /* Announcement bar */
 
     .announcement-bar {
       display: block;
@@ -362,7 +366,7 @@
       gap: 16px;
     }
 
-    /* Product and review cards */
+    /* Cards */
 
     .product-card,
     .review-card {
@@ -420,7 +424,7 @@
       flex-direction: column;
     }
 
-    /* Most Popular badge */
+    /* Product cards */
 
     .popular-label {
       padding: 5px 9px;
@@ -435,8 +439,6 @@
       line-height: 1.2;
       text-transform: uppercase;
     }
-
-    /* Product cards */
 
     .product-category {
       margin-bottom: 6px;
@@ -639,8 +641,64 @@
       color: var(--gold-light);
     }
 
+    /* Floating back-to-top button */
+
+    .back-to-top {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      background: var(--gold);
+      color: #070707;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px);
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top:active {
+      transform: translateY(0);
+    }
+
+    .back-to-top-arrow {
+      width: 12px;
+      height: 12px;
+      margin-top: 5px;
+      border-top: 3px solid currentColor;
+      border-left: 3px solid currentColor;
+      transform: rotate(45deg);
+    }
+
     a:focus-visible,
-    .review-scroll-area:focus-visible {
+    .review-scroll-area:focus-visible,
+    .back-to-top:focus-visible {
       outline:
         3px solid rgba(212, 175, 55, 0.45);
       outline-offset: 3px;
@@ -768,11 +826,28 @@
       .reviews .container {
         padding: 24px 16px;
       }
+
+      .back-to-top {
+        width: 44px;
+        height: 44px;
+        right: 14px;
+        bottom: 14px;
+      }
     }
 
     @media (max-width: 360px) {
       .top-category {
         font-size: 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .back-to-top {
+        transition: none;
       }
     }
   </style>
@@ -1087,6 +1162,19 @@
     </div>
   </footer>
 
+  <button
+    class="back-to-top"
+    id="back-to-top"
+    type="button"
+    aria-label="Back to top"
+    title="Back to top"
+  >
+    <span
+      class="back-to-top-arrow"
+      aria-hidden="true"
+    ></span>
+  </button>
+
   <script>
     const PRODUCTS_PER_CATEGORY = 2;
     const MAX_POPULAR_PRODUCTS = 4;
@@ -1148,6 +1236,11 @@
     const reviewsEmpty =
       document.getElementById(
         "reviews-empty"
+      );
+
+    const backToTopButton =
+      document.getElementById(
+        "back-to-top"
       );
 
     function normalizeProductCategory(value) {
@@ -1336,6 +1429,19 @@
       return detail;
     }
 
+    function createPopularLabel() {
+      const label =
+        document.createElement("span");
+
+      label.className =
+        "popular-label";
+
+      label.textContent =
+        "Most Popular";
+
+      return label;
+    }
+
     function createProductCard(
       product,
       category,
@@ -1387,19 +1493,8 @@
               "Product image unavailable";
 
             if (showPopularLabel) {
-              const label =
-                document.createElement(
-                  "span"
-                );
-
-              label.className =
-                "popular-label";
-
-              label.textContent =
-                "Most Popular";
-
               imageArea.appendChild(
-                label
+                createPopularLabel()
               );
             }
           }
@@ -1412,16 +1507,9 @@
       }
 
       if (showPopularLabel) {
-        const label =
-          document.createElement("span");
-
-        label.className =
-          "popular-label";
-
-        label.textContent =
-          "Most Popular";
-
-        imageArea.appendChild(label);
+        imageArea.appendChild(
+          createPopularLabel()
+        );
       }
 
       const productInfo =
@@ -1627,14 +1715,13 @@
               return;
             }
 
-            popularProductGrid
-              .appendChild(
-                createProductCard(
-                  product,
-                  category,
-                  true
-                )
-              );
+            popularProductGrid.appendChild(
+              createProductCard(
+                product,
+                category,
+                true
+              )
+            );
           }
         );
 
@@ -1643,9 +1730,8 @@
             .children
             .length === 0
         ) {
-          popularProductsEmpty
-            .textContent =
-              "Most Popular products will appear here soon.";
+          popularProductsEmpty.textContent =
+            "Most Popular products will appear here soon.";
 
           popularProductsEmpty.hidden =
             false;
@@ -2012,23 +2098,9 @@
       stars.textContent =
         renderStars(review.rating);
 
-      const numericRating =
-        Number(review.rating);
-
-      const accessibleRating =
-        Number.isFinite(numericRating)
-          ? Math.max(
-              1,
-              Math.min(
-                5,
-                numericRating
-              )
-            )
-          : 5;
-
       stars.setAttribute(
         "aria-label",
-        `${accessibleRating} out of 5 stars`
+        `${Number(review.rating) || 5} out of 5 stars`
       );
 
       const source =
@@ -2275,6 +2347,42 @@
       }
     }
 
+    function updateBackToTopButton() {
+      const shouldShow =
+        window.scrollY > 320;
+
+      backToTopButton.classList.toggle(
+        "visible",
+        shouldShow
+      );
+    }
+
+    backToTopButton.addEventListener(
+      "click",
+      () => {
+        const prefersReducedMotion =
+          window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches;
+
+        window.scrollTo({
+          top: 0,
+          behavior:
+            prefersReducedMotion
+              ? "auto"
+              : "smooth"
+        });
+      }
+    );
+
+    window.addEventListener(
+      "scroll",
+      updateBackToTopButton,
+      {
+        passive: true
+      }
+    );
+
     let reviewResizeTimer;
 
     window.addEventListener(
@@ -2292,6 +2400,7 @@
       }
     );
 
+    updateBackToTopButton();
     loadPopularProducts();
     loadRecentProducts();
     loadReviews();
