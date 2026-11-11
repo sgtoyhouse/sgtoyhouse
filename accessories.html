@@ -24,7 +24,11 @@
       --gold-light: #f0d675;
       --danger: #ff8c8c;
       --green: #22c55e;
-      --red: #dc2626;
+      --royal-blue: #2563eb;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --bright-yellow: #fde047;
+      --bright-green: #39ff14;
     }
 
     * {
@@ -533,18 +537,28 @@
     }
 
     .product-status.preorder {
-      background: var(--green);
-      color: #04150a;
+      background: var(--royal-blue);
+      color: #ffffff;
     }
 
     .product-status.almost-gone {
-      background: var(--gold);
-      color: #070707;
+      background: var(--amber);
+      color: #1c1917;
     }
 
     .product-status.sold-out {
       background: var(--red);
       color: #ffffff;
+    }
+
+    .product-status.most-popular {
+      background: var(--bright-yellow);
+      color: #1c1917;
+    }
+
+    .product-status.recently-added {
+      background: var(--bright-green);
+      color: #052e16;
     }
 
     /* Product information */
@@ -1533,9 +1547,11 @@
     .product-modal-image img { width: 100%; height: 100%; display: block; object-fit: contain; }
     .product-modal-image-placeholder { padding: 30px; color: var(--muted); text-align: center; }
     .product-modal-status { max-width: calc(100% - 32px); padding: 6px 11px; position: absolute; top: 16px; left: 16px; background: var(--green); color: #04150a; border-radius: 999px; font-size: 11px; font-weight: 900; line-height: 1.2; text-transform: uppercase; }
-    .product-modal-status.preorder { background: var(--green); }
-    .product-modal-status.almost-gone { background: var(--gold); color: #070707; }
+    .product-modal-status.preorder { background: var(--royal-blue); color: #fff; }
+    .product-modal-status.almost-gone { background: var(--amber); color: #1c1917; }
     .product-modal-status.sold-out { background: var(--red); color: #fff; }
+    .product-modal-status.most-popular { background: var(--bright-yellow); color: #1c1917; }
+    .product-modal-status.recently-added { background: var(--bright-green); color: #052e16; }
     .product-modal-content {
       min-width: 0;
       max-height: calc(100vh - 48px);
@@ -2216,6 +2232,14 @@
         status.includes("reserved")
       ) {
         return "almost-gone";
+      }
+
+      if (status.includes("mostpopular")) {
+        return "most-popular";
+      }
+
+      if (status.includes("recentlyadded")) {
+        return "recently-added";
       }
 
       return "";
