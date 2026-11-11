@@ -1315,11 +1315,126 @@
         letter-spacing: 0;
       }
     }
+
+    /* Continuously repeating announcement ticker */
+    .announcement-bar {
+      width: 100%;
+      min-height: 36px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background: var(--gold);
+      color: #070707;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .announcement-track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      animation: announcement-scroll 22s linear infinite;
+      will-change: transform;
+    }
+
+    .announcement-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .announcement-message {
+      padding: 8px 38px;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .announcement-message::after {
+      margin-left: 76px;
+      color: rgba(7, 7, 7, 0.55);
+      content: "•";
+    }
+
+    @keyframes announcement-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .announcement-bar:hover .announcement-track,
+    .announcement-bar:focus-visible .announcement-track {
+      animation-play-state: paused;
+    }
+
+    @media (max-width: 480px) {
+      .announcement-bar {
+        min-height: 32px;
+        padding: 0;
+        font-size: 11px;
+      }
+
+      .announcement-track {
+        animation-duration: 18s;
+      }
+
+      .announcement-message {
+        padding: 7px 24px;
+      }
+
+      .announcement-message::after {
+        margin-left: 48px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .announcement-track {
+        width: 100%;
+        animation: none;
+      }
+
+      .announcement-group {
+        width: 100%;
+      }
+
+      .announcement-group[aria-hidden="true"],
+      .announcement-message[aria-hidden="true"] {
+        display: none;
+      }
+
+      .announcement-message {
+        width: 100%;
+        padding: 7px 10px;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+      }
+
+      .announcement-message::after {
+        display: none;
+      }
+    }
 </style>
 </head>
 <body>
 <div class="sticky-top-area">
-<a aria-label="Join the SG Toy House Telegram group" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">Singapore's #1 Toy House. Join our 1400+ members Telegram group now!</a>
+<a aria-label="Click here to join our 1400 plus member Telegram group" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">
+  <span class="announcement-track">
+    <span class="announcement-group">
+      <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+      <span aria-hidden="true" class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+    </span>
+    <span aria-hidden="true" class="announcement-group">
+      <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+      <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+    </span>
+  </span>
+</a>
 <header class="site-header">
 <nav aria-label="Main navigation" class="container main-navigation">
 <a aria-label="SG Toy House home" class="navigation-link navigation-home" href="index.html">SG Toy House</a>
