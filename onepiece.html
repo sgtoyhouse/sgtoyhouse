@@ -654,6 +654,11 @@
       font-weight: 800;
     }
 
+    .product-actions {
+      display: grid;
+      gap: 7px;
+    }
+
     .product-button {
       width: 100%;
       min-height: 42px;
@@ -671,6 +676,8 @@
       text-align: center;
       transition:
         background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
         transform 0.2s ease;
     }
 
@@ -686,6 +693,36 @@
       border-color: #343434;
       cursor: not-allowed;
       pointer-events: none;
+    }
+
+    .product-join-button {
+      width: 100%;
+      min-height: 32px;
+      padding: 5px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .product-join-button:hover,
+    .product-join-button:focus-visible {
+      background: #1c180d;
+      color: #ffffff;
+      border-color: var(--gold);
+      transform: translateY(-1px);
     }
 
     /* Empty and error message */
@@ -1073,10 +1110,20 @@
         font-size: 14px;
       }
 
+      .product-actions {
+        gap: 5px;
+      }
+
       .product-button {
         min-height: 38px;
         padding: 7px 8px;
         font-size: 11px;
+      }
+
+      .product-join-button {
+        min-height: 29px;
+        padding: 5px 6px;
+        font-size: 9px;
       }
 
       .products-section {
@@ -1116,6 +1163,12 @@
         padding-right: 5px;
         padding-left: 5px;
         font-size: 10px;
+      }
+
+      .product-join-button {
+        padding-right: 4px;
+        padding-left: 4px;
+        font-size: 8px;
       }
     }
 
@@ -1386,7 +1439,10 @@
     const DISPLAY_CATEGORY_NAME =
       "One Piece";
 
-    const TELEGRAM_URL =
+    const TELEGRAM_ENQUIRY_URL =
+      "https://t.me/SG_ToyHouse";
+
+    const TELEGRAM_GROUP_URL =
       "https://t.me/sgtoyhse";
 
     const ALLOWED_LANGUAGES = [
@@ -2066,6 +2122,12 @@
       price.textContent =
         formatPrice(product);
 
+      const productActions =
+        document.createElement("div");
+
+      productActions.className =
+        "product-actions";
+
       const enquiryLink =
         document.createElement("a");
 
@@ -2085,15 +2147,23 @@
           "true"
         );
 
+        enquiryLink.removeAttribute(
+          "href"
+        );
+
         enquiryLink.tabIndex = -1;
       } else {
-        const message =
-          `Hi SG Toy House, I am interested in ${getProductName(product)}.`;
+        const productName =
+          getProductName(product);
+
+        const enquiryMessage =
+          `Hi SG Toy House, I would like to enquire about "${productName}". Is it still available?`;
 
         enquiryLink.href =
-          product.telegramUrl ||
-          `${TELEGRAM_URL}?text=${
-            encodeURIComponent(message)
+          `${TELEGRAM_ENQUIRY_URL}?text=${
+            encodeURIComponent(
+              enquiryMessage
+            )
           }`;
 
         enquiryLink.target =
@@ -2103,13 +2173,45 @@
           "noopener noreferrer";
 
         enquiryLink.textContent =
-          product.buttonText ||
           "Enquire on Telegram";
+
+        enquiryLink.setAttribute(
+          "aria-label",
+          `Enquire about ${productName} on Telegram`
+        );
       }
+
+      const joinLink =
+        document.createElement("a");
+
+      joinLink.className =
+        "product-join-button";
+
+      joinLink.href =
+        TELEGRAM_GROUP_URL;
+
+      joinLink.target =
+        "_blank";
+
+      joinLink.rel =
+        "noopener noreferrer";
+
+      joinLink.textContent =
+        "Join Us Now";
+
+      joinLink.setAttribute(
+        "aria-label",
+        "Join the SG Toy House Telegram group"
+      );
+
+      productActions.append(
+        enquiryLink,
+        joinLink
+      );
 
       bottom.append(
         price,
-        enquiryLink
+        productActions
       );
 
       productInfo.appendChild(bottom);
