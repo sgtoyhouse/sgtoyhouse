@@ -1724,6 +1724,41 @@
     @keyframes product-modal-close{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(14px) scale(.9)}}
     @keyframes product-backdrop-close{from{opacity:1}to{opacity:0}}
     @media (prefers-reduced-motion:reduce){::view-transition-group(product-expand),::view-transition-old(product-expand),::view-transition-new(product-expand),.product-modal-panel,.product-modal-backdrop{animation:none!important}}
+
+    /* True edge-to-edge full-screen product photo viewer */
+    .product-photo-viewer {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+      overscroll-behavior: contain;
+      touch-action: pan-x pan-y;
+    }
+    .product-photo-viewer img {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      max-width: 100vw;
+      max-height: 100vh;
+      max-height: 100dvh;
+      margin: 0;
+      object-fit: contain;
+      object-position: center;
+    }
+    .product-photo-close {
+      top: max(12px, env(safe-area-inset-top));
+      right: max(12px, env(safe-area-inset-right));
+    }
+    @media (max-width: 480px) {
+      .product-photo-viewer { padding: 0; }
+      .product-photo-viewer img {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+      }
+    }
 </style>
 </head>
 <body>
