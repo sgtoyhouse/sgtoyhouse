@@ -1794,12 +1794,74 @@
       from { opacity: 0; backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
       to { opacity: 1; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
     }
+    /* Review-card-to-overlay transition */
+    ::view-transition-group(review-expand) {
+      animation-duration: 420ms;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    ::view-transition-old(review-expand),
+    ::view-transition-new(review-expand) {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+    ::view-transition-old(review-expand) {
+      animation: review-card-fade-out 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    ::view-transition-new(review-expand) {
+      animation: review-overlay-fade-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes review-card-fade-out {
+      from { opacity: 1; filter: brightness(1); }
+      to { opacity: 0.65; filter: brightness(0.72); }
+    }
+    @keyframes review-overlay-fade-in {
+      from { opacity: 0.72; filter: brightness(0.82); }
+      to { opacity: 1; filter: brightness(1); }
+    }
+    .review-modal-panel { transform-origin: center; }
+    .review-modal:not([hidden]) .review-modal-panel {
+      animation: review-modal-open 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .review-modal:not([hidden]) .review-modal-backdrop {
+      animation: product-backdrop-open 280ms ease-out both;
+    }
+    @keyframes review-modal-open {
+      from { opacity: 0; transform: translateY(18px) scale(0.88); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Closing fallback for browsers without same-document view transitions */
+    .product-modal.is-closing .product-modal-panel,
+    .review-modal.is-closing .review-modal-panel {
+      animation: modal-close 260ms cubic-bezier(0.4, 0, 1, 1) both;
+    }
+    .product-modal.is-closing .product-modal-backdrop,
+    .review-modal.is-closing .review-modal-backdrop {
+      animation: modal-backdrop-close 240ms ease-in both;
+    }
+    @keyframes modal-close {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 0; transform: translateY(14px) scale(0.9); }
+    }
+    @keyframes modal-backdrop-close {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       ::view-transition-group(product-expand),
       ::view-transition-old(product-expand),
       ::view-transition-new(product-expand),
+      ::view-transition-group(review-expand),
+      ::view-transition-old(review-expand),
+      ::view-transition-new(review-expand),
       .product-modal-panel,
-      .product-modal-backdrop {
+      .product-modal-backdrop,
+      .review-modal-panel,
+      .review-modal-backdrop {
         animation: none !important;
       }
     }
@@ -2112,7 +2174,7 @@
 
           <p>
             See what
-            <span id="review-count">(0)</span>
+            <span id="review-count">0</span>
             customers say about SG Toy House.
           </p>
         </div>
@@ -2393,6 +2455,11 @@
         "review-modal-close"
       );
 
+    const reviewModalPanel =
+      reviewModal.querySelector(
+        ".review-modal-panel"
+      );
+
     const reviewModalPhotoArea =
       document.getElementById(
         "review-modal-photo-area"
@@ -2429,6 +2496,8 @@
       );
 
     let reviewModalPreviousFocus = null;
+    let reviewModalSourceCard = null;
+    let reviewModalTransition = null;
 
     const backToTopButton =
       document.getElementById(
@@ -2844,8 +2913,7 @@
         !document.body.contains(sourceCard) ||
         window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
-        hideModal();
-        restoreFocus();
+        runModalCloseFallback(productModal, hideModal, restoreFocus);
         return;
       }
 
@@ -3411,10 +3479,27 @@
       );
     }
 
-    function openReviewModal(review) {
-      reviewModalPreviousFocus =
-        document.activeElement;
+    function runModalCloseFallback(modal, hideModal, restoreFocus) {
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
+      if (reducedMotion) {
+        hideModal();
+        restoreFocus();
+        return;
+      }
+
+      modal.classList.add("is-closing");
+
+      window.setTimeout(() => {
+        modal.classList.remove("is-closing");
+        hideModal();
+        restoreFocus();
+      }, 270);
+    }
+
+    function populateAndShowReviewModal(review) {
       const rating =
         Number(review.rating) || 5;
 
@@ -3480,22 +3565,71 @@
       reviewModalClose.focus();
     }
 
-    function closeReviewModal() {
-      reviewModal.hidden = true;
+    function openReviewModal(review, sourceCard = null) {
+      reviewModalPreviousFocus = document.activeElement;
+      reviewModalSourceCard = sourceCard;
 
-      document.body.classList.remove(
-        "review-modal-open"
-      );
-
-      reviewModalPhoto.src = "";
+      const showModal = () => {
+        populateAndShowReviewModal(review);
+      };
 
       if (
-        reviewModalPreviousFocus &&
-        typeof reviewModalPreviousFocus.focus ===
-          "function"
+        !document.startViewTransition ||
+        !sourceCard ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
-        reviewModalPreviousFocus.focus();
+        showModal();
+        return;
       }
+
+      sourceCard.style.viewTransitionName = "review-expand";
+      reviewModalPanel.style.viewTransitionName = "review-expand";
+      reviewModalTransition = document.startViewTransition(showModal);
+      reviewModalTransition.finished.finally(() => {
+        sourceCard.style.viewTransitionName = "";
+        reviewModalPanel.style.viewTransitionName = "";
+        reviewModalTransition = null;
+      });
+    }
+
+    function closeReviewModal() {
+      const sourceCard = reviewModalSourceCard;
+
+      const hideModal = () => {
+        reviewModal.hidden = true;
+        document.body.classList.remove("review-modal-open");
+        reviewModalPhoto.src = "";
+      };
+
+      const restoreFocus = () => {
+        if (
+          reviewModalPreviousFocus &&
+          typeof reviewModalPreviousFocus.focus === "function"
+        ) {
+          reviewModalPreviousFocus.focus();
+        }
+        reviewModalSourceCard = null;
+      };
+
+      if (
+        !document.startViewTransition ||
+        !sourceCard ||
+        !document.body.contains(sourceCard) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        runModalCloseFallback(reviewModal, hideModal, restoreFocus);
+        return;
+      }
+
+      sourceCard.style.viewTransitionName = "review-expand";
+      reviewModalPanel.style.viewTransitionName = "review-expand";
+      reviewModalTransition = document.startViewTransition(hideModal);
+      reviewModalTransition.finished.finally(() => {
+        sourceCard.style.viewTransitionName = "";
+        reviewModalPanel.style.viewTransitionName = "";
+        reviewModalTransition = null;
+        restoreFocus();
+      });
     }
 
     function createReviewCard(review) {
@@ -3666,7 +3800,7 @@
 
       card.addEventListener(
         "click",
-        () => openReviewModal(review)
+        () => openReviewModal(review, card)
       );
 
       card.addEventListener(
@@ -3677,7 +3811,7 @@
             event.key === " "
           ) {
             event.preventDefault();
-            openReviewModal(review);
+            openReviewModal(review, card);
           }
         }
       );
@@ -3804,7 +3938,7 @@
             );
 
         reviewCount.textContent =
-          `(${reviews.length})`;
+          String(reviews.length);
 
         reviewCount.setAttribute(
           "aria-label",
@@ -3849,7 +3983,7 @@
         );
 
         reviewCount.textContent =
-          "(—)";
+          "—";
 
         reviewCount.setAttribute(
           "aria-label",
