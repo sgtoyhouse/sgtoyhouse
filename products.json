@@ -234,7 +234,7 @@
     "price": 20,
     "currency": "SGD",
     "status": "Preorder",
-    "popular": false,
+    "popular": true,
     "subCategory": "Promo Card",
     "setNumber": "",
     "year": 2026,
@@ -244,7 +244,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:44:20.745Z",
-    "updatedAt": "2026-11-11T19:44:20.745Z"
+    "updatedAt": "2026-11-11T22:16:05.489Z"
   },
   {
     "id": "product-1e1caf1e-9be3-4b54-b73e-10dd51039155",
@@ -709,7 +709,7 @@
     "price": 210,
     "currency": "SGD",
     "status": "In Stock",
-    "popular": true,
+    "popular": false,
     "subCategory": "Ascended Heroes",
     "setNumber": "",
     "year": 2026,
@@ -719,7 +719,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T09:32:33.913Z",
-    "updatedAt": "2026-11-11T03:52:31.392Z"
+    "updatedAt": "2026-11-11T22:14:21.751Z"
   },
   {
     "id": "product-810434a9-52a3-45f2-addd-25b82e9a0a1c",
