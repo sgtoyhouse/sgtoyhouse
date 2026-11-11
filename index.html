@@ -513,18 +513,6 @@
       text-transform: uppercase;
     }
 
-    .product-subcategory {
-      display: inline;
-      color: var(--gold-light);
-      font-weight: 700;
-    }
-
-    .product-subcategory::before {
-      margin: 0 5px;
-      color: var(--muted);
-      content: "•";
-    }
-
     .product-name {
       margin-bottom: 8px;
       color: #ffffff;
@@ -1033,11 +1021,6 @@
         letter-spacing: 0.7px;
       }
 
-      .product-subcategory::before {
-        margin-right: 3px;
-        margin-left: 3px;
-      }
-
       .product-name {
         margin-bottom: 6px;
         font-size: 13px;
@@ -1219,6 +1202,438 @@
       }
       .announcement-message::after { display: none; }
     }
+
+    /* Review detail overlay */
+
+    body.review-modal-open {
+      overflow: hidden;
+    }
+
+    .review-card {
+      cursor: pointer;
+    }
+
+    .review-modal {
+      padding: 24px;
+      position: fixed;
+      inset: 0;
+      z-index: 2200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .review-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.84);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .review-modal-panel {
+      width: min(900px, 100%);
+      max-height: calc(100vh - 48px);
+      overflow: auto;
+      position: relative;
+      z-index: 1;
+      background: #101010;
+      border: 1px solid var(--gold);
+      border-radius: 22px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+    }
+
+    .review-modal-close {
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      background: rgba(7, 7, 7, 0.9);
+      color: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .review-modal-close:hover,
+    .review-modal-close:focus-visible {
+      background: var(--gold);
+      color: #070707;
+      border-color: var(--gold);
+    }
+
+    .review-modal-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .review-modal-photo {
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #171717;
+      border-right: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .review-modal-photo img {
+      width: 100%;
+      height: 100%;
+      max-height: 72vh;
+      display: block;
+      object-fit: contain;
+    }
+
+    .review-modal-content {
+      min-width: 0;
+      padding: 64px 38px 38px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-modal-header {
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .review-modal-stars {
+      color: var(--gold);
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    .review-modal-source {
+      padding: 5px 9px;
+      color: var(--gold-light);
+      background: #1c180d;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .review-modal-text {
+      margin-bottom: 26px;
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-wrap: anywhere;
+      white-space: pre-line;
+    }
+
+    .review-modal-footer {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .review-modal-author {
+      color: var(--gold-light);
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .review-modal-date {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .review-modal {
+        padding: 12px;
+      }
+
+      .review-modal-panel {
+        width: min(620px, 100%);
+        max-height: calc(100vh - 24px);
+      }
+
+      .review-modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-modal-photo {
+        min-height: 0;
+        aspect-ratio: 1 / 1;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .review-modal-content {
+        padding: 28px 22px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .review-modal {
+        padding: 8px;
+      }
+
+      .review-modal-panel {
+        width: 100%;
+        max-height: calc(100vh - 16px);
+        border-radius: 16px;
+      }
+
+      .review-modal-close {
+        width: 38px;
+        height: 38px;
+        top: 9px;
+        right: 9px;
+        font-size: 24px;
+      }
+
+      .review-modal-content {
+        padding: 22px 16px 18px;
+      }
+
+      .review-modal-stars {
+        font-size: 17px;
+      }
+
+      .review-modal-text {
+        margin-bottom: 18px;
+        font-size: 14px;
+      }
+    }
+
+
+    /* Homepage product overlay */
+    body.product-modal-open { overflow: hidden; }
+    .product-card { cursor: pointer; }
+    .product-modal {
+      padding: 24px;
+      position: fixed;
+      inset: 0;
+      z-index: 2200;
+      overflow-y: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.84);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .product-modal-panel {
+      width: min(1050px, 100%);
+      max-height: calc(100vh - 48px);
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      background: #101010;
+      border: 1px solid var(--gold);
+      border-radius: 22px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+    }
+    .product-modal-close,
+    .product-photo-close {
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 5;
+      background: rgba(7, 7, 7, 0.9);
+      color: #fff;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .product-modal-close:hover,
+    .product-modal-close:focus-visible,
+    .product-photo-close:hover,
+    .product-photo-close:focus-visible {
+      background: var(--gold);
+      color: #070707;
+      border-color: var(--gold);
+    }
+    .product-modal-grid {
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: minmax(360px, .95fr) minmax(0, 1.05fr);
+    }
+    .product-modal-image {
+      min-width: 0;
+      min-height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #171717;
+      border-right: 1px solid var(--border);
+      cursor: zoom-in;
+    }
+    .product-modal-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .product-modal-image-placeholder { color: var(--muted); }
+    .product-modal-status {
+      padding: 6px 11px;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: #22c55e;
+      color: #04150a;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .product-modal-status.almost-gone { background: var(--gold); color: #070707; }
+    .product-modal-status.sold-out { background: #dc2626; color: #fff; }
+    .product-modal-content {
+      min-width: 0;
+      max-height: calc(100vh - 48px);
+      padding: 64px 40px 0;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      scrollbar-color: var(--gold) #171717;
+      scrollbar-width: thin;
+    }
+    .product-modal-category {
+      margin-bottom: 9px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .product-modal-content h2 {
+      margin-bottom: 16px;
+      color: #fff;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+    .product-modal-details {
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .product-modal-detail {
+      padding: 5px 9px;
+      color: var(--muted);
+      background: #171717;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .product-modal-detail strong { color: var(--gold-light); }
+    .product-modal-description {
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+    .product-modal-footer {
+      margin-top: auto;
+      padding: 18px 0 40px;
+      position: sticky;
+      bottom: 0;
+      z-index: 4;
+      background: linear-gradient(to bottom, rgba(16,16,16,0), #101010 18px, #101010 100%);
+    }
+    .product-modal-price {
+      margin: 0 0 12px;
+      color: var(--gold-light);
+      font-size: 25px;
+      font-weight: 900;
+    }
+    .product-modal-actions { display: grid; gap: 9px; }
+    .product-modal-enquire,
+    .product-modal-join {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .product-modal-enquire { background: var(--gold); color: #070707; border: 1px solid var(--gold); font-size: 16px; }
+    .product-modal-join { background: transparent; color: var(--gold-light); border: 3px solid var(--gold); font-size: 13px; }
+    .product-modal-enquire.disabled { background: #242424; color: #888; border-color: #343434; pointer-events: none; }
+    .product-photo-viewer {
+      padding: 20px;
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      background: rgba(0,0,0,.96);
+    }
+    .product-photo-viewer[hidden] { display: none !important; }
+    .product-photo-viewer img {
+      width: min(95vw, 1400px);
+      height: min(92dvh, 1400px);
+      display: block;
+      object-fit: contain;
+      cursor: zoom-out;
+    }
+    @media (max-width: 760px) {
+      .product-modal { padding: 12px; }
+      .product-modal-panel { width: min(620px, 100%); max-height: calc(100vh - 24px); }
+      .product-modal-grid { min-height: 0; grid-template-columns: 1fr; }
+      .product-modal-image { min-height: 0; aspect-ratio: 1 / 1; border-right: 0; border-bottom: 1px solid var(--border); }
+      .product-modal-content { max-height: none; padding: 28px 22px 0; overflow: visible; }
+      .product-modal-panel { overflow-y: auto; }
+      .product-modal-footer { padding: 16px 0 24px; }
+    }
+    @media (max-width: 480px) {
+      .product-modal { padding: 8px; }
+      .product-modal-panel { width: 100%; max-height: calc(100vh - 16px); border-radius: 16px; }
+      .product-modal-close { width: 38px; height: 38px; top: 9px; right: 9px; font-size: 24px; }
+      .product-modal-content { padding: 22px 16px 0; }
+      .product-modal-footer { margin-right: -16px; margin-left: -16px; padding: 14px 16px 18px; }
+      .product-modal-category { font-size: 10px; }
+      .product-modal-content h2 { margin-bottom: 12px; font-size: 24px; }
+      .product-modal-description { margin-bottom: 18px; font-size: 13px; }
+      .product-modal-price { margin-bottom: 9px; font-size: 20px; }
+      .product-modal-enquire { min-height: 42px; font-size: 14px; }
+      .product-modal-join { min-height: 34px; font-size: 12px; }
+      .product-photo-viewer { padding: 8px; }
+      .product-photo-viewer img { width: calc(100vw - 16px); height: calc(100dvh - 16px); }
+    }
+
   </style>
 </head>
 
@@ -1558,6 +1973,108 @@
     </div>
   </footer>
 
+
+  <div
+    class="review-modal"
+    id="review-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="review-modal-author"
+    hidden
+  >
+    <div
+      class="review-modal-backdrop"
+      data-close-review-modal
+    ></div>
+
+    <div class="review-modal-panel">
+      <button
+        class="review-modal-close"
+        id="review-modal-close"
+        type="button"
+        aria-label="Close review details"
+      >
+        ×
+      </button>
+
+      <div class="review-modal-grid">
+        <div
+          class="review-modal-photo"
+          id="review-modal-photo-area"
+        >
+          <img
+            id="review-modal-photo"
+            src=""
+            alt=""
+          >
+        </div>
+
+        <div class="review-modal-content">
+          <div class="review-modal-header">
+            <p
+              class="review-modal-stars"
+              id="review-modal-stars"
+            ></p>
+
+            <p
+              class="review-modal-source"
+              id="review-modal-source"
+            ></p>
+          </div>
+
+          <blockquote
+            class="review-modal-text"
+            id="review-modal-text"
+          ></blockquote>
+
+          <div class="review-modal-footer">
+            <p
+              class="review-modal-author"
+              id="review-modal-author"
+            ></p>
+
+            <p
+              class="review-modal-date"
+              id="review-modal-date"
+            ></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-name" hidden>
+    <div class="product-modal-backdrop" data-close-product-modal></div>
+    <div class="product-modal-panel">
+      <button class="product-modal-close" id="product-modal-close" type="button" aria-label="Close product details">×</button>
+      <div class="product-modal-grid">
+        <div class="product-modal-image" id="product-modal-image-area" tabindex="0" role="button" aria-label="Open full product photo">
+          <img id="product-modal-image" src="" alt="">
+          <p class="product-modal-image-placeholder" id="product-modal-image-placeholder" hidden>Product image unavailable</p>
+          <span class="product-modal-status" id="product-modal-status"></span>
+        </div>
+        <div class="product-modal-content">
+          <p class="product-modal-category" id="product-modal-category"></p>
+          <h2 id="product-modal-name"></h2>
+          <div class="product-modal-details" id="product-modal-details"></div>
+          <p class="product-modal-description" id="product-modal-description"></p>
+          <div class="product-modal-footer">
+            <p class="product-modal-price" id="product-modal-price"></p>
+            <div class="product-modal-actions">
+              <a class="product-modal-enquire" id="product-modal-enquire" target="_blank" rel="noopener noreferrer">Enquire on Telegram</a>
+              <a class="product-modal-join" href="https://t.me/sgtoyhse" target="_blank" rel="noopener noreferrer">Join Us Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product-photo-viewer" id="product-photo-viewer" role="dialog" aria-modal="true" aria-label="Product photo" hidden>
+    <button class="product-photo-close" id="product-photo-close" type="button" aria-label="Close product photo">×</button>
+    <img id="product-photo-full" src="" alt="">
+  </div>
+
   <button
     class="back-to-top"
     id="back-to-top"
@@ -1644,10 +2161,72 @@
         "review-count"
       );
 
+    const reviewModal =
+      document.getElementById(
+        "review-modal"
+      );
+
+    const reviewModalClose =
+      document.getElementById(
+        "review-modal-close"
+      );
+
+    const reviewModalPhotoArea =
+      document.getElementById(
+        "review-modal-photo-area"
+      );
+
+    const reviewModalPhoto =
+      document.getElementById(
+        "review-modal-photo"
+      );
+
+    const reviewModalStars =
+      document.getElementById(
+        "review-modal-stars"
+      );
+
+    const reviewModalSource =
+      document.getElementById(
+        "review-modal-source"
+      );
+
+    const reviewModalText =
+      document.getElementById(
+        "review-modal-text"
+      );
+
+    const reviewModalAuthor =
+      document.getElementById(
+        "review-modal-author"
+      );
+
+    const reviewModalDate =
+      document.getElementById(
+        "review-modal-date"
+      );
+
+    let reviewModalPreviousFocus = null;
+
     const backToTopButton =
       document.getElementById(
         "back-to-top"
       );
+    const productModal = document.getElementById("product-modal");
+    const productModalClose = document.getElementById("product-modal-close");
+    const productModalImageArea = document.getElementById("product-modal-image-area");
+    const productModalImage = document.getElementById("product-modal-image");
+    const productModalImagePlaceholder = document.getElementById("product-modal-image-placeholder");
+    const productModalStatus = document.getElementById("product-modal-status");
+    const productModalCategory = document.getElementById("product-modal-category");
+    const productModalName = document.getElementById("product-modal-name");
+    const productModalDetails = document.getElementById("product-modal-details");
+    const productModalDescription = document.getElementById("product-modal-description");
+    const productModalPrice = document.getElementById("product-modal-price");
+    const productModalEnquire = document.getElementById("product-modal-enquire");
+    const productPhotoViewer = document.getElementById("product-photo-viewer");
+    const productPhotoClose = document.getElementById("product-photo-close");
+    const productPhotoFull = document.getElementById("product-photo-full");
 
     const categoryCountElements = {
       lego:
@@ -1934,6 +2513,85 @@
       return badge;
     }
 
+
+    let productModalPreviousFocus = null;
+    function getProductStatus(product) {
+      const raw = String(product.status || product.availability || "In Stock").trim();
+      return raw.toLowerCase() === "reserved" ? "Almost Gone" : raw;
+    }
+    function getProductStatusClass(product) {
+      const status = normalize(getProductStatus(product));
+      if (status.includes("soldout") || status.includes("unavailable") || status.includes("outofstock")) return "sold-out";
+      if (status.includes("almostgone") || status.includes("reserved")) return "almost-gone";
+      return "";
+    }
+    function createModalDetail(label, value) {
+      const detail = document.createElement("span");
+      detail.className = "product-modal-detail";
+      const strong = document.createElement("strong");
+      strong.textContent = `${label}: `;
+      detail.append(strong, String(value));
+      return detail;
+    }
+    function openProductModal(product, category) {
+      productModalPreviousFocus = document.activeElement;
+      const name = getProductName(product);
+      const image = getProductImage(product);
+      const subcategory = getProductSubcategory(product);
+      productModalName.textContent = name;
+      productModalCategory.textContent = subcategory ? `${category.label} • ${subcategory}` : category.label;
+      productModalImage.src = image;
+      productModalImage.alt = product.imageAlt || name;
+      productModalImage.hidden = !image;
+      productModalImagePlaceholder.hidden = Boolean(image);
+      productModalStatus.textContent = getProductStatus(product);
+      productModalStatus.className = "product-modal-status";
+      const statusClass = getProductStatusClass(product);
+      if (statusClass) productModalStatus.classList.add(statusClass);
+      productModalDetails.replaceChildren();
+      const setNumber = getProductSetNumber(product);
+      const year = getProductYear(product);
+      const language = getProductLanguage(product);
+      if (setNumber && category.key === "lego") productModalDetails.appendChild(createModalDetail("Set", setNumber));
+      if (year) productModalDetails.appendChild(createModalDetail("Year", year));
+      if (language && (category.key === "pokemon" || category.key === "onepiece")) productModalDetails.appendChild(createModalDetail("Language", language));
+      productModalDescription.textContent = product.description || "Contact SG Toy House for more product information.";
+      productModalPrice.textContent = formatProductPrice(product) || "Contact for price";
+      if (!isProductAvailable(product)) {
+        productModalEnquire.classList.add("disabled");
+        productModalEnquire.textContent = "Sold out";
+        productModalEnquire.removeAttribute("href");
+        productModalEnquire.setAttribute("aria-disabled", "true");
+      } else {
+        const message = `Hi SG Toy House, I would like to enquire about "${name}". Is it still available?`;
+        productModalEnquire.classList.remove("disabled");
+        productModalEnquire.textContent = "Enquire on Telegram";
+        productModalEnquire.href = `https://t.me/SG_ToyHouse?text=${encodeURIComponent(message)}`;
+        productModalEnquire.removeAttribute("aria-disabled");
+      }
+      productModal.hidden = false;
+      document.body.classList.add("product-modal-open");
+      productModalClose.focus();
+    }
+    function closeProductModal() {
+      productModal.hidden = true;
+      document.body.classList.remove("product-modal-open");
+      productModalImage.src = "";
+      if (productModalPreviousFocus && typeof productModalPreviousFocus.focus === "function") productModalPreviousFocus.focus();
+    }
+    function openProductPhoto() {
+      if (!productModalImage.src || productModalImage.hidden) return;
+      productPhotoFull.src = productModalImage.src;
+      productPhotoFull.alt = productModalImage.alt;
+      productPhotoViewer.hidden = false;
+      productPhotoClose.focus();
+    }
+    function closeProductPhoto() {
+      productPhotoViewer.hidden = true;
+      productPhotoFull.src = "";
+      productModalImageArea.focus();
+    }
+
     function createProductCard(
       product,
       category,
@@ -1941,16 +2599,20 @@
       showDate = false
     ) {
       const card =
-        document.createElement("a");
+        document.createElement("article");
 
       card.className =
         "product-card";
-
-      const productLookupKey =
-        getProductLookupKey(product);
-
-      card.href =
-        `${category.page}?product=${encodeURIComponent(productLookupKey)}`;
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `View details for ${getProductName(product)}`);
+      card.addEventListener("click", () => openProductModal(product, category));
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openProductModal(product, category);
+        }
+      });
 
       card.setAttribute(
         "aria-label",
@@ -2040,29 +2702,6 @@
         category.label
       );
 
-      /*
-        Subcategories are displayed on both
-        Most Popular and Recently Added cards.
-      */
-
-      const subcategoryText =
-        getProductSubcategory(product);
-
-      if (subcategoryText) {
-        const subcategory =
-          document.createElement("span");
-
-        subcategory.className =
-          "product-subcategory";
-
-        subcategory.textContent =
-          subcategoryText;
-
-        categoryName.appendChild(
-          subcategory
-        );
-      }
-
       const name =
         document.createElement("h3");
 
@@ -2080,60 +2719,23 @@
       const setNumber =
         getProductSetNumber(product);
 
-      const year =
-        getProductYear(product);
-
-      const language =
-        getProductLanguage(product);
-
       const showSet =
         category.key === "lego" &&
         setNumber;
 
-      const showLanguage =
-        (
-          category.key === "pokemon" ||
-          category.key === "onepiece"
-        ) &&
-        language;
-
-      if (
-        showSet ||
-        year ||
-        showLanguage
-      ) {
+      if (showSet) {
         const details =
           document.createElement("div");
 
         details.className =
           "product-details";
 
-        if (showSet) {
-          details.appendChild(
-            createProductDetail(
-              "Set",
-              setNumber
-            )
-          );
-        }
-
-        if (year) {
-          details.appendChild(
-            createProductDetail(
-              "Year",
-              year
-            )
-          );
-        }
-
-        if (showLanguage) {
-          details.appendChild(
-            createProductDetail(
-              "Language",
-              language
-            )
-          );
-        }
+        details.appendChild(
+          createProductDetail(
+            "Set",
+            setNumber
+          )
+        );
 
         productInfo.appendChild(
           details
@@ -2179,19 +2781,6 @@
           );
         }
       }
-
-      const link =
-        document.createElement("p");
-
-      link.className =
-        "product-link";
-
-      link.textContent =
-        `View ${category.label}`;
-
-      productInfo.appendChild(
-        link
-      );
 
       card.append(
         imageArea,
@@ -2542,6 +3131,93 @@
       );
     }
 
+    function openReviewModal(review) {
+      reviewModalPreviousFocus =
+        document.activeElement;
+
+      const rating =
+        Number(review.rating) || 5;
+
+      reviewModalStars.textContent =
+        renderStars(rating);
+
+      reviewModalStars.setAttribute(
+        "aria-label",
+        `${rating} out of 5 stars`
+      );
+
+      reviewModalSource.textContent =
+        review.source || "Customer";
+
+      reviewModalText.textContent =
+        review.text || "";
+
+      reviewModalAuthor.textContent =
+        review.author || "Customer";
+
+      const dateText =
+        formatReviewDate(review);
+
+      reviewModalDate.textContent =
+        dateText;
+
+      reviewModalDate.hidden =
+        !dateText;
+
+      if (review.photo) {
+        reviewModalPhoto.src =
+          review.photo;
+
+        reviewModalPhoto.alt =
+          review.photoAlt ||
+          "Customer review photo";
+
+        reviewModalPhoto.hidden =
+          false;
+
+        reviewModalPhotoArea.classList.remove(
+          "is-empty"
+        );
+      } else {
+        reviewModalPhoto.src = "";
+        reviewModalPhoto.alt = "";
+        reviewModalPhoto.hidden = true;
+        reviewModalPhotoArea.classList.add(
+          "is-empty"
+        );
+        reviewModalPhotoArea.setAttribute(
+          "aria-label",
+          "Customer review"
+        );
+      }
+
+      reviewModal.hidden = false;
+
+      document.body.classList.add(
+        "review-modal-open"
+      );
+
+      reviewModalClose.focus();
+    }
+
+    function closeReviewModal() {
+      reviewModal.hidden = true;
+
+      document.body.classList.remove(
+        "review-modal-open"
+      );
+
+      reviewModalPhoto.src = "";
+
+      if (
+        reviewModalPreviousFocus &&
+        typeof reviewModalPreviousFocus.focus ===
+          "function"
+      ) {
+        reviewModalPreviousFocus.focus();
+      }
+    }
+
     function createReviewCard(review) {
       const card =
         document.createElement(
@@ -2694,6 +3370,36 @@
       card.append(
         photo,
         content
+      );
+
+      card.tabIndex = 0;
+
+      card.setAttribute(
+        "role",
+        "button"
+      );
+
+      card.setAttribute(
+        "aria-label",
+        `View full review from ${review.author || "Customer"}`
+      );
+
+      card.addEventListener(
+        "click",
+        () => openReviewModal(review)
+      );
+
+      card.addEventListener(
+        "keydown",
+        (event) => {
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+            event.preventDefault();
+            openReviewModal(review);
+          }
+        }
       );
 
       return card;
@@ -2890,6 +3596,36 @@
       }
     }
 
+    reviewModalClose.addEventListener(
+      "click",
+      closeReviewModal
+    );
+
+    reviewModal
+      .querySelectorAll(
+        "[data-close-review-modal]"
+      )
+      .forEach(
+        (element) => {
+          element.addEventListener(
+            "click",
+            closeReviewModal
+          );
+        }
+      );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          event.key === "Escape" &&
+          !reviewModal.hidden
+        ) {
+          closeReviewModal();
+        }
+      }
+    );
+
     function updateBackToTopButton() {
       backToTopButton
         .classList
@@ -2937,6 +3673,23 @@
           );
       }
     );
+
+
+    productModalClose.addEventListener("click", closeProductModal);
+    productModal.querySelectorAll("[data-close-product-modal]").forEach((element) => element.addEventListener("click", closeProductModal));
+    productModalImageArea.addEventListener("click", openProductPhoto);
+    productModalImageArea.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openProductPhoto(); }
+    });
+    productPhotoClose.addEventListener("click", closeProductPhoto);
+    productPhotoViewer.addEventListener("click", (event) => {
+      if (event.target === productPhotoViewer || event.target === productPhotoFull) closeProductPhoto();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      if (!productPhotoViewer.hidden) closeProductPhoto();
+      else if (!productModal.hidden) closeProductModal();
+    });
 
     updateBackToTopButton();
     loadHomepageProducts();
