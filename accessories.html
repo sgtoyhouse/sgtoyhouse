@@ -2657,23 +2657,6 @@
         DISPLAY_CATEGORY_NAME
       );
 
-      const subcategoryText =
-        getProductSubcategory(product);
-
-      if (subcategoryText) {
-        const subcategory =
-          document.createElement("span");
-
-        subcategory.className =
-          "product-subcategory";
-
-        subcategory.textContent =
-          subcategoryText;
-
-        category.appendChild(
-          subcategory
-        );
-      }
 
       const name =
         document.createElement("h3");
