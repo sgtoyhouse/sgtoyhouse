@@ -1149,6 +1149,76 @@
         transition: none;
       }
     }
+
+    /* Continuously repeating announcement */
+    .announcement-bar {
+      width: 100%;
+      min-height: 36px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background: var(--gold);
+      color: #070707;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    .announcement-track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      animation: announcement-scroll 22s linear infinite;
+      will-change: transform;
+    }
+    .announcement-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .announcement-message {
+      padding: 8px 38px;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .announcement-message::after {
+      margin-left: 76px;
+      color: rgba(7, 7, 7, 0.55);
+      content: "•";
+    }
+    @keyframes announcement-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .announcement-bar:hover .announcement-track,
+    .announcement-bar:focus-visible .announcement-track {
+      animation-play-state: paused;
+    }
+    @media (max-width: 480px) {
+      .announcement-bar { min-height: 32px; padding: 0; font-size: 11px; white-space: nowrap; }
+      .announcement-track { animation-duration: 18s; }
+      .announcement-message { padding: 7px 24px; }
+      .announcement-message::after { margin-left: 48px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .announcement-track { width: 100%; animation: none; }
+      .announcement-group { width: 100%; }
+      .announcement-group[aria-hidden="true"],
+      .announcement-message[aria-hidden="true"] { display: none; }
+      .announcement-message {
+        width: 100%;
+        padding: 7px 10px;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+      }
+      .announcement-message::after { display: none; }
+    }
   </style>
 </head>
 
@@ -1159,9 +1229,18 @@
       href="https://t.me/sgtoyhse"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Join the SG Toy House Telegram group"
+      aria-label="Click here to join our 1400 plus member Telegram group"
     >
-      Singapore's #1 Toy House. Join our 1400+ members Telegram group now!
+      <span class="announcement-track">
+        <span class="announcement-group">
+          <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+          <span class="announcement-message" aria-hidden="true">Click Here to join our 1400+ members Telegram group now!</span>
+        </span>
+        <span class="announcement-group" aria-hidden="true">
+          <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+          <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+        </span>
+      </span>
     </a>
 
     <header class="site-header">
@@ -1655,6 +1734,15 @@
       ).trim();
     }
 
+    function getProductLookupKey(product) {
+      return String(
+        product.id ||
+        product.productId ||
+        product.slug ||
+        getProductName(product)
+      ).trim();
+    }
+
     function getProductImage(product) {
       return String(
         product.image ||
@@ -1858,8 +1946,11 @@
       card.className =
         "product-card";
 
+      const productLookupKey =
+        getProductLookupKey(product);
+
       card.href =
-        category.page;
+        `${category.page}?product=${encodeURIComponent(productLookupKey)}`;
 
       card.setAttribute(
         "aria-label",

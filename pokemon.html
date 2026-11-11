@@ -2883,6 +2883,52 @@
       );
     }
 
+    function normalizeProductLookupKey(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function getProductLookupKey(product) {
+      return String(
+        product.id ||
+        product.productId ||
+        product.slug ||
+        getProductName(product)
+      ).trim();
+    }
+
+    function openRequestedProductFromQuery() {
+      const requestedProduct =
+        new URLSearchParams(window.location.search)
+          .get("product");
+
+      if (!requestedProduct) {
+        return;
+      }
+
+      const normalizedRequestedProduct =
+        normalizeProductLookupKey(requestedProduct);
+
+      const matchingProduct =
+        pokemonProducts.find(
+          (product) =>
+            normalizeProductLookupKey(
+              getProductLookupKey(product)
+            ) === normalizedRequestedProduct
+        );
+
+      if (!matchingProduct) {
+        return;
+      }
+
+      requestAnimationFrame(
+        () => openProductModal(matchingProduct)
+      );
+    }
+
     async function loadProducts() {
       productGrid.setAttribute(
         "aria-busy",
@@ -2930,6 +2976,8 @@
           );
 
         renderProducts();
+
+        openRequestedProductFromQuery();
       } catch (error) {
         console.error(
           "Pokémon product loading error:",
