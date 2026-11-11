@@ -1701,6 +1701,38 @@
     </div>
   </footer>
 
+
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-name" hidden>
+    <div class="product-modal-backdrop" data-close-product-modal></div>
+    <div class="product-modal-panel">
+      <button class="product-modal-close" id="product-modal-close" type="button" aria-label="Close product details">×</button>
+      <div class="product-modal-grid">
+        <div class="product-modal-image">
+          <img id="product-modal-image" src="" alt="">
+          <p class="product-modal-image-placeholder" id="product-modal-image-placeholder" hidden>Product image unavailable</p>
+          <span class="product-modal-status" id="product-modal-status"></span>
+        </div>
+        <div class="product-modal-content">
+          <p class="product-modal-category" id="product-modal-category"></p>
+          <h2 id="product-modal-name"></h2>
+          <div class="product-modal-details" id="product-modal-details"></div>
+          <p class="product-modal-description" id="product-modal-description"></p>
+          <div class="product-modal-footer">
+            <p class="product-modal-price" id="product-modal-price"></p>
+            <div class="product-modal-actions">
+              <a class="product-button" id="product-modal-enquire" target="_blank" rel="noopener noreferrer">Enquire on Telegram</a>
+              <a class="product-join-button" href="https://t.me/sgtoyhse" target="_blank" rel="noopener noreferrer">Join Us Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product-photo-viewer" id="product-photo-viewer" role="dialog" aria-modal="true" aria-label="Full product photo" hidden>
+    <button class="product-photo-close" id="product-photo-close" type="button" aria-label="Close full product photo">×</button>
+    <img id="product-photo-full" src="" alt="">
+  </div>
+
   <button
     class="back-to-top"
     id="back-to-top"
@@ -1761,6 +1793,22 @@
       document.getElementById(
         "back-to-top"
       );
+    const productModal = document.getElementById("product-modal");
+    const productModalClose = document.getElementById("product-modal-close");
+    const productModalImage = document.getElementById("product-modal-image");
+    const productModalImagePlaceholder = document.getElementById("product-modal-image-placeholder");
+    const productModalStatus = document.getElementById("product-modal-status");
+    const productModalCategory = document.getElementById("product-modal-category");
+    const productModalName = document.getElementById("product-modal-name");
+    const productModalDetails = document.getElementById("product-modal-details");
+    const productModalDescription = document.getElementById("product-modal-description");
+    const productModalPrice = document.getElementById("product-modal-price");
+    const productModalEnquire = document.getElementById("product-modal-enquire");
+    const productPhotoViewer = document.getElementById("product-photo-viewer");
+    const productPhotoFull = document.getElementById("product-photo-full");
+    const productPhotoClose = document.getElementById("product-photo-close");
+    let productModalPreviousFocus = null;
+
 
     let legoProducts = [];
 
@@ -2252,6 +2300,83 @@
       return detail;
     }
 
+
+    function createModalDetail(label, value) {
+      const detail = document.createElement("span");
+      detail.className = "product-modal-detail";
+      const strong = document.createElement("strong");
+      strong.textContent = `${label}: `;
+      detail.append(strong, String(value));
+      return detail;
+    }
+
+    function openProductModal(product) {
+      productModalPreviousFocus = document.activeElement;
+      const productName = getProductName(product);
+      const productImage = getProductImage(product);
+      const subcategory = getProductSubcategory(product);
+      const statusClass = getStatusClass(product);
+
+      productModalName.textContent = productName;
+      productModalCategory.textContent = subcategory ? `${DISPLAY_CATEGORY_NAME} • ${subcategory}` : DISPLAY_CATEGORY_NAME;
+      productModalImage.src = productImage;
+      productModalImage.alt = product.imageAlt || productName;
+      productModalImage.hidden = !productImage;
+      productModalImagePlaceholder.hidden = Boolean(productImage);
+      productModalStatus.textContent = getProductStatus(product);
+      productModalStatus.className = "product-modal-status";
+      if (statusClass) productModalStatus.classList.add(statusClass);
+
+      productModalDetails.replaceChildren();
+      const setNumber = getProductSetNumber(product);
+      const year = getProductYear(product);
+      if (setNumber) productModalDetails.appendChild(createModalDetail("Set", setNumber));
+      if (year) productModalDetails.appendChild(createModalDetail("Year", year));
+
+      productModalDescription.textContent = product.description || "Contact SG Toy House for more product information.";
+      productModalPrice.textContent = formatPrice(product);
+
+      if (isSoldOut(product)) {
+        productModalEnquire.classList.add("disabled");
+        productModalEnquire.textContent = "Sold out";
+        productModalEnquire.removeAttribute("href");
+        productModalEnquire.setAttribute("aria-disabled", "true");
+        productModalEnquire.tabIndex = -1;
+      } else {
+        const message = `Hi SG Toy House, I would like to enquire about "${productName}". Is it still available?`;
+        productModalEnquire.classList.remove("disabled");
+        productModalEnquire.textContent = "Enquire on Telegram";
+        productModalEnquire.href = `${TELEGRAM_ENQUIRY_URL}?text=${encodeURIComponent(message)}`;
+        productModalEnquire.removeAttribute("aria-disabled");
+        productModalEnquire.tabIndex = 0;
+      }
+
+      productModal.hidden = false;
+      document.body.classList.add("product-modal-open");
+      productModalClose.focus();
+    }
+
+    function closeProductModal() {
+      productModal.hidden = true;
+      document.body.classList.remove("product-modal-open");
+      productModalImage.src = "";
+      if (productModalPreviousFocus && typeof productModalPreviousFocus.focus === "function") productModalPreviousFocus.focus();
+    }
+
+    function openPhotoViewer() {
+      if (!productModalImage.src || productModalImage.hidden) return;
+      productPhotoFull.src = productModalImage.src;
+      productPhotoFull.alt = productModalImage.alt;
+      productPhotoViewer.hidden = false;
+      productPhotoClose.focus();
+    }
+
+    function closePhotoViewer() {
+      productPhotoViewer.hidden = true;
+      productPhotoFull.src = "";
+      productModalClose.focus();
+    }
+
     function createProductCard(
       product
     ) {
@@ -2262,6 +2387,19 @@
 
       card.className =
         "product-card";
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `View details for ${getProductName(product)}`);
+      card.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) return;
+        openProductModal(product);
+      });
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openProductModal(product);
+        }
+      });
 
       const imageArea =
         document.createElement(
@@ -2893,6 +3031,29 @@
         passive: true
       }
     );
+
+
+    productModalClose.addEventListener("click", closeProductModal);
+    productModal.querySelectorAll("[data-close-product-modal]").forEach((element) => {
+      element.addEventListener("click", closeProductModal);
+    });
+    productModalImage.addEventListener("click", openPhotoViewer);
+    productModalImage.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openPhotoViewer();
+      }
+    });
+    productModalImage.tabIndex = 0;
+    productPhotoClose.addEventListener("click", closePhotoViewer);
+    productPhotoViewer.addEventListener("click", (event) => {
+      if (event.target === productPhotoViewer || event.target === productPhotoFull) closePhotoViewer();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      if (!productPhotoViewer.hidden) closePhotoViewer();
+      else if (!productModal.hidden) closeProductModal();
+    });
 
     updateBackToTopButton();
     loadProducts();
