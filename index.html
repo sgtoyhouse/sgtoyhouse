@@ -700,6 +700,26 @@
       font-size: 14px;
     }
 
+    .footer-faq-link {
+      margin-right: 10px;
+      padding-right: 10px;
+      color: var(--gold-light);
+      border-right: 1px solid var(--border);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: rgba(240, 214, 117, 0.55);
+      text-underline-offset: 3px;
+      transition:
+        color 0.2s ease,
+        text-decoration-color 0.2s ease;
+    }
+
+    .footer-faq-link:hover,
+    .footer-faq-link:focus-visible {
+      color: #ffffff;
+      text-decoration-color: var(--gold-light);
+    }
+
     .footer-location-link {
       color: var(--gold-light);
       font-weight: 700;
@@ -912,6 +932,9 @@
       .announcement-bar {
         padding: 7px 10px;
         font-size: 11px;
+        line-height: 1.25;
+        white-space: normal;
+        text-wrap: balance;
       }
 
       .hero {
@@ -1130,9 +1153,9 @@
       href="https://t.me/sgtoyhse"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Join SG Toy House on Telegram"
+      aria-label="Join the SG Toy House Telegram group"
     >
-      Singapore’s #1 Toy House. Join Us on Telegram →
+      Singapore's #1 Toy House. Join our 1400+ members Telegram group now!
     </a>
 
     <header class="site-header">
@@ -1372,7 +1395,14 @@
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <p>
+      <p class="footer-service-info">
+        <a
+          class="footer-faq-link"
+          href="faq.html"
+        >
+          FAQ
+        </a>
+
         <a
           class="footer-location-link"
           href="https://maps.app.goo.gl/s9VNcQQ7p5qqfCEU9"
