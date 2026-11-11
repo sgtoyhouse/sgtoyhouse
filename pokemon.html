@@ -3148,6 +3148,21 @@
     productModal.querySelectorAll("[data-close-product-modal]").forEach((element) => {
       element.addEventListener("click", closeProductModal);
     });
+    productModalImage.addEventListener("click", openProductPhoto);
+    productModalImage.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openProductPhoto();
+      }
+    });
+    productPhotoClose.addEventListener("click", closeProductPhoto);
+    productPhotoFull.addEventListener("click", closeProductPhoto);
+    productPhotoViewer.addEventListener("click", (event) => {
+      if (event.target === productPhotoViewer) {
+        closeProductPhoto();
+      }
+    });
+
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") {
         return;
