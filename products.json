@@ -220,14 +220,15 @@
     "price": 25,
     "currency": "SGD",
     "status": "In Stock",
+    "popular": false,
     "setNumber": "",
     "year": 2023,
+    "language": "",
     "description": "✨ Soft fabric and embroidered details\n✨ Item Dimensions: 3.8 x 3.8 x 6 inches (9.6 x 9.6 x 15.2 cm)",
-    "image": "images/products/Acc_PikachuPlush.jpg",
+    "image": "images/products/accessories/Acc_PikachuPlush.jpg",
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T19:01:58.957Z",
-    "updatedAt": "2026-11-09T19:01:58.957Z",
-    "popular": false
+    "updatedAt": "2026-11-11T02:59:26.867Z"
   }
 ]
