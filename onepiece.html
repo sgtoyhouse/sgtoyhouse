@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1209,7 +1208,7 @@
     .main-navigation {
       min-height: 58px;
       display: grid;
-      grid-template-columns: minmax(190px, 1.4fr) repeat(4, minmax(100px, 1fr));
+      grid-template-columns: minmax(180px, 1.35fr) repeat(5, minmax(84px, 1fr));
       align-items: stretch;
     }
     .navigation-link {
@@ -1291,23 +1290,51 @@
         letter-spacing: 0;
       }
     }
+
+    /* FAQ footer link and compact mobile announcement */
+    .footer-faq-link {
+      margin-right: 10px;
+      padding-right: 10px;
+      color: var(--gold-light);
+      border-right: 1px solid var(--border);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: rgba(240, 214, 117, 0.55);
+      text-underline-offset: 3px;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+    .footer-faq-link:hover,
+    .footer-faq-link:focus-visible {
+      color: #ffffff;
+      text-decoration-color: var(--gold-light);
+    }
+    @media (max-width: 480px) {
+      .announcement-bar {
+        padding: 6px 8px;
+        font-size: 10px;
+        line-height: 1.25;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+      .footer-service-info {
+        line-height: 1.8;
+      }
+    }
 </style>
 </head>
 <body>
 <div class="sticky-top-area">
-<a aria-label="Join SG Toy House on Telegram" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">Singapore’s #1 Toy House. Join Us on Telegram →</a>
+<a aria-label="Join the SG Toy House Telegram group" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">Singapore's #1 Toy House. Join our 1400+ members Telegram group now!</a>
 <header class="site-header">
 <nav aria-label="Main navigation" class="container main-navigation">
 <a aria-label="SG Toy House home" class="navigation-link navigation-home" href="index.html">SG Toy House</a>
 <a class="navigation-link" href="lego.html">LEGO</a>
 <a class="navigation-link" href="pokemon.html">Pokémon TCG</a>
-<a class="navigation-link" aria-current="page" href="onepiece.html">One Piece TCG</a>
+<a aria-current="page" class="navigation-link" href="onepiece.html">One Piece TCG</a>
 <a class="navigation-link" href="accessories.html">Accessories</a>
-</nav>
+<a class="navigation-link" href="faq.html">FAQ</a></nav>
 </header>
 </div>
-
-
 <main>
 <section class="page-hero">
 <div class="container">
@@ -1343,7 +1370,6 @@
 <span aria-hidden="true" class="filter-checkmark"></span>
 <span>Japanese</span>
 </label>
-
 </div>
 </div>
 <p class="product-count" id="product-count">Loading One Piece products...</p>
@@ -1388,18 +1414,7 @@
 </main>
 <footer class="site-footer">
 <div class="container footer-content">
-<p>
-        <a
-          class="footer-location-link"
-          href="https://maps.app.goo.gl/s9VNcQQ7p5qqfCEU9"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Open collection address in Google Maps"
-        >
-          Collection Address
-        </a>.
-        Delivery Service Available.
-      </p>
+<p class="footer-service-info"><a class="footer-faq-link" href="faq.html">FAQ</a> <a class="footer-location-link" href="https://maps.app.goo.gl/s9VNcQQ7p5qqfCEU9" rel="noopener noreferrer" target="_blank" title="Open collection address in Google Maps">Collection Address</a>. Delivery Service Available.</p>
 <ul class="footer-links">
 <li>
 <a href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">
