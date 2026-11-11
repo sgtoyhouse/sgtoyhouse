@@ -1326,8 +1326,8 @@
     /* Full-screen product overlay */
     body.product-modal-open { overflow: hidden; }
     .product-card { cursor: pointer; }
-    .product-modal { position: fixed; inset: 0; z-index: 2000; overflow-y: auto; background: #000000; }
-    .product-modal-backdrop { min-height: 100%; position: fixed; inset: 0; background: #000000; }
+    .product-modal { position: fixed; inset: 0; z-index: 2000; overflow-y: auto; }
+    .product-modal-backdrop { min-height: 100%; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.84); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
     .product-modal-panel { width: min(1050px, calc(100% - 40px)); max-height: calc(100vh - 48px); margin: 24px auto; overflow: auto; position: relative; z-index: 1; background: #101010; border: 1px solid var(--gold); border-radius: 22px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75); scrollbar-color: var(--gold) #171717; scrollbar-width: thin; }
     .product-modal-close { width: 42px; height: 42px; padding: 0; display: flex; align-items: center; justify-content: center; position: absolute; top: 14px; right: 14px; z-index: 3; background: rgba(7, 7, 7, 0.9); color: #fff; border: 1px solid var(--border); border-radius: 50%; font-size: 28px; line-height: 1; cursor: pointer; }
     .product-modal-close:hover, .product-modal-close:focus-visible { background: var(--gold); color: #070707; border-color: var(--gold); }
