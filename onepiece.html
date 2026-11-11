@@ -537,6 +537,10 @@
       background: var(--royal-blue);
       color: #ffffff;
     }
+    .product-status.in-stock {
+      background: var(--green);
+      color: #04150a;
+    }
 
     .product-status.almost-gone {
       background: var(--amber);
@@ -1360,6 +1364,7 @@
     .product-modal-image-placeholder { padding: 30px; color: var(--muted); text-align: center; }
     .product-modal-status { max-width: calc(100% - 32px); padding: 6px 11px; position: absolute; top: 16px; left: 16px; background: var(--green); color: #04150a; border-radius: 999px; font-size: 11px; font-weight: 900; line-height: 1.2; text-transform: uppercase; }
     .product-modal-status.preorder { background: var(--royal-blue); color: #fff; }
+    .product-modal-status.in-stock { background: var(--green); color: #04150a; }
     .product-modal-status.almost-gone { background: var(--amber); color: #1c1917; }
     .product-modal-status.sold-out { background: var(--red); color: #fff; }
     .product-modal-status.most-popular { background: var(--bright-yellow); color: #1c1917; }
@@ -2035,6 +2040,13 @@
         return "sold-out";
       }
 
+      if (
+        status.includes("instock") ||
+        status.includes("available")
+      ) {
+        return "in-stock";
+      }
+
       if (status.includes("preorder")) {
         return "preorder";
       }
@@ -2070,6 +2082,7 @@
 
       return (
         statusClass === "" ||
+        statusClass === "in-stock" ||
         statusClass === "preorder" ||
         statusClass === "almost-gone"
       );
