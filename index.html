@@ -1493,9 +1493,14 @@
   </button>
 
   <script>
-    const PRODUCTS_PER_CATEGORY = 1;
-    const MAX_POPULAR_PRODUCTS = 4;
+    const MAX_POPULAR_PRODUCTS = 5;
     const MAX_VISIBLE_REVIEWS = 5;
+
+    const RECENT_PRODUCT_LIMITS = {
+      lego: 1,
+      pokemon: 2,
+      onepiece: 2
+    };
 
     const CATEGORY_CONFIG = [
       {
@@ -2292,16 +2297,29 @@
             .children
             .length !== 0;
 
-        CATEGORY_CONFIG.forEach(
-          (category) => {
+        Object.entries(
+          RECENT_PRODUCT_LIMITS
+        ).forEach(
+          ([categoryKey, productLimit]) => {
+            const category =
+              CATEGORY_CONFIG.find(
+                (item) =>
+                  item.key === categoryKey
+              );
+
+            if (!category) {
+              return;
+            }
+
             products
               .filter(
                 (product) =>
                   normalizeProductCategory(
                     product.category ||
                     product.type ||
-                    product.collection
-                  ) === category.key
+                    product.collection ||
+                    ""
+                  ) === categoryKey
               )
               .sort(
                 (first, second) =>
@@ -2310,7 +2328,7 @@
               )
               .slice(
                 0,
-                PRODUCTS_PER_CATEGORY
+                productLimit
               )
               .forEach(
                 (product) => {
