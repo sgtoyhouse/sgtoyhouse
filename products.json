@@ -109,12 +109,13 @@
   },
   {
     "id": "product-810434a9-52a3-45f2-addd-25b82e9a0a1c",
-    "name": "Icons Roller Coaster",
+    "name": "Roller Coaster",
     "category": "LEGO",
     "price": 450,
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Icons",
     "setNumber": "10261",
     "year": 2018,
     "language": "",
@@ -123,7 +124,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T22:48:52.431Z",
-    "updatedAt": "2026-11-11T03:02:19.518Z"
+    "updatedAt": "2026-11-11T03:28:22.506Z"
   },
   {
     "id": "product-d16d64e6-4e0c-4140-9c97-a1f2bea58392",
@@ -199,12 +200,13 @@
   },
   {
     "id": "product-6d30642e-9da7-46d1-b291-60598b7392fe",
-    "name": "Minifigures Marvel Series 2 (Set of 12)",
+    "name": "Marvel Series 2 (Set of 12)",
     "category": "LEGO",
     "price": 90,
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Minifigures",
     "setNumber": "71039",
     "year": 2023,
     "language": "",
@@ -213,7 +215,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T19:25:02.501Z",
-    "updatedAt": "2026-11-11T03:02:46.193Z"
+    "updatedAt": "2026-11-11T03:27:22.305Z"
   },
   {
     "id": "product-86d54aef-912f-4ff5-9411-af49aef0310f",
