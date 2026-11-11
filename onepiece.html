@@ -1450,11 +1450,117 @@
       .product-modal-actions .product-join-button { min-height: 34px; padding: 5px 8px; font-size: 12px; }
     }
 
+
+
+    /* Scrolling Telegram announcement */
+    .announcement-bar {
+      width: 100%;
+      min-height: 36px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background: var(--gold);
+      color: #070707;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    .announcement-track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      animation: announcement-scroll 18s linear infinite;
+      will-change: transform;
+    }
+    .announcement-message {
+      padding: 8px 36px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    @keyframes announcement-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .announcement-bar:hover .announcement-track,
+    .announcement-bar:focus-visible .announcement-track {
+      animation-play-state: paused;
+    }
+
+    /* Stronger Join Us Now outline */
+    .product-join-button {
+      border: 2px solid var(--gold);
+    }
+    .product-modal-actions .product-join-button {
+      border-width: 3px;
+      border-color: var(--gold);
+    }
+
+    /* Enlarge small images in the photo-only viewer */
+    .product-photo-viewer img {
+      width: min(95vw, 1400px);
+      height: min(92dvh, 1400px);
+      max-width: none;
+      max-height: none;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      cursor: zoom-out;
+      image-rendering: auto;
+    }
+
+    @media (max-width: 480px) {
+      .announcement-bar {
+        min-height: 32px;
+        padding: 0;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .announcement-message {
+        padding: 7px 24px;
+      }
+      .announcement-track {
+        animation-duration: 15s;
+      }
+      .product-photo-viewer {
+        padding: 8px;
+      }
+      .product-photo-viewer img {
+        width: calc(100vw - 16px);
+        height: calc(100dvh - 16px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .announcement-track {
+        width: 100%;
+        animation: none;
+      }
+      .announcement-message {
+        width: 100%;
+        padding: 7px 10px;
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+      }
+      .announcement-message[aria-hidden="true"] {
+        display: none;
+      }
+    }
+
 </style>
 </head>
 <body>
 <div class="sticky-top-area">
-<a aria-label="Join the SG Toy House Telegram group" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">Singapore's #1 Toy House. Join our 1400+ members Telegram group now!</a>
+<a aria-label="Click here to join our 1400+ members Telegram group" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">
+  <span class="announcement-track">
+    <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+    <span aria-hidden="true" class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+  </span>
+</a>
 <header class="site-header">
 <nav aria-label="Main navigation" class="container main-navigation">
 <a aria-label="SG Toy House home" class="navigation-link navigation-home" href="index.html">SG Toy House</a>
