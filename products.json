@@ -1,5 +1,24 @@
 [
   {
+    "id": "product-bd21c514-647d-4e29-8396-4db307405fae",
+    "name": "Mega Kangaskhan Ex Box",
+    "category": "Pokémon",
+    "price": 70,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Ex Box",
+    "setNumber": "",
+    "year": 2025,
+    "language": "English",
+    "description": "✨Each box contains :\n- 1x Foil promo card (Mega Kangaskhan ex)\n- 1x Oversize lenticular promo card (Mega Kangaskhan ex)\n- 4x Booster Packs (2x Mega Evolution Base + 2x Journey Together)",
+    "image": "images/products/pokemon/Pkm Mega Kangaskhan EX Box.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-11T21:10:44.499Z",
+    "updatedAt": "2026-11-11T21:10:44.499Z"
+  },
+  {
     "id": "product-8e08e6c5-cc1a-4022-b5f2-0c8ff8c5e591",
     "name": "Promotion Pack Vol. 8",
     "category": "One Piece",
