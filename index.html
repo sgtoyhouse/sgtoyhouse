@@ -1750,6 +1750,59 @@
       .product-photo-viewer img { width: calc(100vw - 16px); height: calc(100dvh - 16px); }
     }
 
+
+
+    /* Card-to-overlay transition */
+    ::view-transition-group(product-expand) {
+      animation-duration: 420ms;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    ::view-transition-old(product-expand),
+    ::view-transition-new(product-expand) {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+    ::view-transition-old(product-expand) {
+      animation: product-card-fade-out 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    ::view-transition-new(product-expand) {
+      animation: product-overlay-fade-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes product-card-fade-out {
+      from { opacity: 1; filter: brightness(1); }
+      to { opacity: 0.65; filter: brightness(0.72); }
+    }
+    @keyframes product-overlay-fade-in {
+      from { opacity: 0.72; filter: brightness(0.82); }
+      to { opacity: 1; filter: brightness(1); }
+    }
+    .product-modal-panel { transform-origin: center; }
+    .product-modal:not([hidden]) .product-modal-panel {
+      animation: product-modal-open 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .product-modal:not([hidden]) .product-modal-backdrop {
+      animation: product-backdrop-open 280ms ease-out both;
+    }
+    @keyframes product-modal-open {
+      from { opacity: 0; transform: translateY(18px) scale(0.88); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes product-backdrop-open {
+      from { opacity: 0; backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
+      to { opacity: 1; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-group(product-expand),
+      ::view-transition-old(product-expand),
+      ::view-transition-new(product-expand),
+      .product-modal-panel,
+      .product-modal-backdrop {
+        animation: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -2382,6 +2435,7 @@
         "back-to-top"
       );
     const productModal = document.getElementById("product-modal");
+    const productModalPanel = productModal.querySelector(".product-modal-panel");
     const productModalClose = document.getElementById("product-modal-close");
     const productModalImageArea = document.getElementById("product-modal-image-area");
     const productModalImage = document.getElementById("product-modal-image");
@@ -2684,6 +2738,8 @@
 
 
     let productModalPreviousFocus = null;
+    let productModalSourceCard = null;
+    let productModalTransition = null;
     function getProductStatus(product) {
       const raw = String(product.status || product.availability || "In Stock").trim();
       return raw.toLowerCase() === "reserved" ? "Almost Gone" : raw;
@@ -2702,8 +2758,7 @@
       detail.append(strong, String(value));
       return detail;
     }
-    function openProductModal(product, category) {
-      productModalPreviousFocus = document.activeElement;
+    function populateAndShowProductModal(product, category) {
       const name = getProductName(product);
       const image = getProductImage(product);
       const subcategory = getProductSubcategory(product);
@@ -2742,11 +2797,67 @@
       document.body.classList.add("product-modal-open");
       productModalClose.focus();
     }
+    function openProductModal(product, category, sourceCard = null) {
+      productModalPreviousFocus = document.activeElement;
+      productModalSourceCard = sourceCard;
+
+      const showModal = () => {
+        populateAndShowProductModal(product, category);
+      };
+
+      if (
+        !document.startViewTransition ||
+        !sourceCard ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        showModal();
+        return;
+      }
+
+      sourceCard.style.viewTransitionName = "product-expand";
+      productModalPanel.style.viewTransitionName = "product-expand";
+      productModalTransition = document.startViewTransition(showModal);
+      productModalTransition.finished.finally(() => {
+        sourceCard.style.viewTransitionName = "";
+        productModalPanel.style.viewTransitionName = "";
+        productModalTransition = null;
+      });
+    }
+
     function closeProductModal() {
-      productModal.hidden = true;
-      document.body.classList.remove("product-modal-open");
-      productModalImage.src = "";
-      if (productModalPreviousFocus && typeof productModalPreviousFocus.focus === "function") productModalPreviousFocus.focus();
+      const sourceCard = productModalSourceCard;
+      const hideModal = () => {
+        productModal.hidden = true;
+        document.body.classList.remove("product-modal-open");
+        productModalImage.src = "";
+      };
+      const restoreFocus = () => {
+        if (productModalPreviousFocus && typeof productModalPreviousFocus.focus === "function") {
+          productModalPreviousFocus.focus();
+        }
+        productModalSourceCard = null;
+      };
+
+      if (
+        !document.startViewTransition ||
+        !sourceCard ||
+        !document.body.contains(sourceCard) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        hideModal();
+        restoreFocus();
+        return;
+      }
+
+      sourceCard.style.viewTransitionName = "product-expand";
+      productModalPanel.style.viewTransitionName = "product-expand";
+      productModalTransition = document.startViewTransition(hideModal);
+      productModalTransition.finished.finally(() => {
+        sourceCard.style.viewTransitionName = "";
+        productModalPanel.style.viewTransitionName = "";
+        productModalTransition = null;
+        restoreFocus();
+      });
     }
     function openProductPhoto() {
       if (!productModalImage.src || productModalImage.hidden) return;
@@ -2775,11 +2886,11 @@
       card.tabIndex = 0;
       card.setAttribute("role", "button");
       card.setAttribute("aria-label", `View details for ${getProductName(product)}`);
-      card.addEventListener("click", () => openProductModal(product, category));
+      card.addEventListener("click", () => openProductModal(product, category, card));
       card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          openProductModal(product, category);
+          openProductModal(product, category, card);
         }
       });
 
