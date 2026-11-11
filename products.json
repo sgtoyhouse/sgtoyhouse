@@ -1,12 +1,13 @@
 [
   {
     "id": "product-34b26bd9-1cf8-4bc0-800f-70eaa3e4bfbf",
-    "name": "3rd Anniversary Promo Card",
+    "name": "3rd Anniversary Promo Pack",
     "category": "One Piece",
     "price": 15,
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Promo Pack",
     "setNumber": "",
     "year": 2025,
     "language": "Japanese",
@@ -15,16 +16,17 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:50:59.991Z",
-    "updatedAt": "2026-11-11T03:09:51.667Z"
+    "updatedAt": "2026-11-11T03:48:23.327Z"
   },
   {
     "id": "product-7f842a7a-6aba-4492-b08e-8a7266f15504",
-    "name": "Let’s Get Started Campaign Promo Pack",
+    "name": "Let’s Get Started Campaign",
     "category": "One Piece",
     "price": 10,
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Promo Pack",
     "setNumber": "",
     "year": 2025,
     "language": "Japanese",
@@ -33,7 +35,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:46:50.267Z",
-    "updatedAt": "2026-11-11T03:10:41.314Z"
+    "updatedAt": "2026-11-11T03:48:12.078Z"
   },
   {
     "id": "product-28b80fcc-1040-453d-8ad7-5b732d315d67",
@@ -43,6 +45,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Promo Card",
     "setNumber": "",
     "year": 2026,
     "language": "Japanese",
@@ -51,7 +54,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:41:38.159Z",
-    "updatedAt": "2026-11-11T03:10:22.806Z"
+    "updatedAt": "2026-11-11T03:48:42.109Z"
   },
   {
     "id": "product-b7316161-1efa-4ac1-99c9-80a2a35cd336",
@@ -61,6 +64,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Promo Set",
     "setNumber": "",
     "year": 2026,
     "language": "Japanese",
@@ -69,43 +73,45 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:34:07.116Z",
-    "updatedAt": "2026-11-11T03:10:06.496Z"
+    "updatedAt": "2026-11-11T03:49:29.734Z"
   },
   {
     "id": "product-cf4a5f4e-5ef5-4383-92ef-792a00b4cc63",
-    "name": "Ascended Heroes Premium Poster Collection Gardevoir",
+    "name": "Premium Poster Collection Gardevoir",
     "category": "Pokémon",
     "price": 200,
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Ascended Heroes",
     "setNumber": "",
     "year": 2026,
     "language": "English",
-    "description": "",
+    "description": "✨Each set contains :\n- 1 foil promo card featuring Mega Lucario ex or Mega Gardevoir ex\n- 1 double-sided poster, 26.875\" × 39\"\n- 10 Pokémon TCG: Mega Evolution—Ascended Heroes booster packs\n- A code card for Pokémon TCG Live",
     "image": "images/products/pokemon/Pkm_Ascended Heroes Premium Poster Collection Gardevoir.jpg",
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T10:11:46.770Z",
-    "updatedAt": "2026-11-11T03:06:39.588Z"
+    "updatedAt": "2026-11-11T03:52:17.672Z"
   },
   {
     "id": "product-1291d6bc-29c3-44b0-bedc-086b46ff22cc",
-    "name": "Ascended Heroes Premium Poster Collection Lucario",
+    "name": "Premium Poster Collection Lucario",
     "category": "Pokémon",
     "price": 210,
     "currency": "SGD",
     "status": "In Stock",
     "popular": true,
+    "subCategory": "Ascended Heroes",
     "setNumber": "",
     "year": 2026,
     "language": "English",
-    "description": "",
+    "description": "✨Each set contains :\n- 1 foil promo card featuring Mega Lucario ex or Mega Gardevoir ex\n- 1 double-sided poster, 26.875\" × 39\"\n- 10 Pokémon TCG: Mega Evolution—Ascended Heroes booster packs\n- A code card for Pokémon TCG Live",
     "image": "images/products/pokemon/Pkm_Ascended Heroes Premium Poster Collection Lucario.jpg",
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T09:32:33.913Z",
-    "updatedAt": "2026-11-11T03:06:02.896Z"
+    "updatedAt": "2026-11-11T03:52:31.392Z"
   },
   {
     "id": "product-810434a9-52a3-45f2-addd-25b82e9a0a1c",
@@ -134,6 +140,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Promo Pack",
     "setNumber": "",
     "year": 2026,
     "language": "Japanese",
@@ -142,7 +149,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:41:13.602Z",
-    "updatedAt": "2026-11-11T03:10:58.982Z"
+    "updatedAt": "2026-11-11T03:52:51.444Z"
   },
   {
     "id": "product-8b6b6f6b-48b7-42c7-a77f-865f08ee4bf4",
@@ -152,6 +159,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Promo Pack",
     "setNumber": "",
     "year": 2025,
     "language": "Japanese",
@@ -160,7 +168,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:37:15.998Z",
-    "updatedAt": "2026-11-11T03:11:15.213Z"
+    "updatedAt": "2026-11-11T03:53:07.558Z"
   },
   {
     "id": "product-423e6d18-8c5e-43c7-8f3f-b4e47e2e5fd6",
@@ -170,6 +178,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Ultra Premium Collection",
     "setNumber": "",
     "year": 2025,
     "language": "English",
@@ -178,7 +187,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:12:43.430Z",
-    "updatedAt": "2026-11-11T03:05:00.081Z"
+    "updatedAt": "2026-11-11T03:53:37.494Z"
   },
   {
     "id": "product-98f716af-0e57-4649-8f8a-cc15318e725b",
@@ -188,6 +197,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Premium Collection",
     "setNumber": "",
     "year": 2026,
     "language": "English",
@@ -196,7 +206,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:01:34.749Z",
-    "updatedAt": "2026-11-11T03:04:44.472Z"
+    "updatedAt": "2026-11-11T03:53:54.133Z"
   },
   {
     "id": "product-6d30642e-9da7-46d1-b291-60598b7392fe",
@@ -219,12 +229,13 @@
   },
   {
     "id": "product-86d54aef-912f-4ff5-9411-af49aef0310f",
-    "name": "Pokémon Center Pikachu Plush Deck Case",
+    "name": "Pokémon Center Pikachu Plush Deck Box",
     "category": "Accessories",
     "price": 25,
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
+    "subCategory": "Deck Box",
     "setNumber": "",
     "year": 2023,
     "language": "",
@@ -233,6 +244,6 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T19:01:58.957Z",
-    "updatedAt": "2026-11-11T02:59:26.867Z"
+    "updatedAt": "2026-11-11T03:54:33.191Z"
   }
 ]
