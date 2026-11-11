@@ -559,6 +559,18 @@
       text-transform: uppercase;
     }
 
+    .product-subcategory {
+      display: inline;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .product-subcategory::before {
+      margin: 0 5px;
+      color: var(--muted);
+      content: "•";
+    }
+
     .product-name {
       margin-bottom: 8px;
       color: #ffffff;
@@ -1023,6 +1035,11 @@
         letter-spacing: 0.7px;
       }
 
+      .product-subcategory::before {
+        margin-right: 3px;
+        margin-left: 3px;
+      }
+
       .product-name {
         margin-bottom: 6px;
         font-size: 13px;
@@ -1480,6 +1497,15 @@
       );
     }
 
+    function getProductSubcategory(product) {
+      return String(
+        product.subCategory ||
+        product.subcategory ||
+        product.subCategoryName ||
+        ""
+      ).trim();
+    }
+
     function getProductYear(product) {
       const value =
         product.year ??
@@ -1669,6 +1695,7 @@
 
       const searchableText = [
         getProductName(product),
+        getProductSubcategory(product),
         product.description,
         getProductYear(product),
         getProductLanguage(product),
@@ -1926,8 +1953,27 @@
       category.className =
         "product-category";
 
-      category.textContent =
-        DISPLAY_CATEGORY_NAME;
+      category.append(
+        DISPLAY_CATEGORY_NAME
+      );
+
+      const subcategoryText =
+        getProductSubcategory(product);
+
+      if (subcategoryText) {
+        const subcategory =
+          document.createElement("span");
+
+        subcategory.className =
+          "product-subcategory";
+
+        subcategory.textContent =
+          subcategoryText;
+
+        category.appendChild(
+          subcategory
+        );
+      }
 
       const name =
         document.createElement("h3");
