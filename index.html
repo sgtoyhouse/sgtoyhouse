@@ -528,6 +528,8 @@
       top: 10px;
       left: 10px;
       z-index: 2;
+      border-style: solid;
+      border-width: 1px;
       border-radius: 999px;
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
       font-size: 10px;
@@ -1619,15 +1621,53 @@
       position: absolute;
       top: 16px;
       left: 16px;
-      background: #22c55e;
-      color: #04150a;
+      border-style: solid;
+      border-width: 1px;
       border-radius: 999px;
       font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
     }
-    .product-modal-status.almost-gone { background: var(--gold); color: #070707; }
-    .product-modal-status.sold-out { background: #dc2626; color: #fff; }
+
+    /* In Stock: Green */
+    .product-modal-status.in-stock {
+      background: #16a34a;
+      color: #ffffff;
+      border-color: #86efac;
+      box-shadow:
+        0 0 9px rgba(22, 163, 74, 0.45),
+        0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Preorder: Royal blue */
+    .product-modal-status.preorder {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #93c5fd;
+      box-shadow:
+        0 0 10px rgba(37, 99, 235, 0.55),
+        0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Almost Gone: Amber */
+    .product-modal-status.almost-gone {
+      background: #f59e0b;
+      color: #1c1000;
+      border-color: #fcd34d;
+      box-shadow:
+        0 0 10px rgba(245, 158, 11, 0.55),
+        0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Sold Out: Red */
+    .product-modal-status.sold-out {
+      background: #dc2626;
+      color: #ffffff;
+      border-color: #fca5a5;
+      box-shadow:
+        0 0 10px rgba(220, 38, 38, 0.55),
+        0 3px 10px rgba(0, 0, 0, 0.4);
+    }
     .product-modal-content {
       min-width: 0;
       max-height: calc(100vh - 48px);
@@ -2816,8 +2856,10 @@
     function getProductStatusClass(product) {
       const status = normalize(getProductStatus(product));
       if (status.includes("soldout") || status.includes("unavailable") || status.includes("outofstock")) return "sold-out";
+      if (status.includes("preorder")) return "preorder";
       if (status.includes("almostgone") || status.includes("reserved")) return "almost-gone";
-      return "";
+      if (status.includes("instock") || status.includes("available")) return "in-stock";
+      return "in-stock";
     }
     function createModalDetail(label, value) {
       const detail = document.createElement("span");
