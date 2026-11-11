@@ -398,11 +398,16 @@
       font-weight: 800;
     }
 
-    .product-grid,
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
     .review-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
     }
 
     /* Cards */
@@ -820,10 +825,11 @@
 
     /* Tablet */
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .product-grid,
       .review-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
       }
     }
 
@@ -1489,7 +1495,7 @@
   <script>
     const PRODUCTS_PER_CATEGORY = 1;
     const MAX_POPULAR_PRODUCTS = 4;
-    const MAX_VISIBLE_REVIEWS = 4;
+    const MAX_VISIBLE_REVIEWS = 5;
 
     const CATEGORY_CONFIG = [
       {
