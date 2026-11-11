@@ -1452,7 +1452,7 @@
 
 
 
-    /* Scrolling Telegram announcement */
+    /* Seamlessly repeating Telegram announcement */
     .announcement-bar {
       width: 100%;
       min-height: 36px;
@@ -1467,19 +1467,33 @@
       font-weight: 800;
       line-height: 1.4;
       white-space: nowrap;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
     }
     .announcement-track {
       width: max-content;
       display: flex;
       align-items: center;
       flex-shrink: 0;
-      animation: announcement-scroll 18s linear infinite;
+      animation: announcement-scroll 22s linear infinite;
       will-change: transform;
     }
-    .announcement-message {
-      padding: 8px 36px;
-      display: inline-block;
+    .announcement-group {
+      display: flex;
+      align-items: center;
       flex-shrink: 0;
+    }
+    .announcement-message {
+      padding: 8px 38px;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .announcement-message::after {
+      margin-left: 76px;
+      color: rgba(7, 7, 7, 0.55);
+      content: "•";
     }
     @keyframes announcement-scroll {
       from { transform: translateX(0); }
@@ -1519,11 +1533,14 @@
         font-size: 11px;
         white-space: nowrap;
       }
+      .announcement-track {
+        animation-duration: 18s;
+      }
       .announcement-message {
         padding: 7px 24px;
       }
-      .announcement-track {
-        animation-duration: 15s;
+      .announcement-message::after {
+        margin-left: 48px;
       }
       .product-photo-viewer {
         padding: 8px;
@@ -1539,14 +1556,22 @@
         width: 100%;
         animation: none;
       }
+      .announcement-group {
+        width: 100%;
+      }
+      .announcement-group[aria-hidden="true"],
+      .announcement-message[aria-hidden="true"] {
+        display: none;
+      }
       .announcement-message {
         width: 100%;
         padding: 7px 10px;
+        justify-content: center;
         overflow: hidden;
         text-align: center;
         text-overflow: ellipsis;
       }
-      .announcement-message[aria-hidden="true"] {
+      .announcement-message::after {
         display: none;
       }
     }
@@ -1555,10 +1580,16 @@
 </head>
 <body>
 <div class="sticky-top-area">
-<a aria-label="Click here to join our 1400+ members Telegram group" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">
+<a aria-label="Click here to join our 1400 plus member Telegram group" class="announcement-bar" href="https://t.me/sgtoyhse" rel="noopener noreferrer" target="_blank">
   <span class="announcement-track">
-    <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
-    <span aria-hidden="true" class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+    <span class="announcement-group">
+      <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+      <span aria-hidden="true" class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+    </span>
+    <span aria-hidden="true" class="announcement-group">
+      <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+      <span class="announcement-message">Click Here to join our 1400+ members Telegram group now!</span>
+    </span>
   </span>
 </a>
 <header class="site-header">
