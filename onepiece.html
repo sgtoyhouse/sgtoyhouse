@@ -1406,6 +1406,137 @@
       .product-modal-price { margin-bottom: 14px; font-size: 20px; }
     }
 
+
+
+    /* Mobile full-screen overlay: fit image and details within the viewport */
+    @media (max-width: 760px) {
+      .product-modal {
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .product-modal-panel {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        max-height: none;
+        margin: 0;
+        overflow: hidden;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .product-modal-grid {
+        height: 100%;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 42%) minmax(0, 58%);
+      }
+
+      .product-modal-image {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        aspect-ratio: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .product-modal-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .product-modal-content {
+        min-height: 0;
+        padding: 14px 16px 12px;
+        overflow: hidden;
+      }
+
+      .product-modal-category {
+        margin-bottom: 3px;
+        font-size: 9px;
+        line-height: 1.15;
+      }
+
+      .product-modal-content h2 {
+        margin-bottom: 6px;
+        font-size: clamp(17px, 5vw, 22px);
+        line-height: 1.12;
+      }
+
+      .product-modal-details {
+        margin-bottom: 7px;
+        gap: 4px;
+      }
+
+      .product-modal-detail {
+        padding: 3px 6px;
+        font-size: 9px;
+      }
+
+      .product-modal-description {
+        margin-bottom: 7px;
+        font-size: clamp(10px, 2.8vw, 12px);
+        line-height: 1.32;
+      }
+
+      .product-modal-price {
+        margin-top: auto;
+        margin-bottom: 7px;
+        font-size: 17px;
+        line-height: 1.1;
+      }
+
+      .product-modal-actions {
+        gap: 5px;
+      }
+
+      .product-modal-actions .product-button {
+        min-height: 34px;
+        padding: 5px 9px;
+        font-size: 10px;
+      }
+
+      .product-modal-actions .product-join-button {
+        min-height: 28px;
+        padding: 4px 8px;
+        font-size: 9px;
+      }
+
+      .product-modal-close {
+        width: 36px;
+        height: 36px;
+        top: max(8px, env(safe-area-inset-top));
+        right: 8px;
+        font-size: 23px;
+      }
+
+      .product-modal-status {
+        top: max(9px, env(safe-area-inset-top));
+        left: 9px;
+        padding: 4px 7px;
+        font-size: 8px;
+      }
+    }
+
+    @media (max-width: 760px) and (max-height: 700px) {
+      .product-modal-grid {
+        grid-template-rows: minmax(0, 36%) minmax(0, 64%);
+      }
+
+      .product-modal-content {
+        padding-top: 10px;
+      }
+
+      .product-modal-description {
+        font-size: 9px;
+        line-height: 1.22;
+      }
+    }
+
 </style>
 </head>
 <body>
