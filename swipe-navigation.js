@@ -8,8 +8,7 @@
     { file: "lego.html", label: "LEGO" },
     { file: "pokemon.html", label: "Pokémon TCG" },
     { file: "onepiece.html", label: "One Piece TCG" },
-    { file: "accessories.html", label: "Accessories" },
-    { file: "faq.html", label: "FAQ" }
+    { file: "accessories.html", label: "Accessories" }
   ];
 
   const MOBILE_MAX = 900;
@@ -65,7 +64,6 @@
       transition: opacity 180ms ease, transform 180ms ease;
     }
     .sgth-swipe-label.is-active { opacity: 1; transform: translate(-50%,0); }
-
     @media (prefers-reduced-motion: reduce) {
       body.sgth-swipe-page, .sgth-swipe-shade, .sgth-swipe-label { transition: none !important; }
     }
@@ -83,9 +81,6 @@
   label.setAttribute("role", "status");
   label.setAttribute("aria-live", "polite");
   document.body.appendChild(label);
-
-
-
 
   const overlayIsOpen = () => {
     if (document.fullscreenElement) return true;
@@ -138,9 +133,6 @@
     document.body.classList.add(deltaX < 0 ? "sgth-exit-left" : "sgth-exit-right");
     window.setTimeout(() => location.assign(destination.file), ANIMATION_MS - 20);
   };
-
-
-
 
   document.addEventListener("touchstart", (event) => {
     if (!mobileQuery.matches || navigating || event.touches.length !== 1 || overlayIsOpen()) return;
