@@ -1,5 +1,24 @@
 [
   {
+    "id": "product-a1a67187-2fcd-49ae-8a54-d77810f914e3",
+    "name": "Lumiose City Mini Tin",
+    "category": "Pokémon",
+    "price": 20,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "ME03 • ME04 • Mini Tin",
+    "setNumber": "",
+    "year": 2026,
+    "language": "English",
+    "description": "✨ 1x Random mini tin\n✨ Each mini tin contains:\n- 2x Booster packs (1x Chaos Rising + 1x Perfect Order)\n- 1x Sticker sheet\n- 1x Pokémon art card",
+    "image": "images/products/pokemon/Pkm Lumiose City Mini Tins.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-12T08:59:41.203Z",
+    "updatedAt": "2026-11-12T08:59:41.203Z"
+  },
+  {
     "id": "product-3cb41311-2b24-4de1-bfdd-35c23e9fc46c",
     "name": "Mega Evolutions 3-Pack Blister (Golduck)",
     "category": "Pokémon",
@@ -26,7 +45,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
-    "subCategory": "ME03 •  ME04 • Tins",
+    "subCategory": "ME03 •  ME04 • Tin",
     "setNumber": "",
     "year": 2026,
     "language": "English",
@@ -35,7 +54,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T08:29:14.351Z",
-    "updatedAt": "2026-11-12T08:29:14.351Z"
+    "updatedAt": "2026-11-12T09:00:05.161Z"
   },
   {
     "id": "product-5042e8e3-7954-47aa-87ad-50e2f69554f6",
@@ -216,7 +235,7 @@
     "currency": "SGD",
     "status": "In Stock",
     "popular": false,
-    "subCategory": "SV6.5",
+    "subCategory": "SV6.5 •  Mini Tin",
     "setNumber": "",
     "year": 2024,
     "language": "English",
@@ -225,7 +244,7 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T04:38:24.209Z",
-    "updatedAt": "2026-11-12T04:38:24.209Z"
+    "updatedAt": "2026-11-12T09:00:51.426Z"
   },
   {
     "id": "product-0ac8a927-09c8-4f03-b210-fe1b8f346c49",
