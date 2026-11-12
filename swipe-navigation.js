@@ -66,54 +66,6 @@
     }
     .sgth-swipe-label.is-active { opacity: 1; transform: translate(-50%,0); }
 
-    .sgth-swipe-bar {
-      display: none;
-    }
-    @media (max-width: 900px) {
-      body.sgth-swipe-page { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
-      .sgth-swipe-bar {
-        min-height: 54px;
-        padding: 6px max(10px, env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-right));
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-        align-items: center;
-        gap: 8px;
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 2147483644;
-        background: rgba(7,7,7,.94);
-        border-top: 1px solid #3c321c;
-        box-shadow: 0 -8px 26px rgba(0,0,0,.42);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        font-family: Arial,Helvetica,sans-serif;
-      }
-      .sgth-swipe-bar-button {
-        min-width: 0;
-        min-height: 40px;
-        padding: 6px 10px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #f0d675;
-        background: #171717;
-        border: 1px solid #3c321c;
-        border-radius: 999px;
-        font: 800 11px/1.15 Arial,Helvetica,sans-serif;
-        cursor: pointer;
-      }
-      .sgth-swipe-bar-button.next { justify-content: flex-end; text-align: right; }
-      .sgth-swipe-bar-button.previous { justify-content: flex-start; text-align: left; }
-      .sgth-swipe-bar-button:disabled { opacity: .3; cursor: default; }
-      .sgth-swipe-bar-arrow { flex: 0 0 auto; color: #d4af37; font-size: 22px; line-height: 1; }
-      .sgth-swipe-bar-copy { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-      .sgth-swipe-bar-title { color: #b8ad91; font: 700 9px/1.1 Arial,Helvetica,sans-serif; letter-spacing: .6px; text-transform: uppercase; }
-      .sgth-swipe-bar-current { color: #f8f4e8; font: 800 11px/1.2 Arial,Helvetica,sans-serif; text-align: center; white-space: nowrap; }
-      body.product-modal-open .sgth-swipe-bar,
-      body:has(.product-photo-viewer:not([hidden])) .sgth-swipe-bar { display: none; }
-    }
     @media (prefers-reduced-motion: reduce) {
       body.sgth-swipe-page, .sgth-swipe-shade, .sgth-swipe-label { transition: none !important; }
     }
@@ -134,33 +86,6 @@
 
 
 
-  const swipeBar = document.createElement("nav");
-  swipeBar.className = "sgth-swipe-bar";
-  swipeBar.setAttribute("aria-label", "Swipe category navigation");
-
-  const previousPage = pages[currentIndex - 1] || null;
-  const nextPage = pages[currentIndex + 1] || null;
-
-  const previousButton = document.createElement("button");
-  previousButton.type = "button";
-  previousButton.className = "sgth-swipe-bar-button previous";
-  previousButton.disabled = !previousPage;
-  previousButton.setAttribute("aria-label", previousPage ? `Previous category: ${previousPage.label}` : "No previous category");
-  previousButton.innerHTML = `<span class="sgth-swipe-bar-arrow" aria-hidden="true">&#8592;</span><span class="sgth-swipe-bar-copy"><span class="sgth-swipe-bar-title">Previous</span><br>${previousPage ? previousPage.label : "Start"}</span>`;
-
-  const currentLabel = document.createElement("span");
-  currentLabel.className = "sgth-swipe-bar-current";
-  currentLabel.textContent = "Swipe categories";
-
-  const nextButton = document.createElement("button");
-  nextButton.type = "button";
-  nextButton.className = "sgth-swipe-bar-button next";
-  nextButton.disabled = !nextPage;
-  nextButton.setAttribute("aria-label", nextPage ? `Next category: ${nextPage.label}` : "No next category");
-  nextButton.innerHTML = `<span class="sgth-swipe-bar-copy"><span class="sgth-swipe-bar-title">Next</span><br>${nextPage ? nextPage.label : "End"}</span><span class="sgth-swipe-bar-arrow" aria-hidden="true">&#8594;</span>`;
-
-  swipeBar.append(previousButton, currentLabel, nextButton);
-  document.body.appendChild(swipeBar);
 
   const overlayIsOpen = () => {
     if (document.fullscreenElement) return true;
@@ -216,12 +141,6 @@
 
 
 
-  previousButton.addEventListener("click", () => {
-    if (previousPage && !overlayIsOpen()) navigate(1);
-  });
-  nextButton.addEventListener("click", () => {
-    if (nextPage && !overlayIsOpen()) navigate(-1);
-  });
 
   document.addEventListener("touchstart", (event) => {
     if (!mobileQuery.matches || navigating || event.touches.length !== 1 || overlayIsOpen()) return;
