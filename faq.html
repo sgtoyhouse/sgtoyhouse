@@ -82,5 +82,6 @@
     function filterFaqItems(){const s=normalizeSearchText(faqSearch.value);let c=0;faqItems.forEach(i=>{const m=!s||normalizeSearchText(i.textContent).includes(s);i.hidden=!m;if(m){c++;if(s){const q=i.querySelector('.faq-question');if(q)setFaqExpanded(q,true);const g=i.closest('[data-faq-group]');const t=g?g.querySelector('.faq-group-toggle'):null;if(t)setFaqGroupExpanded(t,true)}}});faqGroups.forEach(g=>{g.hidden=![...g.querySelectorAll('[data-faq-item]')].some(i=>!i.hidden)});faqEmpty.hidden=c!==0}faqSearch.addEventListener('input',filterFaqItems);
     function updateBackToTopButton(){backToTopButton.classList.toggle('visible',window.scrollY>320)}backToTopButton.addEventListener('click',()=>window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));window.addEventListener('scroll',updateBackToTopButton,{passive:true});updateBackToTopButton();
   </script>
+  <script src="swipe-navigation.js" defer></script>
 </body>
 </html>

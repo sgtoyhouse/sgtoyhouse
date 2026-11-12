@@ -8,7 +8,8 @@
     { file: "lego.html", label: "LEGO" },
     { file: "pokemon.html", label: "Pokémon TCG" },
     { file: "onepiece.html", label: "One Piece TCG" },
-    { file: "accessories.html", label: "Accessories" }
+    { file: "accessories.html", label: "Accessories" },
+    { file: "faq.html", label: "FAQ" }
   ];
 
   const MOBILE_MAX = 900;
