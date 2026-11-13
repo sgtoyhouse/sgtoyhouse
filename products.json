@@ -1,5 +1,54 @@
 [
   {
+    "id": "product-504d18b8-4cac-4cd0-b32d-3476fd640b66",
+    "name": "Treasure Chest Volume 1 Display",
+    "category": "One Piece",
+    "price": 2000,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "TC01 • OP13",
+    "setNumber": "",
+    "year": 2025,
+    "language": "Japanese",
+    "description": "✨ Each sealed display contains 4x TC-01 Treasure Chest Vol.1\n✨ Each Chest contains:\n- 12x OP-13 Booster Packs\n- 3x Promo Cards\n- 60x Card Sleeves\n✨ Chance to get a Serialized Nami!",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol.1a.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol.1b.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol.1c.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol.1d.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol.1e.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol.1f.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol.1g.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/OP Treasure Chest Vol.1a.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-13T18:51:45.719Z",
+    "updatedAt": "2026-11-13T18:51:45.719Z"
+  },
+  {
     "id": "product-8c54c3fc-d218-4c4e-8a88-2666eef2c9f0",
     "name": "Shanks [Ryuda]",
     "category": "One Piece",
@@ -16,7 +65,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-13T18:12:07.651Z",
-    "updatedAt": "2026-11-13T18:12:07.651Z"
+    "updatedAt": "2026-11-13T18:12:07.651Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Shanks [Ryuda] OP12-008 Promo Card.jpg",
+        "alt": "Shanks [Ryuda]"
+      }
+    ]
   },
   {
     "id": "product-ea375182-835a-4737-8ead-ea27a6c3d0b2",
@@ -35,7 +90,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-13T18:07:28.856Z",
-    "updatedAt": "2026-11-13T18:07:28.856Z"
+    "updatedAt": "2026-11-13T18:07:28.856Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Base Shop Limited Card Collection Vol 1.jpg",
+        "alt": "Base Shop Limited Card Collection Vol.1"
+      }
+    ]
   },
   {
     "id": "product-28ddafdb-8e4f-4f69-8889-ee71696c6ea7",
@@ -54,7 +115,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-13T18:01:58.998Z",
-    "updatedAt": "2026-11-13T18:01:58.998Z"
+    "updatedAt": "2026-11-13T18:01:58.998Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Promotion Pack 2022 Vol 2.jpg",
+        "alt": "Promotion Pack 2022 Vol. 2"
+      }
+    ]
   },
   {
     "id": "product-f6f6f777-49f7-461d-b738-4c0b5ffaae6b",
@@ -73,7 +140,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-13T18:00:13.906Z",
-    "updatedAt": "2026-11-13T18:00:13.906Z"
+    "updatedAt": "2026-11-13T18:00:13.906Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Promotion Pack Vol 9.jpg",
+        "alt": "Promotion Pack Vol. 9"
+      }
+    ]
   },
   {
     "id": "product-82bb26bb-6c53-44c9-8f4d-58c057b5a117",
@@ -92,7 +165,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T18:59:06.243Z",
-    "updatedAt": "2026-11-12T18:59:06.243Z"
+    "updatedAt": "2026-11-12T18:59:06.243Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Pitch Black Booster Pack.jpg",
+        "alt": "Pitch Black Booster Pack"
+      }
+    ]
   },
   {
     "id": "product-7516fb79-63fc-4aa8-aa04-ba0f5ee842aa",
@@ -111,7 +190,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T18:55:40.546Z",
-    "updatedAt": "2026-11-12T18:55:40.546Z"
+    "updatedAt": "2026-11-12T18:55:40.546Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Chaos Rising Booster Packs.jpg",
+        "alt": "Chaos Rising Booster Pack"
+      }
+    ]
   },
   {
     "id": "product-75e1acca-9bf3-48ca-a5fc-61e38a96c8a3",
@@ -130,7 +215,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T18:50:53.370Z",
-    "updatedAt": "2026-11-12T18:50:53.370Z"
+    "updatedAt": "2026-11-12T18:50:53.370Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Perfect Order Booster Packs.jpg",
+        "alt": "Perfect Order Booster Pack"
+      }
+    ]
   },
   {
     "id": "product-ff32a967-0a67-4138-b26f-518285463cd5",
@@ -149,7 +240,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T18:41:43.428Z",
-    "updatedAt": "2026-11-12T18:41:43.428Z"
+    "updatedAt": "2026-11-12T18:41:43.428Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm [EN] Pikachu WCS 2026.jpg",
+        "alt": "Pikachu WCS 2026 (English/Sealed)"
+      }
+    ]
   },
   {
     "id": "product-9b1f6436-3053-4128-bf26-3bb80b626a05",
@@ -168,7 +265,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T18:37:54.015Z",
-    "updatedAt": "2026-11-12T18:37:54.015Z"
+    "updatedAt": "2026-11-12T18:37:54.015Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm [JP] Pikachu WCS 2026 .jpg",
+        "alt": "Pikachu WCS 2026 (Japanese)"
+      }
+    ]
   },
   {
     "id": "product-6e89c81c-f496-4483-a7d9-0f66511ee522",
@@ -187,7 +290,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T16:30:18.740Z",
-    "updatedAt": "2026-11-12T16:30:18.740Z"
+    "updatedAt": "2026-11-12T16:30:18.740Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Lucario ex Premium Figure Collection.jpeg",
+        "alt": "Mega Lucario ex Premium Figure Collection"
+      }
+    ]
   },
   {
     "id": "product-e0065eda-30d6-42ea-ae7d-c1d715a37bc1",
@@ -206,7 +315,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T16:21:21.209Z",
-    "updatedAt": "2026-11-12T16:21:21.209Z"
+    "updatedAt": "2026-11-12T16:21:21.209Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Enhanced 2-Pack Blister Pack (Palafin, Baxcalibur & Garganacl).jpg",
+        "alt": "Enhanced 2-Pack Blister (Palafin, Baxcalibur & Garganacl)"
+      }
+    ]
   },
   {
     "id": "product-0f5f7324-d6b3-436d-8451-c0ad46098380",
@@ -225,7 +340,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T16:17:18.938Z",
-    "updatedAt": "2026-11-12T16:17:18.938Z"
+    "updatedAt": "2026-11-12T16:17:18.938Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Hops Snorlax.jpeg",
+        "alt": "Hop's Snorlax Journey Together Stamped"
+      }
+    ]
   },
   {
     "id": "product-23f9bcd9-a6ae-44d0-9f91-621f7a2f17b7",
@@ -244,7 +365,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T10:03:28.202Z",
-    "updatedAt": "2026-11-12T10:03:28.202Z"
+    "updatedAt": "2026-11-12T10:03:28.202Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Iono Premium Tournament.jpg",
+        "alt": "Iono Premium Tournament Collection"
+      }
+    ]
   },
   {
     "id": "product-aba04223-f0c3-4a06-be3b-2aa9b6e9e87a",
@@ -263,7 +390,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T09:57:22.781Z",
-    "updatedAt": "2026-11-12T09:57:22.781Z"
+    "updatedAt": "2026-11-12T09:57:22.781Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolution 1 Pack Checklane Blister Tyranitar.jpg",
+        "alt": "Mega Evolutions 1-Pack Checklane Blister (Tyranitar)"
+      }
+    ]
   },
   {
     "id": "product-cec8f6b5-40e0-4492-9694-9e46e4e96203",
@@ -282,7 +415,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T09:55:59.664Z",
-    "updatedAt": "2026-11-12T09:57:33.527Z"
+    "updatedAt": "2026-11-12T09:57:33.527Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolution 1 Pack Checklane Blister Meowscarada.jpg",
+        "alt": "Mega Evolutions 1-Pack Checklane Blister (Meowscarada)"
+      }
+    ]
   },
   {
     "id": "product-309332da-9ab3-403c-bed7-e2af45909bf6",
@@ -301,7 +440,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T09:47:10.149Z",
-    "updatedAt": "2026-11-12T09:57:51.411Z"
+    "updatedAt": "2026-11-12T09:57:51.411Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Destined Rivals 1 Pack Checklane Blister Pack Skeledirge.jpg",
+        "alt": "Destined Rivals 1-Pack Checklane Blister (Skeledirge)"
+      }
+    ]
   },
   {
     "id": "product-f7373317-a0fa-452a-ad67-5933cefa293e",
@@ -320,7 +465,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T09:44:19.526Z",
-    "updatedAt": "2026-11-12T09:58:01.213Z"
+    "updatedAt": "2026-11-12T09:58:01.213Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Destined Rivals 1 Pack Checklane Blister Pack Togekiss.jpg",
+        "alt": "Destined Rivals 1-Pack Checklane Blister (Togekiss)"
+      }
+    ]
   },
   {
     "id": "product-51b57212-18a6-42d4-a0e5-703383f1eed0",
@@ -339,7 +490,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T09:09:58.988Z",
-    "updatedAt": "2026-11-12T09:09:58.988Z"
+    "updatedAt": "2026-11-12T09:09:58.988Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolutions 3 Pack Blister (Golduck).jpeg",
+        "alt": "Mega Evolutions 3-Pack Blister (Golduck)"
+      }
+    ]
   },
   {
     "id": "product-a1a67187-2fcd-49ae-8a54-d77810f914e3",
@@ -358,7 +515,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T08:59:41.203Z",
-    "updatedAt": "2026-11-12T09:34:16.177Z"
+    "updatedAt": "2026-11-12T09:34:16.177Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Lumiose City Mini Tins.jpg",
+        "alt": "Lumiose City Mini Tin"
+      }
+    ]
   },
   {
     "id": "product-df7da132-acb5-40b2-93f2-e1c339953e8a",
@@ -377,7 +540,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T08:29:14.351Z",
-    "updatedAt": "2026-11-12T09:00:05.161Z"
+    "updatedAt": "2026-11-12T09:00:05.161Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Moonlit Tin.jpg",
+        "alt": "Mega Moonlit Tin (Mega Gengar ex + Mega Clefable ex)"
+      }
+    ]
   },
   {
     "id": "product-5042e8e3-7954-47aa-87ad-50e2f69554f6",
@@ -396,7 +565,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T08:18:00.715Z",
-    "updatedAt": "2026-11-12T09:44:36.508Z"
+    "updatedAt": "2026-11-12T09:44:36.508Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolutions 1 Pack Blister Drifloon.jpg",
+        "alt": "Mega Evolutions 1-Pack Blister (Drifloon)"
+      }
+    ]
   },
   {
     "id": "product-f98ba7fa-5452-46f7-9767-3c1891d048d7",
@@ -415,7 +590,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T08:10:01.534Z",
-    "updatedAt": "2026-11-12T08:10:01.534Z"
+    "updatedAt": "2026-11-12T08:10:01.534Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm 2024 Pokémon TCG World Championships Decks.JPG",
+        "alt": "2024 Pokémon TCG World Championships Decks (Set of 4)"
+      }
+    ]
   },
   {
     "id": "product-00c86889-f9b4-4925-94a0-c079ef262449",
@@ -434,7 +615,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T07:56:21.585Z",
-    "updatedAt": "2026-11-12T08:21:40.216Z"
+    "updatedAt": "2026-11-12T08:21:40.216Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Team Rocket Zapdos Destined Rivals Stamped .jpeg",
+        "alt": "Team Rocket's Zapdos Destined Rivals Stamped"
+      }
+    ]
   },
   {
     "id": "product-9056241a-f4cb-4345-be53-2c8295b88012",
@@ -453,7 +640,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T05:29:21.159Z",
-    "updatedAt": "2026-11-12T05:29:21.159Z"
+    "updatedAt": "2026-11-12T05:29:21.159Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolutions Booster Sleeve Art..jpeg",
+        "alt": "Mega Evolutions Booster Sleeve Art Set (4 sleeves)"
+      }
+    ]
   },
   {
     "id": "product-2537a5f4-5561-4bda-9466-4323817cf263",
@@ -472,7 +665,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T05:27:39.965Z",
-    "updatedAt": "2026-11-12T05:28:04.606Z"
+    "updatedAt": "2026-11-12T05:28:04.606Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolutions Booster Sleeve Art..jpeg",
+        "alt": "Mega Evolutions Booster Sleeve"
+      }
+    ]
   },
   {
     "id": "product-eeae566b-13ae-4933-bebe-cadae306ea70",
@@ -491,7 +690,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T05:17:13.462Z",
-    "updatedAt": "2026-11-12T05:29:32.916Z"
+    "updatedAt": "2026-11-12T05:29:32.916Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolutions Booster Pack Art.jpg",
+        "alt": "Mega Evolutions Booster Pack Art Set (4 packs)"
+      }
+    ]
   },
   {
     "id": "product-d3c21a05-ee01-4517-b67d-1fdf7b73bb17",
@@ -510,7 +715,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T05:14:55.248Z",
-    "updatedAt": "2026-11-12T05:27:51.494Z"
+    "updatedAt": "2026-11-12T05:27:51.494Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Evolutions Booster Pack Art.jpg",
+        "alt": "Mega Evolutions Booster Pack"
+      }
+    ]
   },
   {
     "id": "product-ea1ffbb5-a486-4649-b4e9-140bfa0fe609",
@@ -529,7 +740,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T04:58:17.714Z",
-    "updatedAt": "2026-11-12T04:58:17.714Z"
+    "updatedAt": "2026-11-12T04:58:17.714Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Shrouded Fable Booster Bundle.jpg",
+        "alt": "Shrouded Fable Booster Bundle"
+      }
+    ]
   },
   {
     "id": "product-83eb48e5-afe6-46e6-a59f-0acec2d2bb20",
@@ -548,7 +765,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T04:49:21.207Z",
-    "updatedAt": "2026-11-12T04:49:55.123Z"
+    "updatedAt": "2026-11-12T04:49:55.123Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Shrouded Fable ETB.jpg",
+        "alt": "Shrouded Fable Elite Trainer Box"
+      }
+    ]
   },
   {
     "id": "product-e740fcc9-d88c-40e4-8a6f-a6d36d1555f8",
@@ -567,7 +790,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T04:38:24.209Z",
-    "updatedAt": "2026-11-12T09:00:51.426Z"
+    "updatedAt": "2026-11-12T09:00:51.426Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Shrouded Fable Mini Tin Display.jpg",
+        "alt": "Shrouded Fable Mini Tin Display"
+      }
+    ]
   },
   {
     "id": "product-0ac8a927-09c8-4f03-b210-fe1b8f346c49",
@@ -586,7 +815,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T04:29:42.451Z",
-    "updatedAt": "2026-11-12T04:29:42.451Z"
+    "updatedAt": "2026-11-12T04:29:42.451Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Shrouded Fable Kingdra + Greninja Ex Illustration Collection Set.jpg",
+        "alt": "Shrouded Fable Kingdra & Greninja Ex Illustration Collection Set"
+      }
+    ]
   },
   {
     "id": "product-25fdd247-ed15-461f-9e7f-e60497b4da34",
@@ -605,7 +840,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T04:18:00.457Z",
-    "updatedAt": "2026-11-12T04:18:00.457Z"
+    "updatedAt": "2026-11-12T04:18:00.457Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Paldea Evolved 1 Pack Checklane Blister (Dondozo).jpg",
+        "alt": "Paldea Evolved 1-Pack Checklane Blister (Dondozo)"
+      }
+    ]
   },
   {
     "id": "product-461b1759-57f5-45a8-a5b5-873b2d4134d9",
@@ -624,7 +865,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T03:59:06.915Z",
-    "updatedAt": "2026-11-12T03:59:06.915Z"
+    "updatedAt": "2026-11-12T03:59:06.915Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Paldea Evolved 1 Pack Checklane Blister (Armarouge).jpg",
+        "alt": "Paldea Evolved 1-Pack Checklane Blister (Armarouge)"
+      }
+    ]
   },
   {
     "id": "product-4f919784-c27f-48f1-ba8a-cab544b044f2",
@@ -643,7 +890,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T03:38:35.837Z",
-    "updatedAt": "2026-11-12T04:51:55.610Z"
+    "updatedAt": "2026-11-12T04:51:55.610Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Back To School Eraser Blister 2024.jpg",
+        "alt": "Back To School Eraser Blister"
+      }
+    ]
   },
   {
     "id": "product-e9972b52-8621-42e4-85c2-989decb33691",
@@ -662,7 +915,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T03:33:15.312Z",
-    "updatedAt": "2026-11-12T03:33:15.312Z"
+    "updatedAt": "2026-11-12T03:33:15.312Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Stella Crown 1 Pack Checklane Blister (Koraidon).jpg",
+        "alt": "Stella Crown 1-Pack Checklane Blister Koraidon)"
+      }
+    ]
   },
   {
     "id": "product-e5402566-f232-4365-98c4-1aaa548d6e09",
@@ -681,7 +940,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T03:20:48.979Z",
-    "updatedAt": "2026-11-12T03:34:16.978Z"
+    "updatedAt": "2026-11-12T03:34:16.978Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Stella Crown 1 Pack  Checklane Blister (Iron Thorns).jpg",
+        "alt": "Stella Crown 1-Pack  Checklane Blister (Iron Thorns)"
+      }
+    ]
   },
   {
     "id": "product-ac1ef396-4058-4d32-89f5-5774b385aef5",
@@ -700,7 +965,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T03:07:52.524Z",
-    "updatedAt": "2026-11-12T09:45:22.458Z"
+    "updatedAt": "2026-11-12T09:45:22.458Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Stella Crown 1 Pack Blister (Horsea).jpg",
+        "alt": "Stella Crown 1-Pack Blister (Horsea)"
+      }
+    ]
   },
   {
     "id": "product-1ba16fdc-056c-4727-b161-80bf5ac17f6a",
@@ -719,7 +990,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-12T02:57:19.177Z",
-    "updatedAt": "2026-11-12T03:35:20.814Z"
+    "updatedAt": "2026-11-12T03:35:20.814Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Astral Radiance 1 Pack Blister (Oricorio)jpg.jpg",
+        "alt": "Astral Radiance 1-Pack Blister (Oricorio)"
+      }
+    ]
   },
   {
     "id": "product-5e039ccb-610f-4fe0-b170-bbb3ac5fef83",
@@ -738,7 +1015,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T22:07:42.624Z",
-    "updatedAt": "2026-11-11T22:07:42.624Z"
+    "updatedAt": "2026-11-11T22:07:42.624Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Venusaur Ex & Blastoise ex Premium.jpg",
+        "alt": "Venusaur Ex & Blastoise ex Premium Collection"
+      }
+    ]
   },
   {
     "id": "product-0ec76b91-9061-4fb6-9caf-b9c61a98442f",
@@ -757,7 +1040,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T22:03:26.951Z",
-    "updatedAt": "2026-11-11T22:03:26.951Z"
+    "updatedAt": "2026-11-11T22:03:26.951Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Blaziken ex Special Collection.jpg",
+        "alt": "Blaziken Ex Special Collection"
+      }
+    ]
   },
   {
     "id": "product-7d9621ed-efe7-4523-bcbc-a50b90079ff6",
@@ -776,7 +1065,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:49:15.739Z",
-    "updatedAt": "2026-11-11T21:49:15.739Z"
+    "updatedAt": "2026-11-11T21:49:15.739Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Salamence ex & Reshiram ex Premium Collection.jpg",
+        "alt": "Salamence ex & Reshiram ex Premium Collection"
+      }
+    ]
   },
   {
     "id": "product-1ae93da8-cfd4-4cf9-bd8f-eb26e646ccd5",
@@ -795,7 +1090,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:44:09.740Z",
-    "updatedAt": "2026-11-11T22:10:11.678Z"
+    "updatedAt": "2026-11-11T22:10:11.678Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm  Team Rockets Moltres ex Ultra-Premium Collection.jpg",
+        "alt": "Team Rocket’s Moltres ex Ultra-Premium Collection"
+      }
+    ]
   },
   {
     "id": "product-64da1c48-3a94-40e5-934e-93d53a072d1d",
@@ -814,7 +1115,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:40:31.192Z",
-    "updatedAt": "2026-11-11T22:10:21.397Z"
+    "updatedAt": "2026-11-11T22:10:21.397Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Terapagos Ex Ultra Premium.jpg",
+        "alt": "Terapagos Ex Ultra Premium Collection"
+      }
+    ]
   },
   {
     "id": "product-8f31a344-5b8a-457f-9f92-96c79676ad83",
@@ -833,7 +1140,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:36:33.522Z",
-    "updatedAt": "2026-11-11T22:10:33.204Z"
+    "updatedAt": "2026-11-11T22:10:33.204Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Latias EX Box.jpg",
+        "alt": "Mega Latias Ex Box"
+      }
+    ]
   },
   {
     "id": "product-0d33ef18-53a3-40d9-bd94-bf9dca0c5354",
@@ -852,7 +1165,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:31:27.605Z",
-    "updatedAt": "2026-11-11T22:10:43.973Z"
+    "updatedAt": "2026-11-11T22:10:43.973Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Houndstone Ex Box.jpg",
+        "alt": "Houndstone Ex Box"
+      }
+    ]
   },
   {
     "id": "product-7bcaf3b8-78d8-449f-a9b3-41e3a7061582",
@@ -871,7 +1190,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:25:19.650Z",
-    "updatedAt": "2026-11-11T21:25:19.650Z"
+    "updatedAt": "2026-11-11T21:25:19.650Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Dondozo Blister.jpg",
+        "alt": "Scarlet & Violet 3 Pack Blister (Dondozo)"
+      }
+    ]
   },
   {
     "id": "product-4c98ffc4-61ab-4261-ab77-80670b62e68d",
@@ -890,7 +1215,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:19:55.447Z",
-    "updatedAt": "2026-11-11T22:10:55.295Z"
+    "updatedAt": "2026-11-11T22:10:55.295Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Venusaur EX Premium Collection.jpg",
+        "alt": "Mega Venusaur Ex Premium Collection"
+      }
+    ]
   },
   {
     "id": "product-fc322b52-14d0-47b3-8403-4bd99db4041f",
@@ -909,7 +1240,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:16:40.233Z",
-    "updatedAt": "2026-11-11T22:11:14.311Z"
+    "updatedAt": "2026-11-11T22:11:14.311Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Pokemon Day Collection 2026.jpg",
+        "alt": "Pokémon Day 2026 Collection"
+      }
+    ]
   },
   {
     "id": "product-bd21c514-647d-4e29-8396-4db307405fae",
@@ -928,7 +1265,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T21:10:44.499Z",
-    "updatedAt": "2026-11-11T22:11:24.569Z"
+    "updatedAt": "2026-11-11T22:11:24.569Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm Mega Kangaskhan EX Box.jpeg",
+        "alt": "Mega Kangaskhan Ex Box"
+      }
+    ]
   },
   {
     "id": "product-8e08e6c5-cc1a-4022-b5f2-0c8ff8c5e591",
@@ -947,7 +1290,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:46:32.162Z",
-    "updatedAt": "2026-11-11T19:46:32.162Z"
+    "updatedAt": "2026-11-11T19:46:32.162Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Promotion Pack Vol 8.jpg",
+        "alt": "Promotion Pack Vol. 8"
+      }
+    ]
   },
   {
     "id": "product-abab2557-cb78-4c37-a8fb-e6796946fe5c",
@@ -966,7 +1315,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:44:20.745Z",
-    "updatedAt": "2026-11-12T16:08:58.314Z"
+    "updatedAt": "2026-11-12T16:08:58.314Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Elbaf Luffy 29th Anniversary Edition.jpeg",
+        "alt": "Elbaf Luffy 29th Anniversary Edition"
+      }
+    ]
   },
   {
     "id": "product-1e1caf1e-9be3-4b54-b73e-10dd51039155",
@@ -985,7 +1340,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:41:43.114Z",
-    "updatedAt": "2026-11-11T19:41:43.114Z"
+    "updatedAt": "2026-11-11T19:41:43.114Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP ST-33 Starter Deck.jpg",
+        "alt": "ST-33 Starter Deck"
+      }
+    ]
   },
   {
     "id": "product-a9861f0c-aa49-43d9-8c58-8450196e7fd6",
@@ -1004,7 +1365,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:39:54.311Z",
-    "updatedAt": "2026-11-11T19:39:54.311Z"
+    "updatedAt": "2026-11-11T19:39:54.311Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP ST-31 Starter Deck.jpg",
+        "alt": "ST-31 Starter Deck"
+      }
+    ]
   },
   {
     "id": "product-45987f6b-db16-4221-b76b-e090e4a72839",
@@ -1023,7 +1390,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:35:16.370Z",
-    "updatedAt": "2026-11-11T19:35:16.370Z"
+    "updatedAt": "2026-11-11T19:35:16.370Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP ST31-36 Starter Deck.jpg",
+        "alt": "ST-31 to ST-36 Starter Deck Complete Set"
+      }
+    ]
   },
   {
     "id": "product-ed5c9366-dae1-4731-896e-635dd45cb07b",
@@ -1042,7 +1415,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:23:29.680Z",
-    "updatedAt": "2026-11-11T19:23:29.680Z"
+    "updatedAt": "2026-11-11T19:23:29.680Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Whole Cake Island playmat.jpg",
+        "alt": "Official Playmat - Whole Cake Island Arc"
+      }
+    ]
   },
   {
     "id": "product-0780c395-d970-4aa9-b96f-8883d1e6f59a",
@@ -1061,7 +1440,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:19:13.932Z",
-    "updatedAt": "2026-11-11T19:19:13.932Z"
+    "updatedAt": "2026-11-11T19:19:13.932Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Whole Cake Island Nami.jpg",
+        "alt": "PSA10 Whole Cake Island Nami OP11-041"
+      }
+    ]
   },
   {
     "id": "product-9a062760-f488-4ef3-8176-285227ce54ac",
@@ -1080,7 +1465,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T19:15:22.866Z",
-    "updatedAt": "2026-11-11T19:23:41.192Z"
+    "updatedAt": "2026-11-11T19:23:41.192Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Whole Cake Island playmat set.jpg",
+        "alt": "Official Playmat & Card Set -Whole Cake Island Arc"
+      }
+    ]
   },
   {
     "id": "product-fb052319-c5ef-4c75-89ee-ccd7b1157517",
@@ -1099,7 +1490,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T11:02:22.344Z",
-    "updatedAt": "2026-11-12T15:02:25.760Z"
+    "updatedAt": "2026-11-12T15:02:25.760Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP AC-01 Case.jpeg",
+        "alt": "Admirable Collection Vol.1 Master Case"
+      }
+    ]
   },
   {
     "id": "product-f40553be-ffc7-4660-a55b-efca002d6eaf",
@@ -1118,7 +1515,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T10:54:07.665Z",
-    "updatedAt": "2026-11-11T19:05:47.589Z"
+    "updatedAt": "2026-11-11T19:05:47.589Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Round 1.jpg",
+        "alt": "Round 1 x One Piece"
+      }
+    ]
   },
   {
     "id": "product-690b72fb-a3e1-4ae4-b6df-47fd30fd2084",
@@ -1137,7 +1540,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T10:44:41.689Z",
-    "updatedAt": "2026-11-11T10:54:31.807Z"
+    "updatedAt": "2026-11-11T10:54:31.807Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Metakira.png",
+        "alt": "Luffy NatsuComi Metakira Card"
+      }
+    ]
   },
   {
     "id": "product-3aabf6b7-a929-4a9b-bd25-0e72b15f19cc",
@@ -1156,7 +1565,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T10:32:36.277Z",
-    "updatedAt": "2026-11-11T10:32:36.277Z"
+    "updatedAt": "2026-11-11T10:32:36.277Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP DP-01.jpg",
+        "alt": "Double Pack Set Vol.1"
+      }
+    ]
   },
   {
     "id": "product-1a654c9c-a704-4e08-b176-217eb418275c",
@@ -1175,7 +1590,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T06:34:01.206Z",
-    "updatedAt": "2026-11-11T06:34:01.206Z"
+    "updatedAt": "2026-11-11T06:34:01.206Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Ichiban Luffy.jpg",
+        "alt": "Ichiban Luffy Promo Card"
+      }
+    ]
   },
   {
     "id": "product-3b78ae4a-fa61-453f-96ae-536fd402dd2a",
@@ -1194,7 +1615,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T06:29:20.436Z",
-    "updatedAt": "2026-11-11T06:29:20.436Z"
+    "updatedAt": "2026-11-11T06:29:20.436Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_Card Design Sticker.jpg",
+        "alt": "One Piece Card Design Sticker Booster Pack"
+      }
+    ]
   },
   {
     "id": "product-832da6d3-a9a3-437a-80a9-f17cf54f4bc6",
@@ -1213,7 +1640,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T06:26:30.390Z",
-    "updatedAt": "2026-11-11T06:26:30.390Z"
+    "updatedAt": "2026-11-11T06:26:30.390Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_Acrylic Charms.jpg",
+        "alt": "One Piece Acrylic Charms"
+      }
+    ]
   },
   {
     "id": "product-980d9407-bbc1-4ee9-9934-82f52c0037e4",
@@ -1232,7 +1665,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T06:24:00.028Z",
-    "updatedAt": "2026-11-11T06:24:00.028Z"
+    "updatedAt": "2026-11-11T06:24:00.028Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_Acrylic Stand.jpg",
+        "alt": "One Piece Card-Design Acrylic Stand"
+      }
+    ]
   },
   {
     "id": "product-3c61fe44-489c-4904-8d01-2fd75bba86ac",
@@ -1251,7 +1690,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T06:07:03.186Z",
-    "updatedAt": "2026-11-11T06:07:03.186Z"
+    "updatedAt": "2026-11-11T06:07:03.186Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_Card Sleeve Design Towel Collection.jpg",
+        "alt": "One Piece Card Sleeve Design Towel"
+      }
+    ]
   },
   {
     "id": "product-9c3a4572-359f-40f5-9927-c4ec04e53666",
@@ -1270,7 +1715,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T06:04:11.478Z",
-    "updatedAt": "2026-11-11T06:04:11.478Z"
+    "updatedAt": "2026-11-11T06:04:11.478Z",
+    "images": [
+      {
+        "src": "images/products/accessories/ACC_Plush Multi Card Case.jpg",
+        "alt": "One Piece Plush Deck Box"
+      }
+    ]
   },
   {
     "id": "product-bdd31b17-8d48-4a56-be7d-90ed2f5e52c0",
@@ -1289,7 +1740,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T06:01:00.124Z",
-    "updatedAt": "2026-11-11T06:01:00.124Z"
+    "updatedAt": "2026-11-11T06:01:00.124Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_Tote Bag.jpg",
+        "alt": "One Piece Tote Bag"
+      }
+    ]
   },
   {
     "id": "product-4b8d296a-1fc0-46fa-bb99-2e75906cb2b7",
@@ -1308,7 +1765,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T05:59:03.555Z",
-    "updatedAt": "2026-11-11T05:59:03.555Z"
+    "updatedAt": "2026-11-11T05:59:03.555Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_Dice Cushion.jpg",
+        "alt": "One Piece Dice Cushion"
+      }
+    ]
   },
   {
     "id": "product-f1f725fd-b41f-4591-b03e-e22a7fd835b6",
@@ -1327,7 +1790,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-11T05:54:52.339Z",
-    "updatedAt": "2026-11-11T05:59:15.366Z"
+    "updatedAt": "2026-11-11T05:59:15.366Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_Monkey figure.jpg",
+        "alt": "Monkey D. Luffy One Piece Figure"
+      }
+    ]
   },
   {
     "id": "product-34b26bd9-1cf8-4bc0-800f-70eaa3e4bfbf",
@@ -1346,7 +1815,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:50:59.991Z",
-    "updatedAt": "2026-11-11T03:48:23.327Z"
+    "updatedAt": "2026-11-11T03:48:23.327Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP_3rd Anniversary Promo Card.jpg",
+        "alt": "3rd Anniversary Promo Pack"
+      }
+    ]
   },
   {
     "id": "product-7f842a7a-6aba-4492-b08e-8a7266f15504",
@@ -1365,7 +1840,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:46:50.267Z",
-    "updatedAt": "2026-11-11T03:48:12.078Z"
+    "updatedAt": "2026-11-11T03:48:12.078Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP_Let’s Get Started Campaign Promo Pack.jpg",
+        "alt": "Let’s Get Started Campaign"
+      }
+    ]
   },
   {
     "id": "product-28b80fcc-1040-453d-8ad7-5b732d315d67",
@@ -1384,7 +1865,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:41:38.159Z",
-    "updatedAt": "2026-11-11T03:48:42.109Z"
+    "updatedAt": "2026-11-11T03:48:42.109Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP_Kuzan Promo Card.jpg",
+        "alt": "Kuzan Promo Card (Vjump July 2026)"
+      }
+    ]
   },
   {
     "id": "product-b7316161-1efa-4ac1-99c9-80a2a35cd336",
@@ -1403,7 +1890,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T22:34:07.116Z",
-    "updatedAt": "2026-11-11T03:49:29.734Z"
+    "updatedAt": "2026-11-11T03:49:29.734Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP_Brook Promo Set .jpg",
+        "alt": "Brook Promo Set (Saikyo Jump April 2026)"
+      }
+    ]
   },
   {
     "id": "product-cf4a5f4e-5ef5-4383-92ef-792a00b4cc63",
@@ -1422,7 +1915,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T10:11:46.770Z",
-    "updatedAt": "2026-11-11T03:52:17.672Z"
+    "updatedAt": "2026-11-11T03:52:17.672Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm_Ascended Heroes Premium Poster Collection Gardevoir.jpg",
+        "alt": "Premium Poster Collection Gardevoir"
+      }
+    ]
   },
   {
     "id": "product-1291d6bc-29c3-44b0-bedc-086b46ff22cc",
@@ -1441,7 +1940,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-10T09:32:33.913Z",
-    "updatedAt": "2026-11-11T22:14:21.751Z"
+    "updatedAt": "2026-11-11T22:14:21.751Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm_Ascended Heroes Premium Poster Collection Lucario.jpg",
+        "alt": "Premium Poster Collection Lucario"
+      }
+    ]
   },
   {
     "id": "product-810434a9-52a3-45f2-addd-25b82e9a0a1c",
@@ -1460,7 +1965,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T22:48:52.431Z",
-    "updatedAt": "2026-11-11T03:28:22.506Z"
+    "updatedAt": "2026-11-11T03:28:22.506Z",
+    "images": [
+      {
+        "src": "images/products/lego/LEGO_10261.jpeg",
+        "alt": "Roller Coaster"
+      }
+    ]
   },
   {
     "id": "product-d16d64e6-4e0c-4140-9c97-a1f2bea58392",
@@ -1479,7 +1990,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:41:13.602Z",
-    "updatedAt": "2026-11-11T03:52:51.444Z"
+    "updatedAt": "2026-11-11T03:52:51.444Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP_Promotional Card Set 2026.jpg",
+        "alt": "Promotional Card Set 2026"
+      }
+    ]
   },
   {
     "id": "product-8b6b6f6b-48b7-42c7-a77f-865f08ee4bf4",
@@ -1498,7 +2015,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:37:15.998Z",
-    "updatedAt": "2026-11-11T03:53:07.558Z"
+    "updatedAt": "2026-11-11T03:53:07.558Z",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP_Standard Battle Pack Vol. 13.jpg",
+        "alt": "Standard Battle Pack Vol. 13"
+      }
+    ]
   },
   {
     "id": "product-423e6d18-8c5e-43c7-8f3f-b4e47e2e5fd6",
@@ -1517,7 +2040,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:12:43.430Z",
-    "updatedAt": "2026-11-11T22:11:56.546Z"
+    "updatedAt": "2026-11-11T22:11:56.546Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm_Mega Charizard X ex Ultra Premium Collection.jpg",
+        "alt": "Mega Charizard X ex Ultra Premium Collection"
+      }
+    ]
   },
   {
     "id": "product-98f716af-0e57-4649-8f8a-cc15318e725b",
@@ -1536,7 +2065,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T20:01:34.749Z",
-    "updatedAt": "2026-11-11T03:53:54.133Z"
+    "updatedAt": "2026-11-11T03:53:54.133Z",
+    "images": [
+      {
+        "src": "images/products/pokemon/Pkm_Mega Zygarde_Ex_Premium_Collection.jpg",
+        "alt": "Mega Zygarde Ex Premium Collection"
+      }
+    ]
   },
   {
     "id": "product-6d30642e-9da7-46d1-b291-60598b7392fe",
@@ -1555,7 +2090,13 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T19:25:02.501Z",
-    "updatedAt": "2026-11-11T03:27:22.305Z"
+    "updatedAt": "2026-11-11T03:27:22.305Z",
+    "images": [
+      {
+        "src": "images/products/lego/LEGO_71039.jpg",
+        "alt": "Marvel Series 2 (Set of 12)"
+      }
+    ]
   },
   {
     "id": "product-86d54aef-912f-4ff5-9411-af49aef0310f",
@@ -1574,6 +2115,12 @@
     "imageAlt": "",
     "telegramUrl": "https://t.me/sgtoyhse",
     "dateAdded": "2026-11-09T19:01:58.957Z",
-    "updatedAt": "2026-11-11T03:54:33.191Z"
+    "updatedAt": "2026-11-11T03:54:33.191Z",
+    "images": [
+      {
+        "src": "images/products/accessories/Acc_PikachuPlush.jpg",
+        "alt": "Pokémon Center Pikachu Plush Deck Box"
+      }
+    ]
   }
 ]
