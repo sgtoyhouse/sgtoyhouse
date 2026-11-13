@@ -1653,6 +1653,32 @@
       .product-modal-image { height:clamp(220px,40dvh,400px); min-height:clamp(220px,40dvh,400px); }
       .product-modal-content h2 { font-size:clamp(22px,7vw,30px); }
     }
+    /* Centered photo viewer, matching the other category pages */
+    .product-photo-viewer {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      padding: clamp(12px, 2.5vw, 28px);
+      overflow: auto;
+      background: rgba(0, 0, 0, 0.96);
+    }
+    .product-photo-viewer img {
+      width: auto;
+      height: auto;
+      max-width: calc(100vw - clamp(24px, 5vw, 56px));
+      max-height: calc(100dvh - clamp(24px, 5vw, 56px));
+      object-fit: contain;
+      object-position: center;
+    }
+    @media (max-width: 480px) {
+      .product-photo-viewer { padding: 10px; }
+      .product-photo-viewer img {
+        width: auto;
+        height: auto;
+        max-width: calc(100vw - 20px);
+        max-height: calc(100dvh - 20px);
+      }
+    }
 </style>
 </head>
 <body>
@@ -2436,37 +2462,20 @@
       productModalTransition.finished.finally(() => { sourceCard.style.viewTransitionName = ""; productModalPanel.style.viewTransitionName = ""; productModalTransition = null; });
     }
 
-    async function openProductPhoto() {
+    function openProductPhoto() {
       if (!productModalImage.currentSrc || productModalImage.hidden) return;
       productPhotoFull.src = productModalImage.currentSrc;
       productPhotoFull.alt = productModalImage.alt;
       productPhotoViewer.hidden = false;
       document.body.classList.add("product-modal-open");
-      try {
-        if (productPhotoViewer.requestFullscreen && !document.fullscreenElement) {
-          await productPhotoViewer.requestFullscreen();
-        } else if (productPhotoViewer.webkitRequestFullscreen && !document.webkitFullscreenElement) {
-          productPhotoViewer.webkitRequestFullscreen();
-        }
-      } catch (error) {
-        console.info("Browser fullscreen unavailable; using the full-viewport viewer.", error);
-      }
       productPhotoClose.focus();
     }
-
-    async function closeProductPhoto({ restoreFocus = true } = {}) {
-      try {
-        if (document.fullscreenElement) await document.exitFullscreen();
-        else if (document.webkitFullscreenElement && document.webkitExitFullscreen) document.webkitExitFullscreen();
-      } catch (error) {
-        console.info("Could not exit browser fullscreen.", error);
-      }
+    function closeProductPhoto({ restoreFocus = true } = {}) {
       productPhotoViewer.hidden = true;
       productPhotoFull.src = "";
       if (productModal.hidden) document.body.classList.remove("product-modal-open");
       if (restoreFocus && !productModal.hidden) productModalImage.focus();
     }
-
     function closeProductModal() {
       if (!productPhotoViewer.hidden) closeProductPhoto({ restoreFocus: false });
       const sourceCard = productModalSourceCard;
@@ -3076,12 +3085,6 @@
       }
     });
     productPhotoClose.addEventListener("click", closeProductPhoto);
-    document.addEventListener("fullscreenchange", () => {
-      if (!document.fullscreenElement && !productPhotoViewer.hidden) closeProductPhoto();
-    });
-    document.addEventListener("webkitfullscreenchange", () => {
-      if (!document.webkitFullscreenElement && !productPhotoViewer.hidden) closeProductPhoto();
-    });
     productPhotoViewer.addEventListener("click", (event) => {
       if (event.target === productPhotoViewer || event.target === productPhotoFull) {
         closeProductPhoto();
@@ -3110,6 +3113,5 @@
     updateBackToTopButton();
     loadProducts();
   </script>
-  <script src="swipe-navigation.js" defer></script>
 </body>
 </html>
