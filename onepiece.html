@@ -1681,6 +1681,15 @@
       }
     }
 
+
+    /* Full-photo gallery navigation */
+    .product-photo-nav { width:52px; height:52px; position:fixed; top:50%; z-index:3002; display:flex; align-items:center; justify-content:center; background:rgba(7,7,7,.82); color:#fff; border:1px solid var(--gold); border-radius:50%; font-size:34px; line-height:1; cursor:pointer; transform:translateY(-50%); transition:background .2s ease,color .2s ease; }
+    .product-photo-nav:hover,.product-photo-nav:focus-visible { background:var(--gold); color:#070707; }
+    .product-photo-prev { left:max(14px,env(safe-area-inset-left)); }
+    .product-photo-next { right:max(14px,env(safe-area-inset-right)); }
+    .product-photo-counter { position:fixed; left:50%; bottom:max(14px,env(safe-area-inset-bottom)); z-index:3002; padding:6px 12px; background:rgba(7,7,7,.82); color:#fff; border:1px solid var(--border); border-radius:999px; font-size:13px; font-weight:800; transform:translateX(-50%); }
+    @media (max-width:480px) { .product-photo-nav { width:44px; height:44px; font-size:28px; } .product-photo-prev { left:8px; } .product-photo-next { right:8px; } }
+
     /* Multi-photo product gallery */
     .product-modal-image {
       display: flex;
@@ -1908,7 +1917,10 @@
     type="button"
     aria-label="Close product photo"
   >×</button>
+  <button class="product-photo-nav product-photo-prev" id="product-photo-prev" type="button" aria-label="Previous photo">‹</button>
   <img id="product-photo-full" src="" alt="">
+  <button class="product-photo-nav product-photo-next" id="product-photo-next" type="button" aria-label="Next photo">›</button>
+  <p class="product-photo-counter" id="product-photo-counter" aria-live="polite"></p>
 </div>
 
 <button aria-label="Back to top" class="back-to-top" id="back-to-top" title="Back to top" type="button">
@@ -1988,6 +2000,12 @@
     const productPhotoViewer = document.getElementById("product-photo-viewer");
     const productPhotoFull = document.getElementById("product-photo-full");
     const productPhotoClose = document.getElementById("product-photo-close");
+    const productPhotoPrev = document.getElementById("product-photo-prev");
+    const productPhotoNext = document.getElementById("product-photo-next");
+    const productPhotoCounter = document.getElementById("product-photo-counter");
+    let activeProductPhotos = [];
+    let activeProductPhotoIndex = 0;
+    let photoViewerTouchStartX = null;
 
     let onePieceProducts = [];
 
@@ -2472,6 +2490,8 @@
     }
 
     function selectProductModalImage(photo, productName, selectedButton = null) {
+      const selectedIndex = activeProductPhotos.findIndex((item) => item.src === photo.src);
+      if (selectedIndex >= 0) activeProductPhotoIndex = selectedIndex;
       productModalImage.src = photo.src;
       productModalImage.alt = photo.alt || productName;
       productModalImage.hidden = false;
@@ -2490,6 +2510,8 @@
     }
     function renderProductModalGallery(product, productName) {
       const photos = getProductImages(product);
+      activeProductPhotos = photos;
+      activeProductPhotoIndex = 0;
       productModalThumbnails.replaceChildren();
       if (photos.length === 0) {
         productModalImage.src = "";
@@ -2578,10 +2600,28 @@
       productModalTransition.finished.finally(() => { sourceCard.style.viewTransitionName = ""; productModalPanel.style.viewTransitionName = ""; productModalTransition = null; });
     }
 
+    function updateProductPhotoViewer() {
+      if (!activeProductPhotos.length) return;
+      activeProductPhotoIndex = (activeProductPhotoIndex + activeProductPhotos.length) % activeProductPhotos.length;
+      const photo = activeProductPhotos[activeProductPhotoIndex];
+      productPhotoFull.src = photo.src;
+      productPhotoFull.alt = photo.alt || productModalName.textContent || "Product photo";
+      const hasMultiplePhotos = activeProductPhotos.length > 1;
+      productPhotoPrev.hidden = !hasMultiplePhotos;
+      productPhotoNext.hidden = !hasMultiplePhotos;
+      productPhotoCounter.hidden = !hasMultiplePhotos;
+      productPhotoCounter.textContent = `${activeProductPhotoIndex + 1} / ${activeProductPhotos.length}`;
+    }
+    function showAdjacentProductPhoto(direction) {
+      if (activeProductPhotos.length < 2) return;
+      activeProductPhotoIndex += direction;
+      updateProductPhotoViewer();
+    }
     function openProductPhoto() {
       if (!productModalImage.currentSrc || productModalImage.hidden) return;
-      productPhotoFull.src = productModalImage.currentSrc;
-      productPhotoFull.alt = productModalImage.alt;
+      const matchingIndex = activeProductPhotos.findIndex((photo) => photo.src === productModalImage.currentSrc || photo.src === productModalImage.getAttribute("src"));
+      if (matchingIndex >= 0) activeProductPhotoIndex = matchingIndex;
+      updateProductPhotoViewer();
       productPhotoViewer.hidden = false;
       document.body.classList.add("product-modal-open");
       productPhotoClose.focus();
@@ -3202,6 +3242,16 @@
       }
     });
     productPhotoClose.addEventListener("click", closeProductPhoto);
+    productPhotoPrev.addEventListener("click", (event) => { event.stopPropagation(); showAdjacentProductPhoto(-1); });
+    productPhotoNext.addEventListener("click", (event) => { event.stopPropagation(); showAdjacentProductPhoto(1); });
+    productPhotoViewer.addEventListener("touchstart", (event) => { photoViewerTouchStartX = event.touches[0]?.clientX ?? null; }, { passive: true });
+    productPhotoViewer.addEventListener("touchend", (event) => {
+      if (photoViewerTouchStartX === null || activeProductPhotos.length < 2) return;
+      const endX = event.changedTouches[0]?.clientX ?? photoViewerTouchStartX;
+      const distance = endX - photoViewerTouchStartX;
+      photoViewerTouchStartX = null;
+      if (Math.abs(distance) >= 50) showAdjacentProductPhoto(distance > 0 ? -1 : 1);
+    }, { passive: true });
     productPhotoViewer.addEventListener("click", (event) => {
       if (event.target === productPhotoViewer || event.target === productPhotoFull) {
         closeProductPhoto();
@@ -3213,6 +3263,8 @@
       element.addEventListener("click", closeProductModal);
     });
     document.addEventListener("keydown", (event) => {
+      if (!productPhotoViewer.hidden && event.key === "ArrowLeft") { event.preventDefault(); showAdjacentProductPhoto(-1); return; }
+      if (!productPhotoViewer.hidden && event.key === "ArrowRight") { event.preventDefault(); showAdjacentProductPhoto(1); return; }
       if (event.key !== "Escape") {
         return;
       }
