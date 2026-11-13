@@ -1680,6 +1680,74 @@
         max-height: calc(100dvh - 20px);
       }
     }
+
+    /* Multi-photo product gallery */
+    .product-modal-image {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+    .product-modal-image-stage {
+      min-width: 0;
+      min-height: 0;
+      flex: 1 1 auto;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #171717;
+    }
+    .product-modal-image-stage > img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .product-modal-thumbnails {
+      min-height: 92px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      flex: 0 0 auto;
+      background: #0d0d0d;
+      border-top: 1px solid var(--border);
+      scrollbar-color: var(--gold) #171717;
+      scrollbar-width: thin;
+    }
+    .product-modal-thumbnails:empty { display: none; }
+    .product-modal-thumbnail {
+      width: 68px;
+      height: 68px;
+      padding: 0;
+      overflow: hidden;
+      flex: 0 0 68px;
+      background: #171717;
+      border: 2px solid transparent;
+      border-radius: 9px;
+      cursor: pointer;
+      opacity: .72;
+      transition: border-color .18s ease, opacity .18s ease, transform .18s ease;
+    }
+    .product-modal-thumbnail:hover,
+    .product-modal-thumbnail:focus-visible { opacity: 1; transform: translateY(-1px); }
+    .product-modal-thumbnail[aria-current="true"] { border-color: var(--gold); opacity: 1; }
+    .product-modal-thumbnail img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    @media (max-width: 760px) {
+      .product-modal-image { height: clamp(320px, 54dvh, 590px); min-height: clamp(320px, 54dvh, 590px); }
+      .product-modal-thumbnails { min-height: 78px; padding: 8px; gap: 7px; }
+      .product-modal-thumbnail { width: 58px; height: 58px; flex-basis: 58px; }
+    }
+    @media (max-width: 480px), (max-height: 650px) {
+      .product-modal-image { height: clamp(285px, 48dvh, 470px); min-height: clamp(285px, 48dvh, 470px); }
+      .product-modal-thumbnails { min-height: 70px; }
+      .product-modal-thumbnail { width: 52px; height: 52px; flex-basis: 52px; }
+    }
+
 </style>
 </head>
 <body>
@@ -1802,9 +1870,12 @@
     <button class="product-modal-close" id="product-modal-close" type="button" aria-label="Close product details">×</button>
     <div class="product-modal-grid">
       <div class="product-modal-image">
-        <img id="product-modal-image" src="" alt="">
-        <p class="product-modal-image-placeholder" id="product-modal-image-placeholder" hidden>Product image unavailable</p>
-        <span class="product-modal-status" id="product-modal-status"></span>
+        <div class="product-modal-image-stage">
+          <img id="product-modal-image" src="" alt="">
+          <p class="product-modal-image-placeholder" id="product-modal-image-placeholder" hidden>Product image unavailable</p>
+          <span class="product-modal-status" id="product-modal-status"></span>
+        </div>
+        <div class="product-modal-thumbnails" id="product-modal-thumbnails" aria-label="Product photos"></div>
       </div>
       <div class="product-modal-content">
         <p class="product-modal-category" id="product-modal-category"></p>
@@ -1906,6 +1977,7 @@
     const productModalPanel = productModal.querySelector(".product-modal-panel");
     const productModalImage = document.getElementById("product-modal-image");
     const productModalImagePlaceholder = document.getElementById("product-modal-image-placeholder");
+    const productModalThumbnails = document.getElementById("product-modal-thumbnails");
     const productModalStatus = document.getElementById("product-modal-status");
     const productModalCategory = document.getElementById("product-modal-category");
     const productModalName = document.getElementById("product-modal-name");
@@ -1955,13 +2027,26 @@
       ).trim();
     }
 
+    function getProductImages(product) {
+      const rawImages = Array.isArray(product.images) ? product.images : [];
+      const normalizedImages = rawImages.map((item, index) => {
+        if (typeof item === "string") {
+          return { src: item.trim(), alt: "" };
+        }
+        if (!item || typeof item !== "object") return null;
+        return {
+          src: String(item.src || item.url || item.image || "").trim(),
+          alt: String(item.alt || item.imageAlt || "").trim()
+        };
+      }).filter((item) => item && item.src);
+      const legacySource = String(product.image || product.imageUrl || product.photo || "").trim();
+      if (legacySource && !normalizedImages.some((item) => item.src === legacySource)) {
+        normalizedImages.unshift({ src: legacySource, alt: String(product.imageAlt || "").trim() });
+      }
+      return normalizedImages;
+    }
     function getProductImage(product) {
-      return String(
-        product.image ||
-        product.imageUrl ||
-        product.photo ||
-        ""
-      ).trim();
+      return getProductImages(product)[0]?.src || "";
     }
 
     function getProductLanguage(product) {
@@ -2386,9 +2471,55 @@
       return detail;
     }
 
+    function selectProductModalImage(photo, productName, selectedButton = null) {
+      productModalImage.src = photo.src;
+      productModalImage.alt = photo.alt || productName;
+      productModalImage.hidden = false;
+      productModalImage.tabIndex = 0;
+      productModalImage.setAttribute("role", "button");
+      productModalImage.setAttribute("aria-label", `Open full photo of ${productName}`);
+      productModalImagePlaceholder.hidden = true;
+      productModalImage.onerror = () => {
+        productModalImage.hidden = true;
+        productModalImage.tabIndex = -1;
+        productModalImagePlaceholder.hidden = false;
+      };
+      productModalThumbnails.querySelectorAll(".product-modal-thumbnail").forEach((button) => {
+        button.setAttribute("aria-current", String(button === selectedButton));
+      });
+    }
+    function renderProductModalGallery(product, productName) {
+      const photos = getProductImages(product);
+      productModalThumbnails.replaceChildren();
+      if (photos.length === 0) {
+        productModalImage.src = "";
+        productModalImage.alt = productName;
+        productModalImage.hidden = true;
+        productModalImage.tabIndex = -1;
+        productModalImage.removeAttribute("role");
+        productModalImage.setAttribute("aria-label", productName);
+        productModalImagePlaceholder.hidden = false;
+        return;
+      }
+      photos.forEach((photo, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "product-modal-thumbnail";
+        button.setAttribute("aria-label", `Show photo ${index + 1} of ${photos.length} for ${productName}`);
+        const thumbnail = document.createElement("img");
+        thumbnail.src = photo.src;
+        thumbnail.alt = "";
+        thumbnail.loading = "lazy";
+        button.appendChild(thumbnail);
+        button.addEventListener("click", () => selectProductModalImage(photo, productName, button));
+        productModalThumbnails.appendChild(button);
+      });
+      const firstButton = productModalThumbnails.querySelector(".product-modal-thumbnail");
+      selectProductModalImage(photos[0], productName, firstButton);
+    }
     function populateAndShowProductModal(product) {
       const productName = getProductName(product);
-      const productImage = getProductImage(product);
+      const productImages = getProductImages(product);
       const subcategory = getProductSubcategory(product);
       const year = getProductYear(product);
       const language = getProductLanguage(product);
@@ -2399,23 +2530,7 @@
         ? `${DISPLAY_CATEGORY_NAME} • ${subcategory}`
         : DISPLAY_CATEGORY_NAME;
 
-      productModalImage.src = productImage;
-      productModalImage.alt = product.imageAlt || productName;
-      productModalImage.hidden = !productImage;
-      productModalImage.tabIndex = productImage ? 0 : -1;
-      productModalImage.setAttribute(
-        "role",
-        productImage ? "button" : "img"
-      );
-      productModalImage.setAttribute(
-        "aria-label",
-        productImage ? `Open full photo of ${productName}` : productName
-      );
-      productModalImagePlaceholder.hidden = Boolean(productImage);
-      productModalImage.onerror = () => {
-        productModalImage.hidden = true;
-        productModalImagePlaceholder.hidden = false;
-      };
+      renderProductModalGallery(product, productName);
 
       productModalStatus.textContent = status;
       productModalStatus.className = "product-modal-status";
@@ -2486,6 +2601,7 @@
         document.body.classList.remove("product-modal-open");
         productModalImage.src = "";
         productModalImage.onerror = null;
+        productModalThumbnails.replaceChildren();
       };
       const restoreFocus = () => {
         if (productModalPreviousFocus && typeof productModalPreviousFocus.focus === "function") productModalPreviousFocus.focus();
