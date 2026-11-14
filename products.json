@@ -1,5 +1,38 @@
 [
   {
+    "id": "product-26b14ebf-b877-4a1c-baf1-75a621d79ee9",
+    "name": "Glory Of Team Rocket Booster Box",
+    "category": "Pokémon",
+    "price": 200,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "SV10",
+    "setNumber": "",
+    "year": 2025,
+    "language": "Japanese",
+    "description": "✨ Japanese / Sealed\n✨ Each box contains 30 packs",
+    "images": [
+      {
+        "src": "images/products/pokemon/SV10JP/1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/pokemon/SV10JP/2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/pokemon/SV10JP/3.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/pokemon/SV10JP/1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-14T16:21:46.181Z",
+    "updatedAt": "2026-11-14T16:21:46.181Z"
+  },
+  {
     "id": "product-504d18b8-4cac-4cd0-b32d-3476fd640b66",
     "name": "Treasure Chest Volume 1 Display",
     "category": "One Piece",
