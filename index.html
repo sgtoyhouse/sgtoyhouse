@@ -1924,6 +1924,54 @@
 
 
 
+
+    /* Previous and next controls on the product overlay image */
+    .product-modal-photo-nav {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 7, 7, .78);
+      color: #fff;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      font-size: 29px;
+      line-height: 1;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background .18s ease, color .18s ease;
+    }
+    .product-modal-photo-prev { left: 12px; }
+    .product-modal-photo-next { right: 12px; }
+    .product-modal-photo-nav:hover,
+    .product-modal-photo-nav:focus-visible { background: var(--gold); color: #070707; }
+    .product-modal-photo-counter {
+      padding: 4px 9px;
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      z-index: 4;
+      background: rgba(7, 7, 7, .8);
+      color: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.2;
+      pointer-events: none;
+    }
+    @media (max-width: 480px) {
+      .product-modal-photo-nav { width: 38px; height: 38px; font-size: 25px; }
+      .product-modal-photo-prev { left: 8px; }
+      .product-modal-photo-next { right: 8px; }
+      .product-modal-photo-counter { right: 8px; bottom: 8px; }
+    }
+
 </style>
 </head>
 
@@ -2397,6 +2445,9 @@
             <img id="product-modal-image" src="" alt="">
             <p class="product-modal-image-placeholder" id="product-modal-image-placeholder" hidden>Product image unavailable</p>
             <span class="product-modal-status" id="product-modal-status"></span>
+            <button class="product-modal-photo-nav product-modal-photo-prev" id="product-modal-photo-prev" type="button" aria-label="Previous product photo">‹</button>
+            <button class="product-modal-photo-nav product-modal-photo-next" id="product-modal-photo-next" type="button" aria-label="Next product photo">›</button>
+            <span class="product-modal-photo-counter" id="product-modal-photo-counter" aria-live="polite"></span>
           </div>
           <div class="product-modal-thumbnails" id="product-modal-thumbnails" aria-label="Product photos"></div>
         </div>
@@ -2575,6 +2626,9 @@
     const productModalImage = document.getElementById("product-modal-image");
     const productModalImagePlaceholder = document.getElementById("product-modal-image-placeholder");
     const productModalThumbnails = document.getElementById("product-modal-thumbnails");
+    const productModalPhotoPrev = document.getElementById("product-modal-photo-prev");
+    const productModalPhotoNext = document.getElementById("product-modal-photo-next");
+    const productModalPhotoCounter = document.getElementById("product-modal-photo-counter");
     const productModalStatus = document.getElementById("product-modal-status");
     const productModalCategory = document.getElementById("product-modal-category");
     const productModalName = document.getElementById("product-modal-name");
@@ -2921,7 +2975,18 @@
       activeProductPhotos.forEach((photo,index)=>{const button=document.createElement("button");button.type="button";button.className="product-thumbnail";button.setAttribute("aria-label",`Show photo ${index+1} of ${activeProductPhotos.length}`);const image=document.createElement("img");image.src=photo.src;image.alt="";image.loading="lazy";button.appendChild(image);button.addEventListener("click",event=>{event.stopPropagation();showProductPhoto(index)});productModalThumbnails.appendChild(button)});
       productModalThumbnails.hidden=activeProductPhotos.length<=1;
     }
-    function updatePhotoViewerControls(){const multiple=activeProductPhotos.length>1;productPhotoPrev.hidden=!multiple;productPhotoNext.hidden=!multiple;productPhotoCounter.hidden=!activeProductPhotos.length;productPhotoCounter.textContent=activeProductPhotos.length?`${activePhotoIndex+1} / ${activeProductPhotos.length}`:""}
+    function updatePhotoViewerControls(){
+      const multiple=activeProductPhotos.length>1;
+      productPhotoPrev.hidden=!multiple;
+      productPhotoNext.hidden=!multiple;
+      productModalPhotoPrev.hidden=!multiple;
+      productModalPhotoNext.hidden=!multiple;
+      productPhotoCounter.hidden=!activeProductPhotos.length;
+      productModalPhotoCounter.hidden=!activeProductPhotos.length;
+      const counterText=activeProductPhotos.length?`${activePhotoIndex+1} / ${activeProductPhotos.length}`:"";
+      productPhotoCounter.textContent=counterText;
+      productModalPhotoCounter.textContent=counterText;
+    }
     function changeProductPhoto(direction){if(activeProductPhotos.length<=1)return;showProductPhoto(activePhotoIndex+direction,{updateViewer:true})}
     function populateAndShowProductModal(product, category) {
       const name = getProductName(product);
@@ -4194,6 +4259,8 @@
       if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openProductPhoto(); }
     });
     productPhotoClose.addEventListener("click", closeProductPhoto);
+    productModalPhotoPrev.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();changeProductPhoto(-1)});
+    productModalPhotoNext.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();changeProductPhoto(1)});
     productPhotoPrev.addEventListener("click",event=>{event.stopPropagation();changeProductPhoto(-1)});
     productPhotoNext.addEventListener("click",event=>{event.stopPropagation();changeProductPhoto(1)});
     productPhotoViewer.addEventListener("click",event=>{if(event.target===productPhotoViewer||event.target===productPhotoFull)closeProductPhoto()});
