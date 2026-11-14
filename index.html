@@ -1972,6 +1972,18 @@
       .product-modal-photo-counter { right: 8px; bottom: 8px; }
     }
 
+
+    /* Finger-swipe support for the product overlay photo */
+    .product-modal-image {
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      overscroll-behavior-x: contain;
+    }
+    .product-modal-image.is-photo-swiping img {
+      transition: none;
+    }
+
 </style>
 </head>
 
@@ -2646,6 +2658,10 @@
     let activePhotoIndex = 0;
     let photoSwipeStartX = null;
     let photoSwipeStartY = null;
+    let overlayPhotoSwipeStartX = null;
+    let overlayPhotoSwipeStartY = null;
+    let overlayPhotoSwipePointerId = null;
+    let suppressOverlayPhotoClick = false;
 
     const categoryCountElements = {
       lego:
@@ -4254,7 +4270,39 @@
 
     productModalClose.addEventListener("click", closeProductModal);
     productModal.querySelectorAll("[data-close-product-modal]").forEach((element) => element.addEventListener("click", closeProductModal));
-    productModalImageArea.addEventListener("click", openProductPhoto);
+    productModalImageArea.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse" || activeProductPhotos.length <= 1) return;
+      if (event.target.closest("button")) return;
+      overlayPhotoSwipePointerId = event.pointerId;
+      overlayPhotoSwipeStartX = event.clientX;
+      overlayPhotoSwipeStartY = event.clientY;
+      suppressOverlayPhotoClick = false;
+      productModalImageArea.classList.add("is-photo-swiping");
+    }, { passive: true });
+    productModalImageArea.addEventListener("pointerup", (event) => {
+      if (overlayPhotoSwipePointerId !== event.pointerId || overlayPhotoSwipeStartX === null || overlayPhotoSwipeStartY === null) return;
+      const deltaX = event.clientX - overlayPhotoSwipeStartX;
+      const deltaY = event.clientY - overlayPhotoSwipeStartY;
+      overlayPhotoSwipePointerId = null;
+      overlayPhotoSwipeStartX = null;
+      overlayPhotoSwipeStartY = null;
+      productModalImageArea.classList.remove("is-photo-swiping");
+      if (Math.abs(deltaX) >= 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
+        suppressOverlayPhotoClick = true;
+        changeProductPhoto(deltaX < 0 ? 1 : -1);
+        window.setTimeout(() => { suppressOverlayPhotoClick = false; }, 350);
+      }
+    }, { passive: true });
+    productModalImageArea.addEventListener("pointercancel", () => {
+      overlayPhotoSwipePointerId = null;
+      overlayPhotoSwipeStartX = null;
+      overlayPhotoSwipeStartY = null;
+      productModalImageArea.classList.remove("is-photo-swiping");
+    }, { passive: true });
+    productModalImageArea.addEventListener("click", (event) => {
+      if (suppressOverlayPhotoClick || event.target.closest("button")) return;
+      openProductPhoto();
+    });
     productModalImageArea.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openProductPhoto(); }
     });
