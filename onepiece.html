@@ -1898,6 +1898,14 @@
       .product-modal-thumbnail { width: 58px; height: 58px; flex-basis: 58px; }
     }
 
+
+    /* Controls inside the main overlay photo */
+    .product-modal-photo-nav{width:44px;height:44px;padding:0;position:absolute;top:50%;z-index:5;display:flex;align-items:center;justify-content:center;background:rgba(7,7,7,.78);color:#fff;border:1px solid var(--gold);border-radius:50%;font-size:29px;line-height:1;cursor:pointer;transform:translateY(-50%)}
+    .product-modal-photo-prev{left:12px}.product-modal-photo-next{right:12px}
+    .product-modal-photo-nav:hover,.product-modal-photo-nav:focus-visible{background:var(--gold);color:#070707}
+    .product-modal-photo-counter{padding:4px 9px;position:absolute;right:12px;bottom:12px;z-index:5;background:rgba(7,7,7,.8);color:#fff;border:1px solid var(--border);border-radius:999px;font-size:11px;font-weight:800;line-height:1.2;pointer-events:none}
+    @media(max-width:480px){.product-modal-photo-nav{width:38px;height:38px;font-size:25px}.product-modal-photo-prev{left:8px}.product-modal-photo-next{right:8px}.product-modal-photo-counter{right:8px;bottom:8px}}
+
 </style>
 </head>
 <body>
@@ -2024,6 +2032,9 @@
           <img id="product-modal-image" src="" alt="">
           <p class="product-modal-image-placeholder" id="product-modal-image-placeholder" hidden>Product image unavailable</p>
           <span class="product-modal-status" id="product-modal-status"></span>
+          <button class="product-modal-photo-nav product-modal-photo-prev" id="product-modal-photo-prev" type="button" aria-label="Previous product photo">‹</button>
+          <button class="product-modal-photo-nav product-modal-photo-next" id="product-modal-photo-next" type="button" aria-label="Next product photo">›</button>
+          <span class="product-modal-photo-counter" id="product-modal-photo-counter" aria-live="polite"></span>
         </div>
         <div class="product-modal-thumbnails" id="product-modal-thumbnails" aria-label="Product photos"></div>
       </div>
@@ -2131,6 +2142,9 @@
     const productModalImage = document.getElementById("product-modal-image");
     const productModalImagePlaceholder = document.getElementById("product-modal-image-placeholder");
     const productModalThumbnails = document.getElementById("product-modal-thumbnails");
+    const productModalPhotoPrev = document.getElementById("product-modal-photo-prev");
+    const productModalPhotoNext = document.getElementById("product-modal-photo-next");
+    const productModalPhotoCounter = document.getElementById("product-modal-photo-counter");
     const productModalStatus = document.getElementById("product-modal-status");
     const productModalCategory = document.getElementById("product-modal-category");
     const productModalName = document.getElementById("product-modal-name");
@@ -2648,6 +2662,22 @@
       productModalThumbnails.querySelectorAll(".product-modal-thumbnail").forEach((button) => {
         button.setAttribute("aria-current", String(button === selectedButton));
       });
+      updateOverlayPhotoControls();
+    }
+    function updateOverlayPhotoControls() {
+      const multiple = activeProductPhotos.length > 1;
+      productModalPhotoPrev.hidden = !multiple;
+      productModalPhotoNext.hidden = !multiple;
+      productModalPhotoCounter.hidden = !multiple;
+      productModalPhotoCounter.textContent = multiple ? `${activeProductPhotoIndex + 1} / ${activeProductPhotos.length}` : "";
+      productModalThumbnails.hidden = !multiple;
+    }
+    function changeOverlayProductPhoto(direction) {
+      if (activeProductPhotos.length <= 1) return;
+      activeProductPhotoIndex = (activeProductPhotoIndex + direction + activeProductPhotos.length) % activeProductPhotos.length;
+      const photo = activeProductPhotos[activeProductPhotoIndex];
+      const button = productModalThumbnails.children[activeProductPhotoIndex] || null;
+      selectProductModalImage(photo, productModalName.textContent || "Product", button);
     }
     function renderProductModalGallery(product, productName) {
       const photos = getProductImages(product);
@@ -2662,6 +2692,7 @@
         productModalImage.removeAttribute("role");
         productModalImage.setAttribute("aria-label", productName);
         productModalImagePlaceholder.hidden = false;
+        updateOverlayPhotoControls();
         return;
       }
       photos.forEach((photo, index) => {
@@ -3383,6 +3414,8 @@
       }
     });
     productPhotoClose.addEventListener("click", closeProductPhoto);
+    productModalPhotoPrev.addEventListener("click", (event) => { event.preventDefault(); event.stopPropagation(); changeOverlayProductPhoto(-1); });
+    productModalPhotoNext.addEventListener("click", (event) => { event.preventDefault(); event.stopPropagation(); changeOverlayProductPhoto(1); });
     productPhotoPrev.addEventListener("click", (event) => { event.stopPropagation(); showAdjacentProductPhoto(-1); });
     productPhotoNext.addEventListener("click", (event) => { event.stopPropagation(); showAdjacentProductPhoto(1); });
     productPhotoViewer.addEventListener("touchstart", (event) => { photoViewerTouchStartX = event.touches[0]?.clientX ?? null; }, { passive: true });
