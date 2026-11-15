@@ -1984,6 +1984,29 @@
       transition: none;
     }
 
+
+    /* Definitive overlay counter rules */
+    .product-modal-photo-counter {
+      left: 50% !important;
+      right: auto !important;
+      bottom: 12px;
+      transform: translateX(-50%) !important;
+    }
+    .product-modal-photo-counter[hidden],
+    .product-photo-counter[hidden],
+    .product-modal-photo-counter[aria-hidden="true"],
+    .product-photo-counter[aria-hidden="true"] {
+      display: none !important;
+    }
+    @media (max-width: 480px) {
+      .product-modal-photo-counter {
+        left: 50% !important;
+        right: auto !important;
+        bottom: 8px;
+        transform: translateX(-50%) !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -2992,18 +3015,18 @@
       productModalThumbnails.hidden=activeProductPhotos.length<=1;
     }
     function updatePhotoViewerControls(){
-      const multiple=activeProductPhotos.length>1;
-      productPhotoPrev.hidden=!multiple;
-      productPhotoNext.hidden=!multiple;
-      productModalPhotoPrev.hidden=!multiple;
-      productModalPhotoNext.hidden=!multiple;
-      productPhotoCounter.hidden=!multiple;
-      productModalPhotoCounter.hidden=!multiple;
+      const multiple = activeProductPhotos.length > 1;
+      productPhotoPrev.hidden = !multiple;
+      productPhotoNext.hidden = !multiple;
+      productModalPhotoPrev.hidden = !multiple;
+      productModalPhotoNext.hidden = !multiple;
+      productPhotoCounter.hidden = !multiple;
+      productModalPhotoCounter.hidden = !multiple;
       productPhotoCounter.setAttribute("aria-hidden", String(!multiple));
       productModalPhotoCounter.setAttribute("aria-hidden", String(!multiple));
-      const counterText=multiple?`${activePhotoIndex+1} / ${activeProductPhotos.length}`:"";
-      productPhotoCounter.textContent=counterText;
-      productModalPhotoCounter.textContent=counterText;
+      const counterText = multiple ? `${activePhotoIndex + 1} / ${activeProductPhotos.length}` : "";
+      productPhotoCounter.textContent = counterText;
+      productModalPhotoCounter.textContent = counterText;
     }
     function changeProductPhoto(direction){if(activeProductPhotos.length<=1)return;showProductPhoto(activePhotoIndex+direction,{updateViewer:true})}
     function populateAndShowProductModal(product, category) {
