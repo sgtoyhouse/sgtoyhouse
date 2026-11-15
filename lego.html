@@ -1983,7 +1983,7 @@
     const productPhotoFull = document.getElementById("product-photo-full");
     const productPhotoClose = document.getElementById("product-photo-close");
     const productPhotoPrev=document.getElementById("product-photo-prev"); const productPhotoNext=document.getElementById("product-photo-next"); const productPhotoCounter=document.getElementById("product-photo-counter");
-    let activeProductPhotos=[]; let activePhotoIndex=0; let overlayStartX=null; let overlayStartY=null; let suppressPhotoClick=false;
+    let activeProductPhotos=[]; let activePhotoIndex=0; let overlayStartX=null; let overlayStartY=null; let viewerStartX=null; let viewerStartY=null; let suppressPhotoClick=false;
     let productModalPreviousFocus = null;
     let productModalSourceCard = null;
     let productModalTransition = null;
@@ -2695,9 +2695,14 @@
       category.className =
         "product-category";
 
-      category.append(
-        DISPLAY_CATEGORY_NAME
-      );
+      category.append(DISPLAY_CATEGORY_NAME);
+      const subcategory = getProductSubcategory(product);
+      if (subcategory) {
+        const subcategoryElement = document.createElement("span");
+        subcategoryElement.className = "product-subcategory";
+        subcategoryElement.textContent = subcategory;
+        category.appendChild(subcategoryElement);
+      }
 
       const name =
         document.createElement(
@@ -3200,6 +3205,9 @@
     productModalImageArea.addEventListener("pointerup",e=>{if(overlayStartX===null)return;const dx=e.clientX-overlayStartX,dy=e.clientY-overlayStartY;overlayStartX=overlayStartY=null;if(Math.abs(dx)>=50&&Math.abs(dx)>Math.abs(dy)*1.25){suppressPhotoClick=true;changeProductPhoto(dx<0?1:-1);setTimeout(()=>suppressPhotoClick=false,350)}},{passive:true});
     productModalImageArea.addEventListener("click",e=>{if(!suppressPhotoClick&&!e.target.closest("button"))openPhotoViewer()});
     productModalPhotoPrev.addEventListener("click",e=>{e.stopPropagation();changeProductPhoto(-1)});productModalPhotoNext.addEventListener("click",e=>{e.stopPropagation();changeProductPhoto(1)});
+    productPhotoViewer.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"||activeProductPhotos.length<=1)return;viewerStartX=e.clientX;viewerStartY=e.clientY},{passive:true});
+    productPhotoViewer.addEventListener("pointerup",e=>{if(viewerStartX===null||viewerStartY===null)return;const dx=e.clientX-viewerStartX,dy=e.clientY-viewerStartY;viewerStartX=viewerStartY=null;if(Math.abs(dx)>=50&&Math.abs(dx)>Math.abs(dy)*1.25)changeProductPhoto(dx<0?1:-1)},{passive:true});
+    productPhotoViewer.addEventListener("pointercancel",()=>{viewerStartX=viewerStartY=null},{passive:true});
     productPhotoClose.addEventListener("click",closePhotoViewer);productPhotoPrev.addEventListener("click",e=>{e.stopPropagation();changeProductPhoto(-1)});productPhotoNext.addEventListener("click",e=>{e.stopPropagation();changeProductPhoto(1)});productPhotoViewer.addEventListener("click",e=>{if(e.target===productPhotoViewer||e.target===productPhotoFull)closePhotoViewer()});
     document.addEventListener("keydown",e=>{if(!productPhotoViewer.hidden&&e.key==="ArrowLeft"){changeProductPhoto(-1);return}if(!productPhotoViewer.hidden&&e.key==="ArrowRight"){changeProductPhoto(1);return}if(e.key!=="Escape")return;if(!productPhotoViewer.hidden)closePhotoViewer();else if(!productModal.hidden)closeProductModal()});
     updateBackToTopButton();
