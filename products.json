@@ -1,5 +1,38 @@
 [
   {
+    "id": "product-8797b1af-5e2a-4a36-b134-d7a8e7b63dab",
+    "name": "Black Widow Taskmaster’s Ambush (San Diego Comic-Con 2020 Exclusive",
+    "category": "LEGO",
+    "price": 120,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Marvel",
+    "setNumber": "77905",
+    "year": 2020,
+    "language": "",
+    "description": "",
+    "images": [
+      {
+        "src": "images/products/lego/77905/77905a.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/lego/77905/77905b.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/lego/77905/77905c.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/lego/77905/77905a.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-15T03:06:41.062Z",
+    "updatedAt": "2026-11-15T03:06:41.062Z"
+  },
+  {
     "id": "product-26b14ebf-b877-4a1c-baf1-75a621d79ee9",
     "name": "Glory Of Team Rocket Booster Box",
     "category": "Pokémon",
