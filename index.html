@@ -2997,9 +2997,9 @@
       productPhotoNext.hidden=!multiple;
       productModalPhotoPrev.hidden=!multiple;
       productModalPhotoNext.hidden=!multiple;
-      productPhotoCounter.hidden=!activeProductPhotos.length;
-      productModalPhotoCounter.hidden=!activeProductPhotos.length;
-      const counterText=activeProductPhotos.length?`${activePhotoIndex+1} / ${activeProductPhotos.length}`:"";
+      productPhotoCounter.hidden=!multiple;
+      productModalPhotoCounter.hidden=!multiple;
+      const counterText=multiple?`${activePhotoIndex+1} / ${activeProductPhotos.length}`:"";
       productPhotoCounter.textContent=counterText;
       productModalPhotoCounter.textContent=counterText;
     }
