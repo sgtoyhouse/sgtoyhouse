@@ -1984,23 +1984,6 @@
       transition: none;
     }
 
-
-    /* Final overlay counter positioning */
-    .product-modal-photo-counter {
-      left: 50%;
-      right: auto;
-      bottom: 12px;
-      transform: translateX(-50%);
-    }
-    @media (max-width: 480px) {
-      .product-modal-photo-counter {
-        left: 50%;
-        right: auto;
-        bottom: 8px;
-        transform: translateX(-50%);
-      }
-    }
-
 </style>
 </head>
 
@@ -3014,9 +2997,11 @@
       productPhotoNext.hidden=!multiple;
       productModalPhotoPrev.hidden=!multiple;
       productModalPhotoNext.hidden=!multiple;
-      productPhotoCounter.hidden=!activeProductPhotos.length;
-      productModalPhotoCounter.hidden=!activeProductPhotos.length;
-      const counterText=activeProductPhotos.length?`${activePhotoIndex+1} / ${activeProductPhotos.length}`:"";
+      productPhotoCounter.hidden=!multiple;
+      productModalPhotoCounter.hidden=!multiple;
+      productPhotoCounter.setAttribute("aria-hidden", String(!multiple));
+      productModalPhotoCounter.setAttribute("aria-hidden", String(!multiple));
+      const counterText=multiple?`${activePhotoIndex+1} / ${activeProductPhotos.length}`:"";
       productPhotoCounter.textContent=counterText;
       productModalPhotoCounter.textContent=counterText;
     }
