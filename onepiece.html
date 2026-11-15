@@ -1911,6 +1911,21 @@
     .product-modal-photo-counter{padding:4px 9px;position:absolute;right:12px;bottom:12px;z-index:5;background:rgba(7,7,7,.8);color:#fff;border:1px solid var(--border);border-radius:999px;font-size:11px;font-weight:800;line-height:1.2;pointer-events:none}
     @media(max-width:480px){.product-modal-photo-nav{width:38px;height:38px;font-size:25px}.product-modal-photo-prev{left:8px}.product-modal-photo-next{right:8px}.product-modal-photo-counter{right:8px;bottom:8px}}
 
+
+    /* Keep the overlay photo counter centered */
+    .product-modal-photo-counter {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+    @media (max-width: 480px) {
+      .product-modal-photo-counter {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+    }
+
 </style>
 </head>
 <body>
