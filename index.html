@@ -2007,6 +2007,22 @@
       }
     }
 
+
+    /* Product card subcategory */
+    .product-subcategory {
+      display: inline;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+    .product-subcategory::before {
+      margin: 0 5px;
+      color: var(--muted);
+      content: "•";
+    }
+    @media (max-width: 480px) {
+      .product-subcategory::before { margin-right: 3px; margin-left: 3px; }
+    }
+
 </style>
 </head>
 
@@ -3250,9 +3266,14 @@
       categoryName.className =
         "product-category";
 
-      categoryName.append(
-        category.label
-      );
+      categoryName.append(category.label);
+      const subcategoryText = getProductSubcategory(product);
+      if (subcategoryText) {
+        const subcategory = document.createElement("span");
+        subcategory.className = "product-subcategory";
+        subcategory.textContent = subcategoryText;
+        categoryName.appendChild(subcategory);
+      }
 
       const name =
         document.createElement("h3");
