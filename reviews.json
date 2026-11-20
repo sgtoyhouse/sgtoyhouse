@@ -1,5 +1,16 @@
 [
   {
+    "id": "review-d469a6c9-3426-4ca0-8375-10bdbc46e887",
+    "author": "Bino Chia",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Fast delivery, very responsive and accommodating to request as well, thanks boss 🙏",
+    "photo": "images/reviews/review260205_1.jpeg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-05",
+    "updatedAt": "2026-11-20T15:34:53.000Z"
+  },
+  {
     "id": "review-12335f72-b05a-4b14-907d-10110c7cd6ab",
     "author": "Amirul Adli",
     "source": "Telegram",
@@ -7,7 +18,7 @@
     "text": "Excellent seller. Easy to deal with. Fast delivery too 😄",
     "photo": "images/reviews/review260205.jpg",
     "photoAlt": "",
-    "dateAdded": "2026-02-05",
+    "dateAdded": "2026-02-04",
     "updatedAt": "2026-11-10T14:30:09.440Z"
   },
   {
