@@ -1,5 +1,27 @@
 [
   {
+    "id": "review-0e6be206-12ad-427d-b2f7-849220255230",
+    "author": "Razlee",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Fastest delivery i ever encountered! Item came 1hr after odering! Haahahah",
+    "photo": "images/reviews/review260210.jpeg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-10",
+    "updatedAt": "2026-11-20T15:55:52.592Z"
+  },
+  {
+    "id": "review-d493d028-9b58-4ec0-98c7-430c5379423f",
+    "author": "Farnil",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Mistake rectified instantly! Definitely good customer service! Huat ah! Ty bro!",
+    "photo": "images/reviews/review260207.jpeg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-07",
+    "updatedAt": "2026-11-20T15:47:41.185Z"
+  },
+  {
     "id": "review-d469a6c9-3426-4ca0-8375-10bdbc46e887",
     "author": "Bino Chia",
     "source": "Telegram",
