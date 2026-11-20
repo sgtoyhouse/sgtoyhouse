@@ -1,5 +1,49 @@
 [
   {
+    "id": "review-66a78018-158d-40ff-a97f-40da7af34429",
+    "author": "Hao Yi",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Fuss free purchase! Ordered and paid 2pm, received at 345pm!  Happy new year bro!",
+    "photo": "images/reviews/review260220_01.jpeg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-20",
+    "updatedAt": "2026-11-20T16:22:24.706Z"
+  },
+  {
+    "id": "review-c5cefa94-cda3-4566-a554-ca90ab085888",
+    "author": "Edy",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Nice and friendly seller. Delivered on time as arranged.",
+    "photo": "images/reviews/review260220.jpeg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-20",
+    "updatedAt": "2026-11-20T16:18:36.115Z"
+  },
+  {
+    "id": "review-9b4bebd8-0b4f-483e-971d-65ac5fc3e164",
+    "author": "Kelvin",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Best 🤙🏻🙏🏻 Delivery himself. Super fast. Thanks for the deal.",
+    "photo": "images/reviews/review260219.jpeg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-19",
+    "updatedAt": "2026-11-20T16:14:25.291Z"
+  },
+  {
+    "id": "review-eec6c0b7-4cab-43b5-b70e-811810cb9ec5",
+    "author": "Anthony Yu",
+    "source": "Telegram",
+    "rating": 5,
+    "text": "Thanks for deliver on Sunday",
+    "photo": "images/reviews/review260216.jpeg",
+    "photoAlt": "",
+    "dateAdded": "2026-02-16",
+    "updatedAt": "2026-11-20T16:04:50.941Z"
+  },
+  {
     "id": "review-0e6be206-12ad-427d-b2f7-849220255230",
     "author": "Razlee",
     "source": "Telegram",
