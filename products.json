@@ -1,5 +1,74 @@
 [
   {
+    "id": "product-2a21c2ac-7738-4c7c-9653-cba4f8e30f98",
+    "name": "Pokémon Centre 30th Anniversary Pikachu Plush",
+    "category": "Accessories",
+    "price": 45,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pokémon Centre",
+    "setNumber": "",
+    "year": 2026,
+    "language": "",
+    "description": "Commemorate 30 years of Pokémon fun with a special sparkly plush! Dapperly dressed to celebrate this momentus occasion, Pikachu shimmers from tip to tail as it holds a glistening golden Poké Ball.\n\n✨ Plush Size approx. 12cm x 18cm\n✨ Attached plush Poké Ball is emblazoned with \"30th\"\n✨ Special shimmering details\n✨ Makes an ideal gift or keep as the cornerstone of your collection\n✨ Part of the Pokémon 30th Celebration collection\n✨ Pokémon Center Original",
+    "images": [
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush4.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush5.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush6.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush7.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush8.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush9.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush10.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush11.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush12.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/plush/Pokémon Centre 30th Anniversary Pikachu Plush1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-22T23:38:42.429Z",
+    "updatedAt": "2026-11-22T23:38:42.429Z"
+  },
+  {
     "id": "product-f0fbc756-20bd-4c9d-8b43-862b5c149d11",
     "name": "Takara Tomy Captain Pikachu Plush",
     "category": "Accessories",
