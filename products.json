@@ -1,5 +1,75 @@
 [
   {
+    "id": "product-f0fbc756-20bd-4c9d-8b43-862b5c149d11",
+    "name": "Takara Tomy Captain Pikachu Plush",
+    "category": "Accessories",
+    "price": 49,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Plush",
+    "setNumber": "",
+    "year": 2023,
+    "language": "",
+    "description": "✨ Size 15cm x 22cm\n✨ Removable cap\n✨ Takara Tomy Original",
+    "images": [
+      {
+        "src": "images/products/accessories/plush/Takara tomy captain pikachu1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Takara tomy captain pikachu2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Takara tomy captain pikachu3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Takara tomy captain pikachu4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/plush/Takara tomy captain pikachu1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-22T23:10:27.914Z",
+    "updatedAt": "2026-11-22T23:10:27.914Z"
+  },
+  {
+    "id": "product-78a8a6cc-d424-42b0-9e4e-4b59b54c26d5",
+    "name": "Pokémon Centre Mega Gengar Plush",
+    "category": "Accessories",
+    "price": 79,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pokémon Centre",
+    "setNumber": "",
+    "year": 2025,
+    "language": "",
+    "description": "✨ Size 27cm x 33cm\n✨ Embroidered details\n✨ Pokémon Center Original",
+    "images": [
+      {
+        "src": "images/products/accessories/plush/Gengar1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Gengar2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Gengar3.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/plush/Gengar1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-22T22:59:56.226Z",
+    "updatedAt": "2026-11-22T22:59:56.226Z"
+  },
+  {
     "id": "product-44a90a25-ea60-42be-8c9b-fc2081aaf7d6",
     "name": "Mega Evolutions 4-Pocket Portfolio (Mega Gardevoir)",
     "category": "Accessories",
