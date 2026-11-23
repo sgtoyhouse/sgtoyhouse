@@ -1,5 +1,111 @@
 [
   {
+    "id": "product-a0a46232-cddf-4631-b871-6673943beb63",
+    "name": "Premium Card Collection - Live Action Edition Vol. 2 Baroque Works",
+    "category": "One Piece",
+    "price": 35,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Folder",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨Each folder contains all 7 cards from Baroque Works Crew.",
+    "images": [
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW01.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW02.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW03.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW04.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW05.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW06.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW07.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 BW08.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/live action/OP live action vol2 BW01.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T16:16:34.729Z",
+    "updatedAt": "2026-11-23T16:16:34.729Z"
+  },
+  {
+    "id": "product-2ab818f6-c707-4ca0-a922-872774c608a4",
+    "name": "Premium Card Collection  - Live Action Edition Vol. 2 Straw Hat Crew",
+    "category": "One Piece",
+    "price": 35,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Folder",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨Each folder contains all 7 cards from Straw Hat Crew.",
+    "images": [
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST01.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST02.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST03.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST04.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST05.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST06.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST07.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/live action/OP live action vol2 ST08.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/live action/OP live action vol2 ST01.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T16:07:01.358Z",
+    "updatedAt": "2026-11-23T16:07:01.358Z"
+  },
+  {
     "id": "product-531df201-3ff0-4a1b-bf27-57269ca0c1a7",
     "name": "30th Anniversary Pokemon Center Game Package Magnet (1996-2025)",
     "category": "Accessories",
