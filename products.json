@@ -1,5 +1,42 @@
 [
   {
+    "id": "product-4b7a6a94-1600-41fe-a209-9f94224ce21a",
+    "name": "Luffy's ArtCanvas 1/8 -1000LOGS Anniversary",
+    "category": "Accessories",
+    "price": 118,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "One Piece",
+    "setNumber": "",
+    "year": 2026,
+    "language": "",
+    "description": "✨ Adapted from the celebratory color artwork of One Piece’s historic Chapter 1000 milestone, now brought to life on a premium collectible figure.\n✨ Height: ~22 cm (8.5 inches)\n✨ Scale: 1/8\n✨ Material: High-quality ABS plastic\n✨ Unboxing Video : https://www.youtube.com/watch?v=ByIyyPB29nw",
+    "images": [
+      {
+        "src": "images/products/accessories/artcanvas/1000logs1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/artcanvas/1000logs2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/artcanvas/1000logs3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/artcanvas/1000logs4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/artcanvas/1000logs1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T19:04:40.299Z",
+    "updatedAt": "2026-11-23T19:04:40.299Z"
+  },
+  {
     "id": "product-a0a46232-cddf-4631-b871-6673943beb63",
     "name": "Premium Card Collection - Live Action Edition Vol. 2 Baroque Works",
     "category": "One Piece",
