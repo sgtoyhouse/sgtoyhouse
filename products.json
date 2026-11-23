@@ -1,5 +1,87 @@
 [
   {
+    "id": "product-531df201-3ff0-4a1b-bf27-57269ca0c1a7",
+    "name": "30th Anniversary Pokemon Center Game Package Magnet (1996-2025)",
+    "category": "Accessories",
+    "price": 160,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Magnet",
+    "setNumber": "",
+    "year": 2026,
+    "language": "",
+    "description": "✨The classic Game Boy, Game Boy Advance, DS, 3DS, Nintendo Switch game titles are now available as a Magnet Collection!\n✨ Contains complete full set of 20 different magnet designs. Total 3 boxes.",
+    "images": [
+      {
+        "src": "images/products/accessories/magnet/pkmMagnet1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/magnet/pkmMagnet2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/magnet/pkmMagnet3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/magnet/pkmMagnet4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/magnet/pkmMagnet1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T15:12:28.191Z",
+    "updatedAt": "2026-11-23T15:12:28.191Z"
+  },
+  {
+    "id": "product-fbf1cbfe-3bf0-431a-aee8-81918396843b",
+    "name": "Premium Leather 3-Rows Deck Case",
+    "category": "Accessories",
+    "price": 10,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Deck Case",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Available in 5 different colours.\n✨ Dimensions : 10.5cm x 24cm x 29cm\n✨ Exterior PU leather with soft felt interior and magnetic closure.\n✨ Stores approx. 1800 cards\n✨ Not suitable for top loaders and magnetic holders",
+    "images": [
+      {
+        "src": "images/products/accessories/deck case/leatherdeckcase1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/deck case/leatherdeckcase2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/deck case/leatherdeckcase3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/deck case/leatherdeckcase4.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/deck case/leatherdeckcase5.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/deck case/leatherdeckcase6.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/deck case/leatherdeckcase1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T10:06:06.456Z",
+    "updatedAt": "2026-11-23T10:06:06.456Z"
+  },
+  {
     "id": "product-823af1bc-39e3-440d-86d0-3600ee5af61d",
     "name": "One Piece Premium Booster Box Acrylic Case",
     "category": "Accessories",
