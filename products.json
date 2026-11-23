@@ -1,5 +1,516 @@
 [
   {
+    "id": "product-a50af0ab-d1f6-4118-b4f6-a4deed225e25",
+    "name": "Pokémon Center Japan Mega Charizard X Old Castle",
+    "category": "Accessories",
+    "price": 16,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/megacharizard.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/megacharizard.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:48:02.901Z",
+    "updatedAt": "2026-11-23T06:48:02.901Z"
+  },
+  {
+    "id": "product-2e7410c6-b0b9-439b-965c-bf030df3a15a",
+    "name": "Pokémon Center Japan Moonlight Umbreon Deck Shield",
+    "category": "Accessories",
+    "price": 16,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/umbreon.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/umbreon.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:41:30.645Z",
+    "updatedAt": "2026-11-23T06:41:30.645Z"
+  },
+  {
+    "id": "product-5f3414d7-c7e7-4e9b-a9fb-a330239e5461",
+    "name": "Pokémon Center Japan Deck Shield Pro Pikachu",
+    "category": "Accessories",
+    "price": 14,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/propikachu.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/propikachu.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:37:33.055Z",
+    "updatedAt": "2026-11-23T06:37:33.055Z"
+  },
+  {
+    "id": "product-0b12ccd7-556c-4d9e-8064-f3c4f536d839",
+    "name": "Pokémon Center Japan Deck Shield Pro Team Rocket",
+    "category": "Accessories",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/teamrocket.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/teamrocket.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:34:22.000Z",
+    "updatedAt": "2026-11-23T06:34:22.000Z"
+  },
+  {
+    "id": "product-aaafd287-e27d-4b41-acf1-4dd12f2a9737",
+    "name": "Pokémon Center Japan Deck Shield Pro Card Lounge",
+    "category": "Accessories",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Black border  \n✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/lounge.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/lounge.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:32:05.414Z",
+    "updatedAt": "2026-11-23T06:32:05.414Z"
+  },
+  {
+    "id": "product-60153ad6-ab8c-4130-8db0-b41959c1c65d",
+    "name": "Pokémon Center Japan Deck Shield Pro Monster Ball",
+    "category": "Accessories",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/monsterball.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/monsterball.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:25:38.816Z",
+    "updatedAt": "2026-11-23T06:25:38.816Z"
+  },
+  {
+    "id": "product-03449b82-323d-4ba1-ae96-7aaa318243f2",
+    "name": "Pokémon Center Japan Deck Shield Pro Mew",
+    "category": "Accessories",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/mew.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/mew.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:18:24.353Z",
+    "updatedAt": "2026-11-23T06:18:24.353Z"
+  },
+  {
+    "id": "product-639e3914-775c-4d3d-9045-7086ca1c6c58",
+    "name": "Pokémon Card Game Deck Shield Trainers Stardust★Besties",
+    "category": "Accessories",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/trainers.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/trainers.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:11:51.606Z",
+    "updatedAt": "2026-11-23T06:11:51.606Z"
+  },
+  {
+    "id": "product-0a822e18-ad34-4115-8f2a-67fe0e659c2d",
+    "name": "Pokémon Center Japan Deck Shield Premium Gloss Gengar",
+    "category": "Accessories",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Green border \n✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/gengar.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/gengar.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T06:06:55.482Z",
+    "updatedAt": "2026-11-23T06:06:55.482Z"
+  },
+  {
+    "id": "product-b4ee3e2b-2e95-46d7-9109-d281fe5afa4d",
+    "name": "Pokémon Card Game Deck Shield Pikachu’s Gift",
+    "category": "Accessories",
+    "price": 14,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/pikachugift.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/pikachugift.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T05:59:54.887Z",
+    "updatedAt": "2026-11-23T05:59:54.887Z"
+  },
+  {
+    "id": "product-27b34efc-d214-44c6-b352-18fae2623002",
+    "name": "Pokémon Card Game Deck Shield Pikachu & Sprigatito",
+    "category": "Accessories",
+    "price": 14,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/pikachusprigatito.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/pikachusprigatito.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T05:52:07.790Z",
+    "updatedAt": "2026-11-23T05:52:07.790Z"
+  },
+  {
+    "id": "product-62923085-83ca-4315-8fac-3a12e3ad639c",
+    "name": "Pokémon Center Japan Café Poltchageist",
+    "category": "Accessories",
+    "price": 14,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "Pokémon Center Japan Café Poltchageist (喫茶チャデス / Café Chades) Pokémon Trading Card Game deck sleeves.\n\n✨ White border\n✨ Contains 64 card sleeves.  \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/cafe.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/cafe.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T04:39:27.599Z",
+    "updatedAt": "2026-11-23T04:39:27.599Z"
+  },
+  {
+    "id": "product-18bbd973-4fd9-48cb-9bf2-ec4586f7fb09",
+    "name": "Pokémon Card Game Deck Shield Pikachu Tokinomi",
+    "category": "Accessories",
+    "price": 14,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": 2025,
+    "language": "",
+    "description": "✨ Contains 64 card sleeves. \n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/pikachuberries.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/pikachuberries.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T04:31:37.034Z",
+    "updatedAt": "2026-11-23T04:31:37.034Z"
+  },
+  {
+    "id": "product-f561fc6a-2f00-4566-b276-7941e7448b5a",
+    "name": "Pokémon Center Kagawa Grand Opening",
+    "category": "Accessories",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": 2025,
+    "language": "",
+    "description": "Pokémon Card Game Deck Shield: Pokémon Center Kagawa trading card sleeves, released in October 2025 to celebrate the opening of Pokémon Center Kagawa.\n✨ Contains 64 card sleeves.\n✨ Dimensions : 66 x 92mm (standard Pokemon card size).",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/slowpoke.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/slowpoke.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T04:24:27.498Z",
+    "updatedAt": "2026-11-23T04:24:27.498Z"
+  },
+  {
+    "id": "product-cb47d898-5dc4-4a71-be12-92e96e987a2b",
+    "name": "Ultra Pro Pikachu Full-View Deck Box",
+    "category": "Accessories",
+    "price": 10,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Deck Box",
+    "setNumber": "",
+    "year": 2019,
+    "language": "",
+    "description": "✨ Brand New. Holds 80 cards. \n✨ Acid free, durable polypropylene material.",
+    "images": [
+      {
+        "src": "images/products/accessories/ultra pro/pikachu deck box1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/ultra pro/pikachu deck box2.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/ultra pro/pikachu deck box1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T01:08:41.733Z",
+    "updatedAt": "2026-11-23T01:08:41.733Z"
+  },
+  {
+    "id": "product-51848b7f-4d47-4b89-b0bd-acd690abbe23",
+    "name": "Shanghai Official Gym Pikachu Keychain (Purple)",
+    "category": "Accessories",
+    "price": 17,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pokémon Centre",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Exclusive to Shanghai Pokémon Centre Official TCG Gym",
+    "images": [
+      {
+        "src": "images/products/accessories/keychain/shanghai2.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/keychain/shanghai2.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T00:55:59.294Z",
+    "updatedAt": "2026-11-23T00:55:59.294Z"
+  },
+  {
+    "id": "product-25ca1c16-e3c2-4dc7-89d3-8836222cae4c",
+    "name": "Shanghai Official Gym Pikachu Keychain (Yellow)",
+    "category": "Accessories",
+    "price": 17,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pokémon Centre",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Exclusive to Shanghai Pokémon Centre Official TCG Gym",
+    "images": [
+      {
+        "src": "images/products/accessories/keychain/shanghai1.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/keychain/shanghai1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T00:53:18.281Z",
+    "updatedAt": "2026-11-23T00:53:18.281Z"
+  },
+  {
+    "id": "product-41d39049-d766-4cad-b1a4-1da5ea7b36b3",
+    "name": "Pokémon Centre Pika Pika Mart Apron",
+    "category": "Accessories",
+    "price": 45,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pika Pika Mart",
+    "setNumber": "",
+    "year": 2025,
+    "language": "",
+    "description": "Pika Pika Mart is a supermarket-themed merchandise collection from Pokémon Center Japan that originally launched online on December 4, 2025, and in stores on December 6, 2025. Designed around \"what if there was a supermarket in the Pokémon world,\" it features plushies, stationery, shopping baskets, and pouches styled like everyday grocery and convenience store goods.\n\n✨ Model Height 166cm\n✨ Pokémon Center Pika Pika Mart Collection",
+    "images": [
+      {
+        "src": "images/products/accessories/pika pika mart/Apron1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/pika pika mart/Apron2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/pika pika mart/Apron3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/pika pika mart/Apron4.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/pika pika mart/Apron5.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/pika pika mart/Apron6.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/pika pika mart/Apron1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T00:41:08.306Z",
+    "updatedAt": "2026-11-23T00:41:08.306Z"
+  },
+  {
+    "id": "product-304bec02-d78f-47a5-bea6-751dcecf7c11",
+    "name": "Pokémon Centre Pika Pika Mart Pikachu Plush",
+    "category": "Accessories",
+    "price": 35,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pika Pika Mart",
+    "setNumber": "",
+    "year": 2025,
+    "language": "",
+    "description": "Pika Pika Mart is a supermarket-themed merchandise collection from Pokémon Center Japan that originally launched online on December 4, 2025, and in stores on December 6, 2025. Designed around \"what if there was a supermarket in the Pokémon world,\" it features plushies, stationery, shopping baskets, and pouches styled like everyday grocery and convenience store goods.\n\n✨ Size approx. 14cm x 18cm\n✨ Pokémon Center Pika Pika Mart Collection",
+    "images": [
+      {
+        "src": "images/products/accessories/plush/Pika Pika Mart Pikachu Plush1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pika Pika Mart Pikachu Plush2.webp",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pika Pika Mart Pikachu Plush3.webp",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pika Pika Mart Pikachu Plush4.webp",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/plush/Pika Pika Mart Pikachu Plush1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T00:26:59.438Z",
+    "updatedAt": "2026-11-23T00:32:37.678Z"
+  },
+  {
     "id": "product-abb313c1-06d0-449e-8d42-0e1d2ba72f52",
     "name": "Pokémon Centre Pikachu Sweetheart Diner Plush",
     "category": "Accessories",
