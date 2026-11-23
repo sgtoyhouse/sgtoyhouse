@@ -1,5 +1,46 @@
 [
   {
+    "id": "product-823af1bc-39e3-440d-86d0-3600ee5af61d",
+    "name": "One Piece Premium Booster Box Acrylic Case",
+    "category": "Accessories",
+    "price": 10,
+    "currency": "SGD",
+    "status": "Sold Out",
+    "popular": false,
+    "subCategory": "Acrylic Case",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨UV Resistant\n✨ Suitable for Japanese One Piece booster box from OP-05 onwards",
+    "images": [
+      {
+        "src": "images/products/accessories/acrylic/opJapbb1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/opJapbb2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/opJapbb3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/opJapbb4.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/opJapbb5.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/acrylic/opJapbb1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T09:48:55.183Z",
+    "updatedAt": "2026-11-23T09:48:55.183Z"
+  },
+  {
     "id": "product-1f8438b7-4e67-40f8-aedb-ba24f526b177",
     "name": "Pokemon English Booster Bundle Acrylic Case",
     "category": "Accessories",
