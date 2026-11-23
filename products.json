@@ -1,5 +1,79 @@
 [
   {
+    "id": "product-1f8438b7-4e67-40f8-aedb-ba24f526b177",
+    "name": "Pokemon English Booster Bundle Acrylic Case",
+    "category": "Accessories",
+    "price": 7.5,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Acrylic Case",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Round edge\n✨ There are 2 different sizes for Booster Bundle case. The newer ones (Ascended Heroes, Perfect Order onwards) are bigger version.",
+    "images": [
+      {
+        "src": "images/products/accessories/acrylic/pkmEngBoosterBundle1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/pkmEngBoosterBundle2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/pkmEngBoosterBundle3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/pkmEngBoosterBundle4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/acrylic/pkmEngBoosterBundle1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T09:28:10.226Z",
+    "updatedAt": "2026-11-23T09:28:10.226Z"
+  },
+  {
+    "id": "product-4fe024a9-174c-4e39-b4e9-e202c4a6ff13",
+    "name": "One Piece English Booster Box Acrylic Case",
+    "category": "Accessories",
+    "price": 10,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Acrylic Case",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "",
+    "images": [
+      {
+        "src": "images/products/accessories/acrylic/opEnglishbb1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/opEnglishbb2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/opEnglishbb3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/opEnglishbb4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/acrylic/opEnglishbb1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T09:07:57.801Z",
+    "updatedAt": "2026-11-23T09:07:57.801Z"
+  },
+  {
     "id": "product-bb3f5131-c72d-479f-bfeb-845c4a62f3d1",
     "name": "Pokémon ETB Acrylic Case",
     "category": "Accessories",
