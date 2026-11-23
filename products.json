@@ -1,5 +1,195 @@
 [
   {
+    "id": "product-bb3f5131-c72d-479f-bfeb-845c4a62f3d1",
+    "name": "Pokémon ETB Acrylic Case",
+    "category": "Accessories",
+    "price": 10,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Acrylic Case",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ 5mm Thickness",
+    "images": [
+      {
+        "src": "images/products/accessories/acrylic/etb1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/etb2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/etb3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/etb4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/acrylic/etb1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T08:29:07.546Z",
+    "updatedAt": "2026-11-23T08:29:07.546Z"
+  },
+  {
+    "id": "product-c6f749ff-0297-4ee4-8b22-af0281be0765",
+    "name": "Pokémon English Booster Box Acrylic Case",
+    "category": "Accessories",
+    "price": 12,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Acrylic Case",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Round edge\n✨ Good quality thick acrylic walls",
+    "images": [
+      {
+        "src": "images/products/accessories/acrylic/pkm booster box1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/pkm booster box2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/pkm booster box3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/pkm booster box4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/acrylic/pkm booster box1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T08:04:11.389Z",
+    "updatedAt": "2026-11-23T08:04:11.389Z"
+  },
+  {
+    "id": "product-cc6df73c-eb04-4d30-914c-c2d1bc0a7bd6",
+    "name": "Stackable Premium Booster Pack Acrylic Case",
+    "category": "Accessories",
+    "price": 3,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Acrylic Case",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "✨ Dimensions : 145mm x 70mm x 4mm\n✨ Suitable for Japanese Pokemon/One Piece booster pack and Chinese slim booster pack.\n✨ Not suitable for English Pokemon/One Piece booster pack and Chinese jumbo booster pack. \n✨ Stackable on top of each other\n✨ Stand not included",
+    "images": [
+      {
+        "src": "images/products/accessories/acrylic/boosteracrylic1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/boosteracrylic2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/boosteracrylic3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/acrylic/boosteracrylic4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/acrylic/boosteracrylic1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T07:42:18.650Z",
+    "updatedAt": "2026-11-23T07:42:18.650Z"
+  },
+  {
+    "id": "product-fe19b9be-d908-4f78-981c-3499c369e343",
+    "name": "Ultra Clear Loose Fit (100pc)",
+    "category": "Accessories",
+    "price": 2,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/ultraloose.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/ultraloose.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T07:21:47.827Z",
+    "updatedAt": "2026-11-23T07:21:47.827Z"
+  },
+  {
+    "id": "product-e8594c30-7267-4317-865b-7a3d2b4bf3ca",
+    "name": "Ultra Clear Perfect Fit (100pc)",
+    "category": "Accessories",
+    "price": 2,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Card Sleeves",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "",
+    "images": [
+      {
+        "src": "images/products/accessories/sleeves/ultraperfect.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/sleeves/ultraperfect.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T07:19:44.190Z",
+    "updatedAt": "2026-11-23T07:19:44.190Z"
+  },
+  {
+    "id": "product-e126fc90-166c-48d8-be75-e74c3d56b444",
+    "name": "3\" x 4\" Regular Top Loaders (25pc)",
+    "category": "Accessories",
+    "price": 3,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Top Loader",
+    "setNumber": "",
+    "year": "",
+    "language": "",
+    "description": "",
+    "images": [
+      {
+        "src": "images/products/accessories/top loader/toploader1.jpeg",
+        "alt": "✨ Available in both clear blue or white."
+      },
+      {
+        "src": "images/products/accessories/top loader/toploader2.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/top loader/toploader1.jpeg",
+    "imageAlt": "✨ Available in both clear blue or white.",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T07:09:31.154Z",
+    "updatedAt": "2026-11-23T07:09:31.154Z"
+  },
+  {
     "id": "product-a50af0ab-d1f6-4118-b4f6-a4deed225e25",
     "name": "Pokémon Center Japan Mega Charizard X Old Castle",
     "category": "Accessories",
