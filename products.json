@@ -1,5 +1,83 @@
 [
   {
+    "id": "product-abb313c1-06d0-449e-8d42-0e1d2ba72f52",
+    "name": "Pokémon Centre Pikachu Sweetheart Diner Plush",
+    "category": "Accessories",
+    "price": 60,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pokémon Centre",
+    "setNumber": "",
+    "year": 2025,
+    "language": "",
+    "description": "It's time for a little treat from the Sweetheart Diner, and Pikachu is serving up cuddles with a cherry on top! This adorably rotund, vintage-style Pikachu plush is showing off a big red heart plush of its own to bring a smile to your face.\n\n✨ Size approx. 15cm x 23cm\n✨ Part of the Sweetheart Diner collection—known as Pikachu Diner in Japan\n✨ Pokémon Center Original",
+    "images": [
+      {
+        "src": "images/products/accessories/plush/Pikachu Sweetheart Diner Plush1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pikachu Sweetheart Diner Plush2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pikachu Sweetheart Diner Plush3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pikachu Sweetheart Diner Plush4.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pikachu Sweetheart Diner Plush5.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/plush/Pikachu Sweetheart Diner Plush1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-23T00:06:41.427Z",
+    "updatedAt": "2026-11-23T00:06:41.427Z"
+  },
+  {
+    "id": "product-aae30892-f67e-496d-acb2-a358a0e0416f",
+    "name": "Pokémon Centre 30th Anniversary Pikachu Keychain",
+    "category": "Accessories",
+    "price": 26,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Pokémon Centre",
+    "setNumber": "",
+    "year": 2026,
+    "language": "",
+    "description": "Commemorate 30 years of Pokémon fun with a special sparkly plush! Dapperly dressed to celebrate this momentous occasion, Pikachu shimmers from tip to tail as it holds a glistening golden Poké Ball. The convenient clip makes it easy to take and display anywhere.\n\n✨ Keychain Size approx. 8cm x 11cm\n✨ Attached Poké Ball clasp is perfect for hanging from a bag, backpack, or key ring\n✨ Special shimmering details\n✨ Makes an ideal gift or keep as the cornerstone of your collection\n✨ Part of the Pokémon 30th Celebration collection\n✨ A Pokémon Center Original",
+    "images": [
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Pikachu Keychain1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Pikachu Keychain2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Pikachu Keychain3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/plush/Pokémon Centre 30th Pikachu Keychain4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/plush/Pokémon Centre 30th Pikachu Keychain1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-22T23:56:20.613Z",
+    "updatedAt": "2026-11-22T23:56:20.613Z"
+  },
+  {
     "id": "product-2a21c2ac-7738-4c7c-9653-cba4f8e30f98",
     "name": "Pokémon Centre 30th Anniversary Pikachu Plush",
     "category": "Accessories",
