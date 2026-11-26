@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Accessories | SG Toy House</title>
-<meta content="Browse English, Japanese and Simplified Chinese Accessories available from SG Toy House." name="description"/>
+<title>Merchandise | SG Toy House</title>
+<meta content="Browse English, Japanese and Simplified Chinese merchandise available from SG Toy House." name="description"/>
 <meta name="theme-color" content="#070707"/>
 <link href="images/logo/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="images/logo/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
@@ -1855,7 +1855,7 @@
 <a class="navigation-link" href="lego.html">LEGO</a>
 <a class="navigation-link" href="pokemon.html">Pokémon TCG</a>
 <a class="navigation-link" href="onepiece.html">One Piece TCG</a>
-<a class="navigation-link" aria-current="page" href="accessories.html">Accessories</a>
+<a class="navigation-link" aria-current="page" href="accessories.html">Merchandise</a>
 <a class="navigation-link" href="faq.html">FAQ</a>
 </nav>
 </header>
@@ -1868,17 +1868,17 @@
 <p class="page-label">
           SG Toy House Collection
         </p>
-<h1>Accessories</h1>
-<p class="page-description">Discover premium accessories designed to protect, organise and showcase your prized collectibles.</p>
+<h1>Merchandise</h1>
+<p class="page-description">Discover premium merchandise designed to protect, organise and showcase your prized collectibles.</p>
 </div>
 </section>
 <section aria-labelledby="accessories-products-heading" class="products-section">
 <div class="container">
-<h2 hidden="" id="accessories-products-heading">Accessory products</h2>
+<h2 hidden="" id="accessories-products-heading">Merchandise products</h2>
 <div class="product-toolbar">
 <div class="search-area">
 <div class="search-control">
-<label class="visually-hidden" for="product-search">Search accessories</label>
+<label class="visually-hidden" for="product-search">Search merchandise</label>
 <input autocomplete="off" enterkeyhint="search" id="product-search" placeholder="Search by name, language, year or keyword..." type="search"/>
 </div>
 <div aria-label="Product filters" class="filter-group">
@@ -1889,7 +1889,7 @@
               </label>
             </div>
           </div>
-          <p class="product-count" id="product-count">Loading accessories...</p>
+          <p class="product-count" id="product-count">Loading merchandise...</p>
 <div class="sort-control">
 <label for="product-sort">
               Sort
@@ -1921,7 +1921,7 @@
 </div>
 <div aria-busy="true" aria-live="polite" class="product-grid" id="product-grid"></div>
 <div class="product-message" hidden="" id="product-message">
-<h2>No accessories available</h2>
+<h2>No merchandise available</h2>
 <p>
             Please check again soon for new additions.
           </p>
@@ -2022,7 +2022,7 @@
       "Accessories";
 
     const DISPLAY_CATEGORY_NAME =
-      "Accessories";
+      "Merchandise";
 
     const TELEGRAM_ENQUIRY_URL =
       "https://t.me/SG_ToyHouse";
@@ -2130,7 +2130,7 @@
         product.name ||
         product.title ||
         product.productName ||
-        "Accessory product"
+        "Merchandise product"
       ).trim();
     }
 
@@ -2955,14 +2955,14 @@
         productCount.textContent =
           enteredSearchTerm
             ? `No results for "${enteredSearchTerm}"`
-            : "0 matching accessories";
+            : "0 matching merchandise";
 
         productMessage.hidden = false;
 
         productMessage
           .querySelector("h2")
           .textContent =
-            "No matching accessories";
+            "No matching merchandise";
 
         if (
           selectedLanguages.length > 0
@@ -2992,8 +2992,8 @@
 
       const productLabel =
         sortedProducts.length === 1
-          ? "accessory"
-          : "accessories";
+          ? "item"
+          : "items";
 
       productCount.replaceChildren();
 
@@ -3143,7 +3143,7 @@
         productGrid.replaceChildren();
 
         productCount.textContent =
-          "Accessories could not be loaded.";
+          "Merchandise could not be loaded.";
 
         productMessage.hidden = false;
 
