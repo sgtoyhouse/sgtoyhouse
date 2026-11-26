@@ -2586,7 +2586,7 @@
   <script>
     const MAX_POPULAR_PRODUCTS = 5;
 const SEARCH_RESULTS_PER_PAGE = 25;
-    const MAX_VISIBLE_REVIEWS = 5;
+    const REVIEW_VISIBLE_ROWS = 2;
 
     const RECENT_PRODUCT_LIMITS = {
       lego: 1,
@@ -4187,10 +4187,17 @@ async function loadProductData() {
       reviewScrollArea.style.maxHeight =
         "";
 
-      if (
-        cards.length <=
-        MAX_VISIBLE_REVIEWS
-      ) {
+      const gridStyles = window.getComputedStyle(reviewGrid);
+      const columnCount = Math.max(
+        1,
+        gridStyles.gridTemplateColumns
+          .split(" ")
+          .filter(Boolean)
+          .length
+      );
+      const visibleCardCount = columnCount * REVIEW_VISIBLE_ROWS;
+
+      if (cards.length <= visibleCardCount) {
         reviewScrollArea.removeAttribute(
           "tabindex"
         );
@@ -4202,24 +4209,23 @@ async function loadProductData() {
         return;
       }
 
-      const lastVisibleCard =
-        cards[
-          MAX_VISIBLE_REVIEWS - 1
-        ];
-
       const gridTop =
         reviewGrid
           .getBoundingClientRect()
           .top;
 
-      const cardBottom =
-        lastVisibleCard
-          .getBoundingClientRect()
-          .bottom;
+      const visibleCards =
+        cards.slice(0, visibleCardCount);
+
+      const visibleBottom = Math.max(
+        ...visibleCards.map((card) =>
+          card.getBoundingClientRect().bottom
+        )
+      );
 
       reviewScrollArea.style.maxHeight =
         `${Math.ceil(
-          cardBottom - gridTop
+          visibleBottom - gridTop
         )}px`;
 
       reviewScrollArea
