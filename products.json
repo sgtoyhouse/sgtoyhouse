@@ -1,5 +1,71 @@
 [
   {
+    "id": "product-c23f91dd-ba40-49aa-8294-cb9831ffc965",
+    "name": "Koala Lecafig Set with Promo Card",
+    "category": "One Piece",
+    "price": 85,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Lecafig",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨ Japan exclusive limited edition sets only obtainable via Weekly Shonen Jump magazine ‘mail-in’ orders. \n\n✨ Each set contains : \n- Figure with base designed to hold the leader card during gameplay\n- Leader Card",
+    "images": [
+      {
+        "src": "images/products/onepiece/Lecafig Koala 1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/Lecafig Koala 2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/Lecafig Koala 3.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/Lecafig Koala 1.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-26T20:34:47.441Z",
+    "updatedAt": "2026-11-26T20:34:47.441Z"
+  },
+  {
+    "id": "product-b3a2fac6-ad18-49a9-99dc-a392b15dba44",
+    "name": "Shirahoshi Lecafig Set with Promo Card",
+    "category": "One Piece",
+    "price": 85,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Lecafig",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨ Japan exclusive limited edition sets only obtainable via Weekly Shonen Jump magazine ‘mail-in’ orders. \n\n✨ Each set contains : \n- Figure with base designed to hold the leader card during gameplay\n- Leader Card",
+    "images": [
+      {
+        "src": "images/products/onepiece/Lecafig Shirahoshi 1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/Lecafig Shirahoshi 2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/Lecafig Shirahoshi 3.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/Lecafig Shirahoshi 1.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-26T20:27:25.324Z",
+    "updatedAt": "2026-11-26T20:33:26.494Z"
+  },
+  {
     "id": "product-a27b6197-583f-4fb3-b467-92e7e34019c4",
     "name": "ONE PIECE × NBA Poster",
     "category": "Accessories",
