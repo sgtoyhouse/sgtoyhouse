@@ -1,5 +1,103 @@
 [
   {
+    "id": "product-a27b6197-583f-4fb3-b467-92e7e34019c4",
+    "name": "ONE PIECE × NBA Poster",
+    "category": "Accessories",
+    "price": 75,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Poster",
+    "setNumber": "",
+    "year": 2026,
+    "language": "",
+    "description": "Official ONE PIECE × NBA Poster is an official Bandai Namco poster featuring featuring One Piece characters (such as Luffy, Zoro, Nami, Sanji, Ace, Sabo, Shanks, Law, Enel, and Yamato) in official NBA team jerseys.\n\n✨ Each Set contains:\n- 1x poster\n- B2 size (approx. 51 × 72 cm)\n- Larger single-piece design with similar NBA crossover styling.",
+    "images": [
+      {
+        "src": "images/products/accessories/poster/OP NBA Black Poster1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Black Poster2.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/poster/OP NBA Black Poster1.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-26T20:06:40.054Z",
+    "updatedAt": "2026-11-26T20:06:40.054Z"
+  },
+  {
+    "id": "product-a063a492-d4a1-4414-99be-1364cad17db1",
+    "name": "ONE PIECE × NBA Mini Poster Set",
+    "category": "Accessories",
+    "price": 95,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Poster",
+    "setNumber": "",
+    "year": 2026,
+    "language": "",
+    "description": "The ONE PIECE × NBA Mini Poster Set is an official Bandai Namco collectible released exclusively across Japan and select Asian markets in June–July 2026\n\n✨ Each Set contains:\n- 10x posters.\n- B4 size (approx. 25 × 36 cm).\n- Featuring One Piece characters (such as Luffy, Zoro, Nami, Sanji, Ace, Sabo, Shanks, Law, Enel, and Yamato) in official NBA team jerseys.",
+    "images": [
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set4.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set5.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set6.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set7.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set8.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set9.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set10.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set11.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/accessories/poster/OP NBA Mini Poster Set12.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/accessories/poster/OP NBA Mini Poster Set1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-26T19:49:20.072Z",
+    "updatedAt": "2026-11-26T19:49:20.072Z"
+  },
+  {
     "id": "product-4b7a6a94-1600-41fe-a209-9f94224ce21a",
     "name": "Luffy's ArtCanvas 1/8 -1000LOGS Anniversary",
     "category": "Accessories",
