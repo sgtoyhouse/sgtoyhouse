@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Browse LEGO, Pokémon, One Piece and collectible merchandise at SG Toy House."
+    content="Browse LEGO, Pokémon, One Piece and collectible accessories at SG Toy House."
   >
 
   <meta name="theme-color" content="#070707">
@@ -408,6 +408,88 @@
     .button-primary:focus-visible .category-count {
       background: rgba(7, 7, 7, 0.24);
       border-color: rgba(7, 7, 7, 0.4);
+    }
+
+
+    /* Global product search */
+    .global-search {
+      padding: 0 0 48px;
+    }
+    .global-search .container {
+      padding: 28px 34px;
+      background: rgba(7, 7, 7, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .global-search-form {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .global-search-label {
+      margin-bottom: 10px;
+      display: block;
+      color: #ffffff;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      text-align: center;
+    }
+    .global-search-field {
+      position: relative;
+    }
+    .global-search-input {
+      width: 100%;
+      min-height: 56px;
+      padding: 14px 54px 14px 18px;
+      background: #101010;
+      color: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .global-search-input::placeholder { color: #8f866f; }
+    .global-search-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, .14);
+    }
+    .global-search-clear {
+      width: 38px;
+      height: 38px;
+      position: absolute;
+      top: 50%;
+      right: 9px;
+      display: grid;
+      place-items: center;
+      transform: translateY(-50%);
+      background: transparent;
+      color: var(--muted);
+      border: 0;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .global-search-clear:hover,
+    .global-search-clear:focus-visible { background: #242014; color: var(--gold-light); }
+    .global-search-help,
+    .global-search-summary {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    .global-search-results { margin-top: 26px; }
+    .global-search-results[hidden] { display: none !important; }
+    @media (max-width: 760px) {
+      .global-search { padding-bottom: 40px; }
+      .global-search .container { padding: 22px 20px; }
+    }
+    @media (max-width: 480px) {
+      .global-search { padding-bottom: 34px; }
+      .global-search .container { padding: 18px 10px; }
+      .global-search-label { font-size: 22px; }
+      .global-search-input { min-height: 50px; font-size: 15px; }
     }
 
     /* Homepage sections */
@@ -2074,7 +2156,7 @@
         </a>
 
         <a class="navigation-link" href="accessories.html">
-          Merchandise
+          Accessories
         </a>
 
         <a class="navigation-link" href="faq.html">
@@ -2156,12 +2238,12 @@
             </a>
 
             <a class="button button-primary" href="accessories.html">
-              <span>Merchandise</span>
+              <span>Accessories</span>
 
               <span
                 class="category-count"
                 id="accessories-count"
-                aria-label="Loading available merchandise"
+                aria-label="Loading available accessories"
               >
                 …
               </span>
@@ -2256,6 +2338,21 @@
       </div>
     </section>
 
+    <section class="global-search" aria-labelledby="global-search-heading">
+      <div class="container">
+        <form class="global-search-form" id="global-search-form" role="search">
+          <label class="global-search-label" id="global-search-heading" for="global-product-search">Search all products</label>
+          <div class="global-search-field">
+            <input class="global-search-input" id="global-product-search" type="search" inputmode="search" autocomplete="off" placeholder="Search by product, category, subcategory, set, language or status" aria-describedby="global-search-help global-search-summary">
+            <button class="global-search-clear" id="global-search-clear" type="button" aria-label="Clear product search" hidden>×</button>
+          </div>
+          <p class="global-search-help" id="global-search-help">Search across LEGO, Pokémon, One Piece and Merchandise.</p>
+          <p class="global-search-summary" id="global-search-summary" aria-live="polite"></p>
+        </form>
+        <div class="product-grid global-search-results" id="global-search-results" aria-live="polite" hidden></div>
+        <p class="products-empty" id="global-search-empty" hidden>No matching products found.</p>
+      </div>
+    </section>
     <section
       class="most-popular"
       aria-labelledby="most-popular-heading"
@@ -2567,11 +2664,18 @@
       },
       {
         key: "accessories",
-        label: "Merchandise",
+        label: "Accessories",
         page: "accessories.html"
       }
     ];
 
+    const globalSearchForm = document.getElementById("global-search-form");
+    const globalProductSearch = document.getElementById("global-product-search");
+    const globalSearchClear = document.getElementById("global-search-clear");
+    const globalSearchResults = document.getElementById("global-search-results");
+    const globalSearchEmpty = document.getElementById("global-search-empty");
+    const globalSearchSummary = document.getElementById("global-search-summary");
+    let allHomepageProducts = [];
     const popularProductGrid =
       document.getElementById(
         "popular-product-grid"
@@ -3363,6 +3467,51 @@
       return card;
     }
 
+
+    function getProductSearchText(product, category) {
+      return normalize([
+        getProductName(product),
+        category?.label,
+        product.category,
+        product.type,
+        getProductSubcategory(product),
+        getProductSetNumber(product),
+        getProductLanguage(product),
+        getProductStatus(product),
+        product.description,
+        product.tags,
+        product.keywords
+      ].flat().filter(Boolean).join(" "));
+    }
+
+    function renderGlobalSearch() {
+      const rawQuery = globalProductSearch.value.trim();
+      const query = normalize(rawQuery);
+      const hasQuery = Boolean(query);
+      globalSearchClear.hidden = !hasQuery;
+      globalSearchResults.replaceChildren();
+      globalSearchResults.hidden = !hasQuery;
+      globalSearchEmpty.hidden = true;
+
+      if (!hasQuery) {
+        globalSearchSummary.textContent = "";
+        return;
+      }
+
+      const matches = allHomepageProducts
+        .map((product) => ({ product, category: getCategoryConfig(product) }))
+        .filter(({ product, category }) => category && getProductSearchText(product, category).includes(query))
+        .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product));
+
+      matches.forEach(({ product, category }) => {
+        globalSearchResults.appendChild(createProductCard(product, category));
+      });
+
+      const count = matches.length;
+      globalSearchSummary.textContent = `${count} ${count === 1 ? "product" : "products"} found for “${rawQuery}”.`;
+      globalSearchEmpty.hidden = count !== 0;
+    }
+
     function isProductAvailable(product) {
       const status =
         String(
@@ -3492,6 +3641,9 @@
       try {
         const products =
           await loadProductData();
+
+        allHomepageProducts = products;
+        renderGlobalSearch();
 
         updateCategoryCounts(
           products
@@ -4361,6 +4513,15 @@
     productPhotoViewer.addEventListener("pointerdown",event=>{if(event.pointerType==="mouse")return;photoSwipeStartX=event.clientX;photoSwipeStartY=event.clientY},{passive:true});
     productPhotoViewer.addEventListener("pointerup",event=>{if(photoSwipeStartX===null||photoSwipeStartY===null)return;const dx=event.clientX-photoSwipeStartX,dy=event.clientY-photoSwipeStartY;photoSwipeStartX=null;photoSwipeStartY=null;if(Math.abs(dx)>=50&&Math.abs(dx)>Math.abs(dy)*1.25)changeProductPhoto(dx<0?1:-1)},{passive:true});
     document.addEventListener("keydown",event=>{if(!productPhotoViewer.hidden&&event.key==="ArrowLeft"){event.preventDefault();changeProductPhoto(-1);return}if(!productPhotoViewer.hidden&&event.key==="ArrowRight"){event.preventDefault();changeProductPhoto(1);return}if(event.key!=="Escape")return;if(!productPhotoViewer.hidden)closeProductPhoto();else if(!productModal.hidden)closeProductModal()});
+
+
+    globalSearchForm.addEventListener("submit", (event) => event.preventDefault());
+    globalProductSearch.addEventListener("input", renderGlobalSearch);
+    globalSearchClear.addEventListener("click", () => {
+      globalProductSearch.value = "";
+      renderGlobalSearch();
+      globalProductSearch.focus();
+    });
 
     updateBackToTopButton();
     loadHomepageProducts();
