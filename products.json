@@ -1,5 +1,83 @@
 [
   {
+    "id": "product-6e46cd36-6527-4cab-9235-128fcd903d15",
+    "name": "Treasure Chest Volume 2",
+    "category": "One Piece",
+    "price": 130,
+    "currency": "SGD",
+    "status": "Sold Out",
+    "popular": false,
+    "subCategory": "TC-02 • OP-17",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨ Each tin contains :\n- Booster Pack [OP-17] x 12, \n- Promotion Card x 3 (3 types),\n- Card Sleeves x 60 (1 type)",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol. 2a.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol. 2b.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol. 2c.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol. 2d.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol. 2e.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Treasure Chest Vol. 2f.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/OP Treasure Chest Vol. 2a.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-26T20:54:43.262Z",
+    "updatedAt": "2026-11-26T20:54:43.262Z"
+  },
+  {
+    "id": "product-c1c3cbe4-1ded-49d9-a8b6-8eddea6aae70",
+    "name": "Base Shop Limited Playmat Vol.2 - Five Elders",
+    "category": "One Piece",
+    "price": 78,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Playmat",
+    "setNumber": "",
+    "year": 2026,
+    "language": "",
+    "description": "✨ Each set contains : \n- Five Elders Playmat\n- Empty Throne OP13-099 Alternate Art Promo Card",
+    "images": [
+      {
+        "src": "images/products/onepiece/OP Base Shop Limited Playmat Vol.2a.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Base Shop Limited Playmat Vol.2b.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/OP Base Shop Limited Playmat Vol.2c.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/OP Base Shop Limited Playmat Vol.2a.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-26T20:39:44.258Z",
+    "updatedAt": "2026-11-26T20:39:44.258Z"
+  },
+  {
     "id": "product-c23f91dd-ba40-49aa-8294-cb9831ffc965",
     "name": "Koala Lecafig Set with Promo Card",
     "category": "One Piece",
