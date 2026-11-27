@@ -1,5 +1,137 @@
 [
   {
+    "id": "product-f09556eb-35c4-450a-a340-0d1e5a133a85",
+    "name": "ST-36 Eustass\"Captain\"Kid",
+    "category": "One Piece",
+    "price": 45,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Starter Deck",
+    "setNumber": "",
+    "year": 2026,
+    "language": "English",
+    "description": "✨ Each Starter Deck contains:\n- Constructed Deck x 1 (51 cards)\n- DON!! Card x 10\n- Playsheet x 1\n- BOOSTER PACK -THE TIME OF BATTLE- [OP-16]",
+    "images": [
+      {
+        "src": "images/products/onepiece/starter deck/ST-36 English.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/starter deck/ST-36 English.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T22:37:29.192Z",
+    "updatedAt": "2026-11-27T22:37:29.192Z"
+  },
+  {
+    "id": "product-c0f2d629-4cc7-4e6b-a867-1bd203e1b244",
+    "name": "ST-30 Luffy & Ace",
+    "category": "One Piece",
+    "price": 95,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Starter Deck",
+    "setNumber": "",
+    "year": 2026,
+    "language": "English",
+    "description": "The One Piece Card Game Starter Deck EX -Luffy & Ace- [ST-30] in English is a red and green multicolored constructed deck released on June 12, 2026\n\n✨ Each Starter Deck contains:\n• Constructed Deck: 51 cards (50-card deck + 1 Leader card)\n• DON!! Cards: 10 cards\n• Playsheet: 1 sheet\n• Bonus Pack: 1 pack (3 cards out of 17 total types)",
+    "images": [
+      {
+        "src": "images/products/onepiece/starter deck/ST-30 English1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/ST-30 English2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/ST-30 English3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/ST-30 English4.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/starter deck/ST-30 English1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T18:20:04.798Z",
+    "updatedAt": "2026-11-27T18:20:04.798Z"
+  },
+  {
+    "id": "product-3434ad98-afa8-40c2-87f0-d07f437d33da",
+    "name": "ST-22 Ace & Newgate",
+    "category": "One Piece",
+    "price": 60,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Starter Deck",
+    "setNumber": "",
+    "year": 2025,
+    "language": "English",
+    "description": "Starter Deck -Ace & Newgate- [ST-22] is a mono-blue One Piece Card Game English starter deck released on September 5, 2025 (legal for play September 12, 2025)\n\n✨ Each Starter Deck contains:\n・Constructed Deck x 1 (51 cards)\n・DON!! Card x 10\n・Playsheet x 1\n・Bonus Pack x 1 (3 cards, 14 types in total)",
+    "images": [
+      {
+        "src": "images/products/onepiece/starter deck/ST-22 English1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/ST-22 English3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/ST-22 English2.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/starter deck/ST-22 English1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T18:07:08.325Z",
+    "updatedAt": "2026-11-27T22:48:55.199Z"
+  },
+  {
+    "id": "product-c95b67dc-890e-4fa3-a2ca-051c653fe883",
+    "name": "Luffy French Exclusive Musee Grevin Museum",
+    "category": "One Piece",
+    "price": 145,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": true,
+    "subCategory": "Promo Card",
+    "setNumber": "",
+    "year": 2026,
+    "language": "French",
+    "description": "The French Exclusive Musée Grévin Monkey D. Luffy Promo Card (OP13-001) is a limited-edition, alternate-art One Piece Card Game leader card released in June 2026 to celebrate the permanent One Piece wax figure exhibition at the Musée Grévin in Paris, France.\n\n✨ Card is foiled and sealed. \n✨ Exclusive to the Musee Gravin Museum in Paris, France. \n✨ Limited sets available. \n✨ Card will be randomly distributed.",
+    "images": [
+      {
+        "src": "images/products/onepiece/promo card/Luffy Musee Grevin Museum1.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo card/Luffy Musee Grevin Museum2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo card/Luffy Musee Grevin Museum3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo card/Luffy Musee Grevin Museum4.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/promo card/Luffy Musee Grevin Museum1.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T17:43:48.386Z",
+    "updatedAt": "2026-11-27T17:43:48.386Z"
+  },
+  {
     "id": "product-6e46cd36-6527-4cab-9235-128fcd903d15",
     "name": "Treasure Chest Volume 2",
     "category": "One Piece",
