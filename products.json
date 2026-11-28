@@ -1,5 +1,79 @@
 [
   {
+    "id": "product-dd54958e-0163-473e-9cd6-c55556c2fbfa",
+    "name": "Gift Collection -ONE PIECE Heroines",
+    "category": "One Piece",
+    "price": 158,
+    "currency": "SGD",
+    "status": "Preorder",
+    "popular": false,
+    "subCategory": "Gift Collection",
+    "setNumber": "",
+    "year": 2026,
+    "language": "English",
+    "description": "✨ Each Gift Collection Contains :\n- 2x [EN] Booster Pack [EB-05]\n- 70pcs Special Sleeves \n- 10x Promotion Card (10 types)",
+    "images": [
+      {
+        "src": "images/products/onepiece/collection box/Heroines Gift Collection.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/collection box/Heroines Gift Collection.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-28T00:31:19.233Z",
+    "updatedAt": "2026-11-28T00:31:38.142Z"
+  },
+  {
+    "id": "product-4b97c406-1099-4d17-b664-3a29d88323d1",
+    "name": "Super Premium Collection Vol. 1",
+    "category": "One Piece",
+    "price": 330,
+    "currency": "SGD",
+    "status": "Preorder",
+    "popular": false,
+    "subCategory": "SPC-01",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "Exclusive Nami-themed box set released for Asian regions outside of Japan.\n\n✨ Each Super Premium Collection contains:\n• Booster Packs: 24x Booster Packs from [OP-17] The World's Strongest Warriors\n• Promotion Cards: 2x standard Nami promotional cards (2 unique types)\n• Metal Cards: 2x collectible Nami metal cards (2 unique types)\n• Card Sleeves: 1x pack of 70 Nami-themed card sleeves\n• Storage Box: 1x pink Nami-themed card storage box",
+    "images": [
+      {
+        "src": "images/products/onepiece/collection box/Super Premium Collection Vol. 1a.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/collection box/Super Premium Collection Vol. 1b.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/collection box/Super Premium Collection Vol. 1c.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/collection box/Super Premium Collection Vol. 1d.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/collection box/Super Premium Collection Vol. 1e.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/collection box/Super Premium Collection Vol. 1f.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/collection box/Super Premium Collection Vol. 1g.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/collection box/Super Premium Collection Vol. 1a.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-28T00:21:50.223Z",
+    "updatedAt": "2026-11-28T00:32:02.831Z"
+  },
+  {
     "id": "product-4e87cf9f-e682-4b86-a8eb-1543ae4c036f",
     "name": "Roronoa Zoro World Unification Series DON!!",
     "category": "One Piece",
