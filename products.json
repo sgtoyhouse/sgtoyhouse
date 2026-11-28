@@ -1,5 +1,220 @@
 [
   {
+    "id": "product-4e87cf9f-e682-4b86-a8eb-1543ae4c036f",
+    "name": "Roronoa Zoro World Unification Series DON!!",
+    "category": "One Piece",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Promo Card",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "This card is part of a panoramic series that connects seamlessly with other \"World United\" (also known as \"Worldwide Unification\") DON!! cards featuring characters like Luffy, Roronoa Zoro, Nami, and Usopp.",
+    "images": [
+      {
+        "src": "images/products/onepiece/promo card/World Unification3.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/promo card/World Unification3.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-28T00:03:37.324Z",
+    "updatedAt": "2026-11-28T00:03:37.324Z"
+  },
+  {
+    "id": "product-198e67f7-0c19-462a-9d81-83ff6fb82674",
+    "name": "Luffy World Unification Series DON!!",
+    "category": "One Piece",
+    "price": 15,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Promo Card",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "This card is part of a panoramic series that connects seamlessly with other \"World United\" (also known as \"Worldwide Unification\") DON!! cards featuring characters like Luffy, Roronoa Zoro, Nami, and Usopp.",
+    "images": [
+      {
+        "src": "images/products/onepiece/promo card/World Unification2.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/promo card/World Unification2.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T23:58:52.959Z",
+    "updatedAt": "2026-11-28T00:03:50.942Z"
+  },
+  {
+    "id": "product-9ad27de8-cc53-4d62-80f5-bef72ea83b83",
+    "name": "World Unification Series DON!! (Luffy + Zoro + Nami +Usopp)",
+    "category": "One Piece",
+    "price": 45,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Promo Card",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "Four connecting One Piece Card Game \"World Unification Commemorative\" (or \"World United\") Promo DON!! Cards. The cards are designed to line up edge-to-edge into a single panoramic scene featuring Luffy's stretched arm (Gomu Gomu) reaching across all four cards.",
+    "images": [
+      {
+        "src": "images/products/onepiece/promo card/World Unification1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo card/World Unification2.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo card/World Unification3.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo card/World Unification4.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo card/World Unification5.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/promo card/World Unification1.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T23:54:52.796Z",
+    "updatedAt": "2026-11-28T00:02:01.165Z"
+  },
+  {
+    "id": "product-ea341234-be67-499a-bcdc-55f77c4e1595",
+    "name": "(Sealed x10) Super Parallel Gold DON!! Heroines Precious Box",
+    "category": "One Piece",
+    "price": 750,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Promo Card",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨ Sealed pack of 10x\n✨ Rare gold Don!! from Heroines Precious Box.",
+    "images": [
+      {
+        "src": "images/products/onepiece/promo card/Super Parallel Gold DON!.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/promo card/Super Parallel Gold DON!.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T23:39:01.910Z",
+    "updatedAt": "2026-11-27T23:40:11.456Z"
+  },
+  {
+    "id": "product-904d52ae-028d-4695-a6d5-ede0e38b739c",
+    "name": "Super Parallel Gold DON!! Heroines Precious Box",
+    "category": "One Piece",
+    "price": 80,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Promo Card",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨Rare gold Don!! from Heroines Precious Box.",
+    "images": [
+      {
+        "src": "images/products/onepiece/promo card/Super Parallel Gold DON!.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/promo card/Super Parallel Gold DON!.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T23:23:48.775Z",
+    "updatedAt": "2026-11-27T23:39:48.461Z"
+  },
+  {
+    "id": "product-4b87eec9-cd61-4e4e-b4ab-ba06721ef0bf",
+    "name": "Weekly Shonen Jump Combined Issue 4・5 Ace & Sabo & Luffy",
+    "category": "One Piece",
+    "price": 40,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Promo Deck",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨ Japan-exclusive promo deck obtained only via a mail-in campaign in Weekly Shonen Jump 2026 Combined Issue 4–5. \n\n✨Designed around a \"what-if\" theme where Monkey D. Garp raised the three brothers as Marines",
+    "images": [
+      {
+        "src": "images/products/onepiece/starter deck/Weekly Shonen Jump 2026a.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/Weekly Shonen Jump 2026b.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/Weekly Shonen Jump 2026c.jpg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/starter deck/Weekly Shonen Jump 2026d.jpg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/starter deck/Weekly Shonen Jump 2026a.jpg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T23:21:35.258Z",
+    "updatedAt": "2026-11-27T23:21:35.258Z"
+  },
+  {
+    "id": "product-49b78bfc-62ce-4a5e-9b0d-3368d3b88feb",
+    "name": "Saikyo Jump May 2026 \"Strongest at the Summit\"",
+    "category": "One Piece",
+    "price": 35,
+    "currency": "SGD",
+    "status": "In Stock",
+    "popular": false,
+    "subCategory": "Promo Pack",
+    "setNumber": "",
+    "year": 2026,
+    "language": "Japanese",
+    "description": "✨ Obtainable only via Japanese mail-in application campaign\n\n✨ Each sealed pack contains all 3 textured foiled cards: \n- 1x Monkey D. Luffy [P-154]\n- 1x Portgas D. Ace [P-153]\n- 1x Edward Newgate (Whitebeard) [P-152]",
+    "images": [
+      {
+        "src": "images/products/onepiece/promo pack/Saikyo Jump May 2026a.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo pack/Saikyo Jump May 2026b.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo pack/Saikyo Jump May 2026c.jpeg",
+        "alt": ""
+      },
+      {
+        "src": "images/products/onepiece/promo pack/Saikyo Jump May 2026d.jpeg",
+        "alt": ""
+      }
+    ],
+    "image": "images/products/onepiece/promo pack/Saikyo Jump May 2026a.jpeg",
+    "imageAlt": "",
+    "telegramUrl": "https://t.me/sgtoyhse",
+    "dateAdded": "2026-11-27T23:03:39.683Z",
+    "updatedAt": "2026-11-27T23:03:39.683Z"
+  },
+  {
     "id": "product-f09556eb-35c4-450a-a340-0d1e5a133a85",
     "name": "ST-36 Eustass\"Captain\"Kid",
     "category": "One Piece",
